@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InputJumlahFragment"
+    android:orientation="vertical"
+    android:padding="20dp">
+    <TextView
+        android:id="@+id/tv_jumlah"
+        android:layout_marginTop="40dp"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="10dp"
+        android:text="Jumlah Penumpang"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_jumlah"
+        android:padding="15dp"
+        android:hint="Jumlah penumpang anda"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:ems="10"
+        android:background="@drawable/bg_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:includeFontPadding="false"
+        android:layout_marginBottom="10dp"
+        android:text="Barang bawaan dan Jumlahnya"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/et_barang"
+        android:padding="15dp"
+        android:hint="Barang bawaan anda"
+        android:textSize="12sp"
+        android:textColor="@android:color/black"
+        android:ems="10"
+        android:gravity="top"
+        android:background="@drawable/bg_input"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_next"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:background="@drawable/bg_button_next"
+        android:layout_gravity="center"
+        android:textColor="@android:color/white"
+        android:backgroundTint="#01C871"/>
+</LinearLayout>

@@ -1,0 +1,2 @@
+rootProject.name='Angkut Apps - Penumpang'
+include ':app'
