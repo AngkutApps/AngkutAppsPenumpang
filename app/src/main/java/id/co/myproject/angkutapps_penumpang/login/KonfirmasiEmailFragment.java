@@ -64,6 +64,8 @@ public class KonfirmasiEmailFragment extends Fragment implements View.OnClickLis
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (etKonfirOTP2.getText().toString().length()==1){
                     etKonfirOTP3.requestFocus();
+                }else if (etKonfirOTP2.getText().toString().length()==0){
+                    etKonfirOTP1.requestFocus();
                 }
             }
 
@@ -82,6 +84,8 @@ public class KonfirmasiEmailFragment extends Fragment implements View.OnClickLis
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (etKonfirOTP3.getText().toString().length()==1){
                     etKonfirOTP4.requestFocus();
+                }else if (etKonfirOTP3.getText().toString().length()==0){
+                    etKonfirOTP2.requestFocus();
                 }
             }
 
@@ -100,6 +104,8 @@ public class KonfirmasiEmailFragment extends Fragment implements View.OnClickLis
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (etKonfirOTP4.getText().toString().length()==1){
                     etKonfirOTP5.requestFocus();
+                }else if (etKonfirOTP4.getText().toString().length()==0){
+                    etKonfirOTP3.requestFocus();
                 }
             }
 
@@ -118,6 +124,26 @@ public class KonfirmasiEmailFragment extends Fragment implements View.OnClickLis
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (etKonfirOTP5.getText().toString().length()==1){
                     etKonfirOTP6.requestFocus();
+                }else if (etKonfirOTP5.getText().toString().length()==0){
+                    etKonfirOTP4.requestFocus();
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        etKonfirOTP6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (etKonfirOTP6.getText().toString().length()==0){
+                    etKonfirOTP5.requestFocus();
                 }
             }
 

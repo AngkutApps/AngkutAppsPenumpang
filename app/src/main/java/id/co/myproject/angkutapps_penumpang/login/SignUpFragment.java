@@ -175,7 +175,7 @@ public class SignUpFragment extends Fragment {
             public void onClick(View view) {
                 if (Utils.isConnectionInternet(getActivity())){
                     daftar();
-                    setFragment(new KonfirmasiEmailFragment());
+//                    setFragment(new KonfirmasiEmailFragment());
                 }else {
                     Toast.makeText(getActivity(), "Tidak ada jaringan", Toast.LENGTH_SHORT).show();
                 }

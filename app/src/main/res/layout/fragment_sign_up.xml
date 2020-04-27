@@ -82,6 +82,7 @@
             android:ems="10"
             android:hint="Tulis Nomor Hp Anda"
             android:padding="15dp"
+            android:inputType="number"
             android:textColor="@android:color/black"
             android:textSize="12sp" />
 
@@ -223,7 +224,7 @@
                 android:layout_toEndOf="@+id/p_item_2_icon_parent"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="Minimal 1 uppercase"
+                android:text="Minimal 1 Huruf Besar"
                 android:textColor="@color/colorFormText"
                 android:textSize="13dp" />
 
@@ -267,7 +268,7 @@
                 android:layout_toEndOf="@+id/p_item_3_icon_parent"
                 android:ellipsize="end"
                 android:lines="1"
-                android:text="Minimmal 1 angka"
+                android:text="Minimal 1 Angka"
                 android:textColor="@color/colorFormText"
                 android:textSize="13dp" />
 
