@@ -1,5 +1,6 @@
 package id.co.myproject.angkutapps_penumpang.login;
 
+import android.animation.ArgbEvaluator;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -28,8 +30,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import id.co.myproject.angkutapps_penumpang.MainActivity;
 import id.co.myproject.angkutapps_penumpang.R;
+import id.co.myproject.angkutapps_penumpang.adapter.PagerLoginAdapter;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.Value;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
@@ -37,6 +45,7 @@ import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import id.co.myproject.angkutapps_penumpang.model.*;
 
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.ID_USER_KEY;
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_KEY;
@@ -46,6 +55,20 @@ import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_STATUS;
  * A simple {@link Fragment} subclass.
  */
 public class SignInFragment extends Fragment {
+
+    //baru
+    ViewPager viewPager;
+    PagerLoginAdapter pagerAdapter;
+    List<viewPagerLogin> viewPagerLogins;
+    Integer[] colors = null;
+    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
+
+    int img = R.drawable.loading;
+    String title = "Transportasi Lintas Daerah Dalam Genggaman";
+    String desc = "Satu klik dan tracking transportasi bookingan anda kapan saja dan dimana saja secara real time";
+
+    TextView tvPoint1, tvPoint2, tvPoint3, tvPoint4, tvPoint5;
+    //baru
 
     EditText etEmail, etPassword;
     Button btnSignIn;
@@ -83,6 +106,58 @@ public class SignInFragment extends Fragment {
         tvLupaPassword = view.findViewById(R.id.tv_lupa_password);
         tv_email = view.findViewById(R.id.tv_email);
         parentFrameLayout = getActivity().findViewById(R.id.frame_login);
+
+        //baru
+        tvPoint1 = view.findViewById(R.id.tvPoint1);
+        tvPoint2 = view.findViewById(R.id.tvPoint2);
+        tvPoint3 = view.findViewById(R.id.tvPoint3);
+        tvPoint4 = view.findViewById(R.id.tvPoint4);
+        tvPoint5 = view.findViewById(R.id.tvPoint5);
+
+        viewPagerLogins = new ArrayList<>();
+        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
+        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
+        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
+        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
+        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
+
+        pagerAdapter = new PagerLoginAdapter(viewPagerLogins,getContext());
+
+        viewPager = view.findViewById(R.id.viewPagerLogin);
+        viewPager.setAdapter(pagerAdapter);
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == 0){
+                    tvColorPointDefault();
+                    tvPoint1.setBackgroundResource(R.drawable.bg_point_slider);
+                } else if (position == 1) {
+                    tvColorPointDefault();
+                    tvPoint2.setBackgroundResource(R.drawable.bg_point_slider);
+                }else if (position == 2){
+                    tvColorPointDefault();
+                    tvPoint3.setBackgroundResource(R.drawable.bg_point_slider);
+                }else if (position == 3){
+                    tvColorPointDefault();
+                    tvPoint4.setBackgroundResource(R.drawable.bg_point_slider);
+                }else if (position == 4){
+                    tvColorPointDefault();
+                    tvPoint5.setBackgroundResource(R.drawable.bg_point_slider);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        //baru
 
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Memproses ...");
@@ -132,6 +207,7 @@ public class SignInFragment extends Fragment {
             public void onClick(View view) {
                 if (Utils.isConnectionInternet(getActivity())){
                     cekForm();
+                    setFragment(new KonfirmasiEmailFragment());
                 }else {
                     Toast.makeText(getActivity(), "Tidak ada jaringan", Toast.LENGTH_SHORT).show();
                 }
@@ -148,7 +224,7 @@ public class SignInFragment extends Fragment {
         tvLupaPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                setFragment(new ForgotPassFragment());
+                setFragment(new LupaPasswordFragment());
             }
         });
     }
@@ -156,7 +232,7 @@ public class SignInFragment extends Fragment {
     private void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(parentFrameLayout.getId(), fragment);
-        fragmentTransaction.commit();
+        fragmentTransaction.addToBackStack(null).commit();
     }
 
     private void cekForm(){
@@ -250,6 +326,14 @@ public class SignInFragment extends Fragment {
 
             }
         });
+    }
+
+    private void tvColorPointDefault(){
+        tvPoint1.setBackgroundResource(R.drawable.bg_point_slider_default);
+        tvPoint2.setBackgroundResource(R.drawable.bg_point_slider_default);
+        tvPoint3.setBackgroundResource(R.drawable.bg_point_slider_default);
+        tvPoint4.setBackgroundResource(R.drawable.bg_point_slider_default);
+        tvPoint5.setBackgroundResource(R.drawable.bg_point_slider_default);
     }
 
 }
