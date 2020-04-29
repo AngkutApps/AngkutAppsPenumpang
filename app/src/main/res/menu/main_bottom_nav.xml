@@ -5,7 +5,8 @@
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Home"
         app:showAsAction="always"
-        android:iconTint="@color/colorAccent"/>
+        android:iconTint="@color/colorAccent"
+        />
     <item android:id="@+id/history_nav"
         android:icon="@drawable/ic_local_activity_black_24dp"
         android:title="Aktivitas"
@@ -20,7 +21,8 @@
         android:icon="@drawable/coupon"
         android:title="Promo"
         app:showAsAction="always"
-        android:iconTint="@color/colorAccent"/>
+        android:iconTint="@color/colorAccent"
+        />
     <item android:id="@+id/akun_nav"
         android:icon="@drawable/ic_person_black_24dp"
         android:title="Akun"
