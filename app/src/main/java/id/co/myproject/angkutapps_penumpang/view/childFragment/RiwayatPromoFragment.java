@@ -7,20 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
+
 import id.co.myproject.angkutapps_penumpang.R;
-import id.co.myproject.angkutapps_penumpang.adapter.rvRiwayatPerjalananAdapter;
+import id.co.myproject.angkutapps_penumpang.adapter.rvRiwayatAdapter;
+import id.co.myproject.angkutapps_penumpang.model.LoadViewRiwayat;
 
 public class RiwayatPromoFragment extends Fragment {
 
     TextView tvPenggunaan, tvPembelian;
     RecyclerView rvRiwayat;
-    rvRiwayatPerjalananAdapter rvRiwayatperjalananAdapter;
+    rvRiwayatAdapter rvRiwayatperjalananAdapter;
+    ArrayList<LoadViewRiwayat> arrayList;
 
     public RiwayatPromoFragment() {
     }
@@ -56,7 +58,7 @@ public class RiwayatPromoFragment extends Fragment {
                     normalView();
                     tvPembelian.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
                     tvPembelian.setTextColor(Color.parseColor("#008577"));
-                    PemanggilanAdapter();
+                    PemanggilanAdapter("20k","Promo Pembelian", "Jum'at","07-07-2007");
                     break;
             }
         }
@@ -74,8 +76,12 @@ public class RiwayatPromoFragment extends Fragment {
         tvPenggunaan.setTextColor(Color.parseColor("#008577"));
     }
 
-    private void PemanggilanAdapter(){
-        rvRiwayatperjalananAdapter = new rvRiwayatPerjalananAdapter(getContext());
+    private void PemanggilanAdapter(String harga, String desc, String hari, String tanggal){
+        arrayList = new ArrayList<>();
+        for (int i=0 ; i< 10;i++){
+            arrayList.add(new LoadViewRiwayat(harga,desc,hari,tanggal));
+        }
+        rvRiwayatperjalananAdapter = new rvRiwayatAdapter(getContext(), arrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvRiwayat.setLayoutManager(layoutManager);
         rvRiwayat.setHasFixedSize(true);

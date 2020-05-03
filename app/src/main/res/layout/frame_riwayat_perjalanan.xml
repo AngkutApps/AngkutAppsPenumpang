@@ -70,7 +70,9 @@
                     android:layout_below="@+id/riwayatRute"
                     android:layout_alignRight="@+id/riwayatRute"
                     android:text="Tanggal"
-                    android:textSize="11sp" />
+                    android:textSize="11sp"
+                    android:id="@+id/riwayatTanggal"
+                    />
 
             </RelativeLayout>
 
@@ -79,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@color/textColorWhite"
+                android:background=""
                 android:foreground="?android:attr/selectableItemBackground"
                 android:paddingTop="6dp"
                 android:paddingBottom="6dp"

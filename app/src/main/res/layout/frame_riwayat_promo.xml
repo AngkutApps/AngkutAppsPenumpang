@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/btnPengaturanPromo"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            >
+
+            <TextView
+                android:id="@+id/tvNamaPromo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/textBlack"
+                android:textSize="20sp"
+                android:text="Nama Promo" />
+
+            <TextView
+                android:id="@+id/tvHariPromo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvNamaPromo"
+                android:layout_alignLeft="@+id/tvNamaPromo"
+                android:textSize="11sp"
+                android:text="Hari" />
+
+            <TextView
+                android:id="@+id/tvTanggalPromo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvNamaPromo"
+                android:layout_alignRight="@+id/tvNamaPromo"
+                android:textSize="11sp"
+                android:text="Tanggal" />
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/btnPengaturanPromo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background=""
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:src="@drawable/ic_more_point_24dp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
