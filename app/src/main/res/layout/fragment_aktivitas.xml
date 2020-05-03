@@ -33,13 +33,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Riwayat\nPembayaran"
+            android:text="Pembayaran"
             android:textAlignment="center"
             android:layout_weight="1"
             android:textSize="14sp"
             android:background="@drawable/bg_button_history_normal"
             android:textColor="@color/colorPrimary"
-            android:padding="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:layout_marginRight="6dp"
             android:id="@+id/tvRiwayatPembayaran"
             />
@@ -47,7 +48,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Riwayat\nPromo"
+            android:text="Promo"
             android:textAlignment="center"
             android:layout_weight="1"
             android:layout_marginLeft="6dp"
@@ -55,35 +56,37 @@
             android:textSize="14sp"
             android:textColor="@color/colorPrimary"
             android:background="@drawable/bg_button_history_normal"
-            android:padding="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:id="@+id/tvRiwayatPromo"
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Riwayat\nPerjalanan"
+            android:text="Perjalanan"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:layout_weight="1"
             android:layout_marginLeft="6dp"
             android:textSize="14sp"
             android:background="@drawable/bg_button_history_normal"
-            android:padding="5dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:id="@+id/tvRiwayatPerjalanan"
             />
 
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
+        android:id="@+id/frameRiwayat"
         >
 
-
-    </androidx.recyclerview.widget.RecyclerView>
+    </FrameLayout>
 
 </LinearLayout>
