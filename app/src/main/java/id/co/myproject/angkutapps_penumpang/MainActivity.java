@@ -4,7 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import id.co.myproject.angkutapps_penumpang.view.AktivitasFragment;
 import id.co.myproject.angkutapps_penumpang.view.HomeFragment;
+import id.co.myproject.angkutapps_penumpang.view.PaymentFragment;
+import id.co.myproject.angkutapps_penumpang.view.ProfilFragment;
+import id.co.myproject.angkutapps_penumpang.view.PromoFragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -27,6 +32,14 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.home_nav){
                     setFragment(new HomeFragment());
+                }else if (item.getItemId() == R.id.history_nav){
+                    setFragment(new AktivitasFragment());
+                }else if (item.getItemId() == R.id.barcode_nav){
+                    setFragment(new PaymentFragment());
+                }else if (item.getItemId() == R.id.payment_nav){
+                    setFragment(new PromoFragment());
+                }else if (item.getItemId() == R.id.akun_nav){
+                    setFragment(new ProfilFragment());
                 }
 
                 return true;

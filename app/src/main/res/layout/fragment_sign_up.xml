@@ -58,6 +58,7 @@
             android:background="@drawable/bg_input"
             android:ems="10"
             android:hint="Tulis Email Anda"
+            android:inputType="textEmailAddress"
             android:padding="15dp"
             android:textColor="@android:color/black"
             android:textSize="12sp" />

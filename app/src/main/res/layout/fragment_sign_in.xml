@@ -9,213 +9,206 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
         android:layout_gravity="center_vertical">
 
         <RelativeLayout
             android:id="@+id/rvSwipeImage"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.viewpager.widget.ViewPager
-                android:layout_width="match_parent"
-                android:layout_height="270dp"
-                android:foregroundGravity="center"
-                android:layout_centerInParent="true"
-                android:overScrollMode="never"
-                android:clipToPadding="false"
-                android:id="@+id/viewPagerLogin"
-                >
-            </androidx.viewpager.widget.ViewPager>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/rvSwipeImage"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:id="@+id/linearSlidingImage"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
             >
 
-            <TextView
-                android:layout_width="9dp"
-                android:layout_height="9dp"
-                android:background="@drawable/bg_point_slider"
-                android:layout_marginRight="7dp"
-                android:id="@+id/tvPoint1"
-                />
-
-            <TextView
-                android:layout_width="9dp"
-                android:layout_height="9dp"
-                android:background="@drawable/bg_point_slider_default"
-                android:layout_marginRight="7dp"
-                android:id="@+id/tvPoint2"
-                />
-
-            <TextView
-                android:layout_width="9dp"
-                android:layout_height="9dp"
-                android:background="@drawable/bg_point_slider_default"
-                android:layout_marginRight="7dp"
-                android:id="@+id/tvPoint3"
-                />
-
-            <TextView
-                android:layout_width="9dp"
-                android:layout_height="9dp"
-                android:background="@drawable/bg_point_slider_default"
-                android:layout_marginRight="7dp"
-                android:id="@+id/tvPoint4"
-                />
-
-            <TextView
-                android:layout_width="9dp"
-                android:layout_height="9dp"
-                android:background="@drawable/bg_point_slider_default"
-                android:id="@+id/tvPoint5"
-                />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/linearSlidingImage"
-            android:layout_marginTop="20dp"
-            android:text="Email / Nomor Hp"
-            android:textSize="15sp"
-            android:textColor="@color/textBlack" />
-
-        <EditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_email"
-            android:layout_marginTop="4dp"
-            android:background="@drawable/bg_input"
-            android:ems="10"
-            android:hint="Tulis email atau Nomor Hp Anda"
-            android:padding="15dp"
-            android:textColor="@android:color/black"
-            android:textSize="12sp" />
-
-        <TextView
-            android:id="@+id/tvPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/et_email"
-            android:layout_marginTop="17dp"
-            android:text="Password"
-            android:textSize="15sp"
-            android:textColor="@color/textBlack" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etPasswordLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tvPassword"
-            android:layout_marginTop="4dp"
-            app:hintAnimationEnabled="false"
-            app:hintEnabled="false"
-            app:hintTextColor="@android:color/transparent"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPagerLogin"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_input"
-                android:hint="Tulis password anda"
-                android:inputType="textPassword"
-                android:padding="15dp"
-                android:textSize="12sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="270dp"
+                android:layout_centerInParent="true"
+                android:clipToPadding="false"
+                android:foregroundGravity="center"
+                android:overScrollMode="never"></androidx.viewpager.widget.ViewPager>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/etPasswordLayout"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="2dp"
-            android:textSize="13sp"
-            android:onClick="LupaPassword"
-            android:text="Lupa Password ?"
-            android:id="@+id/tv_lupa_password"
-            android:textColor="@color/colorPrimary" />
-
-        <Button
-            android:id="@+id/btn_sign_in"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/bg_button_login"
-            android:text="Masuk"
-            android:textSize="18sp"
-            android:textAllCaps="false"
-            android:layout_centerHorizontal="true"
-            android:textColor="@color/textColorWhite"
-            android:layout_below="@+id/tv_lupa_password"
-            />
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_sign_in"
-            android:id="@+id/tvAtau"
-            android:layout_marginTop="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_below="@+id/rvSwipeImage"
             >
 
-            <TextView
+            <LinearLayout
+                android:id="@+id/linearSlidingImage"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorAbuAbu"
-                android:layout_centerVertical="true"
-                />
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvPoint1"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginRight="7dp"
+                    android:background="@drawable/bg_point_slider" />
+
+                <TextView
+                    android:id="@+id/tvPoint2"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginRight="7dp"
+                    android:background="@drawable/bg_point_slider_default" />
+
+                <TextView
+                    android:id="@+id/tvPoint3"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginRight="7dp"
+                    android:background="@drawable/bg_point_slider_default" />
+
+                <TextView
+                    android:id="@+id/tvPoint4"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:layout_marginRight="7dp"
+                    android:background="@drawable/bg_point_slider_default" />
+
+                <TextView
+                    android:id="@+id/tvPoint5"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/bg_point_slider_default" />
+
+            </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Atau"
-                android:layout_centerVertical="true"
+                android:layout_below="@+id/linearSlidingImage"
+                android:layout_marginTop="20dp"
+                android:text="Email / Nomor Hp"
+                android:textColor="@color/textBlack"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_email"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_input"
+                android:ems="10"
+                android:hint="Tulis email atau Nomor Hp Anda"
+                android:padding="15dp"
+                android:textColor="@android:color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_email"
+                android:layout_marginTop="17dp"
+                android:text="Password"
+                android:textColor="@color/textBlack"
+                android:textSize="15sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etPasswordLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPassword"
+                android:layout_marginTop="4dp"
+                app:hintAnimationEnabled="false"
+                app:hintEnabled="false"
+                app:hintTextColor="@android:color/transparent"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_input"
+                    android:hint="Tulis password anda"
+                    android:inputType="textPassword"
+                    android:padding="15dp"
+                    android:textSize="12sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tv_lupa_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etPasswordLayout"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="2dp"
+                android:onClick="LupaPassword"
+                android:text="Lupa Password ?"
+                android:textColor="@color/colorPrimary"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btn_sign_in"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_lupa_password"
                 android:layout_centerHorizontal="true"
-                android:background="@color/textColorWhite"
-                android:paddingLeft="6dp"
-                android:paddingRight="6dp"
-                />
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_button_login"
+                android:text="Masuk"
+                android:textAllCaps="false"
+                android:textColor="@color/textColorWhite"
+                android:textSize="18sp" />
+
+            <RelativeLayout
+                android:id="@+id/tvAtau"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btn_sign_in"
+                android:layout_marginTop="40dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_centerVertical="true"
+                    android:background="@color/colorAbuAbu" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/textColorWhite"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp"
+                    android:text="Atau" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvAtau"
+                android:layout_marginTop="2dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Belum Punya Akun ? " />
+
+                <TextView
+                    android:id="@+id/tv_registrasi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Daftar Disini"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
 
         </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_below="@+id/tvAtau"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="2dp"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Belum Punya Akun ? "
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Daftar Disini"
-                android:textColor="@color/colorPrimary"
-                android:id="@+id/tv_registrasi"
-                android:textStyle="bold"
-                />
-
-        </LinearLayout>
 
     </RelativeLayout>
 
