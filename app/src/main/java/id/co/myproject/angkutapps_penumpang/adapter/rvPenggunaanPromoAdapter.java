@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -36,20 +37,28 @@ public class rvPenggunaanPromoAdapter extends RecyclerView.Adapter<rvPenggunaanP
         holder.tvNamaPromo.setText(loadViewPenggunaan.get(position).getTvNamaPromo());
         holder.tvHariPromo.setText(loadViewPenggunaan.get(position).getTvHariPromo());
         holder.tvTanggalPromo.setText(loadViewPenggunaan.get(position).getTvTanggalPromo());
+        holder.cvPenggunaanPromo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return loadViewPenggunaan.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvNamaPromo, tvHariPromo, tvTanggalPromo;
+        CardView cvPenggunaanPromo;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
+            cvPenggunaanPromo = itemView.findViewById(R.id.cvPenggunaanPromo);
             tvNamaPromo = itemView.findViewById(R.id.tvNamaPromo);
             tvHariPromo = itemView.findViewById(R.id.tvHariPromo);
             tvTanggalPromo = itemView.findViewById(R.id.tvTanggalPromo);
