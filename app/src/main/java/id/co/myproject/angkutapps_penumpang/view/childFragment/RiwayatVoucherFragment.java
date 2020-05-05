@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,16 +18,16 @@ import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
 import id.co.myproject.angkutapps_penumpang.model.*;
 
-public class RiwayatPromoFragment extends Fragment {
+public class RiwayatVoucherFragment extends Fragment {
 
     TextView tvPenggunaan, tvPembelian;
     RecyclerView rvRiwayat;
     rvRiwayatAdapter rvRiwayatperjalananAdapter;
-    rvPenggunaanPromoAdapter rvPenggunaanPromoAdapter;
     ArrayList<LoadViewRiwayat> arrayList;
-    ArrayList<loadViewPenggunaanPromo> loadPenggunaanList;
+    ArrayList<loadPromoVoucherku> listPromo;
+    rvPromoVoucherku rvPromoVoucherku;
 
-    public RiwayatPromoFragment() {
+    public RiwayatVoucherFragment() {
     }
 
     @Override
@@ -76,19 +77,19 @@ public class RiwayatPromoFragment extends Fragment {
     private void defaultView(){
         tvPenggunaan.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
         tvPenggunaan.setTextColor(Color.parseColor("#008577"));
-        PenggunaanPromo("Promo Akhir Tahun Membahana", "Rabu","27-19-2000");
+        loadPromo(R.drawable.loading, 2, "Nikmati Promo Hingga Tembus Pagi Sampai Capek dan Drop Out", "20-08-2021");
     }
 
-    private void PenggunaanPromo(String namaPromo, String hari, String tanggal){
-        loadPenggunaanList = new ArrayList<>();
+    private void loadPromo(int img, int kondisi, String title, String masa_berlaku){
+        listPromo = new ArrayList<>();
         for (int i=0 ; i< 10;i++){
-            loadPenggunaanList.add(new loadViewPenggunaanPromo(namaPromo, hari, tanggal));
+            listPromo.add(new loadPromoVoucherku(img,kondisi,title,masa_berlaku));
         }
-        rvPenggunaanPromoAdapter = new rvPenggunaanPromoAdapter(getContext(), loadPenggunaanList);
+        rvPromoVoucherku = new rvPromoVoucherku(getContext(), listPromo);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvRiwayat.setLayoutManager(layoutManager);
         rvRiwayat.setHasFixedSize(true);
-        rvRiwayat.setAdapter(rvPenggunaanPromoAdapter);
+        rvRiwayat.setAdapter(rvPromoVoucherku);
     }
 
     private void PembelianPromo(String harga, String desc, String hari, String tanggal){

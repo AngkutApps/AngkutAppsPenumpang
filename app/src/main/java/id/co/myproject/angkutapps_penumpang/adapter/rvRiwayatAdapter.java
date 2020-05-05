@@ -43,6 +43,13 @@ public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.View
                     Toast.makeText(context, "Menu : "+loadViewRiwayats.get(position).getRute_perjalanan(), Toast.LENGTH_SHORT).show();
                 }
             });
+            holder.cvRiwayatPerjalanan.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Toast.makeText(context, "Harga : "+loadViewRiwayats.get(position).getHarga(), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            });
     }
 
     @Override

@@ -5,8 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +12,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import id.co.myproject.angkutapps_penumpang.R;
-import id.co.myproject.angkutapps_penumpang.adapter.*;
-import id.co.myproject.angkutapps_penumpang.login.emaildannohp.EditTextNomorHpFragment;
 import id.co.myproject.angkutapps_penumpang.view.childFragment.RiwayatPembayaranFragment;
 import id.co.myproject.angkutapps_penumpang.view.childFragment.RiwayatPerjalananFragment;
-import id.co.myproject.angkutapps_penumpang.view.childFragment.RiwayatPromoFragment;
+import id.co.myproject.angkutapps_penumpang.view.childFragment.RiwayatVoucherFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,7 +68,7 @@ public class AktivitasFragment extends Fragment {
                     viewButtonNormal();
                     tvRiwayatPromo.setBackgroundResource(R.drawable.bg_button_history);
                     tvRiwayatPromo.setTextColor(Color.parseColor("#FFFFFF"));
-                    setFragment(new RiwayatPromoFragment());
+                    setFragment(new RiwayatVoucherFragment());
                     break;
             }
         }
