@@ -13,7 +13,7 @@ public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProf
 
     private Context context;
 
-    String[] menu = {"Bahasa","Dijadwalkan","Tempat yang Disimpan","Pusat Bantuan","Kontak Darurat","Pengaturan","Bagikan Feedback", "Beri Masukan","FAQ","sdadianda"};
+    String[] menu = {"Bahasa","Dijadwalkan","Tempat yang Disimpan","Pusat Bantuan","Kontak Darurat","Pengaturan","Bagikan Feedback", "Beri Masukan","FAQ","Log Out"};
 
     public rvListMenuProfilAdapter(Context context) {
         this.context = context;

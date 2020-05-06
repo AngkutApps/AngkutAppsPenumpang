@@ -64,8 +64,15 @@ public class SignInFragment extends Fragment {
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 
     int img = R.drawable.loading;
-    String title = "Transportasi Lintas Daerah Dalam Genggaman";
-    String desc = "Satu klik dan tracking transportasi bookingan anda kapan saja dan dimana saja secara real time";
+    String[] title = {"Transportasi Lintas Daerah Dalam Genggaman","Tracking Lokasi Transportasi Daerah yang Real Time",
+            "Harga yang Murah dan Transparan",
+    "Terdapat Fitur Multi Relation", "Keterbukaan Informasi Detail Transportasi Daerah"};
+
+    String[] desc = {"Satu klik dan pesan transportasi lintas daerah anda untuk pulang kampung atau keluar kota melalui smartphone",
+            "Tracking transportasi daerah bookingan anda kapan saja dan dimana saja secara real time",
+    "Harga yang murah dan transparan membuat anda menjadi lebih yakin untuk memilih",
+    "Fitur multi relation memungkinkan anda untuk membooking mobil yang sama dengan kerabat walaupun " +
+            "kota penjemputannya berbeda", "Terdapat fitur lihat informasi transportasi dan driver terlebih dahulu untuk memilih transportasi yang tepat dan aman"};
 
     TextView tvPoint1, tvPoint2, tvPoint3, tvPoint4, tvPoint5;
     //baru
@@ -115,11 +122,9 @@ public class SignInFragment extends Fragment {
         tvPoint5 = view.findViewById(R.id.tvPoint5);
 
         viewPagerLogins = new ArrayList<>();
-        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
-        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
-        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
-        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
-        viewPagerLogins.add(new viewPagerLogin(img, title, desc));
+        for (int i=0; i<5;i++){
+            viewPagerLogins.add(new viewPagerLogin(img, title[i], desc[i]));
+        }
 
         pagerAdapter = new PagerLoginAdapter(viewPagerLogins,getContext());
 
