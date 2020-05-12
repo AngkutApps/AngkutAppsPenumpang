@@ -106,7 +106,6 @@ public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.View
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.popup_lihat:
-//                    setFragment(new DetailRiwayatFragment());
                     setFragment(new DetailRiwayatFragment());
                     break;
                 case R.id.popup_hapus:

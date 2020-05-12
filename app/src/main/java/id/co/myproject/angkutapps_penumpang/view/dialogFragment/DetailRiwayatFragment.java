@@ -41,6 +41,7 @@ public class DetailRiwayatFragment extends DialogFragment {
             switch (v.getId()){
                 case R.id.imgClose :
                     DetailRiwayatFragment.super.onStop();
+                    DetailRiwayatFragment.super.onDestroyView();
                     break;
             }
         }

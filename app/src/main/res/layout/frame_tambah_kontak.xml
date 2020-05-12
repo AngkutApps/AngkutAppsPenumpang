@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="15dp"
+    android:paddingBottom="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kontak Darurat"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            />
+
+        <EditText
+            android:id="@+id/etNamaKontakDarurat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_input"
+            android:hint="Nama Kontak"
+            android:ems="10"
+            android:padding="12dp"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/etHubunganKontak"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/bg_input"
+            android:hint="Hubungan dengan Kontak"
+            android:padding="12dp"
+            android:ems="10"
+            android:textColor="@android:color/black"
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <EditText
+                android:id="@+id/etKodeNegara"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_input"
+                android:text="+62"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:layout_marginRight="15dp"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/etNomorKontak"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/bg_input"
+                android:hint="Nomor Kontak"
+                android:inputType="number"
+                android:padding="12dp"
+                android:ems="10"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SAVE"
+            android:layout_marginTop="15dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:textColor="@color/textColorWhite"
+            android:background="@drawable/bg_btn_save_kontak_darurat"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

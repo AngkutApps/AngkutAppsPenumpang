@@ -17,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".PembayaranActivity"></activity>
+        <activity android:name=".view.menu_akun.PemilihanBahasa"></activity>
+        <activity android:name=".view.menu_akun.KontakDarurat"></activity>
+        <activity android:name=".view.menu_akun.Pengaturan"></activity>
+        <activity android:name=".view.menu_akun.Penjadwalan"></activity>
+        <activity android:name=".view.menu_akun.LokasiDitandai"></activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
