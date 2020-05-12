@@ -104,4 +104,13 @@ public class RiwayatVoucherFragment extends Fragment {
         rvRiwayat.setAdapter(rvRiwayatperjalananAdapter);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
 }

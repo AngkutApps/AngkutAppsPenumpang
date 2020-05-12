@@ -89,4 +89,14 @@ public class RiwayatPembayaranFragment extends Fragment {
         rvRiwayat.setHasFixedSize(true);
         rvRiwayat.setAdapter(rvRiwayatperjalananAdapter);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
 }

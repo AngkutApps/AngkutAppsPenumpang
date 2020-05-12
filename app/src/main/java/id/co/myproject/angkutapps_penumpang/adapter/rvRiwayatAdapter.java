@@ -1,5 +1,6 @@
 package id.co.myproject.angkutapps_penumpang.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -11,12 +12,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.LoadViewRiwayat;
+import id.co.myproject.angkutapps_penumpang.view.dialogFragment.*;
 
 public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.ViewHolder> {
 
@@ -44,7 +50,7 @@ public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.View
         holder.cvRiwayatPerjalanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Menu : " + loadViewRiwayats.get(position).getRute_perjalanan(), Toast.LENGTH_SHORT).show();
+                setFragment(new DetailRiwayatFragment());
             }
         });
         holder.cvRiwayatPerjalanan.setOnLongClickListener(new View.OnLongClickListener() {
@@ -100,7 +106,8 @@ public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.View
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.popup_lihat:
-                    Toast.makeText(context, "Popup lihat "+popup, Toast.LENGTH_SHORT).show();
+//                    setFragment(new DetailRiwayatFragment());
+                    setFragment(new DetailRiwayatFragment());
                     break;
                 case R.id.popup_hapus:
                     Toast.makeText(context, "Popup hapus "+popup, Toast.LENGTH_SHORT).show();
@@ -109,4 +116,14 @@ public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.View
             return false;
         }
     };
+
+    private void setFragment(DetailRiwayatFragment fragment){
+        FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment prev = fragmentManager.findFragmentByTag("dialog");
+        if (prev !=null){
+            fragmentTransaction.remove(prev);
+        }
+        fragment.show(fragmentTransaction, "dialog");
+    }
 }
