@@ -30,6 +30,7 @@ import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.Value;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
+import id.co.myproject.angkutapps_penumpang.view.menu_akun.ProfilUser;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -102,7 +103,8 @@ public class HomeFragment extends Fragment {
                     startActivity(intent);
                     break;
                 case R.id.iv_user :
-                    Toast.makeText(getContext(), "Activity Profil", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getContext(), "Activity Profil", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getContext(), ProfilUser.class));
                     break;
                 case R.id.rvSaldoOvo :
                     Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();

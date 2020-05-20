@@ -7,6 +7,7 @@ import android.widget.ImageButton;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -73,7 +74,7 @@ public class KontakDarurat extends AppCompatActivity {
         }
     };
 
-    private void setFragment(TambahKontakDarurat fragment){
+    private void setFragment(DialogFragment fragment){
         FragmentManager fragmentManager = KontakDarurat.this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment prev = fragmentManager.findFragmentByTag("dialog");

@@ -20,7 +20,7 @@ import android.widget.EditText;
  */
 public class InputJumlahFragment extends DialogFragment {
 
-    EditText etJumlah, etBarang;
+    EditText etJumlahDewasa, etBarang, etJumlahAnak;
     Button btnNext;
     String tujuan;
     KeberangkatanListener listener;
@@ -33,26 +33,25 @@ public class InputJumlahFragment extends DialogFragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_input_jumlah, container, false);
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        etJumlah = view.findViewById(R.id.et_jumlah);
+        etJumlahDewasa = view.findViewById(R.id.et_jumlahDewasa);
+        etJumlahAnak = view.findViewById(R.id.et_jumlahAnak);
         etBarang = view.findViewById(R.id.et_barang);
         btnNext = view.findViewById(R.id.btn_next);
 
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onFinishedPengisian(tujuan, etJumlah.getText().toString(), etBarang.getText().toString());
+                listener.onFinishedPengisian(tujuan, etJumlahDewasa.getText().toString(), etBarang.getText().toString());
                 dismiss();
             }
         });
-
     }
 }

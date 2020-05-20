@@ -11,13 +11,19 @@ import id.co.myproject.angkutapps_penumpang.view.PaymentFragment;
 import id.co.myproject.angkutapps_penumpang.view.ProfilFragment;
 import id.co.myproject.angkutapps_penumpang.view.PromoFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int TIME_DELAY = 2000;
+    private static long back_pressed;
+
     FrameLayout frameLayout;
     public static BottomNavigationView bottomNavigationView;
     @Override
@@ -54,5 +60,20 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(frameLayout.getId(), fragment);
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (back_pressed+TIME_DELAY > System.currentTimeMillis()){
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+            finish();
+        }else{
+            Toast.makeText(this, "Tekan back lagi untuk keluar", Toast.LENGTH_SHORT).show();
+        }
+        back_pressed = System.currentTimeMillis();
+//        super.onBackPressed();
     }
 }

@@ -16,12 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PembayaranActivity"></activity>
-        <activity android:name=".view.menu_akun.PemilihanBahasa"></activity>
-        <activity android:name=".view.menu_akun.KontakDarurat"></activity>
-        <activity android:name=".view.menu_akun.Pengaturan"></activity>
-        <activity android:name=".view.menu_akun.Penjadwalan"></activity>
-        <activity android:name=".view.menu_akun.LokasiDitandai"></activity>
+        <activity android:name=".view.menu_akun.ProfilUser"></activity>
+        <activity android:name=".PembayaranActivity" />
+        <activity android:name=".view.menu_akun.PemilihanBahasa" />
+        <activity android:name=".view.menu_akun.KontakDarurat" />
+        <activity android:name=".view.menu_akun.Pengaturan" />
+        <activity android:name=".view.menu_akun.Penjadwalan" />
+        <activity android:name=".view.menu_akun.LokasiDitandai" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

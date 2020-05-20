@@ -1,5 +1,6 @@
 package id.co.myproject.angkutapps_penumpang.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
+import id.co.myproject.angkutapps_penumpang.view.menu_akun.ProfilUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +25,7 @@ public class ProfilFragment extends Fragment {
 
     RecyclerView rvListMenuProfil;
     rvListMenuProfilAdapter rvAdapter;
+    RelativeLayout rlProfil;
 
     public ProfilFragment() {
         // Required empty public constructor
@@ -39,6 +43,7 @@ public class ProfilFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         rvListMenuProfil = view.findViewById(R.id.rvListMenuProfil);
+        rlProfil = view.findViewById(R.id.rl_profil);
         rvAdapter = new rvListMenuProfilAdapter(getContext());
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -46,5 +51,19 @@ public class ProfilFragment extends Fragment {
         rvListMenuProfil.setHasFixedSize(true);
         rvListMenuProfil.setAdapter(rvAdapter);
 
+        rlProfil.setOnClickListener(clickListener);
+
     }
+
+    private View.OnClickListener clickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.rl_profil:
+                    startActivity(new Intent(getContext(), ProfilUser.class));
+                    break;
+            }
+        }
+    };
+
 }

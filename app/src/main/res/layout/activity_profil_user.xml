@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.menu_akun.ProfilUser">
+
+    <FrameLayout
+        android:id="@+id/frameHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="top"
+                android:scaleType="centerCrop"
+                android:src="@drawable/frame_promo" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/button_back"
+                android:layout_width="31dp"
+                android:layout_height="31dp"
+                android:layout_margin="10dp"
+                android:background="@null"
+                android:foreground="?attr/selectableItemBackground"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_back" />
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgProfil"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:layout_below="@+id/frameHeader"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-42dp"
+        android:layout_marginBottom="7dp"
+        android:src="@drawable/bg_horizontal" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgProfil"
+        android:id="@+id/layoutInfoUser"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Irwan Ardyansah"
+            android:textColor="@color/colorPrimary"
+            android:textSize="19sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Laki-laki"
+            android:textSize="14sp"
+            android:layout_marginTop="3dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nomor Telepon"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/textBlack"
+            android:layout_marginLeft="3dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="3dp"
+                android:text="+62"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alamat Email"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="3dp"
+            android:textColor="@color/textBlack"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimary"
+        android:ems="14"
+        android:layout_below="@+id/layoutInfoUser"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="25dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Save"
+        android:textColor="@color/textColorWhite" />
+
+</RelativeLayout>
