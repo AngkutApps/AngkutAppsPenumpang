@@ -16,7 +16,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.menu_akun.ProfilUser"></activity>
+        <activity android:name=".view.menu_payment.TransferActivity"></activity>
+        <activity android:name=".view.menu_payment.TopupActivity" />
+        <activity android:name=".view.menu_payment.RiwayatActivity" />
+        <activity android:name=".view.menu_akun.ProfilUser" />
         <activity android:name=".PembayaranActivity" />
         <activity android:name=".view.menu_akun.PemilihanBahasa" />
         <activity android:name=".view.menu_akun.KontakDarurat" />

@@ -99,13 +99,12 @@
                             android:textColor="@color/textBlack"
                             android:textSize="15sp" />
 
-                        <TextView
+                        <ImageView
                             android:id="@+id/btnPengaturanOvo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:text=">"
-                            android:textSize="20sp" />
+                            android:src="@drawable/ic_navigate_next"/>
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -173,9 +172,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Bayar"
+                                android:text="Top Up"
                                 android:textColor="@color/textBlack"
-                                android:textSize="12sp" />
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 
@@ -183,6 +182,8 @@
                             android:id="@+id/linearIsiUlang"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="25dp"
+                            android:layout_marginRight="25dp"
                             android:layout_centerHorizontal="true"
                             android:orientation="vertical">
 
@@ -196,9 +197,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Isi Ulang"
+                                android:text="Transfer"
                                 android:textColor="@color/textBlack"
-                                android:textSize="12sp" />
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 
@@ -220,9 +221,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:text="Rewards"
+                                android:text="Riwayat"
                                 android:textColor="@color/textBlack"
-                                android:textSize="12sp" />
+                                android:textSize="13sp" />
 
                         </LinearLayout>
 

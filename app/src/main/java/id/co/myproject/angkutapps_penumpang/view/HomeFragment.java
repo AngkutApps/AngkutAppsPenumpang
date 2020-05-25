@@ -12,12 +12,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -31,6 +34,9 @@ import id.co.myproject.angkutapps_penumpang.model.Value;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
 import id.co.myproject.angkutapps_penumpang.view.menu_akun.ProfilUser;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.RiwayatActivity;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.TopupActivity;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.TransferActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,8 +48,9 @@ public class HomeFragment extends Fragment {
 
     LinearLayout linearBayar, linearIsiUlang, linearRewards;
 
+    ImageView tvPengaturanSaldo;
+
     RelativeLayout rvSaldoOvo;
-    TextView tvPengaturanSaldo;
 
     CircleImageView iv_profil;
     CardView cvDaerah;
@@ -108,18 +115,19 @@ public class HomeFragment extends Fragment {
                     break;
                 case R.id.rvSaldoOvo :
                     Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
-                    break;
                 case R.id.btnPengaturanOvo :
                     Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.linearBayar :
-                    Toast.makeText(getContext(), "Activity Bayar", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), TopupActivity.class));
                     break;
                 case R.id.linearIsiUlang :
-                    Toast.makeText(getContext(), "Activity Isi Ulang", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), TransferActivity.class));
+//                    Toast.makeText(getContext(), "Activity Isi Ulang", Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.linearRewards :
-                    Toast.makeText(getContext(), "Activity Rewards", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), RiwayatActivity.class));
+//                    Toast.makeText(getContext(), "Activity Rewards", Toast.LENGTH_SHORT).show();
                     break;
             }
         }
