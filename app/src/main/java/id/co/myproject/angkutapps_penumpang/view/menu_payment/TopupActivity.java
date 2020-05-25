@@ -2,24 +2,41 @@ package id.co.myproject.angkutapps_penumpang.view.menu_payment;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import id.co.myproject.angkutapps_penumpang.R;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.drop_down.DDATM;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.drop_down.DDAlfamartGroup;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.drop_down.DDClear;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.drop_down.DDIndomaretGroup;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.drop_down.DDKartuDebit;
+import id.co.myproject.angkutapps_penumpang.view.menu_payment.drop_down.DDMobileBanking;
 
 public class TopupActivity extends AppCompatActivity {
 
     ImageButton appbar_button_back;
     CardView cvKartuDebit, cvAtm, cvIndomaretGroup, cvAlfamartGroup, cvMobileBanking, cvScanQRcode;
 
+    ImageView iconNext1, iconNext2, iconNext3, iconNext4, iconNext5;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_topup);
 
+        iconNext1 = findViewById(R.id.iconNext1);
+        iconNext2 = findViewById(R.id.iconNext2);
+        iconNext3 = findViewById(R.id.iconNext3);
+        iconNext4 = findViewById(R.id.iconNext4);
+        iconNext5 = findViewById(R.id.iconNext5);
         cvKartuDebit = findViewById(R.id.cvKartuDebit);
         cvAtm = findViewById(R.id.cvATM);
         cvIndomaretGroup = findViewById(R.id.cvIndomaretGroup);
@@ -37,6 +54,8 @@ public class TopupActivity extends AppCompatActivity {
         cvScanQRcode.setOnClickListener(clickListener);
     }
 
+    int KartuDebit=0, ATM=0, IndomaretGroup=0, AlfamartGroup=0, MobileBanking=0;
+
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -45,19 +64,59 @@ public class TopupActivity extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.cvKartuDebit :
-                    Toast.makeText(TopupActivity.this, "Kartu Debit", Toast.LENGTH_SHORT).show();
+                    if (KartuDebit==0){
+                        setFragment(new DDKartuDebit(), R.id.frameDownKartuDebit);
+                        iconNext1.setRotation(90);
+                        KartuDebit+=1;
+                    }else {
+                        setFragment(new DDClear(), R.id.frameDownKartuDebit);
+                        iconNext1.setRotation(0);
+                        KartuDebit=0;
+                    }
                     break;
                 case R.id.cvATM :
-                    Toast.makeText(TopupActivity.this, "ATM", Toast.LENGTH_SHORT).show();
+                    if (ATM==0){
+                        setFragment(new DDATM(), R.id.frameDownATM);
+                        iconNext2.setRotation(90);
+                        ATM+=1;
+                    }else {
+                        setFragment(new DDClear(), R.id.frameDownATM);
+                        iconNext2.setRotation(0);
+                        ATM=0;
+                    }
                     break;
                 case R.id.cvIndomaretGroup :
-                    Toast.makeText(TopupActivity.this, "Indomaret Group", Toast.LENGTH_SHORT).show();
+                    if (IndomaretGroup==0){
+                        iconNext3.setRotation(90);
+                        setFragment(new DDIndomaretGroup(), R.id.frameDownIndomaretGroup);
+                        IndomaretGroup+=1;
+                    }else {
+                        setFragment(new DDClear(), R.id.frameDownIndomaretGroup);
+                        iconNext3.setRotation(0);
+                        IndomaretGroup=0;
+                    }
                     break;
                 case R.id.cvAlfamartGroup :
-                    Toast.makeText(TopupActivity.this, "Alfamart Group", Toast.LENGTH_SHORT).show();
+                    if (AlfamartGroup==0){
+                        iconNext4.setRotation(90);
+                        setFragment(new DDAlfamartGroup(), R.id.frameDownAlfamartGroup);
+                        AlfamartGroup+=1;
+                    }else {
+                        setFragment(new DDClear(), R.id.frameDownAlfamartGroup);
+                        iconNext4.setRotation(0);
+                        AlfamartGroup=0;
+                    }
                     break;
                 case R.id.cvMobileBanking :
-                    Toast.makeText(TopupActivity.this, "Mobile Banking", Toast.LENGTH_SHORT).show();
+                    if (MobileBanking==0){
+                        iconNext5.setRotation(90);
+                        setFragment(new DDMobileBanking(), R.id.frameDownMobileBanking);
+                        MobileBanking+=1;
+                    }else {
+                        setFragment(new DDClear(), R.id.frameDownMobileBanking);
+                        iconNext5.setRotation(0);
+                        MobileBanking=0;
+                    }
                     break;
                 case R.id.cvScanQRCode :
                     Toast.makeText(TopupActivity.this, "Scan QR Code", Toast.LENGTH_SHORT).show();
@@ -65,5 +124,11 @@ public class TopupActivity extends AppCompatActivity {
             }
         }
     };
+
+    private void setFragment(Fragment fragment, int frame){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(frame, fragment);
+        transaction.commit();
+    }
 
 }
