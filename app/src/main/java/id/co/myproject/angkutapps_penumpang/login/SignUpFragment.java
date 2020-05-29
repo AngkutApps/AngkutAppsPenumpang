@@ -161,6 +161,7 @@ public class SignUpFragment extends Fragment {
 
                             @Override
                             public void onFailure(Call<Value> call, Throwable t) {
+                                progressDialog.dismiss();
                                 Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
