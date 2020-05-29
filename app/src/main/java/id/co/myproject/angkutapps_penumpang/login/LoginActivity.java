@@ -13,6 +13,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_KEY;
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_STATUS;
 
@@ -27,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         sharedPreferences = getSharedPreferences(LOGIN_KEY, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -47,6 +49,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void cekLogin(){
+//
+//        FirebaseAuth auth = FirebaseAuth.getInstance();
+//        FirebaseUser firebaseUser = auth.getCurrentUser();
+
         progressDialog.show();
         boolean statusLogin = sharedPreferences.getBoolean(LOGIN_STATUS, false);
         if (statusLogin){

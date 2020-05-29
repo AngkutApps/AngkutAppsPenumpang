@@ -13,8 +13,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        buildConfigField "String", "BASE_URL", "\"https://anggkutapps.000webhostapp.com/angkut_api/\""
-        buildConfigField "String", "BASE_URL_GAMBAR", "\"https://anggkutapps.000webhostapp.com/angkut_api/gambar/\""
+        buildConfigField "String", "BASE_URL", "\"http://angkutapps.com/angkut_api/\""
+        buildConfigField "String", "BASE_URL_GAMBAR", "\"http://angkutapps.com/angkut_api/gambar/\""
     }
 
     buildTypes {

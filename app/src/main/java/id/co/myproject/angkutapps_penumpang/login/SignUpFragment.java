@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -23,19 +24,27 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.TaskExecutors;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 import androidx.fragment.app.FragmentTransaction;
 import id.co.myproject.angkutapps_penumpang.MainActivity;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
+import id.co.myproject.angkutapps_penumpang.model.User;
 import id.co.myproject.angkutapps_penumpang.model.Value;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
@@ -48,8 +57,11 @@ import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_KEY;
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_STATUS;
 
 public class SignUpFragment extends Fragment {
-    EditText etNama, etEmail, etKonfirm;
-    TextInputEditText etPassword;
+
+
+    ScrollView svSignUp;
+    EditText etNama, etEmail, etNomorHp;
+    RadioButton rbL, rbP;
     private CardView isAtLeast8Parent, hasUppercaseParent, hasNumberParent;
     Button btnSignUp;
     TextView tv_login;
@@ -82,15 +94,15 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        svSignUp = view.findViewById(R.id.sv_sign_up);
         etNama = view.findViewById(R.id.et_nama);
         etEmail = view.findViewById(R.id.et_email);
-        etPassword = view.findViewById(R.id.et_password);
-        etKonfirm = view.findViewById(R.id.et_confirm_password);
+        rbL = view.findViewById(R.id.rb_l);
+        rbP = view.findViewById(R.id.rb_p);
+        etNomorHp = view.findViewById(R.id.et_nomor_hp);
         btnSignUp = view.findViewById(R.id.btn_sign_up);
         tv_login = view.findViewById(R.id.tv_login);
-        isAtLeast8Parent = view.findViewById(R.id.p_item_1_icon_parent);
-        hasUppercaseParent = view.findViewById(R.id.p_item_2_icon_parent);
-        hasNumberParent = view.findViewById(R.id.p_item_3_icon_parent);
         parentFrameLayout = getActivity().findViewById(R.id.frame_login);
 
         apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
@@ -99,83 +111,18 @@ public class SignUpFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Proses ...");
 
-        etNama.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                registrationDataCheck();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        etEmail.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                registrationDataCheck();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        rbL.setChecked(true);
 
 
 
-        etPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                registrationDataCheck();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-        etKonfirm.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                registrationDataCheck();
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+//        etNomorHp.addTextChangedListener(new PhoneNumberFormattingTextWatcher("ID"));
 
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Utils.isConnectionInternet(getActivity())){
-                    daftar();
-//                    setFragment(new KonfirmasiEmailFragment());
+                    checkInput();
                 }else {
                     Toast.makeText(getActivity(), "Tidak ada jaringan", Toast.LENGTH_SHORT).show();
                 }
@@ -193,104 +140,74 @@ public class SignUpFragment extends Fragment {
 
     private void checkInput() {
         if (!TextUtils.isEmpty(etEmail.getText())) {
-            if (!TextUtils.isEmpty(etNama.getText())) {
-                if (!TextUtils.isEmpty(etPassword.getText()) && etKonfirm.length() >= 8) {
-                    btnSignUp.setEnabled(true);
-                    btnSignUp.setTextColor(Color.rgb(255, 255, 255));
-                    if (isAtLeast8 && hasUppercase && hasNumber){
-                        btnSignUp.setEnabled(true);
-                        btnSignUp.setTextColor(Color.rgb(255, 255, 255));
-                    }else {
-                        btnSignUp.setEnabled(false);
-                        btnSignUp.setTextColor(Color.argb(50, 255, 255, 255));
+            if (etEmail.getText().toString().matches(emailPattern)) {
+                if (!TextUtils.isEmpty(etNomorHp.getText())){
+                    if (!TextUtils.isEmpty(etNama.getText())) {
+                        progressDialog.show();
+                        Call<Value> cekNoHPCall = apiRequest.cekNoHpRequest(etNomorHp.getText().toString());
+                        cekNoHPCall.enqueue(new Callback<Value>() {
+                            @Override
+                            public void onResponse(Call<Value> call, Response<Value> response) {
+                                if (response.isSuccessful()){
+                                    if (response.body().getValue() == 1){
+                                        progressDialog.dismiss();
+                                        Toast.makeText(getActivity(), "No Hp sudah digunakan, gunakan no hp yang lain", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        daftar();
+                                    }
+                                }
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<Value> call, Throwable t) {
+                                Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else {
+                        etNama.setError("Nama tidak boleh kosong");
+                        Utils.scrollToView(svSignUp, etNama);
                     }
-                } else {
-                    btnSignUp.setEnabled(false);
-                    btnSignUp.setTextColor(Color.argb(50, 255, 255, 255));
+                }else {
+
                 }
-            } else {
-                btnSignUp.setEnabled(false);
-                btnSignUp.setTextColor(Color.argb(50, 255, 255, 255));
+            }else {
+                etEmail.setError("Email tidak sesuai format");
+                Utils.scrollToView(svSignUp, etEmail);
             }
         }else {
-            btnSignUp.setEnabled(false);
-            btnSignUp.setTextColor(Color.argb(50, 255, 255, 255));
+            etEmail.setError("Email tidak boleh kosong");
+            Utils.scrollToView(svSignUp, etEmail);
         }
-    }
-
-    @SuppressLint("ResourceType")
-    private void registrationDataCheck() {
-        String password = etPassword.getText().toString(), email = etEmail.getText().toString();
-
-        if (password.length() >= 8) {
-            isAtLeast8 = true;
-            isAtLeast8Parent.setCardBackgroundColor(Color.parseColor(getString(R.color.colorCheckOk)));
-        } else {
-            isAtLeast8 = false;
-            isAtLeast8Parent.setCardBackgroundColor(Color.parseColor(getString(R.color.colorCheckNo)));
-        }
-        if (password.matches("(.*[A-Z].*)")) {
-            hasUppercase = true;
-            hasUppercaseParent.setCardBackgroundColor(Color.parseColor(getString(R.color.colorCheckOk)));
-        } else {
-            hasUppercase = false;
-            hasUppercaseParent.setCardBackgroundColor(Color.parseColor(getString(R.color.colorCheckNo)));
-        }
-        if (password.matches("(.*[0-9].*)")) {
-            hasNumber = true;
-            hasNumberParent.setCardBackgroundColor(Color.parseColor(getString(R.color.colorCheckOk)));
-        } else {
-            hasNumber = false;
-            hasNumberParent.setCardBackgroundColor(Color.parseColor(getString(R.color.colorCheckNo)));
-        }
-
-        checkInput();
-
     }
 
 
     private void daftar(){
         final String nama = etNama.getText().toString();
         final String email = etEmail.getText().toString();
-        final String password = etPassword.getText().toString();
-        if (etEmail.getText().toString().matches(emailPattern)){
-            if (etPassword.getText().toString().equals(etKonfirm.getText().toString())){
-                progressDialog.show();
-                String id = UUID.randomUUID().toString();
-                Call<Value> callRegistrasiUser = apiRequest.registrasiUserRequest(
-                        id,
-                        email,
-                        password,
-                        nama,
-                        ""
-                );
-                callRegistrasiUser.enqueue(new Callback<Value>() {
-                    @Override
-                    public void onResponse(Call<Value> call, Response<Value> response) {
-                        if (response.body().getValue() == 1){
-                            String idPenumpang = response.body().getIdPenumpang();
-                            editor.putString(ID_USER_KEY, idPenumpang);
-                            editor.putBoolean(LOGIN_STATUS, true);
-                            editor.commit();
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();
-                        }else {
-                            progressDialog.dismiss();
-                            btnSignUp.setEnabled(true);
-                            Toast.makeText(getActivity(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
+        final String noHp = etNomorHp.getText().toString();
+        User user = new User();
+        String id = UUID.randomUUID().toString();
 
-                    @Override
-                    public void onFailure(Call<Value> call, Throwable t) {
-                        Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        }else {
-            etEmail.setError("Email tidak cocok");
+        user.setIdUser(id.substring(0, 20));
+        user.setEmail(email);
+        user.setNama(nama);
+        user.setNoHp(noHp);
+
+        if (rbP.isChecked()){
+            user.setJk("P");
+        }else if (rbL.isChecked()){
+            user.setJk("L");
         }
+
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("user_data", user);
+        bundle.putInt("type_sign", Utils.TYPE_SIGN_UP_BUNDLE);
+        KonfirmasiEmailFragment konfirmasiEmailFragment = new KonfirmasiEmailFragment();
+        konfirmasiEmailFragment.setArguments(bundle);
+
+        progressDialog.dismiss();
+        setFragment(konfirmasiEmailFragment);
     }
 
 

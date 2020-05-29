@@ -7,6 +7,7 @@
     android:fadingEdge="none">
 
     <RelativeLayout
+        android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical">
@@ -88,72 +89,57 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linearSlidingImage"
                 android:layout_marginTop="20dp"
-                android:text="Email / Nomor Hp"
+                android:text="Nomor Hp"
                 android:textColor="@color/textBlack"
                 android:textSize="15sp" />
 
-            <EditText
-                android:id="@+id/et_email"
+
+            <LinearLayout
+                android:id="@+id/lv_input_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_email"
+                android:orientation="horizontal"
                 android:layout_marginTop="4dp"
-                android:background="@drawable/bg_input"
-                android:ems="10"
-                android:hint="Tulis email atau Nomor Hp Anda"
-                android:padding="15dp"
-                android:textColor="@android:color/black"
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/tvPassword"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/et_email"
-                android:layout_marginTop="17dp"
-                android:text="Password"
-                android:textColor="@color/textBlack"
-                android:textSize="15sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etPasswordLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvPassword"
-                android:layout_marginTop="4dp"
-                app:hintAnimationEnabled="false"
-                app:hintEnabled="false"
-                app:hintTextColor="@android:color/transparent"
-                app:passwordToggleEnabled="true">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_password"
+                android:layout_below="@+id/tv_email">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_code_telp"
+                    android:padding="10dp"
+                    android:gravity="center">
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:src="@drawable/indonesia"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+62"
+                        android:textSize="15sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+                </LinearLayout>
+                <EditText
+                    android:id="@+id/et_nomor_hp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_input"
-                    android:hint="Tulis password anda"
-                    android:inputType="textPassword"
+                    android:layout_below="@+id/tvNomorHp"
+                    android:background="@drawable/bg_input_no_telp"
+                    android:ems="10"
+                    android:hint="Tulis Nomor Hp Anda"
                     android:padding="15dp"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:textColor="@android:color/black"
                     android:textSize="12sp" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TextView
-                android:id="@+id/tv_lupa_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/etPasswordLayout"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="2dp"
-                android:onClick="LupaPassword"
-                android:text="Lupa Password ?"
-                android:textColor="@color/colorPrimary"
-                android:textSize="13sp" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/btn_sign_in"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_lupa_password"
+                android:layout_below="@+id/lv_input_no"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
                 android:background="@drawable/bg_button_login"

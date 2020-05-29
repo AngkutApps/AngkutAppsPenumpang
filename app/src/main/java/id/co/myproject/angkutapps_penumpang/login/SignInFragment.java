@@ -77,9 +77,9 @@ public class SignInFragment extends Fragment {
     TextView tvPoint1, tvPoint2, tvPoint3, tvPoint4, tvPoint5;
     //baru
 
-    EditText etEmail, etPassword;
+    EditText etNoHp;
     Button btnSignIn;
-    TextView tvRegistrasi, tvLupaPassword, tv_email;
+    TextView tvRegistrasi, tv_email;
     FrameLayout parentFrameLayout;
     int idUser, login_level;
     SharedPreferences sharedPreferences;
@@ -106,11 +106,9 @@ public class SignInFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        etEmail = view.findViewById(R.id.et_email);
-        etPassword = view.findViewById(R.id.et_password);
+        etNoHp = view.findViewById(R.id.et_nomor_hp);
         btnSignIn = view.findViewById(R.id.btn_sign_in);
         tvRegistrasi = view.findViewById(R.id.tv_registrasi);
-        tvLupaPassword = view.findViewById(R.id.tv_lupa_password);
         tv_email = view.findViewById(R.id.tv_email);
         parentFrameLayout = getActivity().findViewById(R.id.frame_login);
 
@@ -170,49 +168,11 @@ public class SignInFragment extends Fragment {
         sharedPreferences = getActivity().getSharedPreferences(LOGIN_KEY, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
-
-        btnSignIn.setEnabled(false);
-        btnSignIn.setTextColor(Color.argb(50,255,255, 255));
-
-        etEmail.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                checkInput();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        etPassword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                checkInput();
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (Utils.isConnectionInternet(getActivity())){
                     cekForm();
-//                    setFragment(new KonfirmasiEmailFragment());
                 }else {
                     Toast.makeText(getActivity(), "Tidak ada jaringan", Toast.LENGTH_SHORT).show();
                 }
@@ -226,12 +186,6 @@ public class SignInFragment extends Fragment {
             }
         });
 
-        tvLupaPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setFragment(new LupaPasswordFragment());
-            }
-        });
     }
 
     private void setFragment(Fragment fragment){
@@ -241,34 +195,39 @@ public class SignInFragment extends Fragment {
     }
 
     private void cekForm(){
-        String email = etEmail.getText().toString();
-        String password = etPassword.getText().toString();
-        if (etEmail.getText().toString().matches(emailPattern)) {
-            if (etPassword.length() >= 8) {
-                progressDialog.show();
-                btnSignIn.setEnabled(true);
-                prosesLogin(email, password);
-            } else {
-                Toast.makeText(getActivity(), "Password kurang boss", Toast.LENGTH_SHORT).show();
-            }
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Proses ...");
+        progressDialog.show();
+        if (!TextUtils.isEmpty(etNoHp.getText())) {
+            Call<Value> cekNoHPCall = apiRequest.cekNoHpRequest(etNoHp.getText().toString());
+            cekNoHPCall.enqueue(new Callback<Value>() {
+                @Override
+                public void onResponse(Call<Value> call, Response<Value> response) {
+                    progressDialog.dismiss();
+                    if (response.isSuccessful()){
+                        if (response.body().getValue() == 1){
+                            Bundle bundle = new Bundle();
+                            bundle.putString("no_hp", etNoHp.getText().toString());
+                            bundle.putInt("type_sign", Utils.TYPE_SIGN_UP_BUNDLE);
+                            KonfirmasiEmailFragment konfirmasiEmailFragment = new KonfirmasiEmailFragment();
+                            konfirmasiEmailFragment.setArguments(bundle);
+                            setFragment(konfirmasiEmailFragment);
+                        }else {
+                            Toast.makeText(getActivity(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<Value> call, Throwable t) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         } else {
-            Toast.makeText(getActivity(), "Username atau Password salah boss", Toast.LENGTH_SHORT).show();
-        }
-
-    }
-
-    private void checkInput() {
-        if (!TextUtils.isEmpty(etEmail.getText())){
-            if (!TextUtils.isEmpty(etPassword.getText())){
-                btnSignIn.setEnabled(true);
-                btnSignIn.setTextColor(Color.rgb(255,255, 255));
-            }else {
-                btnSignIn.setEnabled(false);
-                btnSignIn.setTextColor(Color.argb(50,255,255, 255));
-            }
-        }else {
-            btnSignIn.setEnabled(false);
-            btnSignIn.setTextColor(Color.argb(50,255,255, 255));
+            progressDialog.dismiss();
+            Toast.makeText(getActivity(), "No HP tidak boleh kosong", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -285,52 +244,6 @@ public class SignInFragment extends Fragment {
             progressDialog.dismiss();
             setFragment(new SignInFragment());
         }
-    }
-
-    private void prosesLogin(final String email, final String password) {
-        Call<Value> callLoginUser = apiRequest.loginUserRequest(email, password);
-        callLoginUser.enqueue(new Callback<Value>() {
-            @Override
-            public void onResponse(Call<Value> call, Response<Value> response) {
-                if (response.isSuccessful()) {
-                    if (response.body().getValue() == 1) {
-                        String idPenumpang = response.body().getIdPenumpang();
-                        Call<Value> loginUser = apiRequest.loginUserRequest(email, password);
-                        loginUser.enqueue(new Callback<Value>() {
-                            @Override
-                            public void onResponse(Call<Value> call, Response<Value> response) {
-                                if (response.isSuccessful()){
-                                    Toast.makeText(getActivity(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                                    if(response.body().getValue() == 1){
-                                        progressDialog.dismiss();
-                                        editor.putString(ID_USER_KEY, idPenumpang);
-                                        editor.putBoolean(LOGIN_STATUS, true);
-                                        editor.commit();
-                                        updateUI();
-                                    }else {
-                                        progressDialog.dismiss();
-                                        btnSignIn.setEnabled(true);
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(Call<Value> call, Throwable t) {
-                                Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    } else {
-                        progressDialog.dismiss();
-                        Toast.makeText(getActivity(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Value> call, Throwable t) {
-
-            }
-        });
     }
 
     private void tvColorPointDefault(){

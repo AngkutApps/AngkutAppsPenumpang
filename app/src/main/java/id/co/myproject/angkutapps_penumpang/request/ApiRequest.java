@@ -13,11 +13,11 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("registrasi_penumpang.php")
     Call<Value> registrasiUserRequest(
-            @Field("id_penumpang") String idPenumpang,
+            @Field("id_user") String idUser,
             @Field("email") String email,
-            @Field("password") String password,
             @Field("nama") String nama,
-            @Field("foto") String foto
+            @Field("no_hp") String no_hp,
+            @Field("jk") String jk
     );
 
     @FormUrlEncoded
@@ -30,16 +30,15 @@ public interface ApiRequest {
     );
 
     @FormUrlEncoded
-    @POST("cek_email.php")
-    Call<Value> cekUserCallback(
-            @Field("email") String email
+    @POST("cek_no_hp.php")
+    Call<Value> cekNoHpRequest(
+            @Field("no_hp") String nohp
     );
 
     @FormUrlEncoded
     @POST("login_penumpang.php")
     Call<Value> loginUserRequest(
-            @Field("email") String email,
-            @Field("password") String password
+            @Field("no_hp") String noHp
     );
 
     @GET("tampil_driver.php")
