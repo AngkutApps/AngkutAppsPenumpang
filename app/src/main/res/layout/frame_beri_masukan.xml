@@ -40,6 +40,7 @@
             android:layout_height="wrap_content"
             android:text="KIRIM"
             android:layout_marginTop="15dp"
+            android:id="@+id/btnKirim"
             android:foreground="?android:attr/selectableItemBackground"
             android:textColor="@color/textColorWhite"
             android:background="@drawable/bg_btn_save_kontak_darurat"

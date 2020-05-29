@@ -12,9 +12,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import org.json.JSONObject;
 
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_KEY;
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_STATUS;
@@ -34,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(LOGIN_KEY, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         frameLayout = findViewById(R.id.frame_login);
-
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Proses...");
