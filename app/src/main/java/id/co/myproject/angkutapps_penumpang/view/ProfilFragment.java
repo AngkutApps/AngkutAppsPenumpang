@@ -16,6 +16,8 @@ import android.widget.RelativeLayout;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
+import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
+import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
 import id.co.myproject.angkutapps_penumpang.view.menu_akun.ProfilUser;
 
 /**
@@ -42,9 +44,11 @@ public class ProfilFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ApiRequest apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
+
         rvListMenuProfil = view.findViewById(R.id.rvListMenuProfil);
         rlProfil = view.findViewById(R.id.rl_profil);
-        rvAdapter = new rvListMenuProfilAdapter(getContext());
+        rvAdapter = new rvListMenuProfilAdapter(getContext(), apiRequest);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvListMenuProfil.setLayoutManager(layoutManager);

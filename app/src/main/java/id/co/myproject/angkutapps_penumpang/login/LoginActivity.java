@@ -56,12 +56,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void cekLogin(){
 //
-//        FirebaseAuth auth = FirebaseAuth.getInstance();
-//        FirebaseUser firebaseUser = auth.getCurrentUser();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = auth.getCurrentUser();
 
         progressDialog.show();
-        boolean statusLogin = sharedPreferences.getBoolean(LOGIN_STATUS, false);
-        if (statusLogin){
+//        boolean statusLogin = sharedPreferences.getBoolean(LOGIN_STATUS, false);
+        if (firebaseUser != null){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

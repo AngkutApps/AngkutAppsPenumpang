@@ -41,6 +41,12 @@ public interface ApiRequest {
             @Field("no_hp") String noHp
     );
 
+    @FormUrlEncoded
+    @POST("logout_penumpang.php")
+    Call<Value> logoutUserRequest(
+            @Field("id_user") String id_user
+    );
+
     @GET("tampil_driver.php")
     Call<Driver> driverByIdRequest(
             @Query("id_user") String idUser

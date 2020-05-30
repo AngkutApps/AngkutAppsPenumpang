@@ -285,7 +285,7 @@ public class KonfirmasiEmailFragment extends Fragment{
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             if (type_sign == Utils.TYPE_SIGN_UP_BUNDLE) {
-                                registerProses();
+                                registerProses(FirebaseAuth.getInstance().getCurrentUser().getUid());
                             }else if (type_sign == Utils.TYPE_SIGN_IN_BUNDLE){
                                 loginProses();
                             }
@@ -303,9 +303,9 @@ public class KonfirmasiEmailFragment extends Fragment{
                 });
     }
 
-    private void registerProses() {
+    private void registerProses(String uuid) {
         Call<Value> callRegistrasiUser = apiRequest.registrasiUserRequest(
-                        user.getIdUser(),
+                        uuid,
                         user.getEmail(),
                         user.getNama(),
                         user.getNoHp(),
@@ -315,9 +315,6 @@ public class KonfirmasiEmailFragment extends Fragment{
                     @Override
                     public void onResponse(Call<Value> call, Response<Value> response) {
                         if (response.body().getValue() == 1){
-                            String idPenumpang = response.body().getIdPenumpang();
-                            editor.putString(ID_USER_KEY, idPenumpang);
-                            editor.commit();
                             progressDialog.dismiss();
                             Toast.makeText(getActivity(), "Selamat Datang", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -344,9 +341,6 @@ public class KonfirmasiEmailFragment extends Fragment{
             public void onResponse(Call<Value> call, Response<Value> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getValue() == 1){
-                        String idPenumpang = response.body().getIdPenumpang();
-                        editor.putString(ID_USER_KEY, idPenumpang);
-                        editor.commit();
                         progressDialog.dismiss();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);

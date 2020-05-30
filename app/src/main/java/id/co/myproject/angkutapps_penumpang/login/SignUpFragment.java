@@ -188,9 +188,9 @@ public class SignUpFragment extends Fragment {
         final String email = etEmail.getText().toString();
         final String noHp = etNomorHp.getText().toString();
         User user = new User();
-        String id = UUID.randomUUID().toString();
-
-        user.setIdUser(id.substring(0, 20));
+//        String id = UUID.randomUUID().toString();
+//
+//        user.setIdUser(id.substring(0, 20));
         user.setEmail(email);
         user.setNama(nama);
         user.setNoHp(noHp);
