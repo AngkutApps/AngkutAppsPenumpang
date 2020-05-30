@@ -53,6 +53,7 @@ public class TambahKontakDarurat extends DialogFragment {
                 namaKontak.setText(getArguments().getString("namaKontak"));
                 hubunganKontak.setText(getArguments().getString("hubunganKontak"));
                 nomorKontak.setText(getArguments().getString("nomorKontak"));
+                nomorKontak.setKeyListener(null);
                 kondisi = 2;
             }else {
                 kondisi = 1;
