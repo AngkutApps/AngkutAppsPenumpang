@@ -15,12 +15,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.androidnetworking.AndroidNetworking;
+
 import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.MainActivity;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
 import id.co.myproject.angkutapps_penumpang.model.LoadKontakDarurat;
+import id.co.myproject.angkutapps_penumpang.model.crud_tb_kontak_darurat_user;
 import id.co.myproject.angkutapps_penumpang.view.dialogFragment.DetailRiwayatFragment;
 import id.co.myproject.angkutapps_penumpang.view.dialogFragment.TambahKontakDarurat;
 
@@ -31,6 +34,7 @@ public class KontakDarurat extends AppCompatActivity {
     RecyclerView rvKontakDarurat;
     rvKontakDarurat kontakDaruratAdapter;
     ArrayList<LoadKontakDarurat> arrayList =new ArrayList<>();;
+    crud_tb_kontak_darurat_user crudKontakDarurat;
 
     String[] nama = {"Andi Jayapura Mallengkeri","Andi Jingga Baso","Irwan Ardyansah"};
     String[] nomor = {"+6285299935661","+6287324560926","+6289277308256"};
@@ -44,6 +48,10 @@ public class KontakDarurat extends AppCompatActivity {
         appbar_button_back = findViewById(R.id.appbar_button_back);
         cvTambahKontakDarurat = findViewById(R.id.cvTambahKontakDarurat);
         rvKontakDarurat = findViewById(R.id.rvKontakDarurat);
+        AndroidNetworking.initialize(KontakDarurat.this);
+
+        crudKontakDarurat = new crud_tb_kontak_darurat_user();
+        crudKontakDarurat.readKontakDarurat();
 
         for (int i=0 ; i< nama.length;i++){
             arrayList.add(new LoadKontakDarurat(nama[i],hubungan[i],nomor[i]));

@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="20dp"
-    android:paddingRight="20dp"
     android:paddingTop="15dp"
-    android:paddingBottom="20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    android:paddingRight="20dp"
+    android:paddingBottom="20dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kontak Darurat"
             android:layout_gravity="center_horizontal"
+            android:text="Kontak Darurat"
             android:textColor="@color/colorPrimary"
-            android:textSize="22sp"
-            />
+            android:textSize="22sp" />
 
         <EditText
             android:id="@+id/etNamaKontakDarurat"
@@ -30,8 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_input"
-            android:hint="Nama Kontak"
             android:ems="10"
+            android:hint="Nama Kontak"
             android:padding="12dp"
             android:textColor="@android:color/black"
             android:textSize="15sp" />
@@ -42,54 +39,99 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/bg_input"
+            android:ems="10"
             android:hint="Hubungan dengan Kontak"
             android:padding="12dp"
-            android:ems="10"
             android:textColor="@android:color/black"
             android:textSize="15sp" />
 
         <LinearLayout
+            android:id="@+id/lv_input_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:layout_below="@+id/tv_email"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/etKodeNegara"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_input"
-                android:text="+62"
-                android:padding="12dp"
-                android:textColor="@android:color/black"
-                android:layout_marginRight="15dp"
-                android:textSize="15sp" />
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_code_telp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/indonesia" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:text="+62"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
             <EditText
-                android:id="@+id/etNomorKontak"
+                android:id="@+id/et_nomor_hp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/bg_input"
-                android:hint="Nomor Kontak"
-                android:inputType="number"
-                android:padding="12dp"
+                android:layout_below="@+id/tvNomorHp"
+                android:background="@drawable/bg_input_no_telp"
                 android:ems="10"
+                android:hint="Tulis Nomor Hp Anda"
+                android:inputType="phone"
+                android:maxLength="11"
+                android:padding="15dp"
                 android:textColor="@android:color/black"
-                android:textSize="15sp" />
+                android:textSize="12sp" />
 
         </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etKodeNegara"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginRight="15dp"-->
+<!--                android:background="@drawable/bg_input"-->
+<!--                android:padding="12dp"-->
+<!--                android:text="+62"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="15sp" />-->
+
+<!--            <EditText-->
+<!--                android:id="@+id/etNomorKontak"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:background="@drawable/bg_input"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Nomor Kontak"-->
+<!--                android:inputType="number"-->
+<!--                android:padding="12dp"-->
+<!--                android:textColor="@android:color/black"-->
+<!--                android:textSize="15sp" />-->
+
+<!--        </LinearLayout>-->
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SAVE"
             android:layout_marginTop="15dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:textColor="@color/textColorWhite"
             android:background="@drawable/bg_btn_save_kontak_darurat"
-            />
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="SAVE"
+            android:id="@+id/btnSaveKontak"
+            android:textColor="@color/textColorWhite" />
 
     </LinearLayout>
 
