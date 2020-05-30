@@ -208,7 +208,7 @@ public class SignInFragment extends Fragment {
                         if (response.body().getValue() == 1){
                             Bundle bundle = new Bundle();
                             bundle.putString("no_hp", etNoHp.getText().toString());
-                            bundle.putInt("type_sign", Utils.TYPE_SIGN_UP_BUNDLE);
+                            bundle.putInt("type_sign", Utils.TYPE_SIGN_IN_BUNDLE);
                             KonfirmasiEmailFragment konfirmasiEmailFragment = new KonfirmasiEmailFragment();
                             konfirmasiEmailFragment.setArguments(bundle);
                             setFragment(konfirmasiEmailFragment);
