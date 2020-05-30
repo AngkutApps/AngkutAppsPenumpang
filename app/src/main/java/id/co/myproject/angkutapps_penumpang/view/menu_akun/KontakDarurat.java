@@ -1,6 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.view.menu_akun;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -16,6 +17,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.common.Priority;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONArrayRequestListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -32,13 +40,9 @@ public class KontakDarurat extends AppCompatActivity {
     ImageButton appbar_button_back;
     CardView cvTambahKontakDarurat;
     RecyclerView rvKontakDarurat;
+    ArrayList<LoadKontakDarurat> arrayList =new ArrayList<>();
     rvKontakDarurat kontakDaruratAdapter;
-    ArrayList<LoadKontakDarurat> arrayList =new ArrayList<>();;
     crud_tb_kontak_darurat_user crudKontakDarurat;
-
-    String[] nama = {"Andi Jayapura Mallengkeri","Andi Jingga Baso","Irwan Ardyansah"};
-    String[] nomor = {"+6285299935661","+6287324560926","+6289277308256"};
-    String[] hubungan = {"Orang Tua","Teman","Sepupu"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,18 +54,8 @@ public class KontakDarurat extends AppCompatActivity {
         rvKontakDarurat = findViewById(R.id.rvKontakDarurat);
         AndroidNetworking.initialize(KontakDarurat.this);
 
-        crudKontakDarurat = new crud_tb_kontak_darurat_user();
-        crudKontakDarurat.readKontakDarurat();
-
-        for (int i=0 ; i< nama.length;i++){
-            arrayList.add(new LoadKontakDarurat(nama[i],hubungan[i],nomor[i]));
-        }
-
-        kontakDaruratAdapter = new rvKontakDarurat(getApplicationContext(), arrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        rvKontakDarurat.setLayoutManager(layoutManager);
-        rvKontakDarurat.setHasFixedSize(true);
-        rvKontakDarurat.setAdapter(kontakDaruratAdapter);
+        crudKontakDarurat = new crud_tb_kontak_darurat_user(KontakDarurat.this);
+        readKontakDarurat();
 
         appbar_button_back.setOnClickListener(clickListener);
         cvTambahKontakDarurat.setOnClickListener(clickListener);
@@ -91,4 +85,41 @@ public class KontakDarurat extends AppCompatActivity {
         }
         fragment.show(fragmentTransaction, "dialog");
     }
+
+    public void readKontakDarurat(){
+        AndroidNetworking.get("http://angkutapps.com/angkut_api/read_kontak_darurat_user.php")
+                .addQueryParameter("no_hp", "82397147928")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONArray(new JSONArrayRequestListener() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        //mengambil data dari JSON array pada read_all.php
+                        try {
+                            for (int i = 0; i < response.length(); i++) {
+                                JSONObject data = response.getJSONObject(i);
+//                                    //adding the product to product list
+                                arrayList.add(new LoadKontakDarurat(
+                                        data.getString("nama_kontak"),
+                                        data.getString("hubungan_kontak"),
+                                        data.getString("nomor_kontak")
+                                ));
+                            }
+                            kontakDaruratAdapter = new rvKontakDarurat(KontakDarurat.this, arrayList);
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                            rvKontakDarurat.setLayoutManager(layoutManager);
+                            rvKontakDarurat.setHasFixedSize(true);
+                            rvKontakDarurat.setAdapter(kontakDaruratAdapter);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        error.printStackTrace();
+                    }
+                });
+    }
+
 }

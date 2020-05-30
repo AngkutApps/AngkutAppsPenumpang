@@ -26,6 +26,7 @@ public class TambahKontakDarurat extends DialogFragment {
     EditText namaKontak, hubunganKontak, nomorKontak;
     Button btnSaveKontak;
     crud_tb_kontak_darurat_user crudKontakDarurat;
+    int kondisi = 0;
 
     public TambahKontakDarurat() {
     }
@@ -39,7 +40,7 @@ public class TambahKontakDarurat extends DialogFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        crudKontakDarurat = new crud_tb_kontak_darurat_user();
+        crudKontakDarurat = new crud_tb_kontak_darurat_user(getContext());
 
         namaKontak = view.findViewById(R.id.etNamaKontakDarurat);
         hubunganKontak = view.findViewById(R.id.etHubunganKontak);
@@ -47,15 +48,34 @@ public class TambahKontakDarurat extends DialogFragment {
         btnSaveKontak = view.findViewById(R.id.btnSaveKontak);
         AndroidNetworking.initialize(getContext());
 
+        try {
+            if (getArguments()!=null){
+                namaKontak.setText(getArguments().getString("namaKontak"));
+                hubunganKontak.setText(getArguments().getString("hubunganKontak"));
+                nomorKontak.setText(getArguments().getString("nomorKontak"));
+                kondisi = 2;
+            }else {
+                kondisi = 1;
+            }
+        }catch (Exception ex){
+            Toast.makeText(getContext(), ""+ex, Toast.LENGTH_SHORT).show();
+        }
+
         btnSaveKontak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String pesan = crudKontakDarurat.tambahKontakDarurat(namaKontak.getText().toString().trim(), hubunganKontak.getText().toString().trim(), nomorKontak.getText().toString().trim());
-                Toast.makeText(getContext(), ""+pesan, Toast.LENGTH_SHORT).show();
+                if (kondisi==1){
+                    crudKontakDarurat.tambahKontakDarurat(namaKontak.getText().toString().trim(), hubunganKontak.getText().toString().trim(),
+                            nomorKontak.getText().toString().trim());
+                }else if (kondisi==2){
+                    crudKontakDarurat.updateKontakDarurat(namaKontak.getText().toString().trim(), hubunganKontak.getText().toString().trim(),
+                            nomorKontak.getText().toString().trim());
+                }
+                TambahKontakDarurat.super.onStop();
+                TambahKontakDarurat.super.onDestroyView();
             }
         });
 
     }
-
 
 }
