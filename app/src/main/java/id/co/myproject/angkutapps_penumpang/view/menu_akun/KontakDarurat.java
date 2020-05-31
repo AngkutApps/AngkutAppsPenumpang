@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,15 +41,17 @@ public class KontakDarurat extends AppCompatActivity {
     ImageButton appbar_button_back;
     CardView cvTambahKontakDarurat;
     RecyclerView rvKontakDarurat;
-    ArrayList<LoadKontakDarurat> arrayList =new ArrayList<>();
+    ArrayList<LoadKontakDarurat> arrayList;
     rvKontakDarurat kontakDaruratAdapter;
     crud_tb_kontak_darurat_user crudKontakDarurat;
+    int batasKontak;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kontak_darurat);
 
+        arrayList = new ArrayList<>();
         appbar_button_back = findViewById(R.id.appbar_button_back);
         cvTambahKontakDarurat = findViewById(R.id.cvTambahKontakDarurat);
         rvKontakDarurat = findViewById(R.id.rvKontakDarurat);
@@ -65,28 +68,33 @@ public class KontakDarurat extends AppCompatActivity {
     private View.OnClickListener clickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.appbar_button_back :
+            switch (v.getId()) {
+                case R.id.appbar_button_back:
                     finish();
                     break;
                 case R.id.cvTambahKontakDarurat:
-                    setFragment(new TambahKontakDarurat());
+                    readKontakDarurat();
+                    if (batasKontak<5){
+                        setFragment(new TambahKontakDarurat());
+                    }else {
+                        Toast.makeText(KontakDarurat.this, "Kontak Darurat Telah Mencapai Maximum", Toast.LENGTH_SHORT).show();
+                    }
                     break;
             }
         }
     };
 
-    private void setFragment(DialogFragment fragment){
+    private void setFragment(DialogFragment fragment) {
         FragmentManager fragmentManager = KontakDarurat.this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment prev = fragmentManager.findFragmentByTag("dialog");
-        if (prev !=null){
+        if (prev != null) {
             fragmentTransaction.remove(prev);
         }
         fragment.show(fragmentTransaction, "dialog");
     }
 
-    public void readKontakDarurat(){
+    public void readKontakDarurat() {
         AndroidNetworking.get("http://angkutapps.com/angkut_api/read_kontak_darurat_user.php")
                 .addQueryParameter("no_hp", "82397147928")
                 .setPriority(Priority.MEDIUM)
@@ -106,10 +114,11 @@ public class KontakDarurat extends AppCompatActivity {
                                 ));
                             }
                             kontakDaruratAdapter = new rvKontakDarurat(KontakDarurat.this, arrayList);
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(KontakDarurat.this);
                             rvKontakDarurat.setLayoutManager(layoutManager);
                             rvKontakDarurat.setHasFixedSize(true);
                             rvKontakDarurat.setAdapter(kontakDaruratAdapter);
+                            batasKontak = arrayList.size();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -120,6 +129,7 @@ public class KontakDarurat extends AppCompatActivity {
                         error.printStackTrace();
                     }
                 });
+        arrayList = new ArrayList<>();
     }
 
 }

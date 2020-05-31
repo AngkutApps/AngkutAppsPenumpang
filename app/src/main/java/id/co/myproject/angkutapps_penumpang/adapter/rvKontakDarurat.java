@@ -39,8 +39,7 @@ public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHo
 
     private Context context;
     private ArrayList<LoadKontakDarurat> kontakDarurat;
-    int popup;
-    String namaKontak, hubunganKontak, nomorKontak;
+    String nomorKontak;
     crud_tb_kontak_darurat_user crudKontakDarurat;
 
     public rvKontakDarurat(Context context, ArrayList<LoadKontakDarurat> kontakDarurat) {
@@ -64,16 +63,15 @@ public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHo
         holder.btnSettingKontakDarurat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String nama = holder.tvNamaKontakDarurat.getText().toString().trim();
-                String hubungan = holder.tvHubunganKontakDarurat.getText().toString().trim();
                 String nomor = holder.tvNomorKontakDarurat.getText().toString().trim().substring(3);
-                popupmenu(v,position, nama, hubungan, nomor);
+                popupmenu(v, nomor);
             }
         });
         holder.rlKontakDarurat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
+                setFragment(new TambahKontakDarurat(), holder.tvNamaKontakDarurat.getText().toString().trim(),
+                        kontakDarurat.get(position).getHubungan().trim(), holder.tvNomorKontakDarurat.getText().toString().trim().substring(3));
             }
         });
     }
@@ -101,13 +99,10 @@ public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHo
         }
     }
 
-    private void popupmenu(View v, int position, String nama, String hubungan, String nomor){
+    private void popupmenu(View v, String nomor){
         PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
         popupMenu.inflate(R.menu.popup_kontak_darurat);
         popupMenu.setOnMenuItemClickListener(clickMenuListener);
-        popup = position;
-        namaKontak = nama;
-        hubunganKontak = hubungan;
         nomorKontak = nomor;
         popupMenu.show();
     }
@@ -116,9 +111,6 @@ public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHo
         @Override
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.popup_ubah:
-                    setFragment(new TambahKontakDarurat());
-                    break;
                 case R.id.popup_hapus:
                     crudKontakDarurat.deleteKontakDarurat(nomorKontak);
                     break;
@@ -127,11 +119,11 @@ public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHo
         }
     };
 
-    private void setFragment(DialogFragment fragment){
+    private void setFragment(DialogFragment fragment, String namaKontak, String hubunganKontak, String nomor){
         Bundle data = new Bundle();
         data.putString("namaKontak", namaKontak);
         data.putString("hubunganKontak", hubunganKontak);
-        data.putString("nomorKontak", nomorKontak);
+        data.putString("nomorKontak", nomor);
         FragmentManager fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Fragment prev = fragmentManager.findFragmentByTag("dialog");
