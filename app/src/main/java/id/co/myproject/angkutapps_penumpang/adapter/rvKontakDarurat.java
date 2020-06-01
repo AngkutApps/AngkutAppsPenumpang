@@ -1,6 +1,5 @@
 package id.co.myproject.angkutapps_penumpang.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,30 +9,23 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.LoadKontakDarurat;
 import id.co.myproject.angkutapps_penumpang.model.crud_tb_kontak_darurat_user;
-import id.co.myproject.angkutapps_penumpang.view.dialogFragment.BeriMasukan;
-import id.co.myproject.angkutapps_penumpang.view.dialogFragment.DetailRiwayatFragment;
-import id.co.myproject.angkutapps_penumpang.view.dialogFragment.TambahKontakDarurat;
-import id.co.myproject.angkutapps_penumpang.view.menu_akun.KontakDarurat;
+import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_TambahKontakDarurat;
 
 public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHolder> {
 
@@ -70,7 +62,7 @@ public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHo
         holder.rlKontakDarurat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new TambahKontakDarurat(), holder.tvNamaKontakDarurat.getText().toString().trim(),
+                setFragment(new Df_TambahKontakDarurat(), holder.tvNamaKontakDarurat.getText().toString().trim(),
                         kontakDarurat.get(position).getHubungan().trim(), holder.tvNomorKontakDarurat.getText().toString().trim().substring(3));
             }
         });

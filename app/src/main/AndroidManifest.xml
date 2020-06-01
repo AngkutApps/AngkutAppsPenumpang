@@ -19,16 +19,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.menu_payment.TransferActivity"></activity>
-        <activity android:name=".view.menu_payment.TopupActivity" />
-        <activity android:name=".view.menu_payment.RiwayatActivity" />
-        <activity android:name=".view.menu_akun.ProfilUser" />
-        <activity android:name=".PembayaranActivity" />
-        <activity android:name=".view.menu_akun.PemilihanBahasa" />
-        <activity android:name=".view.menu_akun.KontakDarurat" />
-        <activity android:name=".view.menu_akun.Pengaturan" />
-        <activity android:name=".view.menu_akun.Penjadwalan" />
-        <activity android:name=".view.menu_akun.LokasiDitandai" />
+        <activity android:name=".view.payment.TransferActivity"></activity>
+        <activity android:name=".view.payment.TopupActivity" />
+        <activity android:name=".view.payment.RiwayatActivity" />
+        <activity android:name=".view.profil.ProfilUser" />
+        <activity android:name=".view.tracking.PembayaranActivity" />
+        <activity android:name=".view.profil.PemilihanBahasa" />
+        <activity android:name=".view.profil.KontakDarurat" />
+        <activity android:name=".view.profil.Pengaturan" />
+        <activity android:name=".view.profil.Penjadwalan" />
+        <activity android:name=".view.profil.LokasiDitandai" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -42,16 +42,16 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".KeberangkatanActivity"
+            android:name=".view.tracking.KeberangkatanActivity"
             android:label="@string/title_activity_keberangkatan" />
-        <activity android:name=".login.LoginActivity">
+        <activity android:name=".view.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".view.MainActivity" />
     </application>
 
 </manifest>

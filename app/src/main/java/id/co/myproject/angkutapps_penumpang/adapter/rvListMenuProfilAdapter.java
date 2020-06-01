@@ -6,7 +6,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,16 +24,16 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 import id.co.myproject.angkutapps_penumpang.R;
-import id.co.myproject.angkutapps_penumpang.login.LoginActivity;
+import id.co.myproject.angkutapps_penumpang.view.login.LoginActivity;
 import id.co.myproject.angkutapps_penumpang.model.Value;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
-import id.co.myproject.angkutapps_penumpang.view.dialogFragment.BeriMasukan;
-import id.co.myproject.angkutapps_penumpang.view.dialogFragment.BagikanFeedback;
-import id.co.myproject.angkutapps_penumpang.view.menu_akun.KontakDarurat;
-import id.co.myproject.angkutapps_penumpang.view.menu_akun.LokasiDitandai;
-import id.co.myproject.angkutapps_penumpang.view.menu_akun.PemilihanBahasa;
-import id.co.myproject.angkutapps_penumpang.view.menu_akun.Pengaturan;
-import id.co.myproject.angkutapps_penumpang.view.menu_akun.Penjadwalan;
+import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_BeriMasukan;
+import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_BagikanFeedback;
+import id.co.myproject.angkutapps_penumpang.view.profil.KontakDarurat;
+import id.co.myproject.angkutapps_penumpang.view.profil.LokasiDitandai;
+import id.co.myproject.angkutapps_penumpang.view.profil.PemilihanBahasa;
+import id.co.myproject.angkutapps_penumpang.view.profil.Pengaturan;
+import id.co.myproject.angkutapps_penumpang.view.profil.Penjadwalan;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -109,10 +108,10 @@ public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProf
                 context.startActivity(new Intent(context, Pengaturan.class));
                 break;
             case 6 :
-                BottomDialogFragment(new BagikanFeedback());
+                BottomDialogFragment(new Df_BagikanFeedback());
                 break;
             case 7 :
-                setFragment(new BeriMasukan());
+                setFragment(new Df_BeriMasukan());
                 break;
             case 9 :
                 signOutProses();

@@ -6,9 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -21,8 +19,7 @@ import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.*;
-import id.co.myproject.angkutapps_penumpang.view.dialogFragment.BeriMasukan;
-import id.co.myproject.angkutapps_penumpang.view.dialogFragment.Voucherku;
+import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_Voucherku;
 
 public class rvPromoVoucherku extends RecyclerView.Adapter<rvPromoVoucherku.ViewHolder> {
 
@@ -55,7 +52,7 @@ public class rvPromoVoucherku extends RecyclerView.Adapter<rvPromoVoucherku.View
             @Override
             public void onClick(View v) {
 //                Toast.makeText(context, "Dicobaji Dulu", Toast.LENGTH_SHORT).show();
-                setFragment(new Voucherku());
+                setFragment(new Df_Voucherku());
             }
         });
     }

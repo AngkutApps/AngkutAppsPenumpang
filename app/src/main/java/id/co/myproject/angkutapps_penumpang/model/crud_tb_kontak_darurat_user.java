@@ -1,26 +1,14 @@
 package id.co.myproject.angkutapps_penumpang.model;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import id.co.myproject.angkutapps_penumpang.adapter.rvKontakDarurat;
-import id.co.myproject.angkutapps_penumpang.view.menu_akun.KontakDarurat;
 
 public class crud_tb_kontak_darurat_user {
 

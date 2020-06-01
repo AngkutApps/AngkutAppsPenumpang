@@ -1,6 +1,5 @@
 package id.co.myproject.angkutapps_penumpang.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -23,7 +22,7 @@ import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.LoadViewRiwayat;
-import id.co.myproject.angkutapps_penumpang.view.dialogFragment.*;
+import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_DetailRiwayatFragment;
 
 public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.ViewHolder> {
 
@@ -51,7 +50,7 @@ public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.View
         holder.cvRiwayatPerjalanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new DetailRiwayatFragment());
+                setFragment(new Df_DetailRiwayatFragment());
             }
         });
         holder.cvRiwayatPerjalanan.setOnLongClickListener(new View.OnLongClickListener() {
