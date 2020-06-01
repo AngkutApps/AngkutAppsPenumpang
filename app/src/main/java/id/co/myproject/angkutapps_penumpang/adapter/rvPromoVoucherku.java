@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.*;
-import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_Voucherku;
+import id.co.myproject.angkutapps_penumpang.view.riwayat.dialog_fragment.Df_Voucherku;
 
 public class rvPromoVoucherku extends RecyclerView.Adapter<rvPromoVoucherku.ViewHolder> {
 

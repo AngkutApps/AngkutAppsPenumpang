@@ -5,11 +5,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
+import id.co.myproject.angkutapps_penumpang.view.promo.dialog_fragment.df_beli_voucher;
+import id.co.myproject.angkutapps_penumpang.view.riwayat.dialog_fragment.Df_Voucherku;
 
 public class rvPenggunaanPromoAdapter extends RecyclerView.Adapter<rvPenggunaanPromoAdapter.ViewHolder> {
 
@@ -33,7 +40,7 @@ public class rvPenggunaanPromoAdapter extends RecyclerView.Adapter<rvPenggunaanP
         holder.cvPenggunaanPromo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                setFragment(new df_beli_voucher());
             }
         });
     }
@@ -53,5 +60,15 @@ public class rvPenggunaanPromoAdapter extends RecyclerView.Adapter<rvPenggunaanP
             cvPenggunaanPromo = itemView.findViewById(R.id.cvPenggunaanPromo);
 
         }
+    }
+
+    private void setFragment(DialogFragment fragment){
+        FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment prev = fragmentManager.findFragmentByTag("dialog");
+        if (prev !=null){
+            fragmentTransaction.remove(prev);
+        }
+        fragment.show(fragmentTransaction, "dialog");
     }
 }

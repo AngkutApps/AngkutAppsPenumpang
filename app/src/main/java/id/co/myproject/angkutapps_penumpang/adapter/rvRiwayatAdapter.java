@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.LoadViewRiwayat;
-import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_DetailRiwayatFragment;
+import id.co.myproject.angkutapps_penumpang.view.riwayat.dialog_fragment.Df_DetailRiwayatFragment;
 
 public class rvRiwayatAdapter extends RecyclerView.Adapter<rvRiwayatAdapter.ViewHolder> {
 

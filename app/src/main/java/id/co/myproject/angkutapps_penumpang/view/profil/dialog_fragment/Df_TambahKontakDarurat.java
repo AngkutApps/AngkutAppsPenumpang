@@ -60,11 +60,25 @@ public class Df_TambahKontakDarurat extends DialogFragment {
             @Override
             public void onClick(View v) {
                 if (kondisi==1){
-                    crudKontakDarurat.tambahKontakDarurat(namaKontak.getText().toString().trim(), hubunganKontak.getText().toString().trim(),
-                            nomorKontak.getText().toString().trim());
+                    if(namaKontak.getText().toString().trim()==null){
+                        namaKontak.setError("Kosong");
+                    }else if (hubunganKontak.getText().toString().trim().equals("")){
+                        hubunganKontak.setError("Kosong");
+                    }else if (nomorKontak.getText().toString().trim()==null){
+                        nomorKontak.setError("Kosong");
+                    }else{
+                        crudKontakDarurat.tambahKontakDarurat(namaKontak.getText().toString().trim(), hubunganKontak.getText().toString().trim(),
+                                nomorKontak.getText().toString().trim());
+                    }
                 }else if (kondisi==2){
-                    crudKontakDarurat.updateKontakDarurat(namaKontak.getText().toString().trim(), hubunganKontak.getText().toString().trim(),
-                            nomorKontak.getText().toString().trim());
+                    if(namaKontak.getText().toString().trim().equals("")){
+                        namaKontak.setError("Kosong");
+                    }else if (hubunganKontak.getText().toString().trim().equals("")){
+                        hubunganKontak.setError("Kosong");
+                    }else {
+                        crudKontakDarurat.updateKontakDarurat(namaKontak.getText().toString().trim(), hubunganKontak.getText().toString().trim(),
+                                nomorKontak.getText().toString().trim());
+                    }
                 }
                 Df_TambahKontakDarurat.super.onStop();
                 Df_TambahKontakDarurat.super.onDestroyView();

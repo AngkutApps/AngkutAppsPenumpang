@@ -33,7 +33,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pembayaran"
+            android:text="Perjalanan"
             android:textAlignment="center"
             android:layout_weight="1"
             android:textSize="14sp"
@@ -59,21 +59,6 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:id="@+id/tvRiwayatPromo"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Perjalanan"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:layout_weight="1"
-            android:layout_marginLeft="6dp"
-            android:textSize="14sp"
-            android:background="@drawable/bg_button_history_normal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:id="@+id/tvRiwayatPerjalanan"
             />
 
     </LinearLayout>

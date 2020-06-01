@@ -105,7 +105,7 @@ public class KontakDarurat extends AppCompatActivity {
                                 arrayList.add(new LoadKontakDarurat(
                                         data.getString("nama_kontak"),
                                         data.getString("hubungan_kontak"),
-                                        data.getString("nomor_kontak")
+                                        data.getString("nomor_kontak_darurat")
                                 ));
                             }
                             kontakDaruratAdapter = new rvKontakDarurat(KontakDarurat.this, arrayList);

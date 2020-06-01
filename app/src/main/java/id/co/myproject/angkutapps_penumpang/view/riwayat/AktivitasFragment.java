@@ -18,7 +18,7 @@ import id.co.myproject.angkutapps_penumpang.R;
  */
 public class AktivitasFragment extends Fragment {
 
-    TextView tvRiwayatPembayaran, tvRiwayatPromo, tvRiwayatPerjalanan;
+    TextView tvRiwayatPembayaran, tvRiwayatPromo;
 
     public AktivitasFragment() {
         // Required empty public constructor
@@ -27,7 +27,6 @@ public class AktivitasFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_aktivitas, container, false);
     }
 
@@ -36,13 +35,11 @@ public class AktivitasFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         tvRiwayatPembayaran = view.findViewById(R.id.tvRiwayatPembayaran);
-        tvRiwayatPerjalanan = view.findViewById(R.id.tvRiwayatPerjalanan);
         tvRiwayatPromo = view.findViewById(R.id.tvRiwayatPromo);
 
         defaultViewButton();
 
         tvRiwayatPembayaran.setOnClickListener(clickListener);
-        tvRiwayatPerjalanan.setOnClickListener(clickListener);
         tvRiwayatPromo.setOnClickListener(clickListener);
 
     }
@@ -54,12 +51,6 @@ public class AktivitasFragment extends Fragment {
                 case R.id.tvRiwayatPembayaran :
                     viewButtonNormal();
                     defaultViewButton();
-                    break;
-                case R.id.tvRiwayatPerjalanan :
-                    viewButtonNormal();
-                    tvRiwayatPerjalanan.setBackgroundResource(R.drawable.bg_button_history);
-                    tvRiwayatPerjalanan.setTextColor(Color.parseColor("#FFFFFF"));
-                    setFragment(new RiwayatPerjalananFragment());
                     break;
                 case R.id.tvRiwayatPromo :
                     viewButtonNormal();
@@ -74,8 +65,6 @@ public class AktivitasFragment extends Fragment {
     private void viewButtonNormal(){
         tvRiwayatPromo.setBackgroundResource(R.drawable.bg_button_history_normal);
         tvRiwayatPromo.setTextColor(Color.parseColor("#008577"));
-        tvRiwayatPerjalanan.setBackgroundResource(R.drawable.bg_button_history_normal);
-        tvRiwayatPerjalanan.setTextColor(Color.parseColor("#008577"));
         tvRiwayatPembayaran.setBackgroundResource(R.drawable.bg_button_history_normal);
         tvRiwayatPembayaran.setTextColor(Color.parseColor("#008577"));
     }

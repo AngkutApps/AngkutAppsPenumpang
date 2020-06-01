@@ -11,13 +11,12 @@
         android:background="@color/colorPrimary" />
 
     <ImageView
+        android:id="@+id/imgClose"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:src="@drawable/ic_close_black_24dp"
-        android:background="@null"
         android:layout_alignParentRight="true"
-        android:id="@+id/imgClose"
-        />
+        android:background="@null"
+        android:src="@drawable/ic_close_black_24dp" />
 
     <ImageView
         android:id="@+id/imgIcon"
@@ -95,13 +94,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jam Naik"
+                    android:text="Penumpang Dewasa"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="09.40"
+                    android:text="4"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -145,19 +144,41 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jam Turun"
+                    android:text="Penumpang Anak-anak"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="12.00"
+                    android:text="2"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
             </LinearLayout>
 
         </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hari"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Senin"
+                android:textColor="@color/textBlack"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -173,13 +194,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hari"
+                    android:text="Tanggal Berangkat"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Senin"
+                    android:text="19 Januari 2020"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -195,13 +216,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lama Perjalanan"
+                    android:text="Jam Berangkat"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3 Jam 20 Menit"
+                    android:text="09.40 WITA"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -212,24 +233,46 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            >
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tanggal"
+                    android:text="Tanggal Sampai"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="19 Januari 2020"
+                    android:textColor="@color/textBlack"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jam Sampai"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12.00 WITA"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -243,8 +286,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearInformasiPerjalanan"
-        android:layout_margin="15dp"
-        >
+        android:layout_margin="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -259,10 +301,10 @@
                 android:textSize="16sp" />
 
             <View
+                android:id="@+id/lineInformasiPengemudi"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="2dp"
-                android:id="@+id/lineInformasiPengemudi"
                 android:background="@color/colorPrimary" />
 
             <TextView

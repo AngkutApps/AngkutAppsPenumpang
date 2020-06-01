@@ -23,7 +23,7 @@ public class crud_tb_kontak_darurat_user {
                 .addBodyParameter("no_hp", "82397147928")
                 .addBodyParameter("nama_kontak", nama)
                 .addBodyParameter("hubungan_kontak", hubungan)
-                .addBodyParameter("nomor_kontak", nomor)
+                .addBodyParameter("nomor_kontak_darurat", nomor)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -41,7 +41,7 @@ public class crud_tb_kontak_darurat_user {
 
     public void deleteKontakDarurat(String nomor){
         AndroidNetworking.post("http://angkutapps.com/angkut_api/delete_kontak_darurat_user.php")
-                .addBodyParameter("nomor_kontak", nomor)
+                .addBodyParameter("nomor_kontak_darurat", nomor)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -62,7 +62,7 @@ public class crud_tb_kontak_darurat_user {
                 .addBodyParameter("no_hp", "82397147928")
                 .addBodyParameter("nama_kontak", nama)
                 .addBodyParameter("hubungan_kontak", hubungan)
-                .addBodyParameter("nomor_kontak", nomor)
+                .addBodyParameter("nomor_kontak_darurat", nomor)
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
