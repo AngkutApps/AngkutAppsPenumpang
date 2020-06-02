@@ -25,4 +25,9 @@
     <color name="colorBackgroundButton">#DAD5D5</color>
     <color name="colorYellow">#FFEB3B</color>
 
+    //icon_transportasi
+    <color name="bus">#CF2329</color>
+    <color name="pete">#02A4C5</color>
+    <color name="travel">#008577</color>
+
 </resources>

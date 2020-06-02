@@ -36,7 +36,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginRight="17dp"
                 android:layout_toRightOf="@+id/tvHargaHistory"
-                android:background="@drawable/shape_oval" />
+                android:background="@drawable/shape_oval_bus" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"

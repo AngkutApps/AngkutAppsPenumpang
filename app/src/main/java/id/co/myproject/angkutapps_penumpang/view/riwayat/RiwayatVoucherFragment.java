@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,15 +16,17 @@ import java.util.ArrayList;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
 import id.co.myproject.angkutapps_penumpang.model.*;
+import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_rw_perjalanan_user;
 
 public class RiwayatVoucherFragment extends Fragment {
 
     TextView tvPenggunaan, tvPembelian;
     RecyclerView rvRiwayat;
     rvRiwayatAdapter rvRiwayatperjalananAdapter;
-    ArrayList<LoadViewRiwayat> arrayList;
+    ArrayList<loadView_rw_perjalanan_user> arrayList;
     ArrayList<loadPromoVoucherku> listPromo;
     rvPromoVoucherku rvPromoVoucherku;
+    tb_rw_perjalanan_user tb_pembayaran;
 
     public RiwayatVoucherFragment() {
     }
@@ -42,6 +43,8 @@ public class RiwayatVoucherFragment extends Fragment {
         tvPenggunaan = view.findViewById(R.id.tvPenggunaan);
         tvPembelian = view.findViewById(R.id.tvPembelian);
         rvRiwayat = view.findViewById(R.id.rvPromo);
+
+        tb_pembayaran = new tb_rw_perjalanan_user(getActivity());
 
         defaultView();
 
@@ -61,7 +64,7 @@ public class RiwayatVoucherFragment extends Fragment {
                     normalView();
                     tvPembelian.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
                     tvPembelian.setTextColor(Color.parseColor("#008577"));
-                    PembelianPromo("20k","Promo Pembelian", "Jum'at","07-07-2007");
+                    PembelianPromo(arrayList = tb_pembayaran.loadViewElektronik());
                     break;
             }
         }
@@ -92,12 +95,8 @@ public class RiwayatVoucherFragment extends Fragment {
         rvRiwayat.setAdapter(rvPromoVoucherku);
     }
 
-    private void PembelianPromo(String harga, String desc, String hari, String tanggal){
-        arrayList = new ArrayList<>();
-        for (int i=0 ; i< 10;i++){
-            arrayList.add(new LoadViewRiwayat(harga,desc,hari,tanggal));
-        }
-        rvRiwayatperjalananAdapter = new rvRiwayatAdapter(getContext(), arrayList);
+    private void PembelianPromo(ArrayList<loadView_rw_perjalanan_user> list){
+        rvRiwayatperjalananAdapter = new rvRiwayatAdapter(getContext(), list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvRiwayat.setLayoutManager(layoutManager);
         rvRiwayat.setHasFixedSize(true);

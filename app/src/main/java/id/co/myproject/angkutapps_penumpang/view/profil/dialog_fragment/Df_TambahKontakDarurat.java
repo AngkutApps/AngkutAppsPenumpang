@@ -13,13 +13,13 @@ import androidx.fragment.app.DialogFragment;
 import com.androidnetworking.AndroidNetworking;
 
 import id.co.myproject.angkutapps_penumpang.R;
-import id.co.myproject.angkutapps_penumpang.model.crud_tb_kontak_darurat_user;
+import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_kontak_darurat_user;
 
 public class Df_TambahKontakDarurat extends DialogFragment {
 
     EditText namaKontak, hubunganKontak, nomorKontak;
     Button btnSaveKontak;
-    crud_tb_kontak_darurat_user crudKontakDarurat;
+    tb_kontak_darurat_user crudKontakDarurat;
     int kondisi = 0;
 
     public Df_TambahKontakDarurat() {
@@ -34,7 +34,7 @@ public class Df_TambahKontakDarurat extends DialogFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        crudKontakDarurat = new crud_tb_kontak_darurat_user(getContext());
+        crudKontakDarurat = new tb_kontak_darurat_user(getContext());
 
         namaKontak = view.findViewById(R.id.etNamaKontakDarurat);
         hubunganKontak = view.findViewById(R.id.etHubunganKontak);

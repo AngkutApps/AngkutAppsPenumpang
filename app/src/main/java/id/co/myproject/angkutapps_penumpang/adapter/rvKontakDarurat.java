@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.LoadKontakDarurat;
-import id.co.myproject.angkutapps_penumpang.model.crud_tb_kontak_darurat_user;
+import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_kontak_darurat_user;
 import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_TambahKontakDarurat;
 
 public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHolder> {
@@ -32,7 +32,7 @@ public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHo
     private Context context;
     private ArrayList<LoadKontakDarurat> kontakDarurat;
     String nomorKontak;
-    crud_tb_kontak_darurat_user crudKontakDarurat;
+    tb_kontak_darurat_user crudKontakDarurat;
 
     public rvKontakDarurat(Context context, ArrayList<LoadKontakDarurat> kontakDarurat) {
         this.context = context;
@@ -42,7 +42,7 @@ public class rvKontakDarurat extends RecyclerView.Adapter<rvKontakDarurat.ViewHo
     @Override
     public rvKontakDarurat.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.frame_kontak_darurat, null);
-        crudKontakDarurat = new crud_tb_kontak_darurat_user(context);
+        crudKontakDarurat = new tb_kontak_darurat_user(context);
         AndroidNetworking.initialize(context);
         return new ViewHolder(v);
     }

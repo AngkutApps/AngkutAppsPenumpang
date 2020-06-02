@@ -26,21 +26,21 @@
         android:scaleType="fitCenter"
         android:src="@drawable/loading" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgProfil"
+    <View
+        android:id="@+id/oval"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_below="@+id/bg_imgIcon"
         android:layout_centerHorizontal="true"
+        android:layout_below="@+id/bg_imgIcon"
         android:layout_marginTop="-30dp"
         android:layout_marginBottom="7dp"
-        android:src="@drawable/bg_horizontal" />
+        android:background="@drawable/shape_oval_bus" />
 
     <LinearLayout
         android:id="@+id/linearInformasiPerjalanan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imgProfil"
+        android:layout_below="@+id/oval"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:orientation="vertical">
@@ -79,6 +79,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Makassar"
+                    android:id="@+id/tvDari"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -101,6 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4"
+                    android:id="@+id/tvPDewasa"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -129,6 +131,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pangkep"
+                    android:id="@+id/tvTujuan"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -151,6 +154,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2"
+                    android:id="@+id/tvPAnak"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -168,13 +172,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hari"
+                android:text="Hari Keberangkatan"
                 android:textSize="11sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Senin"
+                android:id="@+id/tvHari"
                 android:textColor="@color/textBlack"
                 android:textSize="16sp" />
 
@@ -201,6 +206,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="19 Januari 2020"
+                    android:id="@+id/tvTglBerangkat"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -224,6 +230,7 @@
                     android:layout_height="wrap_content"
                     android:text="09.40 WITA"
                     android:textColor="@color/textBlack"
+                    android:id="@+id/tvJamBerangkat"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -252,6 +259,7 @@
                     android:layout_height="wrap_content"
                     android:text="19 Januari 2020"
                     android:textColor="@color/textBlack"
+                    android:id="@+id/tvTglSampai"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -274,6 +282,7 @@
                     android:layout_height="wrap_content"
                     android:text="12.00 WITA"
                     android:textColor="@color/textBlack"
+                    android:id="@+id/tvJamSampai"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -319,6 +328,7 @@
                 android:layout_height="wrap_content"
                 android:text="Baharuddin Sambali"
                 android:textColor="@color/textBlack"
+                android:id="@+id/tvNamaDriver"
                 android:textSize="16sp" />
 
             <TextView
@@ -333,6 +343,7 @@
                 android:layout_height="wrap_content"
                 android:text="DD 7085 WX"
                 android:textColor="@color/textBlack"
+                android:id="@+id/tvNomorPlat"
                 android:textSize="16sp" />
 
             <TextView
@@ -347,6 +358,7 @@
                 android:layout_height="wrap_content"
                 android:text="Toyota Avansa Xenia"
                 android:textColor="@color/textBlack"
+                android:id="@+id/tvJenisKendaraan"
                 android:textSize="16sp" />
 
             <TextView
@@ -361,6 +373,7 @@
                 android:layout_height="wrap_content"
                 android:text="Hitam"
                 android:textColor="@color/textBlack"
+                android:id="@+id/tvWarnaKendaraan"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -378,16 +391,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="GoPay"
-                android:textColor="@color/colorPrimary"
-                android:textSize="10sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:text="75K"
+                android:id="@+id/tvHargaPerjalanan"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
 
