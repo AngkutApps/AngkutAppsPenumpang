@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
 
         apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
         sharedPreferences = getActivity().getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
-        idPenumpang = sharedPreferences.getString(Utils.ID_USER_KEY, "");
+        idPenumpang = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
 
         cvDaerah = view.findViewById(R.id.cvDaerah);
         iv_profil = view.findViewById(R.id.iv_user);

@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
 import id.co.myproject.angkutapps_penumpang.R;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.view.login.LoginActivity;
 import id.co.myproject.angkutapps_penumpang.model.Value;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
@@ -38,10 +40,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static id.co.myproject.angkutapps_penumpang.helper.Utils.NO_HP_USER_KEY;
+
 public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProfilAdapter.ViewHolder> {
 
     private Context context;
     ApiRequest apiRequest;
+    String noHpUser;
 
     String[] menu = {"Bahasa","Dijadwalkan","Lokasi Ditandai","Pusat Bantuan","Kontak Darurat","Pengaturan","Bagikan Feedback", "Beri Masukan","FAQ","Log Out"};
 
@@ -120,6 +125,9 @@ public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProf
     }
 
     private void signOutProses() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Log Out");
         builder.setMessage("Apakah anda yakin ingin Log Out ?");
@@ -129,7 +137,7 @@ public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProf
                 ProgressDialog progressDialog = new ProgressDialog(context);
                 progressDialog.setMessage("Proses ...");
                 progressDialog.show();
-                Call<Value> signOut = apiRequest.logoutUserRequest(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                Call<Value> signOut = apiRequest.logoutUserRequest(noHpUser);
                 signOut.enqueue(new Callback<Value>() {
                     @Override
                     public void onResponse(Call<Value> call, Response<Value> response) {
@@ -139,6 +147,9 @@ public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProf
                             Toast.makeText(context, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             if (response.body().getValue() == 1){
                                 FirebaseAuth.getInstance().signOut();
+                                editor.putString(NO_HP_USER_KEY, "");
+                                editor.putBoolean(Utils.LOGIN_STATUS, false);
+                                editor.commit();
                                 Intent intent = new Intent(context, LoginActivity.class);
                                 context.startActivity(intent);
                                 ((Activity)context).finish();

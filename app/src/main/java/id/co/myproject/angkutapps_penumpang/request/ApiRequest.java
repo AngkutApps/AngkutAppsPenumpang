@@ -13,7 +13,6 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("registrasi_penumpang.php")
     Call<Value> registrasiUserRequest(
-            @Field("id_user") String idUser,
             @Field("email") String email,
             @Field("nama") String nama,
             @Field("no_hp") String no_hp,
@@ -44,7 +43,7 @@ public interface ApiRequest {
     @FormUrlEncoded
     @POST("logout_penumpang.php")
     Call<Value> logoutUserRequest(
-            @Field("id_user") String id_user
+            @Field("no_hp") String noHp
     );
 
     @GET("tampil_driver.php")

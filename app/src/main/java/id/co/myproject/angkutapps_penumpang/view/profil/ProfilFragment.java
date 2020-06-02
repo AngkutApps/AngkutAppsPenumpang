@@ -1,6 +1,8 @@
 package id.co.myproject.angkutapps_penumpang.view.profil;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import android.widget.RelativeLayout;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
 import id.co.myproject.angkutapps_penumpang.view.profil.ProfilUser;
@@ -26,6 +29,8 @@ public class ProfilFragment extends Fragment {
     RecyclerView rvListMenuProfil;
     rvListMenuProfilAdapter rvAdapter;
     RelativeLayout rlProfil;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     public ProfilFragment() {
         // Required empty public constructor

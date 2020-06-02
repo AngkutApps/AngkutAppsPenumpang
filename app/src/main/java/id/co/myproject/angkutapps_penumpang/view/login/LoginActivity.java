@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_KEY;
+import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_STATUS;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -48,13 +49,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private void cekLogin(){
 //
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = auth.getCurrentUser();
-
         progressDialog.show();
-//        boolean statusLogin = sharedPreferences.getBoolean(LOGIN_STATUS, false);
-        if (firebaseUser == null){
-//        if (firebaseUser != null){
+        boolean statusLogin = sharedPreferences.getBoolean(LOGIN_STATUS, false);
+        if (statusLogin){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();

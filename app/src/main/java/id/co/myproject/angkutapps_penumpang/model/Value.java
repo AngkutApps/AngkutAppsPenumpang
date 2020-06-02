@@ -12,19 +12,19 @@ public class Value {
     @Expose
     private String message;
 
-    @SerializedName("id_penumpang")
+    @SerializedName("no_hp")
     @Expose
-    private String idPenumpang;
+    private String noHpUser;
 
     @SerializedName("id_usulan")
     @Expose
     private int idUsulan;
 
 
-    public Value(int value, String message, String idPenumpang, int idUsulan) {
+    public Value(int value, String message, String noHpUser, int idUsulan) {
         this.value = value;
         this.message = message;
-        this.idPenumpang = idPenumpang;
+        this.noHpUser = noHpUser;
         this.idUsulan = idUsulan;
     }
 
@@ -45,12 +45,12 @@ public class Value {
         this.message = message;
     }
 
-    public String getIdPenumpang() {
-        return idPenumpang;
+    public String getNoHpUser() {
+        return noHpUser;
     }
 
-    public void setIdPenumpang(String idPenumpang) {
-        this.idPenumpang = idPenumpang;
+    public void setNoHpUser(String noHpUser) {
+        this.noHpUser = noHpUser;
     }
 
     public int getIdUsulan() {
