@@ -10,7 +10,7 @@ import android.widget.ScrollView;
 
 public class Utils {
     public static final String LOGIN_KEY = "login";
-    public static final String ID_USER_KEY = "id_user";
+    public static final String NO_HP_USER_KEY = "no_hp_user";
     public static final String LOGIN_STATUS = "status_login";
     public static final int TYPE_SIGN_IN_BUNDLE = 23;
     public static final int TYPE_SIGN_UP_BUNDLE = 24;

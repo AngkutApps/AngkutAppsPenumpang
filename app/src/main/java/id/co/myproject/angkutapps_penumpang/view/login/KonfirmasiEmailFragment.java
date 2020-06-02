@@ -42,6 +42,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_KEY;
+import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_STATUS;
+import static id.co.myproject.angkutapps_penumpang.helper.Utils.NO_HP_USER_KEY;
 
 public class KonfirmasiEmailFragment extends Fragment{
 
@@ -281,7 +283,7 @@ public class KonfirmasiEmailFragment extends Fragment{
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             if (type_sign == Utils.TYPE_SIGN_UP_BUNDLE) {
-                                registerProses(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                registerProses();
                             }else if (type_sign == Utils.TYPE_SIGN_IN_BUNDLE){
                                 loginProses();
                             }
@@ -299,9 +301,8 @@ public class KonfirmasiEmailFragment extends Fragment{
                 });
     }
 
-    private void registerProses(String uuid) {
+    private void registerProses() {
         Call<Value> callRegistrasiUser = apiRequest.registrasiUserRequest(
-                        uuid,
                         user.getEmail(),
                         user.getNama(),
                         user.getNoHp(),
@@ -311,6 +312,10 @@ public class KonfirmasiEmailFragment extends Fragment{
                     @Override
                     public void onResponse(Call<Value> call, Response<Value> response) {
                         if (response.body().getValue() == 1){
+                            String noHpUser = response.body().getNoHpUser();
+                            editor.putString(NO_HP_USER_KEY, noHpUser);
+                            editor.putBoolean(LOGIN_STATUS, true);
+                            editor.commit();
                             progressDialog.dismiss();
                             Toast.makeText(getActivity(), "Selamat Datang", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getActivity(), MainActivity.class);
@@ -337,6 +342,10 @@ public class KonfirmasiEmailFragment extends Fragment{
             public void onResponse(Call<Value> call, Response<Value> response) {
                 if (response.isSuccessful()) {
                     if (response.body().getValue() == 1){
+                        String noHpUser = response.body().getNoHpUser();
+                        editor.putString(NO_HP_USER_KEY, noHpUser);
+                        editor.putBoolean(LOGIN_STATUS, true);
+                        editor.commit();
                         progressDialog.dismiss();
                         Intent intent = new Intent(getActivity(), MainActivity.class);
                         startActivity(intent);

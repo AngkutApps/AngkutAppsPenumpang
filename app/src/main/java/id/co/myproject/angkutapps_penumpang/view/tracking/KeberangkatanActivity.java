@@ -110,7 +110,7 @@ public class KeberangkatanActivity extends FragmentActivity implements
 
         apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
         sharedPreferences = getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
-        idPenumpang = sharedPreferences.getString(Utils.ID_USER_KEY, "");
+        idPenumpang = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
         drivers = FirebaseDatabase.getInstance().getReference("Jemput");
         geoFire = new GeoFire(drivers);
 

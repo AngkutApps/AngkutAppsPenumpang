@@ -7,9 +7,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class User implements Parcelable {
-    @SerializedName("id_user")
-    @Expose
-    private String idUser;
 
     @SerializedName("email")
     @Expose
@@ -38,8 +35,7 @@ public class User implements Parcelable {
     public User() {
     }
 
-    public User(String idUser, String email, String nama, String jk, String foto, String alamat, String noHp) {
-        this.idUser = idUser;
+    public User(String email, String nama, String jk, String foto, String alamat, String noHp) {
         this.email = email;
         this.nama = nama;
         this.jk = jk;
@@ -48,13 +44,6 @@ public class User implements Parcelable {
         this.noHp = noHp;
     }
 
-    public String getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
-    }
 
     public String getEmail() {
         return email;
@@ -112,7 +101,6 @@ public class User implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.idUser);
         dest.writeString(this.email);
         dest.writeString(this.nama);
         dest.writeString(this.jk);
@@ -122,7 +110,6 @@ public class User implements Parcelable {
     }
 
     protected User(Parcel in) {
-        this.idUser = in.readString();
         this.email = in.readString();
         this.nama = in.readString();
         this.jk = in.readString();
