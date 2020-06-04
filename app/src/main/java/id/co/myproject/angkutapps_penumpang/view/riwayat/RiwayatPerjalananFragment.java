@@ -28,6 +28,7 @@ public class RiwayatPerjalananFragment extends Fragment {
     ArrayList<loadView_rw_perjalanan_user> arrayList;
 
     public RiwayatPerjalananFragment() {
+
     }
 
     @Override

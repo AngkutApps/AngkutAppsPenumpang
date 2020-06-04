@@ -1,13 +1,26 @@
 package id.co.myproject.angkutapps_penumpang.model;
 
-public class LoadKontakDarurat {
+import java.io.Serializable;
 
-    private String nama, hubungan, nomor_telepon;
+public class LoadKontakDarurat{
+
+    private int id;
+    private String nama;
+    private String hubungan;
+    private String nomor_telepon;
 
     public LoadKontakDarurat(String nama, String hubungan, String nomor_telepon) {
         this.nama = nama;
         this.hubungan = hubungan;
         this.nomor_telepon = nomor_telepon;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNama() {

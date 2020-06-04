@@ -92,7 +92,6 @@
                 android:text="IDR" />
 
             <TextView
-                android:id="@+id/tvDana"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/saturan"

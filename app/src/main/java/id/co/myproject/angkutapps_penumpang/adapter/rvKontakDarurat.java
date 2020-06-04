@@ -1,7 +1,9 @@
 package id.co.myproject.angkutapps_penumpang.adapter;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.androidnetworking.AndroidNetworking;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.LoadKontakDarurat;

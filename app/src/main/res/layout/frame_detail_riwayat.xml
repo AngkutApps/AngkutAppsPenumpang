@@ -19,7 +19,6 @@
         android:src="@drawable/ic_close_black_24dp" />
 
     <ImageView
-        android:id="@+id/imgIcon"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:padding="20dp"
@@ -310,7 +309,6 @@
                 android:textSize="16sp" />
 
             <View
-                android:id="@+id/lineInformasiPengemudi"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="2dp"

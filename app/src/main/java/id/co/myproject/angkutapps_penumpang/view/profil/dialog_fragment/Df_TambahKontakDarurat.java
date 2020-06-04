@@ -1,5 +1,6 @@
 package id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ public class Df_TambahKontakDarurat extends DialogFragment {
     EditText namaKontak, hubunganKontak, nomorKontak;
     Button btnSaveKontak;
     tb_kontak_darurat_user crudKontakDarurat;
+
     int kondisi = 0;
 
     public Df_TambahKontakDarurat() {

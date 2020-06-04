@@ -22,7 +22,6 @@
             android:src="@drawable/ic_close_black_24dp" />
 
         <ImageView
-            android:id="@+id/imgIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/bg_imgIcon"
@@ -40,7 +39,6 @@
             android:padding="15dp">
 
             <TextView
-                android:id="@+id/nama_promo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -62,7 +60,6 @@
                 android:textSize="11sp" />
 
             <TextView
-                android:id="@+id/tgl_masa_berlaku"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="20 Januari 2010"
@@ -90,7 +87,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Rp. 5.000"
-                        android:id="@+id/hrg_voucher"
                         android:textColor="@color/red_main"
                         android:textSize="16sp" />
 
@@ -114,7 +110,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="500"
-                        android:id="@+id/point_voucher"
                         android:textColor="@color/textBlack"
                         android:textSize="16sp" />
 
@@ -153,7 +148,6 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/deksripsi_promo"
                 android:text="dnjsandkabwdjbqhjfbvq
 qwfncjwqkbcjew
 dajdbjhbdjwq" />
@@ -170,9 +164,7 @@ dajdbjhbdjwq" />
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_marginTop="5dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/rv_sk_beli_voucher"
-                />
+                android:layout_height="wrap_content" />
 
         </LinearLayout>
 

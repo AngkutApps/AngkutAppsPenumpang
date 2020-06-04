@@ -19,9 +19,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/frame_promo"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:id="@+id/imgView"
-            />
+            android:scaleType="centerCrop" />
 
     </androidx.cardview.widget.CardView>
 

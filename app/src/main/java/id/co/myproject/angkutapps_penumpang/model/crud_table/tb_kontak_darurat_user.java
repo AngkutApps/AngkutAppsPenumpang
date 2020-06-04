@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.model.LoadKontakDarurat;
+import id.co.myproject.angkutapps_penumpang.model.loadView_rw_perjalanan_user;
 
 public class tb_kontak_darurat_user {
 
@@ -86,10 +87,9 @@ public class tb_kontak_darurat_user {
                 });
     }
 
-    ArrayList<LoadKontakDarurat> kontakDarurats = new ArrayList<>();
+    ArrayList<LoadKontakDarurat> loadKontakDarurats = new ArrayList<>();
 
     public ArrayList<LoadKontakDarurat> readKontakDarurat() {
-
         AndroidNetworking.get("http://angkutapps.com/angkut_api/read_kontak_darurat_user.php")
                 .addQueryParameter("no_hp", "82397147928")
                 .setPriority(Priority.MEDIUM)
@@ -97,12 +97,11 @@ public class tb_kontak_darurat_user {
                 .getAsJSONArray(new JSONArrayRequestListener() {
                     @Override
                     public void onResponse(JSONArray response) {
-                        //mengambil data dari JSON array pada read_all.php
                         try {
                             for (int i = 0; i < response.length(); i++) {
                                 JSONObject data = response.getJSONObject(i);
 //                                    //adding the product to product list
-                                kontakDarurats.add(new LoadKontakDarurat(
+                                loadKontakDarurats.add(new LoadKontakDarurat(
                                         data.getString("nama_kontak"),
                                         data.getString("hubungan_kontak"),
                                         data.getString("nomor_kontak_darurat")
@@ -119,7 +118,8 @@ public class tb_kontak_darurat_user {
                         error.printStackTrace();
                     }
                 });
-        return kontakDarurats;
+        return loadKontakDarurats;
+
     }
 
 }

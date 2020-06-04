@@ -1,5 +1,6 @@
 package id.co.myproject.angkutapps_penumpang.view.profil;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +42,7 @@ public class KontakDarurat extends AppCompatActivity {
     rvKontakDarurat kontakDaruratAdapter;
     tb_kontak_darurat_user crudKontakDarurat;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +55,8 @@ public class KontakDarurat extends AppCompatActivity {
 
 
         crudKontakDarurat = new tb_kontak_darurat_user(KontakDarurat.this);
-        arrayList = crudKontakDarurat.readKontakDarurat();
-        readKontakDarurat();
+        arrayList =  crudKontakDarurat.readKontakDarurat();
+        loadKontakDarurat();
 
         appbar_button_back.setOnClickListener(clickListener);
         cvTambahKontakDarurat.setOnClickListener(clickListener);
@@ -69,10 +71,11 @@ public class KontakDarurat extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.cvTambahKontakDarurat:
-                    readKontakDarurat();
-                    if (arrayList.size()<5){
+                    loadKontakDarurat();
+                    Log.i("kontak_darurat1", ""+arrayList.size());
+                    if (arrayList.size() < 5) {
                         setFragment(new Df_TambahKontakDarurat());
-                    }else {
+                    } else {
                         Toast.makeText(KontakDarurat.this, "Kontak Darurat Telah Mencapai Maximum", Toast.LENGTH_SHORT).show();
                     }
                     break;
@@ -90,12 +93,14 @@ public class KontakDarurat extends AppCompatActivity {
         fragment.show(fragmentTransaction, "dialog");
     }
 
-    public void readKontakDarurat(){
+    public void loadKontakDarurat() {
         kontakDaruratAdapter = new rvKontakDarurat(KontakDarurat.this, arrayList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(KontakDarurat.this);
         rvKontakDarurat.setLayoutManager(layoutManager);
         rvKontakDarurat.setHasFixedSize(true);
         rvKontakDarurat.setAdapter(kontakDaruratAdapter);
     }
+
+
 
 }
