@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_height="wrap_content">
+
+    <View
+        android:id="@+id/viewTandaPembayaran"
+        android:layout_width="25dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_button_history" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/line4"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/viewTandaPembayaran"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvMediaPembayaran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/textBlack"
+            android:text="Indomaret Group" />
+
+        <TextView
+            android:id="@+id/tvWaktuPembayaran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:text="20 Januari 2020 - 04.15 WITA" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:gravity="right"
+        android:layout_centerVertical="true"
+        android:id="@+id/line2"
+        android:layout_marginRight="10dp"
+        >
+
+        <TextView
+            android:id="@+id/tvHargaPembayaran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:text="Rp. 25.000" />
+
+        <TextView
+            android:id="@+id/statusPembayaran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transfer" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@+id/line4"
+        android:layout_alignRight="@+id/line2"
+        android:layout_below="@+id/viewTandaPembayaran"
+        android:background="#DCDCDC" />
+</RelativeLayout>

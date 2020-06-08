@@ -1,6 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.model.crud_table;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -15,7 +16,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import id.co.myproject.angkutapps_penumpang.model.*;
+import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_perjalanan_user;
 
 public class tb_rw_perjalanan_user {
 
@@ -23,6 +24,7 @@ public class tb_rw_perjalanan_user {
 
     public tb_rw_perjalanan_user(Context context) {
         this.context = context;
+        Log.i("Tracking2", "sss");
     }
 
     ArrayList<loadView_rw_perjalanan_user> loadTunai = new ArrayList<>();
@@ -60,6 +62,7 @@ public class tb_rw_perjalanan_user {
                                 ));
 
                             }
+                            Log.i("Tracking4", "sss");
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -70,6 +73,7 @@ public class tb_rw_perjalanan_user {
                         error.printStackTrace();
                     }
                 });
+        Log.i("Tracking5", "sss");
         return loadTunai;
     }
 

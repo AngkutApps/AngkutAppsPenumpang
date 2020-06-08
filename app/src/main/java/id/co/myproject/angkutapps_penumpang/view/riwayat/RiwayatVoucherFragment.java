@@ -1,5 +1,6 @@
 package id.co.myproject.angkutapps_penumpang.view.riwayat;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,21 +13,28 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
-import id.co.myproject.angkutapps_penumpang.model.*;
-import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_rw_perjalanan_user;
+import id.co.myproject.angkutapps_penumpang.model.data_object.LoadVoucher;
+import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_voucher_penggunaan;
+import id.co.myproject.angkutapps_penumpang.request.request_promo;
+import id.co.myproject.angkutapps_penumpang.request.request_riwayat;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RiwayatVoucherFragment extends Fragment {
 
     TextView tvPenggunaan, tvPembelian;
     RecyclerView rvRiwayat;
-    rvRiwayatAdapter rvRiwayatperjalananAdapter;
-    ArrayList<loadView_rw_perjalanan_user> arrayList;
-    ArrayList<loadPromoVoucherku> listPromo;
-    rvPromoVoucherku rvPromoVoucherku;
-    tb_rw_perjalanan_user tb_pembayaran;
+    rv_rw_voucher_pembelian rv_voucher_pembelian;
+    List<LoadVoucher> listPembelian = new ArrayList<>();
+    List<loadView_rw_voucher_penggunaan> listPenggunaan = new ArrayList<>();
+    rv_rw_voucher_penggunaan voucherPenggunaanAdapter;
+
+    ProgressDialog progressDialog;
 
     public RiwayatVoucherFragment() {
     }
@@ -44,7 +52,10 @@ public class RiwayatVoucherFragment extends Fragment {
         tvPembelian = view.findViewById(R.id.tvPembelian);
         rvRiwayat = view.findViewById(R.id.rvPromo);
 
-        tb_pembayaran = new tb_rw_perjalanan_user(getActivity());
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Mohon Tunggu....");
+        rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvRiwayat.setHasFixedSize(true);
 
         defaultView();
 
@@ -64,7 +75,8 @@ public class RiwayatVoucherFragment extends Fragment {
                     normalView();
                     tvPembelian.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
                     tvPembelian.setTextColor(Color.parseColor("#008577"));
-                    PembelianPromo(arrayList = tb_pembayaran.loadViewElektronik());
+                    progressDialog.show();
+                    loadPembelianPromo();
                     break;
             }
         }
@@ -80,27 +92,46 @@ public class RiwayatVoucherFragment extends Fragment {
     private void defaultView(){
         tvPenggunaan.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
         tvPenggunaan.setTextColor(Color.parseColor("#008577"));
-        loadPromo(R.drawable.loading, 2, "Nikmati Promo Hingga Tembus Pagi Sampai Capek dan Drop Out", "20-08-2021");
+        progressDialog.show();
+        loadPenggunaanVoucher();
     }
 
-    private void loadPromo(int img, int kondisi, String title, String masa_berlaku){
-        listPromo = new ArrayList<>();
-        for (int i=0 ; i< 10;i++){
-            listPromo.add(new loadPromoVoucherku(img,kondisi,title,masa_berlaku));
-        }
-        rvPromoVoucherku = new rvPromoVoucherku(getContext(), listPromo);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        rvRiwayat.setLayoutManager(layoutManager);
-        rvRiwayat.setHasFixedSize(true);
-        rvRiwayat.setAdapter(rvPromoVoucherku);
+    public void loadPenggunaanVoucher() {
+        Call<List<loadView_rw_voucher_penggunaan>> call = request_riwayat.getInstance().getApi().getRiwayatPenggunaanVoucher("82397147928");
+        call.enqueue(new Callback<List<loadView_rw_voucher_penggunaan>>() {
+            @Override
+            public void onResponse(Call<List<loadView_rw_voucher_penggunaan>> call, Response<List<loadView_rw_voucher_penggunaan>> response) {
+                listPenggunaan = response.body();
+
+                voucherPenggunaanAdapter = new rv_rw_voucher_penggunaan(getContext(), listPenggunaan);
+                rvRiwayat.setAdapter(voucherPenggunaanAdapter);
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<List<loadView_rw_voucher_penggunaan>> call, Throwable t) {
+                progressDialog.dismiss();
+            }
+        });
     }
 
-    private void PembelianPromo(ArrayList<loadView_rw_perjalanan_user> list){
-        rvRiwayatperjalananAdapter = new rvRiwayatAdapter(getContext(), list);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        rvRiwayat.setLayoutManager(layoutManager);
-        rvRiwayat.setHasFixedSize(true);
-        rvRiwayat.setAdapter(rvRiwayatperjalananAdapter);
+    public void loadPembelianPromo() {
+        Call<List<LoadVoucher>> call = request_promo.getInstance().getApi().getPromoVoucherku("82397147928");
+        call.enqueue(new Callback<List<LoadVoucher>>() {
+            @Override
+            public void onResponse(Call<List<LoadVoucher>> call, Response<List<LoadVoucher>> response) {
+                listPembelian = response.body();
+
+                rv_voucher_pembelian = new rv_rw_voucher_pembelian(getContext(), listPembelian);
+                rvRiwayat.setAdapter(rv_voucher_pembelian);
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<List<LoadVoucher>> call, Throwable t) {
+                progressDialog.dismiss();
+            }
+        });
     }
 
     @Override

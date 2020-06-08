@@ -1,23 +1,14 @@
 package id.co.myproject.angkutapps_penumpang.model.crud_table;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-
-import id.co.myproject.angkutapps_penumpang.model.LoadKontakDarurat;
-import id.co.myproject.angkutapps_penumpang.model.loadView_rw_perjalanan_user;
 
 public class tb_kontak_darurat_user {
 
@@ -87,39 +78,39 @@ public class tb_kontak_darurat_user {
                 });
     }
 
-    ArrayList<LoadKontakDarurat> loadKontakDarurats = new ArrayList<>();
-
-    public ArrayList<LoadKontakDarurat> readKontakDarurat() {
-        AndroidNetworking.get("http://angkutapps.com/angkut_api/read_kontak_darurat_user.php")
-                .addQueryParameter("no_hp", "82397147928")
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONArray(new JSONArrayRequestListener() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        try {
-                            for (int i = 0; i < response.length(); i++) {
-                                JSONObject data = response.getJSONObject(i);
-//                                    //adding the product to product list
-                                loadKontakDarurats.add(new LoadKontakDarurat(
-                                        data.getString("nama_kontak"),
-                                        data.getString("hubungan_kontak"),
-                                        data.getString("nomor_kontak_darurat")
-                                ));
-                            }
-                            Log.i("KontakDarurat",""+response);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-
-                    @Override
-                    public void onError(ANError error) {
-                        error.printStackTrace();
-                    }
-                });
-        return loadKontakDarurats;
-
-    }
+//    ArrayList<LoadKontakDarurat> loadKontakDarurats = new ArrayList<>();
+//
+//    public ArrayList<LoadKontakDarurat> readKontakDarurat() {
+//        AndroidNetworking.get("http://angkutapps.com/angkut_api/read_kontak_darurat_user.php")
+//                .addQueryParameter("no_hp", "82397147928")
+//                .setPriority(Priority.MEDIUM)
+//                .build()
+//                .getAsJSONArray(new JSONArrayRequestListener() {
+//                    @Override
+//                    public void onResponse(JSONArray response) {
+//                        try {
+//                            for (int i = 0; i < response.length(); i++) {
+//                                JSONObject data = response.getJSONObject(i);
+////                                    //adding the product to product list
+//                                loadKontakDarurats.add(new LoadKontakDarurat(
+//                                        data.getString("nama_kontak"),
+//                                        data.getString("hubungan_kontak"),
+//                                        data.getString("nomor_kontak_darurat")
+//                                ));
+//                            }
+//                            Log.i("KontakDarurat",""+response);
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(ANError error) {
+//                        error.printStackTrace();
+//                    }
+//                });
+//        return loadKontakDarurats;
+//
+//    }
 
 }

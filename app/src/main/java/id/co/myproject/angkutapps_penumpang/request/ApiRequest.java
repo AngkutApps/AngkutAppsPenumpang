@@ -1,7 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.request;
 
-import id.co.myproject.angkutapps_penumpang.model.Driver;
-import id.co.myproject.angkutapps_penumpang.model.Value;
+import id.co.myproject.angkutapps_penumpang.model.data_object.Driver;
+import id.co.myproject.angkutapps_penumpang.model.data_object.Value;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -50,4 +50,5 @@ public interface ApiRequest {
     Call<Driver> driverByIdRequest(
             @Query("id_user") String idUser
     );
+
 }

@@ -1,8 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.view.profil;
 
-import android.database.sqlite.SQLiteDatabase;
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -17,31 +16,30 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
-import id.co.myproject.angkutapps_penumpang.model.LoadKontakDarurat;
+import id.co.myproject.angkutapps_penumpang.model.data_object.LoadKontakDarurat;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_kontak_darurat_user;
+import id.co.myproject.angkutapps_penumpang.request.request_tb_kontak_darurat;
 import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_TambahKontakDarurat;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class KontakDarurat extends AppCompatActivity {
 
     ImageButton appbar_button_back;
     CardView cvTambahKontakDarurat;
     RecyclerView rvKontakDarurat;
-    ArrayList<LoadKontakDarurat> arrayList;
-    rvKontakDarurat kontakDaruratAdapter;
+    List<LoadKontakDarurat> arrayList = new ArrayList<>();
+    rv_profil_kontak_darurat kontakDaruratAdapter;
     tb_kontak_darurat_user crudKontakDarurat;
 
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +51,15 @@ public class KontakDarurat extends AppCompatActivity {
         rvKontakDarurat = findViewById(R.id.rvKontakDarurat);
         AndroidNetworking.initialize(KontakDarurat.this);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon Tunggu....");
 
         crudKontakDarurat = new tb_kontak_darurat_user(KontakDarurat.this);
-        arrayList =  crudKontakDarurat.readKontakDarurat();
-        loadKontakDarurat();
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(KontakDarurat.this);
+        rvKontakDarurat.setLayoutManager(new LinearLayoutManager(KontakDarurat.this));
+        rvKontakDarurat.setHasFixedSize(true);
+        progressDialog.show();
+        readData();
 
         appbar_button_back.setOnClickListener(clickListener);
         cvTambahKontakDarurat.setOnClickListener(clickListener);
@@ -71,10 +74,9 @@ public class KontakDarurat extends AppCompatActivity {
                     finish();
                     break;
                 case R.id.cvTambahKontakDarurat:
-                    loadKontakDarurat();
-                    Log.i("kontak_darurat1", ""+arrayList.size());
                     if (arrayList.size() < 5) {
                         setFragment(new Df_TambahKontakDarurat());
+//                        readData();
                     } else {
                         Toast.makeText(KontakDarurat.this, "Kontak Darurat Telah Mencapai Maximum", Toast.LENGTH_SHORT).show();
                     }
@@ -93,14 +95,24 @@ public class KontakDarurat extends AppCompatActivity {
         fragment.show(fragmentTransaction, "dialog");
     }
 
-    public void loadKontakDarurat() {
-        kontakDaruratAdapter = new rvKontakDarurat(KontakDarurat.this, arrayList);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(KontakDarurat.this);
-        rvKontakDarurat.setLayoutManager(layoutManager);
-        rvKontakDarurat.setHasFixedSize(true);
-        rvKontakDarurat.setAdapter(kontakDaruratAdapter);
+    public void readData() {
+        Call<List<LoadKontakDarurat>> call = request_tb_kontak_darurat.getInstance().getApi().getKontakDarurat("82397147928");
+        call.enqueue(new Callback<List<LoadKontakDarurat>>() {
+            @Override
+            public void onResponse(Call<List<LoadKontakDarurat>> call, Response<List<LoadKontakDarurat>> response) {
+                arrayList = response.body();
+
+                kontakDaruratAdapter = new rv_profil_kontak_darurat(KontakDarurat.this, arrayList);
+                rvKontakDarurat.setAdapter(kontakDaruratAdapter);
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<List<LoadKontakDarurat>> call, Throwable t) {
+                progressDialog.dismiss();
+                Toast.makeText(KontakDarurat.this, "Data Gagal Ter-input", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
-
-
 
 }

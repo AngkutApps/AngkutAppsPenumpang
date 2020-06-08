@@ -1,6 +1,5 @@
 package id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment;
 
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +28,7 @@ public class Df_TambahKontakDarurat extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.frame_tambah_kontak, container, false);
+        return inflater.inflate(R.layout.df_tambah_kontak, container, false);
     }
 
     @Override

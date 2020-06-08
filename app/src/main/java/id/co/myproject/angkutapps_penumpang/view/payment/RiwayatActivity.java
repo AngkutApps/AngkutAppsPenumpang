@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.rvRiwayatDana;
-import id.co.myproject.angkutapps_penumpang.model.riwayatDana;
+import id.co.myproject.angkutapps_penumpang.model.data_object.riwayatDana;
 
 public class RiwayatActivity extends AppCompatActivity {
 
