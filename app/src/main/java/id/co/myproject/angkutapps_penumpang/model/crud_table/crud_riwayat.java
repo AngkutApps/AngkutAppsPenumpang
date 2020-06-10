@@ -65,7 +65,6 @@ public class crud_riwayat {
                     @Override
                     public void onResponse(JSONObject response) {
                         Toast.makeText(context, "Riwayat Berhasil Terhapus", Toast.LENGTH_SHORT).show();
-                        Log.i("Nilai", ""+response);
                     }
 
                     @Override

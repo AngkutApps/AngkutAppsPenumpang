@@ -1,6 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.model.crud_table;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -27,12 +28,12 @@ public class tb_promo_voucherku {
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(context, "Pembelian Berhasil", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Pembelian Berhasil", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onError(ANError anError) {
-                        Toast.makeText(context, "Pembelian Gagal", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Pembelian Gagal", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

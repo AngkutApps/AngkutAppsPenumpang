@@ -94,7 +94,6 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
         holder.cvRiwayatPerjalanan.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-//                Toast.makeText(context, "Harga : " + loadViewRiwayats.get(position).getHarga(), Toast.LENGTH_SHORT).show();
                 popupmenu(v,loadViewRiwayats.get(position).getId_pembayaran());
                 return true;
             }
@@ -146,7 +145,6 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.popup_hapus:
-                    Log.i("Nilai", ""+id);
                     crudRiwayat.deletePerjalanan(String.valueOf(id));
                     break;
             }

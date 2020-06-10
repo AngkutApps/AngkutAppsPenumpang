@@ -116,7 +116,6 @@ public class df_beli_voucher extends DialogFragment {
                 case R.id.btnBeliVoucher :
                     tablePromoVoucherku.insertBeliVoucher(kode_voucher, "82397147928");
                     progress_bar();
-                    tablePembelianVoucher.insertBeliVoucher(kode_voucher, "82397147928");
                     df_beli_voucher.super.onStop();
                     df_beli_voucher.super.onDestroyView();
                     break;
@@ -160,7 +159,8 @@ public class df_beli_voucher extends DialogFragment {
             @Override
             public void run() {
                 progressDialog.dismiss();
+                tablePembelianVoucher.insertBeliVoucher(kode_voucher, "82397147928");
             }
-        },3000);
+        },2000);
     }
 }
