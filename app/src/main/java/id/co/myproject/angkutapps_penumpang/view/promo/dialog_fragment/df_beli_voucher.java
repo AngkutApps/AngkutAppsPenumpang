@@ -2,6 +2,7 @@ package id.co.myproject.angkutapps_penumpang.view.promo.dialog_fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import java.util.List;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.rv_list_sk;
 import id.co.myproject.angkutapps_penumpang.adapter.rv_promo_beli_voucher;
+import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_promo_voucherku;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_rw_pembelian_voucher_user;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadSKVoucher;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadVoucher;
@@ -42,7 +44,8 @@ public class df_beli_voucher extends DialogFragment {
     rv_list_sk list_sk;
     List<LoadSKVoucher> listSK = new ArrayList<>();
 
-    tb_rw_pembelian_voucher_user crudPembelianVoucher;
+    tb_promo_voucherku tablePromoVoucherku;
+    tb_rw_pembelian_voucher_user tablePembelianVoucher;
 
     ProgressDialog progressDialog;
 
@@ -80,7 +83,9 @@ public class df_beli_voucher extends DialogFragment {
 
         AndroidNetworking.initialize(getContext());
 
-        crudPembelianVoucher = new tb_rw_pembelian_voucher_user(getContext());
+        tablePromoVoucherku = new tb_promo_voucherku(getContext());
+        tablePembelianVoucher = new tb_rw_pembelian_voucher_user(getContext());
+
         tvTitleVoucher.setText(nama_voucher);
         tvMasaBerlaku.setText(masa_berlaku);
         tvHarga.setText(String.valueOf(harga));
@@ -109,7 +114,9 @@ public class df_beli_voucher extends DialogFragment {
                     df_beli_voucher.super.onDestroyView();
                     break;
                 case R.id.btnBeliVoucher :
-                    crudPembelianVoucher.insertBeliVoucher(kode_voucher, "82397147928");
+                    tablePromoVoucherku.insertBeliVoucher(kode_voucher, "82397147928");
+                    progress_bar();
+                    tablePembelianVoucher.insertBeliVoucher(kode_voucher, "82397147928");
                     df_beli_voucher.super.onStop();
                     df_beli_voucher.super.onDestroyView();
                     break;
@@ -144,5 +151,16 @@ public class df_beli_voucher extends DialogFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    public void progress_bar(){
+        progressDialog.show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                progressDialog.dismiss();
+            }
+        },3000);
     }
 }

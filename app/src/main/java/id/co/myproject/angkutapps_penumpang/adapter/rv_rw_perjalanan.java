@@ -1,6 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,7 +23,7 @@ import com.androidnetworking.AndroidNetworking;
 import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
-import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_rw_perjalanan_user;
+import id.co.myproject.angkutapps_penumpang.model.crud_table.crud_riwayat;
 import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_perjalanan_user;
 import id.co.myproject.angkutapps_penumpang.view.riwayat.dialog_fragment.Df_DetailRiwayatFragment;
 
@@ -30,7 +31,7 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
 
     private Context context;
     private List<loadView_rw_perjalanan_user> loadViewRiwayats;
-    tb_rw_perjalanan_user crudRiwayat;
+    crud_riwayat crudRiwayat;
     int id;
 
     public rv_rw_perjalanan(Context context, List<loadView_rw_perjalanan_user> loadViewRiwayats) {
@@ -41,7 +42,7 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
     @Override
     public rv_rw_perjalanan.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_rw_perjalanan, null);
-        crudRiwayat = new tb_rw_perjalanan_user(context);
+        crudRiwayat = new crud_riwayat(context);
         AndroidNetworking.initialize(context);
         return new ViewHolder(v);
 
@@ -145,6 +146,7 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.popup_hapus:
+                    Log.i("Nilai", ""+id);
                     crudRiwayat.deletePerjalanan(String.valueOf(id));
                     break;
             }

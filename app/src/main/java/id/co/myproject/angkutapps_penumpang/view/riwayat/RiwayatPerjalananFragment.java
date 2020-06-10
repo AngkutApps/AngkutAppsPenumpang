@@ -17,7 +17,6 @@ import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.rv_rw_perjalanan;
-import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_rw_perjalanan_user;
 import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_perjalanan_user;
 import id.co.myproject.angkutapps_penumpang.request.request_riwayat;
 import retrofit2.Call;
@@ -57,7 +56,6 @@ public class RiwayatPerjalananFragment extends Fragment {
         progressDialog.setMessage("Mohon Tunggu....");
 //        progressBar = new progress_bar_custom(getActivity());
 
-//        tb_pembayaran = new tb_rw_perjalanan_user(getActivity());
         defaultView();
 
         tvTunai.setOnClickListener(clickListener);
@@ -78,8 +76,7 @@ public class RiwayatPerjalananFragment extends Fragment {
                     progressDialog.show();
                     tvGoPay.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
                     tvGoPay.setTextColor(Color.parseColor("#008577"));
-                    Call<List<loadView_rw_perjalanan_user>> call = request_riwayat.getInstance().getApi().getRiwayatPembayaranElektronik("82397147928");
-                    readData(call);
+                    readData(2);
                     break;
             }
         }
@@ -96,8 +93,7 @@ public class RiwayatPerjalananFragment extends Fragment {
         progressDialog.show();
         tvTunai.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
         tvTunai.setTextColor(Color.parseColor("#008577"));
-        Call<List<loadView_rw_perjalanan_user>> call = request_riwayat.getInstance().getApi().getRiwayatPembayaranTunai("82397147928");
-        readData(call);
+        readData(1);
     }
 
     @Override
@@ -110,13 +106,18 @@ public class RiwayatPerjalananFragment extends Fragment {
         super.onStop();
     }
 
-    public void readData(Call<List<loadView_rw_perjalanan_user>> call) {
+    public void readData(int i) {
+        Call<List<loadView_rw_perjalanan_user>> call = null;
+        if (i==1){
+            call = request_riwayat.getInstance().getApi().getRiwayatPembayaranTunai("82397147928");
+        }else if (i==2){
+            call = request_riwayat.getInstance().getApi().getRiwayatPembayaranElektronik("82397147928");
+        }
         call.enqueue(new Callback<List<loadView_rw_perjalanan_user>>() {
             @Override
             public void onResponse(Call<List<loadView_rw_perjalanan_user>> call, Response<List<loadView_rw_perjalanan_user>> response) {
                 arrayList = response.body();
 
-//                kontakDaruratAdapter = new rv_profil_kontak_darurat(KontakDarurat.this, arrayList);
                 rvRiwayatperjalananAdapter = new rv_rw_perjalanan(getContext(), arrayList);
                 rvRiwayat.setAdapter(rvRiwayatperjalananAdapter);
                 progressDialog.dismiss();
@@ -125,7 +126,6 @@ public class RiwayatPerjalananFragment extends Fragment {
             @Override
             public void onFailure(Call<List<loadView_rw_perjalanan_user>> call, Throwable t) {
                 progressDialog.dismiss();
-//                Toast.makeText(KontakDarurat.this, "Data Gagal Ter-input", Toast.LENGTH_SHORT).show();
             }
         });
     }

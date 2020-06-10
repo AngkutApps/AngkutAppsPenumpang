@@ -3,6 +3,7 @@ package id.co.myproject.angkutapps_penumpang.view.riwayat;
 import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,7 +117,7 @@ public class RiwayatVoucherFragment extends Fragment {
     }
 
     public void loadPembelianPromo() {
-        Call<List<LoadVoucher>> call = request_promo.getInstance().getApi().getPromoVoucherku("82397147928");
+        Call<List<LoadVoucher>> call = request_riwayat.getInstance().getApi().getRiwayatPembelianVoucher("82397147928");
         call.enqueue(new Callback<List<LoadVoucher>>() {
             @Override
             public void onResponse(Call<List<LoadVoucher>> call, Response<List<LoadVoucher>> response) {

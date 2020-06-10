@@ -19,7 +19,7 @@ public class tb_rw_pembelian_voucher_user {
     }
 
     public void insertBeliVoucher(String kode_voucher, String no_hp){
-        AndroidNetworking.post("http://angkutapps.com/angkut_api/promo/insert_promo_voucherku.php")
+        AndroidNetworking.post("http://angkutapps.com/angkut_api/riwayat/insert_rw_voucher_pembelian.php")
                 .addBodyParameter("kode_voucher", kode_voucher)
                 .addBodyParameter("no_hp", no_hp)
                 .setPriority(Priority.MEDIUM)
