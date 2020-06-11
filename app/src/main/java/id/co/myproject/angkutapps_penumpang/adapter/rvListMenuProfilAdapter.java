@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -21,8 +22,19 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.TaskExecutors;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
@@ -47,12 +59,19 @@ public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProf
     private Context context;
     ApiRequest apiRequest;
     String noHpUser;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+    ProgressDialog progressDialog;
 
     String[] menu = {"Bahasa","Dijadwalkan","Lokasi Ditandai","Pusat Bantuan","Kontak Darurat","Pengaturan","Bagikan Feedback", "Beri Masukan","FAQ","Log Out"};
 
     public rvListMenuProfilAdapter(Context context, ApiRequest apiRequest) {
         this.context = context;
         this.apiRequest = apiRequest;
+        sharedPreferences = context.getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("Proses ...");
     }
 
     @Override
@@ -119,46 +138,47 @@ public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProf
                 setFragment(new Df_BeriMasukan());
                 break;
             case 9 :
-                signOutProses();
+                logOutProses();
                 break;
         }
     }
 
-    private void signOutProses() {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+    private void logOutProses() {
+        noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Log Out");
         builder.setMessage("Apakah anda yakin ingin Log Out ?");
         builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                ProgressDialog progressDialog = new ProgressDialog(context);
-                progressDialog.setMessage("Proses ...");
                 progressDialog.show();
                 Call<Value> signOut = apiRequest.logoutUserRequest(noHpUser);
                 signOut.enqueue(new Callback<Value>() {
                     @Override
                     public void onResponse(Call<Value> call, Response<Value> response) {
-                        progressDialog.dismiss();
-                        dialog.dismiss();
                         if (response.isSuccessful()){
-                            Toast.makeText(context, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             if (response.body().getValue() == 1){
-                                FirebaseAuth.getInstance().signOut();
                                 editor.putString(NO_HP_USER_KEY, "");
                                 editor.putBoolean(Utils.LOGIN_STATUS, false);
                                 editor.commit();
+                                progressDialog.dismiss();
+                                dialog.dismiss();
+                                Toast.makeText(context, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(context, LoginActivity.class);
                                 context.startActivity(intent);
-                                ((Activity)context).finish();
+                                ((Activity) context).finish();
+                            }else {
+                                progressDialog.dismiss();
+                                dialog.dismiss();
+                                Toast.makeText(context, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
 
                     @Override
                     public void onFailure(Call<Value> call, Throwable t) {
+                        progressDialog.dismiss();
+                        dialog.dismiss();
                         Toast.makeText(context, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -172,6 +192,9 @@ public class rvListMenuProfilAdapter extends RecyclerView.Adapter<rvListMenuProf
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
+    }
+
+    private void signOutProses(PhoneAuthCredential credential, DialogInterface dialog){
     }
 
     private void setFragment(DialogFragment fragment){

@@ -41,6 +41,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+
     private void setFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(frameLayout.getId(), fragment);

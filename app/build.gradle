@@ -64,4 +64,5 @@ dependencies {
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation 'androidx.room:room-runtime:2.2.5'
     annotationProcessor 'androidx.room:room-compiler:2.2.5'
+
 }

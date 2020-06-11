@@ -1,10 +1,14 @@
 package id.co.myproject.angkutapps_penumpang.view.login;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.telephony.SmsManager;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
@@ -25,9 +29,17 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import id.co.myproject.angkutapps_penumpang.view.MainActivity;
@@ -213,6 +225,10 @@ public class KonfirmasiEmailFragment extends Fragment{
 
         sendVerifyCode();
 
+//        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+//        StrictMode.setThreadPolicy(policy);
+//        sendSms();
+
         btnMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -230,9 +246,56 @@ public class KonfirmasiEmailFragment extends Fragment{
             @Override
             public void onClick(View v) {
                 sendVerifyCode();
+//                sendSms();
+//                sendEsmes();
             }
         });
 
+    }
+
+//    public void sendEsmes(){
+//        try{
+//            SmsManager smgr = SmsManager.getDefault();
+//            smgr.sendTextMessage("6282397147928",null,"Apa tong",null,null);
+//            Toast.makeText(getActivity(), "SMS Sent Successfully", Toast.LENGTH_SHORT).show();
+//        }
+//        catch (Exception e){
+//            Toast.makeText(getActivity(), "SMS Failed to Send, Please try again", Toast.LENGTH_SHORT).show();
+//        }
+//
+//    }
+
+    public void sendSms() {
+        try {
+            // Construct data
+            Random random = new Random();
+            int randomNumber = random.nextInt(999999);
+
+            String apiKey = "apikey=" + "dV2lY0CzIj8-eVl2w1DRx9pRO5qwftD4wsYYiClIZg";
+            String message = "&message=" + "koko";
+            String sender = "&sender=" + "Mantap";
+            String numbers = "&numbers=" + "06282397147928";
+
+            // Send data
+            HttpURLConnection conn = (HttpURLConnection) new URL("https://api.txtlocal.com/send/?").openConnection();
+            String data = apiKey + numbers + message + sender;
+            conn.setDoOutput(true);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
+            conn.getOutputStream().write(data.getBytes("UTF-8"));
+            final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            final StringBuffer stringBuffer = new StringBuffer();
+            String line;
+            while ((line = rd.readLine()) != null) {
+                stringBuffer.append(line);
+            }
+            rd.close();
+
+            Toast.makeText(getActivity(), "Otp berhasil terkirim", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            System.out.println("Error SMS "+e);
+            Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void sendVerifyCode() {
@@ -244,9 +307,8 @@ public class KonfirmasiEmailFragment extends Fragment{
             @Override
             public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                 String code = phoneAuthCredential.getSmsCode();
-                if (code != null) {
-                    progressDialog.dismiss();
-                }
+                progressDialog.dismiss();
+                Toast.makeText(getActivity(), "Code : "+code, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -257,15 +319,22 @@ public class KonfirmasiEmailFragment extends Fragment{
 
             @Override
             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                super.onCodeSent(s, forceResendingToken);
+//                super.onCodeSent(s, forceResendingToken);
                 verifCode = s;
                 Toast.makeText(getActivity(), "Berhasil terkirim", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
+
+            @Override
+            public void onCodeAutoRetrievalTimeOut(@NonNull String s) {
+                super.onCodeAutoRetrievalTimeOut(s);
+                progressDialog.dismiss();
+                Toast.makeText(getActivity(), "Sontoloyo : "+s, Toast.LENGTH_SHORT).show();
+            }
         };
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 "+62" + noHpUser,        // Phone number to verify
-                60,                 // Timeout duration
+                20,                 // Timeout duration
                 TimeUnit.SECONDS,   // Unit of timeout
                 TaskExecutors.MAIN_THREAD,   // Activity (for callback binding)
                 mCall);
@@ -285,7 +354,7 @@ public class KonfirmasiEmailFragment extends Fragment{
                             if (type_sign == Utils.TYPE_SIGN_UP_BUNDLE) {
                                 registerProses();
                             }else if (type_sign == Utils.TYPE_SIGN_IN_BUNDLE){
-                                loginProses();
+                                loginProses(kode_otp);
                             }
                         } else {
                             Toast.makeText(getActivity(), "" + task.getException(), Toast.LENGTH_SHORT).show();
@@ -335,7 +404,7 @@ public class KonfirmasiEmailFragment extends Fragment{
     }
 
 
-    private void loginProses() {
+    private void loginProses(String kodeOtp) {
         Call<Value> callLoginUser = apiRequest.loginUserRequest(noHpUser);
         callLoginUser.enqueue(new Callback<Value>() {
             @Override
@@ -344,6 +413,8 @@ public class KonfirmasiEmailFragment extends Fragment{
                     if (response.body().getValue() == 1){
                         String noHpUser = response.body().getNoHpUser();
                         editor.putString(NO_HP_USER_KEY, noHpUser);
+                        editor.putString("verifId", verifCode);
+                        editor.putString("otp", kodeOtp);
                         editor.putBoolean(LOGIN_STATUS, true);
                         editor.commit();
                         progressDialog.dismiss();
