@@ -5,29 +5,13 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-
 import id.co.myproject.angkutapps_penumpang.R;
-import id.co.myproject.angkutapps_penumpang.adapter.rvKontakDarurat;
-import id.co.myproject.angkutapps_penumpang.model.LoadKontakDarurat;
-import id.co.myproject.angkutapps_penumpang.view.profil.KontakDarurat;
 
 /**
  * A simple {@link Fragment} subclass.

@@ -6,13 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import id.co.myproject.angkutapps_penumpang.R;
-import id.co.myproject.angkutapps_penumpang.model.riwayatDana;
+import id.co.myproject.angkutapps_penumpang.model.data_object.riwayatDana;
 
 public class rvRiwayatDana extends RecyclerView.Adapter<rvRiwayatDana.ViewHolder> {
 
@@ -20,14 +19,14 @@ public class rvRiwayatDana extends RecyclerView.Adapter<rvRiwayatDana.ViewHolder
     Context context;
     ArrayList<riwayatDana> riwayatDana;
 
-    public rvRiwayatDana(Context context, ArrayList<id.co.myproject.angkutapps_penumpang.model.riwayatDana> riwayatDana) {
+    public rvRiwayatDana(Context context, ArrayList<id.co.myproject.angkutapps_penumpang.model.data_object.riwayatDana> riwayatDana) {
         this.context = context;
         this.riwayatDana = riwayatDana;
     }
 
     @Override
     public rvRiwayatDana.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.frame_rv_riwayat_pembayaran, null);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_riwayat_pembayaran, null);
         return new ViewHolder(v);
     }
 

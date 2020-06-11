@@ -27,17 +27,17 @@ import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+import id.co.myproject.angkutapps_penumpang.model.data_object.viewPagerLogin;
 import id.co.myproject.angkutapps_penumpang.view.MainActivity;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.PagerLoginAdapter;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
-import id.co.myproject.angkutapps_penumpang.model.Value;
+import id.co.myproject.angkutapps_penumpang.model.data_object.Value;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import id.co.myproject.angkutapps_penumpang.model.*;
 
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_KEY;
 import static id.co.myproject.angkutapps_penumpang.helper.Utils.LOGIN_STATUS;

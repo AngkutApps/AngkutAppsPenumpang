@@ -1,6 +1,5 @@
 package id.co.myproject.angkutapps_penumpang.view.profil;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,10 +15,8 @@ import android.widget.RelativeLayout;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
-import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
-import id.co.myproject.angkutapps_penumpang.view.profil.ProfilUser;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +24,7 @@ import id.co.myproject.angkutapps_penumpang.view.profil.ProfilUser;
 public class ProfilFragment extends Fragment {
 
     RecyclerView rvListMenuProfil;
-    rvListMenuProfilAdapter rvAdapter;
+    rv_menu_list_akun rvAdapter;
     RelativeLayout rlProfil;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -51,7 +48,7 @@ public class ProfilFragment extends Fragment {
 
         rvListMenuProfil = view.findViewById(R.id.rvListMenuProfil);
         rlProfil = view.findViewById(R.id.rl_profil);
-        rvAdapter = new rvListMenuProfilAdapter(getContext(), apiRequest);
+        rvAdapter = new rv_menu_list_akun(getContext(), apiRequest);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         rvListMenuProfil.setLayoutManager(layoutManager);

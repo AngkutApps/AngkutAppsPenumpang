@@ -1,12 +1,10 @@
 package id.co.myproject.angkutapps_penumpang.view.promo;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,10 +14,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
-import id.co.myproject.angkutapps_penumpang.model.*;
+import id.co.myproject.angkutapps_penumpang.model.data_object.LoadVoucher;
+import id.co.myproject.angkutapps_penumpang.request.request_promo;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,10 +31,11 @@ public class PromoFragment extends Fragment {
 
     TextView voucherku, beliVoucher;
     RecyclerView rvPromoFragment;
-    rvPromoVoucherku rvPromoVoucherku;
-    rvPenggunaanPromoAdapter rvPenggunaanPromoAdapter;
-    ArrayList<loadPromoVoucherku> listPromo;
-    ArrayList<Integer> loadPenggunaanList;
+    rv_rw_promo_voucherku rv_rw_promo_voucherku;
+    rv_promo_beli_voucher rv_promo_beli_voucher;
+    List<LoadVoucher> loadBeliVoucher = new ArrayList<>();
+
+    ProgressDialog progressDialog;
 
     public PromoFragment() {
         // Required empty public constructor
@@ -53,6 +57,11 @@ public class PromoFragment extends Fragment {
         beliVoucher = view.findViewById(R.id.tvBeliVoucher);
         rvPromoFragment = view.findViewById(R.id.rvPromoFragment);
 
+        rvPromoFragment.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvPromoFragment.setHasFixedSize(true);
+
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Mohon Tunggu....");
         defaultViewButton();
 
         voucherku.setOnClickListener(clickListener);
@@ -72,7 +81,8 @@ public class PromoFragment extends Fragment {
                     viewButtonNormal();
                     beliVoucher.setBackgroundResource(R.drawable.bg_button_history);
                     beliVoucher.setTextColor(Color.parseColor("#FFFFFF"));
-                    PenggunaanPromo();
+                    progressDialog.show();
+                    loadBagianPromo(2);
                     break;
             }
         }
@@ -88,32 +98,37 @@ public class PromoFragment extends Fragment {
     private void defaultViewButton(){
         voucherku.setBackgroundResource(R.drawable.bg_button_history);
         voucherku.setTextColor(Color.parseColor("#FFFFFF"));
-        loadPromo(R.drawable.loading, 1, "Nikmati Promo Hingga Tembus Pagi Sampai Capek dan Drop Out", "20-08-2021");
+        progressDialog.show();
+        loadBagianPromo(3);
     }
 
-    private void loadPromo(int img, int kondisi, String title, String masa_berlaku){
-        listPromo = new ArrayList<>();
-        for (int i=0 ; i< 10;i++){
-            listPromo.add(new loadPromoVoucherku(img,kondisi,title,masa_berlaku));
+    public void loadBagianPromo(int i) {
+        Call<List<LoadVoucher>> call = null;
+        if (i==2){
+            call = request_promo.getInstance().getApi().getPromoBeliVoucher();
+        }else if (i==3){
+            call = request_promo.getInstance().getApi().getPromoVoucherku("82397147928");
         }
+        call.enqueue(new Callback<List<LoadVoucher>>() {
+            @Override
+            public void onResponse(Call<List<LoadVoucher>> call, Response<List<LoadVoucher>> response) {
+                loadBeliVoucher = response.body();
 
-        rvPromoVoucherku = new rvPromoVoucherku(getContext(), listPromo);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        rvPromoFragment.setLayoutManager(layoutManager);
-        rvPromoFragment.setHasFixedSize(true);
-        rvPromoFragment.setAdapter(rvPromoVoucherku);
+                if (i==2){
+                    rv_promo_beli_voucher = new rv_promo_beli_voucher(getContext(), loadBeliVoucher);
+                    rvPromoFragment.setAdapter(rv_promo_beli_voucher);
+                }else if (i==3){
+                    rv_rw_promo_voucherku = new rv_rw_promo_voucherku(getContext(), loadBeliVoucher);
+                    rvPromoFragment.setAdapter(rv_rw_promo_voucherku);
+                }
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<List<LoadVoucher>> call, Throwable t) {
+                progressDialog.dismiss();
+            }
+        });
     }
 
-    private void PenggunaanPromo(){
-        loadPenggunaanList = new ArrayList<>();
-        for (int i=0 ; i< 10;i++){
-            loadPenggunaanList.add(R.drawable.frame_promo);
-        }
-        rvPenggunaanPromoAdapter = new rvPenggunaanPromoAdapter(getContext(), loadPenggunaanList);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
-        rvPromoFragment.setLayoutManager(layoutManager);
-        rvPromoFragment.setHasFixedSize(true);
-        rvPromoFragment.setAdapter(rvPenggunaanPromoAdapter);
-    }
 }

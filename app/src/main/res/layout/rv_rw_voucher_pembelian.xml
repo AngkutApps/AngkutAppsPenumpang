@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/cvVoucherPembelian"
+    android:foreground="?android:attr/selectableItemBackground"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvRiwayatPerjalananFrame"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp">
+
+            <TextView
+                android:id="@+id/tvHargaVoucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="17dp"
+                android:paddingLeft="4dp"
+                android:gravity="center_vertical"
+                android:text="10k"
+                android:textColor="@color/textBlack"
+                android:textSize="20sp" />
+
+            <View
+                android:id="@+id/oval"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="17dp"
+                android:layout_toRightOf="@+id/tvHargaVoucher"
+                android:background="@drawable/shape_oval_bus" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/btnConfig"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/oval">
+
+                <TextView
+                    android:id="@+id/titleVoucher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="Makassar > Pinrang"
+                    android:textColor="@color/textBlack"
+                    android:textSize="16sp"
+                    android:singleLine="true" />
+
+                <TextView
+                    android:id="@+id/hariPembelian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titleVoucher"
+                    android:layout_alignLeft="@+id/titleVoucher"
+                    android:text="Hari"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titleVoucher"
+                    android:layout_alignRight="@+id/titleVoucher"
+                    android:text="Tanggal"
+                    android:textSize="11sp"
+                    android:id="@+id/tanggalPembelian"
+                    />
+
+            </RelativeLayout>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/textColorWhite"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:id="@+id/btnConfig"
+                android:src="@drawable/ic_more_point_24dp" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rvRiwayatPerjalananFrame"
+            android:background="#C3C1C1"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

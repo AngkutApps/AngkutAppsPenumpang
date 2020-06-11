@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import id.co.myproject.angkutapps_penumpang.R;
-import id.co.myproject.angkutapps_penumpang.model.*;
+import id.co.myproject.angkutapps_penumpang.model.data_object.viewPagerLogin;
 
 import java.util.List;
 

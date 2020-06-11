@@ -20,6 +20,7 @@ public class Df_TambahKontakDarurat extends DialogFragment {
     EditText namaKontak, hubunganKontak, nomorKontak;
     Button btnSaveKontak;
     tb_kontak_darurat_user crudKontakDarurat;
+
     int kondisi = 0;
 
     public Df_TambahKontakDarurat() {
@@ -27,7 +28,7 @@ public class Df_TambahKontakDarurat extends DialogFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater,ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.frame_tambah_kontak, container, false);
+        return inflater.inflate(R.layout.df_tambah_kontak, container, false);
     }
 
     @Override

@@ -5,19 +5,8 @@
     <color name="colorAccent">#909090</color>
     <color name="colorGrey">#FAFAFA</color>
 
-    <color name="colorFormBackground">#242424</color>
-    <color name="colorFormText">#838287</color>
-    <color name="colorFormInputBackground">#252527</color>
-    <color name="colorCheckOk">#60D486</color>
-    <color name="colorCheckNo">#838287</color>
-    <color name="colorHint">#838287</color>
-    <color name="colorStroke">#838287</color>
-    <color name="colorError">#F36D6C</color>
-
-    <color name="success">#4CAF50</color>
     <color name="proses">#FFC107</color>
     <color name="red_main">#CE0303</color>
-    <color name="red_second">#A80303</color>
 
     <color name="textColorWhite">#FFFFFF</color>
     <color name="textBlack">#020202</color>
@@ -26,8 +15,5 @@
     <color name="colorYellow">#FFEB3B</color>
 
     //icon_transportasi
-    <color name="bus">#CF2329</color>
-    <color name="pete">#02A4C5</color>
-    <color name="travel">#008577</color>
 
 </resources>

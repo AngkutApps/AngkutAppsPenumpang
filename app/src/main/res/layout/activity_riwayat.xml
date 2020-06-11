@@ -52,7 +52,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rvRiwayatDana"
-        tools:listitem="@layout/frame_rv_riwayat_pembayaran"
+        tools:listitem="@layout/rv_riwayat_pembayaran"
         >
 
     </androidx.recyclerview.widget.RecyclerView>

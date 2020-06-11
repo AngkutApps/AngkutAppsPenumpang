@@ -7,7 +7,6 @@
     tools:context=".view.MainActivity">
 
     <View
-        android:id="@+id/expansion_view"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_centerInParent="true"
