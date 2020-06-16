@@ -101,6 +101,8 @@
                 android:paddingRight="10dp"
                 android:paddingLeft="10dp"
                 android:layout_marginRight="3dp"
+                android:enabled="false"
+                android:focusable="false"
                 android:text="+62"/>
 
             <EditText
