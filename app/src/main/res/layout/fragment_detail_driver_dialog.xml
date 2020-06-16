@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.tracking.DetailDriverDialogFragment"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/aquaman1"/>
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/ratingBar"
+        android:rating="4"
+        android:max="5"
+        android:layout_width="wrap_content"
+        style="@style/customRatingBar"
+        android:layout_height="20dp"
+        android:stepSize="0.5" />
+    <TextView
+        android:id="@+id/tv_nama_driver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mantap Djiwa"
+        android:fontFamily="@font/poppins_regular"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:textSize="10sp"
+        android:id="@+id/tv_jk_driver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Laki-Laki"/>
+    <TextView
+        android:id="@+id/tv_mobil_driver"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mobil Avanza"
+        android:fontFamily="@font/poppins_regular"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:textSize="10sp"
+        android:id="@+id/tv_plat_driver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DD HAHAHA HA"/>
+    <TextView
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tujuan"
+        android:fontFamily="@font/poppins_regular"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+    <ProgressBar
+        android:id="@+id/progres"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_tujuan"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="8dp"/>
+
+    <RelativeLayout
+        android:id="@+id/rv_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_alignParentLeft="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_message_black_24dp"
+            android:background="@drawable/bg_circle"
+            android:padding="5dp"/>
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_call_black_24dp"
+            android:background="@drawable/bg_circle"
+            android:padding="5dp"/>
+
+
+        <Button
+            android:id="@+id/btn_booking"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="Booking"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_button_next"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/lv_konfirmasi"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Menunggu Konfirmasi"
+            android:textSize="15sp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+        <ProgressBar
+            android:id="@+id/progresKonfirmasi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+    </LinearLayout>
+
+</LinearLayout>

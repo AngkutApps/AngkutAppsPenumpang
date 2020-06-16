@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
 //
         progressDialog.show();
         boolean statusLogin = sharedPreferences.getBoolean(LOGIN_STATUS, false);
-        if (!statusLogin){
+        if (statusLogin){
 //        if (statusLogin){
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);

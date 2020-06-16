@@ -29,6 +29,7 @@ import id.co.myproject.angkutapps_penumpang.view.profil.ProfilUser;
 import id.co.myproject.angkutapps_penumpang.view.payment.RiwayatActivity;
 import id.co.myproject.angkutapps_penumpang.view.payment.TopupActivity;
 import id.co.myproject.angkutapps_penumpang.view.payment.TransferActivity;
+import id.co.myproject.angkutapps_penumpang.view.tracking.TrackingActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -95,7 +96,7 @@ public class HomeFragment extends Fragment {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.cvDaerah :
-                    Intent intent = new Intent(getActivity(), KeberangkatanActivity.class);
+                    Intent intent = new Intent(getActivity(), TrackingActivity.class);
                     startActivity(intent);
                     break;
                 case R.id.iv_user :

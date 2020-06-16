@@ -2,6 +2,7 @@ package id.co.myproject.angkutapps_penumpang.helper;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
@@ -9,11 +10,34 @@ import android.view.View;
 import android.widget.ScrollView;
 
 public class Utils {
-    public static final String LOGIN_KEY = "login";
+    public static final String LOGIN_KEY = "login_user";
     public static final String NO_HP_USER_KEY = "no_hp_user";
     public static final String LOGIN_STATUS = "status_login";
     public static final int TYPE_SIGN_IN_BUNDLE = 23;
     public static final int TYPE_SIGN_UP_BUNDLE = 24;
+
+
+    public static final String user_passenger_tbl = "PassengerInformation";
+    public static final String user_driver_tbl = "DriversInformation";
+    public static final String driver_tbl = "Drivers";
+    public static final String passenger_tbl = "Passengers";
+    public static final String destination_tbl = "DriverDestination";
+    public static final String passenger_destination_tbl = "PassengerDestination";
+    public static final String pickup_request_tbl = "PickupRequest";
+    public static final String token_tbl = "Tokens";
+
+
+    public static final String mapsApiUrl = "https://maps.googleapis.com";
+    public static final String fcmUrl = "https://fcm.googleapis.com/";
+    public static final String CANCEL_BROADCAST_STRING = "CANCEL_RECEIVER";
+    public static final String ACCEPT_BROADCAST_STRING = "ACCEPT_RECEIVER";
+    public static final String ARRIVED_BRADCAST = "ARRIVED_RECEIVER";
+    public static final String ANGKUT_BRADCAST = "ANGKUT_RECEIVER";
+    public static final String CANCEL_ANGKUT_BRADCAST = "CANCEL_ANGKUT_RECEIVER";
+
+    public static Location mLastLocation = null;
+    public static boolean isDrivenFound = false;
+    public static String driverId = "";
 
     public static String getDayName(int day){
         switch(day){

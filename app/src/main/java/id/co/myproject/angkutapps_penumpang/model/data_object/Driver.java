@@ -1,12 +1,15 @@
 package id.co.myproject.angkutapps_penumpang.model.data_object;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Driver {
-    @SerializedName("id_user")
+public class Driver implements Parcelable {
+    @SerializedName("kode_driver")
     @Expose
-    private String idUser;
+    private String kodeDriver;
 
     @SerializedName("email")
     @Expose
@@ -16,15 +19,11 @@ public class Driver {
     @Expose
     private String nama;
 
-    @SerializedName("ktp")
-    @Expose
-    private String ktp;
-
     @SerializedName("merk_mobil")
     @Expose
     private String merkMobil;
 
-    @SerializedName("plat")
+    @SerializedName("plat_mobil")
     @Expose
     private String plat;
 
@@ -44,25 +43,43 @@ public class Driver {
     @Expose
     private String noHp;
 
-    public Driver(String idUser, String email, String nama, String ktp, String merkMobil, String plat, String jk, String foto, String alamat, String noHp) {
-        this.idUser = idUser;
+    @SerializedName("id_jenis_kendaraan")
+    @Expose
+    private String idJenisKendaraan;
+
+    private String status;
+
+
+    public Driver(String kodeDriver, String email, String nama, String merkMobil, String plat, String jk, String foto, String alamat, String noHp, String idJenisKendaraan) {
+        this.kodeDriver = kodeDriver;
         this.email = email;
         this.nama = nama;
-        this.ktp = ktp;
         this.merkMobil = merkMobil;
         this.plat = plat;
         this.jk = jk;
         this.foto = foto;
         this.alamat = alamat;
         this.noHp = noHp;
+        this.idJenisKendaraan = idJenisKendaraan;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public Driver() {
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public String getIdJenisKendaraan() {
+        return idJenisKendaraan;
+    }
+
+    public void setIdJenisKendaraan(String idJenisKendaraan) {
+        this.idJenisKendaraan = idJenisKendaraan;
+    }
+
+    public String getKodeDriver() {
+        return kodeDriver;
+    }
+
+    public void setKodeDriver(String kodeDriver) {
+        this.kodeDriver = kodeDriver;
     }
 
     public String getEmail() {
@@ -79,14 +96,6 @@ public class Driver {
 
     public void setNama(String nama) {
         this.nama = nama;
-    }
-
-    public String getKtp() {
-        return ktp;
-    }
-
-    public void setKtp(String ktp) {
-        this.ktp = ktp;
     }
 
     public String getMerkMobil() {
@@ -136,4 +145,57 @@ public class Driver {
     public void setNoHp(String noHp) {
         this.noHp = noHp;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.kodeDriver);
+        dest.writeString(this.email);
+        dest.writeString(this.nama);
+        dest.writeString(this.merkMobil);
+        dest.writeString(this.plat);
+        dest.writeString(this.jk);
+        dest.writeString(this.foto);
+        dest.writeString(this.alamat);
+        dest.writeString(this.noHp);
+        dest.writeString(this.idJenisKendaraan);
+        dest.writeString(this.status);
+    }
+
+    protected Driver(Parcel in) {
+        this.kodeDriver = in.readString();
+        this.email = in.readString();
+        this.nama = in.readString();
+        this.merkMobil = in.readString();
+        this.plat = in.readString();
+        this.jk = in.readString();
+        this.foto = in.readString();
+        this.alamat = in.readString();
+        this.noHp = in.readString();
+        this.idJenisKendaraan = in.readString();
+    }
+
+    public static final Creator<Driver> CREATOR = new Creator<Driver>() {
+        @Override
+        public Driver createFromParcel(Parcel source) {
+            return new Driver(source);
+        }
+
+        @Override
+        public Driver[] newArray(int size) {
+            return new Driver[size];
+        }
+    };
 }

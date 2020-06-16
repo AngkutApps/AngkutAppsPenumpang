@@ -23,13 +23,14 @@ public class InputJumlahFragment extends DialogFragment {
 
     EditText etJumlahDewasa, etBarang, etJumlahAnak;
     Button btnNext;
-    String tujuan;
+    String tujuan, city;
     KeberangkatanListener listener;
 
-    public InputJumlahFragment(String tujuan, KeberangkatanListener listener) {
+    public InputJumlahFragment(String tujuan, String city,KeberangkatanListener listener) {
         // Required empty public constructor
         this.tujuan = tujuan;
         this.listener = listener;
+        this.city = city;
     }
 
 
@@ -50,7 +51,7 @@ public class InputJumlahFragment extends DialogFragment {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onFinishedPengisian(tujuan, etJumlahDewasa.getText().toString(), etBarang.getText().toString());
+                listener.onFinishedPengisian(etJumlahDewasa.getText().toString(), etJumlahAnak.getText().toString(), etBarang.getText().toString());
                 dismiss();
             }
         });

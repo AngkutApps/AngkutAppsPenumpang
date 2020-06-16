@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.co.myproject.angkutapps_penumpang">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
-
-<!--    Mantap Djiwa-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -20,16 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.payment.TransferActivity"></activity>
-        <activity android:name=".view.payment.TopupActivity" />
-        <activity android:name=".view.payment.RiwayatActivity" />
-        <activity android:name=".view.profil.ProfilUser" />
-        <activity android:name=".view.tracking.PembayaranActivity" />
-        <activity android:name=".view.profil.PemilihanBahasa" />
-        <activity android:name=".view.profil.KontakDarurat" />
-        <activity android:name=".view.profil.Pengaturan" />
-        <activity android:name=".view.profil.Penjadwalan" />
-        <activity android:name=".view.profil.LokasiDitandai" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,6 +34,19 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".view.tracking.TrackingActivity"
+            android:label="@string/title_activity_tracking"></activity>
+        <activity android:name=".view.payment.TransferActivity" />
+        <activity android:name=".view.payment.TopupActivity" />
+        <activity android:name=".view.payment.RiwayatActivity" />
+        <activity android:name=".view.profil.ProfilUser" />
+        <activity android:name=".view.tracking.PembayaranActivity" />
+        <activity android:name=".view.profil.PemilihanBahasa" />
+        <activity android:name=".view.profil.KontakDarurat" />
+        <activity android:name=".view.profil.Pengaturan" />
+        <activity android:name=".view.profil.Penjadwalan" />
+        <activity android:name=".view.profil.LokasiDitandai" />
+        <activity
             android:name=".view.tracking.KeberangkatanActivity"
             android:label="@string/title_activity_keberangkatan" />
         <activity android:name=".view.login.LoginActivity">
@@ -53,6 +57,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.MainActivity" />
+
+<!--        <service android:name=".service.MyFirebaseIdService">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+        <service android:name=".service.MyFirebaseMessaging">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

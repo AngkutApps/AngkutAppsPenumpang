@@ -28,6 +28,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -70,6 +72,8 @@ public class KonfirmasiEmailFragment extends Fragment{
     String verifCode, noHpUser;
     int type_sign;
 
+    FirebaseDatabase db;
+    DatabaseReference db_passenger;
     ApiRequest apiRequest;
 
     public KonfirmasiEmailFragment() {
@@ -84,6 +88,10 @@ public class KonfirmasiEmailFragment extends Fragment{
     public void onViewCreated( View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         apiRequest = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
+
+
+        db = FirebaseDatabase.getInstance();
+        db_passenger = db.getReference(Utils.user_passenger_tbl);
 
         progressDialog = new ProgressDialog(getActivity());
         sharedPreferences = getActivity().getSharedPreferences(LOGIN_KEY, Context.MODE_PRIVATE);
@@ -329,7 +337,6 @@ public class KonfirmasiEmailFragment extends Fragment{
             public void onCodeAutoRetrievalTimeOut(@NonNull String s) {
                 super.onCodeAutoRetrievalTimeOut(s);
                 progressDialog.dismiss();
-                Toast.makeText(getActivity(), "Sontoloyo : "+s, Toast.LENGTH_SHORT).show();
             }
         };
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -385,11 +392,26 @@ public class KonfirmasiEmailFragment extends Fragment{
                             editor.putString(NO_HP_USER_KEY, noHpUser);
                             editor.putBoolean(LOGIN_STATUS, true);
                             editor.commit();
-                            progressDialog.dismiss();
-                            Toast.makeText(getActivity(), "Selamat Datang", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getActivity(), MainActivity.class);
-                            startActivity(intent);
-                            getActivity().finish();
+                            db_passenger.child(noHpUser)
+                                    .setValue(user)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()){
+                                                progressDialog.dismiss();
+                                                Toast.makeText(getActivity(), "Selamat Datang", Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(getActivity(), MainActivity.class);
+                                                startActivity(intent);
+                                                getActivity().finish();
+                                            }
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getActivity(), ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                         }else {
                             progressDialog.dismiss();
                             Toast.makeText(getActivity(), ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();

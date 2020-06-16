@@ -99,6 +99,7 @@ public class KeberangkatanActivity extends FragmentActivity implements
     Button btnTelpon, btnNext, btnBookNow, btnCancel;
     ProgressBar progressBar;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,7 +137,7 @@ public class KeberangkatanActivity extends FragmentActivity implements
             @Override
             public void onClick(View v) {
                 FragmentManager fm = getSupportFragmentManager();
-                InputJumlahFragment inputJumlahFragment = new InputJumlahFragment(etTujuan.getText().toString(), (KeberangkatanActivity.this::onFinishedPengisian));
+                InputJumlahFragment inputJumlahFragment = new InputJumlahFragment("",etTujuan.getText().toString(), (KeberangkatanActivity.this::onFinishedPengisian));
                 inputJumlahFragment.show(fm, "");
             }
         });
@@ -299,17 +300,17 @@ public class KeberangkatanActivity extends FragmentActivity implements
                             LatLng latLngDriver = new LatLng(mUserMarker.getPosition().latitude, mUserMarker.getPosition().longitude);
                             LatLng latLngUser = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
                             if (latLngDriver.equals(latLngUser)){
-                                ProgressDialog progressDialog = new ProgressDialog(KeberangkatanActivity.this);
-                                progressDialog.setMessage("Proses ...");
-                                progressDialog.show();
-                                Toast.makeText(KeberangkatanActivity.this, "Sudah sampai", Toast.LENGTH_SHORT).show();
-                                DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference("Angkut").child(driver.getIdUser());
-                                driverRef.removeValue();
-                                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Angkut").child(idPenumpang);
-                                userRef.removeValue();
-                                progressDialog.dismiss();
-                                Intent intent = new Intent(KeberangkatanActivity.this, PembayaranActivity.class);
-                                startActivity(intent);
+//                                ProgressDialog progressDialog = new ProgressDialog(KeberangkatanActivity.this);
+//                                progressDialog.setMessage("Proses ...");
+//                                progressDialog.show();
+//                                Toast.makeText(KeberangkatanActivity.this, "Sudah sampai", Toast.LENGTH_SHORT).show();
+//                                DatabaseReference driverRef = FirebaseDatabase.getInstance().getReference("Angkut").child(driver.getIdUser());
+//                                driverRef.removeValue();
+//                                DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Angkut").child(idPenumpang);
+//                                userRef.removeValue();
+//                                progressDialog.dismiss();
+//                                Intent intent = new Intent(KeberangkatanActivity.this, PembayaranActivity.class);
+//                                startActivity(intent);
                             }
                         }
                     }
@@ -425,14 +426,14 @@ public class KeberangkatanActivity extends FragmentActivity implements
     }
 
     @Override
-    public void onFinishedPengisian(String tujuan, String jumlah, String barang) {
+    public void onFinishedPengisian(String jumlahDewasa, String jumlahAnak, String barang) {
         ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Proses ...");
         progressDialog.show();
         Call<Value> callKeberangkatan = apiRequest.inputKeberangkatanRequest(
                 idPenumpang,
                 tujuan,
-                jumlah,
+                jumlahDewasa,
                 barang
         );
         callKeberangkatan.enqueue(new Callback<Value>() {
