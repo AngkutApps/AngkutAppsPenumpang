@@ -1,6 +1,8 @@
 package id.co.myproject.angkutapps_penumpang.view.promo;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -18,6 +20,7 @@ import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadVoucher;
 import id.co.myproject.angkutapps_penumpang.request.request_promo;
 import retrofit2.Call;
@@ -36,6 +39,8 @@ public class PromoFragment extends Fragment {
     List<LoadVoucher> loadBeliVoucher = new ArrayList<>();
 
     ProgressDialog progressDialog;
+
+    SharedPreferences sharedPreferences;
 
     public PromoFragment() {
         // Required empty public constructor
@@ -59,6 +64,8 @@ public class PromoFragment extends Fragment {
 
         rvPromoFragment.setLayoutManager(new LinearLayoutManager(getContext()));
         rvPromoFragment.setHasFixedSize(true);
+
+        sharedPreferences = getActivity().getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
 
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Mohon Tunggu....");
@@ -103,11 +110,13 @@ public class PromoFragment extends Fragment {
     }
 
     public void loadBagianPromo(int i) {
+        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+
         Call<List<LoadVoucher>> call = null;
         if (i==2){
             call = request_promo.getInstance().getApi().getPromoBeliVoucher();
         }else if (i==3){
-            call = request_promo.getInstance().getApi().getPromoVoucherku("82397147928");
+            call = request_promo.getInstance().getApi().getPromoVoucherku(noHpUser);
         }
         call.enqueue(new Callback<List<LoadVoucher>>() {
             @Override

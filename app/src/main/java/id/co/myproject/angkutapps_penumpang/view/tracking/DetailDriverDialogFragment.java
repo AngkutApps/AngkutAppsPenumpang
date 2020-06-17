@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -74,6 +75,7 @@ public class DetailDriverDialogFragment extends DialogFragment {
     Button btnBooking;
     RelativeLayout rvaction;
     LinearLayout lvKonfirmasi;
+    ImageView ivCall, ivMessage;
 
     PerjalananAdapter perjalananAdapter;
     String key, noHpUser;
@@ -163,6 +165,7 @@ public class DetailDriverDialogFragment extends DialogFragment {
         btnBooking = view.findViewById(R.id.btn_booking);
         rvaction = view.findViewById(R.id.rv_action);
         lvKonfirmasi = view.findViewById(R.id.lv_konfirmasi);
+//        Todo : belum diinisilaaba ivCall, ivMessage
 
         tvNamaDriver.setText(driver.getNama());
         if (driver.getJk().equals("L")){
@@ -182,6 +185,21 @@ public class DetailDriverDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 sendRequestToDriver();
+            }
+        });
+        
+        ivCall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                key, noHpUser
+                
+            }
+        });
+        
+        ivMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO: 17/06/2020  
             }
         });
 

@@ -9,10 +9,13 @@ import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.BookingListener;
 import id.co.myproject.angkutapps_penumpang.helper.KeberangkatanListener;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
+import id.co.myproject.angkutapps_penumpang.model.data_object.DetailDestinasi;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Driver;
+import id.co.myproject.angkutapps_penumpang.model.data_object.ListPassenger;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Token;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.GoogleMapApi;
+import id.co.myproject.angkutapps_penumpang.view.tracking.fitur.ShareInfoDriver;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,13 +35,7 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
@@ -70,6 +67,7 @@ import com.google.android.libraries.places.api.model.TypeFilter;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.internal.CheckableImageButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -119,6 +117,8 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     int distance = 1;
     public static final int LIMIT = 3;
 
+    ImageButton btnShareout;
+
     LinearLayout lvPenjemputan, lvDriver, lvInputTujuan, lvPayment, lvActionCall, lvActionShare;
     FloatingActionButton fbBack;
     RelativeLayout rvSearch;
@@ -126,6 +126,8 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     Button btnTelpon, btnNext, btnBookNow, btnCancel;
     EditText etPlaceFrom;
     ProgressBar progressBar;
+
+    String kodeDriver, driverToken, idList;
 
     private BroadcastReceiver mArrivedRceiver = new BroadcastReceiver() {
         @Override
@@ -143,6 +145,10 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             btnCancel.setVisibility(View.GONE);
             tvMencari.setVisibility(View.GONE);
             displayLocation();
+
+            kodeDriver = intent.getStringExtra("kode_driver");
+            driverToken = intent.getStringExtra("driver token");
+            idList = intent.getStringExtra("id_list");
         }
     };
 
@@ -165,6 +171,8 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        btnShareout = findViewById(R.id.btnShareOut);
 
         LocalBroadcastManager.getInstance(this)
                 .registerReceiver(mArrivedRceiver, new IntentFilter(Utils.ARRIVED_BRADCAST));
@@ -299,7 +307,60 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             }
         });
 
+        btnShareout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                DatabaseReference dbDriverData = FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl);
+                dbDriverData.child(kodeDriver).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            Driver driver = dataSnapshot.getValue(Driver.class);
+                            DatabaseReference dbListPassenger = FirebaseDatabase.getInstance().getReference(Utils.list_passenger_tbl);
+                            dbListPassenger.child(kodeDriver).child(idList)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.exists()){
+                                                ListPassenger listPassenger = dataSnapshot.getValue(ListPassenger.class);
+                                                DatabaseReference db = FirebaseDatabase.getInstance().getReference(Utils.passenger_destination_tbl);
+                                                db.child(noHpUser).child(listPassenger.getId_destinasi())
+                                                        .addListenerForSingleValueEvent(new ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                                if (dataSnapshot.exists()){
+                                                                    DetailDestinasi detailDestinasi = dataSnapshot.getValue(DetailDestinasi.class);
+                                                                    ShareInfoDriver sid =  new ShareInfoDriver(TrackingActivity.this, driver, detailDestinasi);
+                                                                    sid.kirimInformasiDriver();
+                                                                }else {
+                                                                    Toast.makeText(getApplicationContext(), "Tidak ada data", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                            }
+                                                        });
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
 
     }
 

@@ -1,6 +1,8 @@
 package id.co.myproject.angkutapps_penumpang.view.profil;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -22,6 +24,7 @@ import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadKontakDarurat;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_kontak_darurat_user;
 import id.co.myproject.angkutapps_penumpang.request.request_tb_kontak_darurat;
@@ -41,6 +44,8 @@ public class KontakDarurat extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,15 +56,18 @@ public class KontakDarurat extends AppCompatActivity {
         rvKontakDarurat = findViewById(R.id.rvKontakDarurat);
         AndroidNetworking.initialize(KontakDarurat.this);
 
+        sharedPreferences = getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Mohon Tunggu....");
 
-        crudKontakDarurat = new tb_kontak_darurat_user(KontakDarurat.this);
+        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+        crudKontakDarurat = new tb_kontak_darurat_user(KontakDarurat.this, noHpUser);
 //        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(KontakDarurat.this);
         rvKontakDarurat.setLayoutManager(new LinearLayoutManager(KontakDarurat.this));
         rvKontakDarurat.setHasFixedSize(true);
         progressDialog.show();
-        readData();
+        readData(noHpUser);
 
         appbar_button_back.setOnClickListener(clickListener);
         cvTambahKontakDarurat.setOnClickListener(clickListener);
@@ -95,8 +103,8 @@ public class KontakDarurat extends AppCompatActivity {
         fragment.show(fragmentTransaction, "dialog");
     }
 
-    public void readData() {
-        Call<List<LoadKontakDarurat>> call = request_tb_kontak_darurat.getInstance().getApi().getKontakDarurat("82397147928");
+    public void readData(String noHpUser) {
+        Call<List<LoadKontakDarurat>> call = request_tb_kontak_darurat.getInstance().getApi().getKontakDarurat(noHpUser);
         call.enqueue(new Callback<List<LoadKontakDarurat>>() {
             @Override
             public void onResponse(Call<List<LoadKontakDarurat>> call, Response<List<LoadKontakDarurat>> response) {

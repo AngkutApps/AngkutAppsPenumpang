@@ -1,6 +1,8 @@
 package id.co.myproject.angkutapps_penumpang.view.riwayat;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +20,7 @@ import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.*;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadVoucher;
 import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_voucher_penggunaan;
 import id.co.myproject.angkutapps_penumpang.request.request_promo;
@@ -34,6 +37,7 @@ public class RiwayatVoucherFragment extends Fragment {
     List<LoadVoucher> listPembelian = new ArrayList<>();
     List<loadView_rw_voucher_penggunaan> listPenggunaan = new ArrayList<>();
     rv_rw_voucher_penggunaan voucherPenggunaanAdapter;
+    SharedPreferences sharedPreferences;
 
     ProgressDialog progressDialog;
 
@@ -48,6 +52,8 @@ public class RiwayatVoucherFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        sharedPreferences = getActivity().getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
 
         tvPenggunaan = view.findViewById(R.id.tvPenggunaan);
         tvPembelian = view.findViewById(R.id.tvPembelian);
@@ -98,7 +104,8 @@ public class RiwayatVoucherFragment extends Fragment {
     }
 
     public void loadPenggunaanVoucher() {
-        Call<List<loadView_rw_voucher_penggunaan>> call = request_riwayat.getInstance().getApi().getRiwayatPenggunaanVoucher("82397147928");
+        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+        Call<List<loadView_rw_voucher_penggunaan>> call = request_riwayat.getInstance().getApi().getRiwayatPenggunaanVoucher(noHpUser);
         call.enqueue(new Callback<List<loadView_rw_voucher_penggunaan>>() {
             @Override
             public void onResponse(Call<List<loadView_rw_voucher_penggunaan>> call, Response<List<loadView_rw_voucher_penggunaan>> response) {
@@ -117,7 +124,8 @@ public class RiwayatVoucherFragment extends Fragment {
     }
 
     public void loadPembelianPromo() {
-        Call<List<LoadVoucher>> call = request_riwayat.getInstance().getApi().getRiwayatPembelianVoucher("82397147928");
+        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+        Call<List<LoadVoucher>> call = request_riwayat.getInstance().getApi().getRiwayatPembelianVoucher(noHpUser);
         call.enqueue(new Callback<List<LoadVoucher>>() {
             @Override
             public void onResponse(Call<List<LoadVoucher>> call, Response<List<LoadVoucher>> response) {

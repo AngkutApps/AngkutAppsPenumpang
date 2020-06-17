@@ -1,6 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.crud_riwayat;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadVoucher;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Value;
@@ -39,6 +41,8 @@ public class rv_rw_voucher_pembelian extends RecyclerView.Adapter<rv_rw_voucher_
     Context context;
     List<LoadVoucher> load_pembelian_voucher;
 
+    SharedPreferences sharedPreferences;
+
     crud_riwayat crudRiwayat;
 
     public rv_rw_voucher_pembelian(Context context, List<LoadVoucher> load_pembelian_voucher) {
@@ -49,6 +53,7 @@ public class rv_rw_voucher_pembelian extends RecyclerView.Adapter<rv_rw_voucher_
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.rv_rw_voucher_pembelian, null);
+        sharedPreferences = context.getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
         crudRiwayat = new crud_riwayat(context);
         AndroidNetworking.initialize(context);
         return new ViewHolder(v);
@@ -93,7 +98,8 @@ public class rv_rw_voucher_pembelian extends RecyclerView.Adapter<rv_rw_voucher_
         holder.btnConfig.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupmenu(v, load_pembelian_voucher.get(position).getId_pembelian_voucher());
+                String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+                popupmenu(v, load_pembelian_voucher.get(position).getId_pembelian_voucher(), noHpUser);
             }
         });
 
@@ -125,13 +131,13 @@ public class rv_rw_voucher_pembelian extends RecyclerView.Adapter<rv_rw_voucher_
         }
     }
 
-    private void popupmenu(View v, int getId){
+    private void popupmenu(View v, int getId, String no_hp){
         PopupMenu popupMenu = new PopupMenu(v.getContext(), v);
         popupMenu.inflate(R.menu.popup_menu);
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                crudRiwayat.deleteVoucherPembelian(""+getId, "82397147928");
+                crudRiwayat.deleteVoucherPembelian(""+getId, no_hp);
 //                hapusRiwayat(getId);
                 return false;
             }

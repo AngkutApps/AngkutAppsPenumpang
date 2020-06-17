@@ -25,6 +25,7 @@ public class Utils {
     public static final String passenger_destination_tbl = "PassengerDestination";
     public static final String pickup_request_tbl = "PickupRequest";
     public static final String token_tbl = "Tokens";
+    public static final String list_passenger_tbl = "ListPassenger";
 
 
     public static final String mapsApiUrl = "https://maps.googleapis.com";
