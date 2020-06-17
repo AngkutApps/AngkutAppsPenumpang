@@ -233,10 +233,12 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center">
-                <ImageView
+                <ImageButton
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:id="@+id/btnLapor"
                     android:src="@drawable/ic_flag_black_24dp"/>
+
                 <ImageButton
                     android:layout_marginLeft="20dp"
                     android:layout_width="30dp"
