@@ -1,6 +1,8 @@
 package id.co.myproject.angkutapps_penumpang.view.promo.dialog_fragment;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -25,6 +27,7 @@ import java.util.List;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.rv_list_sk;
 import id.co.myproject.angkutapps_penumpang.adapter.rv_promo_beli_voucher;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_promo_voucherku;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_rw_pembelian_voucher_user;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadSKVoucher;
@@ -52,6 +55,8 @@ public class df_beli_voucher extends DialogFragment {
     String kode_voucher, nama_voucher, masa_berlaku;
     int harga, point;
     String deskripsi, foto_url;
+
+    SharedPreferences sharedPreferences;
 
     public df_beli_voucher(String kode_voucher, String nama_voucher, String masa_berlaku, int harga, int point, String deskripsi, String foto_url) {
         this.kode_voucher = kode_voucher;
@@ -92,6 +97,8 @@ public class df_beli_voucher extends DialogFragment {
         tvPoint.setText(String.valueOf(point));
         tvDeskripsiPromo.setText(deskripsi);
 
+        sharedPreferences = getActivity().getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
+
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Mohon Tunggu....");
 
@@ -114,7 +121,8 @@ public class df_beli_voucher extends DialogFragment {
                     df_beli_voucher.super.onDestroyView();
                     break;
                 case R.id.btnBeliVoucher :
-                    tablePromoVoucherku.insertBeliVoucher(kode_voucher, "82397147928");
+                    String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+                    tablePromoVoucherku.insertBeliVoucher(kode_voucher, noHpUser);
                     progress_bar();
                     df_beli_voucher.super.onStop();
                     df_beli_voucher.super.onDestroyView();
@@ -159,7 +167,8 @@ public class df_beli_voucher extends DialogFragment {
             @Override
             public void run() {
                 progressDialog.dismiss();
-                tablePembelianVoucher.insertBeliVoucher(kode_voucher, "82397147928");
+                String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+                tablePembelianVoucher.insertBeliVoucher(kode_voucher, noHpUser);
             }
         },2000);
     }

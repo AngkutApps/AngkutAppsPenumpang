@@ -1,5 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +15,7 @@ import androidx.fragment.app.DialogFragment;
 import com.androidnetworking.AndroidNetworking;
 
 import id.co.myproject.angkutapps_penumpang.R;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_kontak_darurat_user;
 
 public class Df_TambahKontakDarurat extends DialogFragment {
@@ -20,6 +23,8 @@ public class Df_TambahKontakDarurat extends DialogFragment {
     EditText namaKontak, hubunganKontak, nomorKontak;
     Button btnSaveKontak;
     tb_kontak_darurat_user crudKontakDarurat;
+
+    SharedPreferences sharedPreferences;
 
     int kondisi = 0;
 
@@ -35,7 +40,9 @@ public class Df_TambahKontakDarurat extends DialogFragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        crudKontakDarurat = new tb_kontak_darurat_user(getContext());
+        sharedPreferences = getActivity().getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
+        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+        crudKontakDarurat = new tb_kontak_darurat_user(getContext(), noHpUser);
 
         namaKontak = view.findViewById(R.id.etNamaKontakDarurat);
         hubunganKontak = view.findViewById(R.id.etHubunganKontak);

@@ -1,6 +1,7 @@
 package id.co.myproject.angkutapps_penumpang.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -23,6 +24,7 @@ import com.androidnetworking.AndroidNetworking;
 import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadKontakDarurat;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_kontak_darurat_user;
 import id.co.myproject.angkutapps_penumpang.view.profil.dialog_fragment.Df_TambahKontakDarurat;
@@ -34,6 +36,8 @@ public class rv_profil_kontak_darurat extends RecyclerView.Adapter<rv_profil_kon
     String nomorKontak;
     tb_kontak_darurat_user crudKontakDarurat;
 
+    SharedPreferences sharedPreferences;
+
     public rv_profil_kontak_darurat(Context context, List<LoadKontakDarurat> kontakDarurat) {
         this.context = context;
         this.kontakDarurat = kontakDarurat;
@@ -42,7 +46,9 @@ public class rv_profil_kontak_darurat extends RecyclerView.Adapter<rv_profil_kon
     @Override
     public rv_profil_kontak_darurat.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.frame_kontak_darurat, null);
-        crudKontakDarurat = new tb_kontak_darurat_user(context);
+        sharedPreferences = context.getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
+        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+        crudKontakDarurat = new tb_kontak_darurat_user(context, noHpUser);
         AndroidNetworking.initialize(context);
         return new ViewHolder(v);
     }

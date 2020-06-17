@@ -1,6 +1,8 @@
 package id.co.myproject.angkutapps_penumpang.view.riwayat;
 
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import java.util.List;
 
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.rv_rw_perjalanan;
+import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_perjalanan_user;
 import id.co.myproject.angkutapps_penumpang.request.request_riwayat;
 import retrofit2.Call;
@@ -32,6 +35,8 @@ public class RiwayatPerjalananFragment extends Fragment {
 //    progress_bar_custom progressBar;
 
     ProgressDialog progressDialog;
+
+    SharedPreferences sharedPreferences;
 
     public RiwayatPerjalananFragment() {
 
@@ -51,6 +56,8 @@ public class RiwayatPerjalananFragment extends Fragment {
         rvRiwayat = view.findViewById(R.id.rvPembayaran);
         rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext()));
         rvRiwayat.setHasFixedSize(true);
+
+        sharedPreferences = getActivity().getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
 
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Mohon Tunggu....");
@@ -107,11 +114,12 @@ public class RiwayatPerjalananFragment extends Fragment {
     }
 
     public void readData(int i) {
+        String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
         Call<List<loadView_rw_perjalanan_user>> call = null;
         if (i==1){
-            call = request_riwayat.getInstance().getApi().getRiwayatPembayaranTunai("82397147928");
+            call = request_riwayat.getInstance().getApi().getRiwayatPembayaranTunai(noHpUser);
         }else if (i==2){
-            call = request_riwayat.getInstance().getApi().getRiwayatPembayaranElektronik("82397147928");
+            call = request_riwayat.getInstance().getApi().getRiwayatPembayaranElektronik(noHpUser);
         }
         call.enqueue(new Callback<List<loadView_rw_perjalanan_user>>() {
             @Override

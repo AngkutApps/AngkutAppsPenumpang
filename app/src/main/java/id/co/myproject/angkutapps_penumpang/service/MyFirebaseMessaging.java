@@ -54,8 +54,12 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
                 Log.e("DITERIMA", "onMessageReceived: KODE DRIVER : "+kodeDriver);
             }else if(title.equals("Angkut")){
                 String driverToken = data.get("driver_token");
+                String kodeDriver = data.get("kode_driver");
+                String idList = data.get("id_list");
                 Intent intent = new Intent(Utils.ANGKUT_BRADCAST);
                 intent.putExtra("driver_token", driverToken);
+                intent.putExtra("kode_driver", kodeDriver);
+                intent.putExtra("id_list", idList);
                 LocalBroadcastManager.getInstance(MyFirebaseMessaging.this)
                         .sendBroadcast(intent);
 

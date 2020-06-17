@@ -237,10 +237,11 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/ic_flag_black_24dp"/>
-                <ImageView
+                <ImageButton
                     android:layout_marginLeft="20dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:id="@+id/btnShareOut"
                     android:src="@drawable/ic_share_black_24dp"/>
             </LinearLayout>
         </LinearLayout>

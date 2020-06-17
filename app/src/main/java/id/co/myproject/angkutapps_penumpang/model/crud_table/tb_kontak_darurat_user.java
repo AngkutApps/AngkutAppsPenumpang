@@ -13,14 +13,16 @@ import org.json.JSONObject;
 public class tb_kontak_darurat_user {
 
     private Context context;
+    private String no_hp;
 
-    public tb_kontak_darurat_user(Context context) {
+    public tb_kontak_darurat_user(Context context, String no_hp) {
         this.context = context;
+        this.no_hp = no_hp;
     }
 
     public void tambahKontakDarurat(String nama, String hubungan, String nomor){
         AndroidNetworking.post("http://angkutapps.com/angkut_api/insert_kontak_darurat_user.php")
-                .addBodyParameter("no_hp", "82397147928")
+                .addBodyParameter("no_hp", no_hp)
                 .addBodyParameter("nama_kontak", nama)
                 .addBodyParameter("hubungan_kontak", hubungan)
                 .addBodyParameter("nomor_kontak_darurat", nomor)
@@ -59,7 +61,7 @@ public class tb_kontak_darurat_user {
 
     public void updateKontakDarurat(String nama, String hubungan, String nomor){
         AndroidNetworking.post("http://angkutapps.com/angkut_api/update_kontak_darurat_user.php")
-                .addBodyParameter("no_hp", "82397147928")
+                .addBodyParameter("no_hp", no_hp)
                 .addBodyParameter("nama_kontak", nama)
                 .addBodyParameter("hubungan_kontak", hubungan)
                 .addBodyParameter("nomor_kontak_darurat", nomor)
