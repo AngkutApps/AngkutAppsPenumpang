@@ -9,6 +9,7 @@ import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.BookingListener;
 import id.co.myproject.angkutapps_penumpang.helper.KeberangkatanListener;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
+import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_lapor;
 import id.co.myproject.angkutapps_penumpang.model.data_object.DetailDestinasi;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Driver;
 import id.co.myproject.angkutapps_penumpang.model.data_object.ListPassenger;
@@ -32,6 +33,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
@@ -117,7 +119,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     int distance = 1;
     public static final int LIMIT = 3;
 
-    ImageButton btnShareout;
+    ImageButton btnShareout, btnLapor;
+
+    ProgressDialog progressDialog;
 
     LinearLayout lvPenjemputan, lvDriver, lvInputTujuan, lvPayment, lvActionCall, lvActionShare;
     FloatingActionButton fbBack;
@@ -173,6 +177,10 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         mapFragment.getMapAsync(this);
 
         btnShareout = findViewById(R.id.btnShareOut);
+        btnLapor = findViewById(R.id.btnLapor);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Proses ...");
 
         LocalBroadcastManager.getInstance(this)
                 .registerReceiver(mArrivedRceiver, new IntentFilter(Utils.ARRIVED_BRADCAST));
@@ -304,6 +312,22 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             @Override
             public void onClick(View v) {
                 saveDataPerjalanan();
+            }
+        });
+
+        btnLapor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tb_lapor tbl = new tb_lapor(TrackingActivity.this);
+                progressDialog.show();
+                Handler hnd = new Handler();
+                hnd.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                        tbl.insertBeliVoucher(noHpUser, kodeDriver);
+                    }
+                }, 1000);
             }
         });
 
@@ -751,8 +775,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         this.jumlahDewasa = jumlahDewasa;
         this.jumlahAnak = jumlahAnak;
         this.jumlahBarang = barang;
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Proses ...");
         progressDialog.show();
         String origin = from.replace(" ", "+");
         String dest = destination.replace(" ", "+");
@@ -810,8 +832,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
 
     private void saveDataPerjalanan() {
-        ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Proses ...");
         progressDialog.show();
         Map<String, Object> destinationPassanger = new HashMap<>();
         Map<String, Object> jumlahOrang = new HashMap<>();

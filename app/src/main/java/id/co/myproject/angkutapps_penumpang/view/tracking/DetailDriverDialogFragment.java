@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -75,7 +76,7 @@ public class DetailDriverDialogFragment extends DialogFragment {
     Button btnBooking;
     RelativeLayout rvaction;
     LinearLayout lvKonfirmasi;
-    ImageView ivCall, ivMessage;
+    ImageButton ivCall, ivMessage;
 
     PerjalananAdapter perjalananAdapter;
     String key, noHpUser;
@@ -165,6 +166,8 @@ public class DetailDriverDialogFragment extends DialogFragment {
         btnBooking = view.findViewById(R.id.btn_booking);
         rvaction = view.findViewById(R.id.rv_action);
         lvKonfirmasi = view.findViewById(R.id.lv_konfirmasi);
+        ivCall = view.findViewById(R.id.iv_call);
+        ivMessage = view.findViewById(R.id.iv_messsage);
 //        Todo : belum diinisilaaba ivCall, ivMessage
 
         tvNamaDriver.setText(driver.getNama());

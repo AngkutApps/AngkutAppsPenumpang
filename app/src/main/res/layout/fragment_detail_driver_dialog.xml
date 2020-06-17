@@ -75,7 +75,7 @@
         android:id="@+id/rv_action"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_messsage"
             android:layout_alignParentLeft="true"
             android:layout_width="30dp"
@@ -83,7 +83,7 @@
             android:src="@drawable/ic_message_black_24dp"
             android:background="@drawable/bg_circle"
             android:padding="5dp"/>
-        <ImageView
+        <ImageButton
             android:id="@+id/iv_call"
             android:layout_alignParentRight="true"
             android:layout_width="30dp"
