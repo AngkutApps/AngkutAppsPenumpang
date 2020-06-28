@@ -17,9 +17,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import de.hdodenhof.circleimageview.CircleImageView;
+import id.co.myproject.angkutapps_penumpang.BuildConfig;
+import id.co.myproject.angkutapps_penumpang.model.data_object.User;
 import id.co.myproject.angkutapps_penumpang.view.tracking.KeberangkatanActivity;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
@@ -30,6 +35,9 @@ import id.co.myproject.angkutapps_penumpang.view.payment.RiwayatActivity;
 import id.co.myproject.angkutapps_penumpang.view.payment.TopupActivity;
 import id.co.myproject.angkutapps_penumpang.view.payment.TransferActivity;
 import id.co.myproject.angkutapps_penumpang.view.tracking.TrackingActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -43,6 +51,7 @@ public class HomeFragment extends Fragment {
     RelativeLayout rvSaldoOvo;
 
     CircleImageView iv_profil;
+    TextView tvProfil;
     CardView cvDaerah;
     SharedPreferences sharedPreferences;
     ApiRequest apiRequest;
@@ -75,6 +84,7 @@ public class HomeFragment extends Fragment {
 
         cvDaerah = view.findViewById(R.id.cvDaerah);
         iv_profil = view.findViewById(R.id.iv_user);
+        tvProfil = view.findViewById(R.id.tv_profil);
         rvSaldoOvo = view.findViewById(R.id.rvSaldoOvo);
         tvPengaturanSaldo = view.findViewById(R.id.btnPengaturanOvo);
         linearBayar = view.findViewById(R.id.linearBayar);
@@ -89,6 +99,12 @@ public class HomeFragment extends Fragment {
         linearRewards.setOnClickListener(clickListener);
         linearIsiUlang.setOnClickListener(clickListener);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadData();
     }
 
     public View.OnClickListener clickListener = new View.OnClickListener() {
@@ -122,5 +138,36 @@ public class HomeFragment extends Fragment {
             }
         }
     };
+
+    private void loadData(){
+        Call<User> userCall = apiRequest.penumpangByIdRequest(idPenumpang);
+        userCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()){
+                    User user = response.body();
+                    int fotoUser;
+                    if(user.getFoto().equals("")){
+                        if (user.getJk().equals("L")){
+                            fotoUser = R.drawable.person_male;
+                        }else {
+                            fotoUser = R.drawable.person_female;
+                        }
+                        Glide.with(getActivity()).load(fotoUser)
+                                .into(iv_profil);
+                    }else {
+                        Glide.with(getActivity()).load(BuildConfig.BASE_URL_GAMBAR+"profil/"+user.getFoto())
+                                .into(iv_profil);
+                    }
+                    tvProfil.setText(user.getNama());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

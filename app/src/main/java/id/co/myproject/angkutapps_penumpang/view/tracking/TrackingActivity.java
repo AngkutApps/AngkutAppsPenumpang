@@ -213,7 +213,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         updateFirebaseToken();
 
         if (!Places.isInitialized()) {
-            Places.initialize(this, getString(R.string.google_api_key));
+            Places.initialize(this, getString(R.string.browser_api_key));
         }
 
         placeTo = (AutocompleteSupportFragment) getSupportFragmentManager().findFragmentById(R.id.place_to);

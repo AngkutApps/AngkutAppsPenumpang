@@ -44,20 +44,40 @@
 
     </FrameLayout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgProfil"
-        android:layout_width="95dp"
-        android:layout_height="95dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_profil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/frameHeader"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="-42dp"
-        android:layout_marginBottom="7dp"
-        android:src="@drawable/bg_horizontal" />
+        android:layout_marginBottom="7dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_user"
+            android:layout_width="95dp"
+            android:layout_height="95dp"
+            android:src="@drawable/bg_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/iv_camera"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="5dp"
+            android:tint="@android:color/white"
+            android:src="@drawable/ic_camera_alt_black_24dp"
+            android:background="@drawable/button_white"
+            android:backgroundTint="@color/colorPrimaryDark"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_user"
+            app:layout_constraintEnd_toEndOf="@+id/iv_user" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imgProfil"
+        android:layout_below="@id/cl_profil"
         android:id="@+id/layoutInfoUser"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="8dp"
@@ -65,6 +85,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -73,6 +94,7 @@
             android:textSize="19sp" />
 
         <TextView
+            android:id="@+id/tv_jk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -106,6 +128,8 @@
                 android:text="+62"/>
 
             <EditText
+                android:enabled="false"
+                android:id="@+id/et_nomor_hp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -125,6 +149,7 @@
             />
 
         <EditText
+            android:id="@+id/et_alamat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
@@ -135,6 +160,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/btn_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

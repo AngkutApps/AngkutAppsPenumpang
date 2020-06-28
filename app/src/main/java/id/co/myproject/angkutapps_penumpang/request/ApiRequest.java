@@ -3,6 +3,7 @@ package id.co.myproject.angkutapps_penumpang.request;
 import id.co.myproject.angkutapps_penumpang.model.data_object.DataMessage;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Driver;
 import id.co.myproject.angkutapps_penumpang.model.data_object.FCMResponse;
+import id.co.myproject.angkutapps_penumpang.model.data_object.User;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Value;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -33,6 +34,11 @@ public interface ApiRequest {
             @Field("barang") String barang
     );
 
+    @POST("edit_profil.php")
+    Call<Value> editProfilRequest(
+            @Body User user
+    );
+
     @FormUrlEncoded
     @POST("cek_no_hp.php")
     Call<Value> cekNoHpRequest(
@@ -54,6 +60,11 @@ public interface ApiRequest {
     @GET("tampil_driver.php")
     Call<Driver> driverByIdRequest(
             @Query("id_user") String idUser
+    );
+
+    @GET("tampil_penumpang.php")
+    Call<User> penumpangByIdRequest(
+            @Query("no_hp") String nohp
     );
 
 //    GoogleMapsApi
