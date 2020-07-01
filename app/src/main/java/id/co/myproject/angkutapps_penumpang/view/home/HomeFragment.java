@@ -153,10 +153,10 @@ public class HomeFragment extends Fragment {
                         }else {
                             fotoUser = R.drawable.person_female;
                         }
-                        Glide.with(getActivity()).load(fotoUser)
+                        Glide.with(getActivity().getApplicationContext()).load(fotoUser)
                                 .into(iv_profil);
                     }else {
-                        Glide.with(getActivity()).load(BuildConfig.BASE_URL_GAMBAR+"profil/"+user.getFoto())
+                        Glide.with(getActivity().getApplicationContext()).load(BuildConfig.BASE_URL_GAMBAR+"profil/"+user.getFoto())
                                 .into(iv_profil);
                     }
                     tvProfil.setText(user.getNama());
