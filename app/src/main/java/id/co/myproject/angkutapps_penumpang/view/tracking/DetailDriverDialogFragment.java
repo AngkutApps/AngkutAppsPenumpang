@@ -43,7 +43,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -58,6 +60,7 @@ import id.co.myproject.angkutapps_penumpang.model.data_object.FCMResponse;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Token;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.FCMClient;
+import id.co.myproject.angkutapps_penumpang.view.tracking.dialog_fragment.Df_chat;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -202,7 +205,8 @@ public class DetailDriverDialogFragment extends DialogFragment {
         ivMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 17/06/2020  
+                // TODO: 17/06/2020
+                setFragment(new Df_chat(driver.getNoHp()));
             }
         });
 
@@ -282,5 +286,16 @@ public class DetailDriverDialogFragment extends DialogFragment {
         super.onPause();
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mOrderReceiver);
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mCancelOrderReceiver);
+    }
+
+    private void setFragment(DialogFragment fragment){
+//        FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment prev = fragmentManager.findFragmentByTag("dialog");
+        if (prev !=null){
+            fragmentTransaction.remove(prev);
+        }
+        fragment.show(fragmentTransaction, "dialog");
     }
 }

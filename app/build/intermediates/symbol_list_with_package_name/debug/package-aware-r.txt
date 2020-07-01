@@ -1933,6 +1933,7 @@ drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_arrow_back
 drawable ic_arrow_back_black_24dp
+drawable ic_baseline_send_24
 drawable ic_call_black_24dp
 drawable ic_camera_alt_black_24dp
 drawable ic_car
@@ -2126,6 +2127,7 @@ id buttonPanel
 id button_back
 id cancel_action
 id cancel_button
+id carView_pesan
 id center
 id center_horizontal
 id center_vertical
@@ -2199,6 +2201,7 @@ id etKonfirOTP6
 id etLokasiNomor
 id etNamaKontakDarurat
 id etNomorHp
+id etPesan
 id et_alamat
 id et_barang
 id et_confirm_password
@@ -2252,9 +2255,11 @@ id iconNext3
 id iconNext4
 id iconNext5
 id icon_group
+id icon_message
 id icon_only
 id ifRoom
 id image
+id imgButtonSend
 id imgClose
 id imgKonfirmasiEmail
 id imgLupaPassword
@@ -2438,6 +2443,7 @@ id rvFragmentLupaPassword
 id rvKontakDarurat
 id rvListMenuProfil
 id rvPembayaran
+id rvPesan
 id rvPromo
 id rvPromoFragment
 id rvRiwayatDana
@@ -2620,10 +2626,12 @@ id tv_merk_mobil
 id tv_mobil_driver
 id tv_nama_driver
 id tv_ongkos
+id tv_pesan
 id tv_plat
 id tv_plat_driver
 id tv_profil
 id tv_registrasi
+id tv_tanggal
 id tv_tujuan
 id tv_user
 id tv_waktu
@@ -2763,9 +2771,11 @@ layout frame_dd_topup_atm
 layout frame_detail_riwayat
 layout frame_kontak_darurat
 layout frame_list_menu_profil
+layout frame_list_pesan
 layout frame_list_sk
 layout frame_lupa_password_email
 layout frame_lupa_password_nomorhp
+layout frame_messaging
 layout frame_pembelian_promo
 layout frame_promo_beli_voucher
 layout frame_promo_voucherku

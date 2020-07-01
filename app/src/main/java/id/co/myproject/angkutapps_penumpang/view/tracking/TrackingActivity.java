@@ -2,8 +2,11 @@ package id.co.myproject.angkutapps_penumpang.view.tracking;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.BookingListener;
@@ -16,6 +19,7 @@ import id.co.myproject.angkutapps_penumpang.model.data_object.ListPassenger;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Token;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.GoogleMapApi;
+import id.co.myproject.angkutapps_penumpang.view.tracking.dialog_fragment.Df_chat;
 import id.co.myproject.angkutapps_penumpang.view.tracking.fitur.ShareInfoDriver;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -130,6 +134,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     Button btnTelpon, btnNext, btnBookNow, btnCancel;
     EditText etPlaceFrom;
     ProgressBar progressBar;
+    ImageView icon_message;
 
     String kodeDriver, driverToken, idList;
 
@@ -176,6 +181,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        icon_message = findViewById(R.id.icon_message);
         btnShareout = findViewById(R.id.btnShareOut);
         btnLapor = findViewById(R.id.btnLapor);
 
@@ -767,6 +773,13 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
         buildLocationCallback();
         buildLocationRequest();
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            }, MY_PERMISSION_REQUEST_CODE);
+        }
         fusedLocationProviderClient.requestLocationUpdates(mLocationReqeust, locationCallback, Looper.myLooper());
     }
 
@@ -830,6 +843,18 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case MY_PERMISSION_REQUEST_CODE:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    buildLocationCallback();
+                    buildLocationRequest();
+                    displayLocation();
+                }
+        }
+    }
 
     private void saveDataPerjalanan() {
         progressDialog.show();
@@ -884,6 +909,14 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     lvPenjemputan.setVisibility(View.VISIBLE);
                     btnNext.setVisibility(View.GONE);
                     btnCancel.setVisibility(View.VISIBLE);
+
+                    icon_message.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            setFragment(new Df_chat(driverData.getNoHp()));
+                        }
+                    });
+
                 }
             }
 
@@ -901,5 +934,16 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mArrivedRceiver);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mAngkutReceiver);
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mCancelAngkut);
+    }
+
+    private void setFragment(DialogFragment fragment){
+//        FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment prev = fragmentManager.findFragmentByTag("dialog");
+        if (prev !=null){
+            fragmentTransaction.remove(prev);
+        }
+        fragment.show(fragmentTransaction, "dialog");
     }
 }
