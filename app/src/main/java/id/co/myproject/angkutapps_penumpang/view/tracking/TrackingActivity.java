@@ -2,11 +2,8 @@ package id.co.myproject.angkutapps_penumpang.view.tracking;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.BookingListener;
@@ -19,7 +16,6 @@ import id.co.myproject.angkutapps_penumpang.model.data_object.ListPassenger;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Token;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.GoogleMapApi;
-import id.co.myproject.angkutapps_penumpang.view.tracking.dialog_fragment.Df_chat;
 import id.co.myproject.angkutapps_penumpang.view.tracking.fitur.ShareInfoDriver;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -58,6 +54,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -95,12 +92,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class TrackingActivity extends FragmentActivity implements OnMapReadyCallback , KeberangkatanListener, BookingListener {
+public class TrackingActivity extends FragmentActivity implements OnMapReadyCallback , KeberangkatanListener, BookingListener, ValueEventListener {
+
+    private static final String TAG = "TrackingActivity";
 
     private static final int MY_PERMISSION_REQUEST_CODE = 732;
     private GoogleMap mMap;
-    public static final int UPDATE_INTERVAL = 5900;
-    public static final int FASTEST_INTERVAL = 3000;
+    public static final int UPDATE_INTERVAL = 0;
+    public static final int FASTEST_INTERVAL = 0;
     public static final int DISPLACEMENT = 10;
 
     SharedPreferences sharedPreferences;
@@ -134,9 +133,12 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     Button btnTelpon, btnNext, btnBookNow, btnCancel;
     EditText etPlaceFrom;
     ProgressBar progressBar;
-    ImageView icon_message;
 
     String kodeDriver, driverToken, idList;
+    List<String> kodeDriverList;
+    boolean driverTracking = false;
+    //    Presense System
+    DatabaseReference driversAvailable;
 
     private BroadcastReceiver mArrivedRceiver = new BroadcastReceiver() {
         @Override
@@ -181,7 +183,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        icon_message = findViewById(R.id.icon_message);
         btnShareout = findViewById(R.id.btnShareOut);
         btnLapor = findViewById(R.id.btnLapor);
 
@@ -250,7 +251,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 try {
                     LatLng latLng = place.getLatLng();
                     addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
-                    city = addresses.get(0).getLocality();
+                    city = addresses.get(0).getSubAdminArea();
                     placeTo.setHint(destination);
                     etPlace.setText(destination);
                 } catch (IOException e) {
@@ -296,6 +297,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     }
                 }else if(btnNext.getText().equals("Cancel")){
                     rvSearch.setVisibility(View.GONE);
+                    Utils.isDrivenFound = false;
                     btnNext.setText("Cari Driver");
                 }
             }
@@ -432,7 +434,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     }
 
     private void findDriver() {
-        List<String> kodeDriver = loadKodeDriver();
         DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference(Utils.driver_tbl);
         GeoFire gf = new GeoFire(driverLocation);
         GeoQuery geoQuery = gf.queryAtLocation(new GeoLocation(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()), radius);
@@ -441,39 +442,47 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
                 if (!Utils.isDrivenFound){
-                    if (kodeDriver.contains(key)) {
-                        DatabaseReference dbDriverInfo = FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl);
-                        dbDriverInfo.child(key)
-                                .addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.exists()){
-                                            Driver driver = dataSnapshot.getValue(Driver.class);
-                                            if(driver.getStatus().equals("0")) {
+                    if (kodeDriverList.size() > 0) {
+                        if (kodeDriverList.contains(key)) {
+                            DatabaseReference dbDriverInfo = FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl);
+                            dbDriverInfo.child(key)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.exists()) {
+                                                Driver driver = dataSnapshot.getValue(Driver.class);
+                                                if (driver.getStatus().equals("0")) {
+                                                    rvSearch.setVisibility(View.GONE);
+                                                    Utils.isDrivenFound = true;
+                                                    Utils.driverId = key;
+                                                    btnNext.setText("Cancel");
+                                                    FragmentManager fm = getSupportFragmentManager();
+                                                    DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
+                                                    detailDriverDialogFragment.show(fm, "");
+                                                } else {
+                                                    rvSearch.setVisibility(View.GONE);
+                                                    btnNext.setText("Cari Driver");
+                                                    Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
+                                                }
+                                            } else {
                                                 rvSearch.setVisibility(View.GONE);
-                                                Utils.isDrivenFound = true;
-                                                Utils.driverId = key;
-                                                btnNext.setText("Cancel");
-                                                FragmentManager fm = getSupportFragmentManager();
-                                                DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
-                                                detailDriverDialogFragment.show(fm, "");
-                                            }else {
-                                                rvSearch.setVisibility(View.GONE);
+                                                Utils.isDrivenFound = false;
                                                 btnNext.setText("Cari Driver");
                                                 Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                                             }
-                                        }else {
-                                            rvSearch.setVisibility(View.GONE);
-                                            btnNext.setText("Cari Driver");
-                                            Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                                         }
-                                    }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                    }
-                                });
+                                        }
+                                    });
+                        }
+                    }else {
+                        rvSearch.setVisibility(View.GONE);
+                        Utils.isDrivenFound = false;
+                        btnNext.setText("Cari Driver");
+                        Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -495,6 +504,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     findDriver();
                 }else {
                     if (!Utils.isDrivenFound){
+                        rvSearch.setVisibility(View.GONE);
+                        Utils.isDrivenFound = false;
+                        btnNext.setText("Cari Driver");
                         Toast.makeText(TrackingActivity.this, "Tidak ada driver di dekat anda", Toast.LENGTH_SHORT).show();
                         geoQuery.removeAllListeners();
                     }
@@ -559,6 +571,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 .addOnSuccessListener(new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
+
+                        Log.d(TAG, "locatioon : "+location.toString());
+
                         Utils.mLastLocation = location;
                         if (Utils.mLastLocation != null){
                             final double latitude = Utils.mLastLocation.getLatitude();
@@ -606,10 +621,18 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                 }
                             });
 
-
+                            if (driverTracking){
 //            Presense System
-//                            driversAvailable = FirebaseDatabase.getInstance().getReference(Common.driver_tbl).child(isUberX?"UberX":"Uber Black");
-//                            driversAvailable.addValueEventListener(HomeFragment.this)
+                                driversAvailable = FirebaseDatabase.getInstance().getReference(Utils.driver_tbl);
+                                driversAvailable.addValueEventListener(TrackingActivity.this);
+
+                                if (mCurrentMarker != null){
+                                    mCurrentMarker.remove();
+                                }
+
+                                loadAllAvailableDriver(new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()));
+                            }
+
                         }else {
                             Log.d("ERROR", "displayLocation: Cannot get your location");
                         }
@@ -619,13 +642,14 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
     private void loadAllAvailableDriver(LatLng latLng) {
         mMap.clear();
-        rvSearch.setVisibility(View.VISIBLE);
+        if(!driverTracking) {
+            rvSearch.setVisibility(View.VISIBLE);
+        }
         mCurrentMarker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title("You"));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15.0f));
 
-        List<String> kodeDriver = loadKodeDriver();
         DatabaseReference driverLocation = FirebaseDatabase.getInstance().getReference(Utils.driver_tbl);
         GeoFire geoFireDriver = new GeoFire(driverLocation);
         GeoQuery geoQuery = geoFireDriver.queryAtLocation(new GeoLocation(latLng.latitude, latLng.longitude), distance);
@@ -633,40 +657,62 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
-                if (kodeDriver.contains(key)){
-                    FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl)
-                            .child(key)
-                            .addListenerForSingleValueEvent(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    if (dataSnapshot.exists()) {
-                                        Driver driver = dataSnapshot.getValue(Driver.class);
-                                        if (driver.getStatus().equals("0")) {
-                                            mMap.addMarker(new MarkerOptions()
-                                                    .position(new LatLng(location.latitude, location.longitude))
-                                                    .flat(true)
-                                                    .title(driver.getNama())
-                                                    .snippet(dataSnapshot.getKey())
-                                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.car)));
-                                            if (rvSearch.getVisibility() == View.VISIBLE) {
-                                                rvSearch.setVisibility(View.GONE);
-                                            }
+                if (kodeDriverList.size() > 0) {
+                    if (kodeDriverList.contains(key)) {
+                        FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl)
+                                .child(key)
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        if (dataSnapshot.exists()) {
 
-                                            if (btnNext.getVisibility() == View.GONE) {
+                                            Location prevLoc = new Location("service Provider");
+                                            prevLoc.setLatitude(location.latitude);
+                                            prevLoc.setLongitude(location.latitude);
+                                            Location newLoc = new Location("service Provider");
+                                            newLoc.setLatitude(location.latitude);
+                                            newLoc.setLongitude(location.latitude);
+                                            float bearing = prevLoc.bearingTo(newLoc);
+
+                                            Driver driver = dataSnapshot.getValue(Driver.class);
+                                            if (driver.getStatus().equals("0")) {
+                                                mMap.addMarker(new MarkerOptions()
+                                                        .position(new LatLng(location.latitude, location.longitude))
+                                                        .flat(true)
+                                                        .title(driver.getNama())
+                                                        .snippet(dataSnapshot.getKey())
+                                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.car))
+                                                        .anchor(0.5f, 0.5f)
+                                                        .rotation(bearing)
+                                                );
+                                                if (rvSearch.getVisibility() == View.VISIBLE) {
+                                                    rvSearch.setVisibility(View.GONE);
+                                                }
+
+                                                if (btnNext.getVisibility() == View.GONE) {
+                                                    btnNext.setVisibility(View.VISIBLE);
+                                                    btnNext.setText("Cari Driver");
+                                                }
+                                            } else {
+                                                Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
+                                                rvSearch.setVisibility(View.GONE);
                                                 btnNext.setVisibility(View.VISIBLE);
                                                 btnNext.setText("Cari Driver");
                                             }
-                                        }else {
-                                            rvSearch.setVisibility(View.GONE);
                                         }
                                     }
-                                }
 
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                }
-                            });
+                                    }
+                                });
+                    }
+                }else {
+                    rvSearch.setVisibility(View.GONE);
+                    btnNext.setVisibility(View.VISIBLE);
+                    btnNext.setText("Cari Driver");
+                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -789,6 +835,8 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         this.jumlahAnak = jumlahAnak;
         this.jumlahBarang = barang;
         progressDialog.show();
+        kodeDriverList = loadKodeDriver();
+        driverTracking = true;
         String origin = from.replace(" ", "+");
         String dest = destination.replace(" ", "+");
         String url = "https://maps.googleapis.com/maps/api/directions/json?"+
@@ -843,18 +891,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode){
-            case MY_PERMISSION_REQUEST_CODE:
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    buildLocationCallback();
-                    buildLocationRequest();
-                    displayLocation();
-                }
-        }
-    }
 
     private void saveDataPerjalanan() {
         progressDialog.show();
@@ -909,14 +945,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     lvPenjemputan.setVisibility(View.VISIBLE);
                     btnNext.setVisibility(View.GONE);
                     btnCancel.setVisibility(View.VISIBLE);
-
-                    icon_message.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            setFragment(new Df_chat(driverData.getNoHp()));
-                        }
-                    });
-
                 }
             }
 
@@ -936,14 +964,13 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mCancelAngkut);
     }
 
-    private void setFragment(DialogFragment fragment){
-//        FragmentManager fragmentManager = ((FragmentActivity)context).getSupportFragmentManager();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        Fragment prev = fragmentManager.findFragmentByTag("dialog");
-        if (prev !=null){
-            fragmentTransaction.remove(prev);
-        }
-        fragment.show(fragmentTransaction, "dialog");
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        loadAllAvailableDriver(new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()));
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
     }
 }
