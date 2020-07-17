@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.tracking.fitur.CallActivity">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        />
+
+    <LinearLayout
+        android:background="@drawable/bg_call"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:layout_width="400dp"
+                    android:layout_height="400dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:src="@drawable/bg_call_user"/>
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal|center_vertical"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/ic_baseline_person_pin_24" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connection...."
+                android:layout_marginTop="-50dp"
+                android:layout_marginBottom="70dp"
+                android:textSize="21sp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@android:color/background_light"
+                />
+
+            <com.ebanx.swipebtn.SwipeButton
+                android:id="@+id/swipeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                app:button_bottom_padding="20dp"
+                app:button_image_disabled="@drawable/ic_call_black_24dp"
+                app:button_image_enabled="@drawable/ic_baseline_call_end_24"
+                app:button_left_padding="20dp"
+                app:button_right_padding="20dp"
+                app:button_top_padding="20dp"
+                app:inner_text="Geser Untuk Menelpon"
+                app:inner_text_background="@drawable/bg_text_swipe"
+                app:inner_text_bottom_padding="18dp"
+                app:inner_text_left_padding="40dp"
+                app:inner_text_color="@android:color/background_light"
+                app:inner_text_size="16sp"
+                app:inner_text_top_padding="18dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

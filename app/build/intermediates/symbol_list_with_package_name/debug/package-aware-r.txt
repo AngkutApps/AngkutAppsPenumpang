@@ -161,6 +161,13 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr button_background
+attr button_bottom_padding
+attr button_image_disabled
+attr button_image_enabled
+attr button_left_padding
+attr button_right_padding
+attr button_top_padding
 attr cameraBearing
 attr cameraMaxZoomPreference
 attr cameraMinZoomPreference
@@ -410,6 +417,14 @@ attr indicatorColors
 attr indicatorType
 attr indicatorWidth
 attr initialActivityCount
+attr inner_text
+attr inner_text_background
+attr inner_text_bottom_padding
+attr inner_text_color
+attr inner_text_left_padding
+attr inner_text_right_padding
+attr inner_text_size
+attr inner_text_top_padding
 attr insetForeground
 attr inverse
 attr isLightTheme
@@ -1875,6 +1890,8 @@ drawable bg_button_login
 drawable bg_button_lp_email
 drawable bg_button_next
 drawable bg_button_tunai_gopay_custom
+drawable bg_call
+drawable bg_call_user
 drawable bg_circle
 drawable bg_code_telp
 drawable bg_fragment_lupa_password
@@ -1890,6 +1907,7 @@ drawable bg_point_slider
 drawable bg_point_slider_default
 drawable bg_running_text
 drawable bg_search
+drawable bg_text_swipe
 drawable border_frame_detail_riwayat
 drawable bottom_navigation_selector
 drawable btn_checkbox_checked_mtrl
@@ -1933,6 +1951,9 @@ drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_arrow_back
 drawable ic_arrow_back_black_24dp
+drawable ic_baseline_call_24
+drawable ic_baseline_call_end_24
+drawable ic_baseline_person_pin_24
 drawable ic_baseline_send_24
 drawable ic_call_black_24dp
 drawable ic_camera_alt_black_24dp
@@ -2007,9 +2028,11 @@ drawable quantum_ic_arrow_back_grey600_24
 drawable quantum_ic_clear_grey600_24
 drawable quantum_ic_cloud_off_vd_theme_24
 drawable quantum_ic_search_grey600_24
+drawable shape_button
 drawable shape_oval_bus
 drawable shape_oval_pete
 drawable shape_oval_travel
+drawable shape_rounded
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -2504,6 +2527,7 @@ id stretch
 id submenuarrow
 id submit_area
 id sv_sign_up
+id swipeButton
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -2715,6 +2739,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_call
 layout activity_keberangkatan
 layout activity_kontak_darurat
 layout activity_login
@@ -3831,6 +3856,7 @@ styleable SnackbarLayout android_maxWidth actionTextColorAlpha animationMode bac
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
+styleable SwipeButton button_background button_bottom_padding button_image_disabled button_image_enabled button_left_padding button_right_padding button_top_padding inner_text inner_text_background inner_text_bottom_padding inner_text_color inner_text_left_padding inner_text_right_padding inner_text_size inner_text_top_padding
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable SwitchMaterial useMaterialThemeColors
 styleable TabItem android_icon android_layout android_text

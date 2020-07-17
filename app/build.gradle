@@ -63,6 +63,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
+    implementation(name: 'sinch-android-rtc', version: '+', ext: 'aar')
+    implementation 'com.ebanx:swipe-button:0.4.0'
+
     implementation 'com.google.android.libraries.places:places:2.3.0'
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
     implementation 'com.amitshekhar.android:android-networking:1.0.2'

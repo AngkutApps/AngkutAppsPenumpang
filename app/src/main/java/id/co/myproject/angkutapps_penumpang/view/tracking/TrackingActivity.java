@@ -366,7 +366,8 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                                     ShareInfoDriver sid =  new ShareInfoDriver(TrackingActivity.this, driver, detailDestinasi);
                                                                     sid.kirimInformasiDriver();
                                                                 }else {
-                                                                    Toast.makeText(getApplicationContext(), "Tidak ada data", Toast.LENGTH_SHORT).show();
+                                                                    Log.i("Info", "Tidak ada driver");
+//                                                                    Toast.makeText(getApplicationContext(), "Tidak ada data", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }
 
@@ -507,7 +508,8 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                         rvSearch.setVisibility(View.GONE);
                         Utils.isDrivenFound = false;
                         btnNext.setText("Cari Driver");
-                        Toast.makeText(TrackingActivity.this, "Tidak ada driver di dekat anda", Toast.LENGTH_SHORT).show();
+                        Log.i("Info", "Tidak ada driver dekat anda");
+//                        Toast.makeText(TrackingActivity.this, "Tidak ada driver di dekat anda", Toast.LENGTH_SHORT).show();
                         geoQuery.removeAllListeners();
                     }
                 }
