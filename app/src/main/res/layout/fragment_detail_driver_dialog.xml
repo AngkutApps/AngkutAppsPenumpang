@@ -6,7 +6,7 @@
     android:padding="10dp"
     android:gravity="center"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.tracking.DetailDriverDialogFragment"
+    tools:context=".view.tracking.dialog_fragment.DetailDriverDialogFragment"
     android:orientation="vertical">
 
     <de.hdodenhof.circleimageview.CircleImageView

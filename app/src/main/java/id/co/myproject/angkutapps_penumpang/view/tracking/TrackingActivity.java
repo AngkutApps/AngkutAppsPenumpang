@@ -16,6 +16,7 @@ import id.co.myproject.angkutapps_penumpang.model.data_object.ListPassenger;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Token;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.GoogleMapApi;
+import id.co.myproject.angkutapps_penumpang.view.tracking.dialog_fragment.DetailDriverDialogFragment;
 import id.co.myproject.angkutapps_penumpang.view.tracking.fitur.ShareInfoDriver;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,7 +55,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -70,7 +70,6 @@ import com.google.android.libraries.places.api.model.TypeFilter;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.internal.CheckableImageButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -660,55 +659,128 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             @Override
             public void onKeyEntered(String key, GeoLocation location) {
                 if (kodeDriverList.size() > 0) {
-                    if (kodeDriverList.contains(key)) {
-                        FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl)
-                                .child(key)
-                                .addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.exists()) {
+                    if (!Utils.driverBooking){
+                        if (kodeDriverList.contains(key)) {
+                            FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl)
+                                    .child(key)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.exists()) {
 
-                                            Location prevLoc = new Location("service Provider");
-                                            prevLoc.setLatitude(location.latitude);
-                                            prevLoc.setLongitude(location.latitude);
-                                            Location newLoc = new Location("service Provider");
-                                            newLoc.setLatitude(location.latitude);
-                                            newLoc.setLongitude(location.latitude);
-                                            float bearing = prevLoc.bearingTo(newLoc);
+                                                Location prevLoc = new Location("service Provider");
+                                                prevLoc.setLatitude(location.latitude);
+                                                prevLoc.setLongitude(location.latitude);
+                                                Location newLoc = new Location("service Provider");
+                                                newLoc.setLatitude(location.latitude);
+                                                newLoc.setLongitude(location.latitude);
+                                                float bearing = prevLoc.bearingTo(newLoc);
 
-                                            Driver driver = dataSnapshot.getValue(Driver.class);
-                                            if (driver.getStatus().equals("0")) {
-                                                mMap.addMarker(new MarkerOptions()
-                                                        .position(new LatLng(location.latitude, location.longitude))
-                                                        .flat(true)
-                                                        .title(driver.getNama())
-                                                        .snippet(dataSnapshot.getKey())
-                                                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.car))
-                                                        .anchor(0.5f, 0.5f)
-                                                        .rotation(bearing)
-                                                );
-                                                if (rvSearch.getVisibility() == View.VISIBLE) {
+                                                Driver driver = dataSnapshot.getValue(Driver.class);
+                                                if (driver.getStatus().equals("0")) {
+                                                    mMap.addMarker(new MarkerOptions()
+                                                            .position(new LatLng(location.latitude, location.longitude))
+                                                            .flat(true)
+                                                            .title(driver.getNama())
+                                                            .snippet(dataSnapshot.getKey())
+                                                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.car))
+                                                            .anchor(0.5f, 0.5f)
+                                                            .rotation(bearing)
+                                                    );
+                                                    mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                                        @Override
+                                                        public boolean onMarkerClick(Marker marker) {
+                                                            FragmentManager fm = getSupportFragmentManager();
+                                                            DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
+                                                            detailDriverDialogFragment.show(fm, "");
+
+                                                            return true;
+                                                        }
+                                                    });
+                                                    if (rvSearch.getVisibility() == View.VISIBLE) {
+                                                        rvSearch.setVisibility(View.GONE);
+                                                    }
+
+                                                    if (btnNext.getVisibility() == View.GONE) {
+                                                        btnNext.setVisibility(View.VISIBLE);
+                                                        btnNext.setText("Cari Driver");
+                                                    }
+                                                } else {
+                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
                                                     rvSearch.setVisibility(View.GONE);
-                                                }
-
-                                                if (btnNext.getVisibility() == View.GONE) {
                                                     btnNext.setVisibility(View.VISIBLE);
                                                     btnNext.setText("Cari Driver");
                                                 }
-                                            } else {
-                                                Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
-                                                rvSearch.setVisibility(View.GONE);
-                                                btnNext.setVisibility(View.VISIBLE);
-                                                btnNext.setText("Cari Driver");
                                             }
                                         }
-                                    }
 
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                    }
-                                });
+                                        }
+                                    });
+                        }
+                    }else {
+                        if (Utils.driverBookingKey.equals(key)) {
+                            FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl)
+                                    .child(key)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.exists()) {
+
+                                                Location prevLoc = new Location("service Provider");
+                                                prevLoc.setLatitude(location.latitude);
+                                                prevLoc.setLongitude(location.latitude);
+                                                Location newLoc = new Location("service Provider");
+                                                newLoc.setLatitude(location.latitude);
+                                                newLoc.setLongitude(location.latitude);
+                                                float bearing = prevLoc.bearingTo(newLoc);
+
+                                                Driver driver = dataSnapshot.getValue(Driver.class);
+                                                if (driver.getStatus().equals("0")) {
+                                                    mMap.addMarker(new MarkerOptions()
+                                                            .position(new LatLng(location.latitude, location.longitude))
+                                                            .flat(true)
+                                                            .title(driver.getNama())
+                                                            .snippet(dataSnapshot.getKey())
+                                                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.car))
+                                                            .anchor(0.5f, 0.5f)
+                                                            .rotation(bearing)
+                                                    );
+                                                    mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                                                        @Override
+                                                        public boolean onMarkerClick(Marker marker) {
+                                                            FragmentManager fm = getSupportFragmentManager();
+                                                            DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
+                                                            detailDriverDialogFragment.show(fm, "");
+
+                                                            return true;
+                                                        }
+                                                    });
+                                                    if (rvSearch.getVisibility() == View.VISIBLE) {
+                                                        rvSearch.setVisibility(View.GONE);
+                                                    }
+
+                                                    if (btnNext.getVisibility() == View.GONE) {
+                                                        btnNext.setVisibility(View.VISIBLE);
+                                                        btnNext.setText("Cari Driver");
+                                                    }
+                                                } else {
+                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
+                                                    rvSearch.setVisibility(View.GONE);
+                                                    btnNext.setVisibility(View.VISIBLE);
+                                                    btnNext.setText("Cari Driver");
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                        }
+                                    });
+                        }
                     }
                 }else {
                     rvSearch.setVisibility(View.GONE);
@@ -947,6 +1019,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     lvPenjemputan.setVisibility(View.VISIBLE);
                     btnNext.setVisibility(View.GONE);
                     btnCancel.setVisibility(View.VISIBLE);
+                    Utils.driverBookingKey = kodeDriver;
+                    Utils.driverBooking = true;
+                    displayLocation();
                 }
             }
 

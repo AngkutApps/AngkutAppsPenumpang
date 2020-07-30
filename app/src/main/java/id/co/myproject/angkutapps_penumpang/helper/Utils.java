@@ -28,6 +28,10 @@ public class Utils {
     public static final String list_passenger_tbl = "ListPassenger";
 
 
+    public static String driverBookingKey = "";
+    public static boolean driverBooking = false;
+
+
     public static final String mapsApiUrl = "https://maps.googleapis.com";
     public static final String fcmUrl = "https://fcm.googleapis.com/";
     public static final String CANCEL_BROADCAST_STRING = "CANCEL_RECEIVER";
