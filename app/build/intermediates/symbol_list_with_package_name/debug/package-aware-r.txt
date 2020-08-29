@@ -1946,6 +1946,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable destination_marker
 drawable frame_promo
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
@@ -1985,6 +1986,7 @@ drawable indonesia
 drawable indonesia_flag
 drawable layout_kas
 drawable loading
+drawable marker
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
 drawable material_ic_edit_black_24dp
@@ -2297,6 +2299,7 @@ id italic
 id item_touch_helper_previous_elevation
 id iv_call
 id iv_camera
+id iv_current_position
 id iv_delete
 id iv_messsage
 id iv_user

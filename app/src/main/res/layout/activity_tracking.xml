@@ -24,6 +24,13 @@
 
     </FrameLayout>
 
+    <ImageView
+        android:id="@+id/iv_current_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/marker"
+        android:layout_centerInParent="true"/>
+
     <LinearLayout
         android:id="@+id/lv_payment"
         android:visibility="gone"

@@ -91,7 +91,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-public class TrackingActivity extends FragmentActivity implements OnMapReadyCallback , KeberangkatanListener, BookingListener, ValueEventListener {
+public class TrackingActivity extends FragmentActivity implements OnMapReadyCallback , KeberangkatanListener, BookingListener, ValueEventListener, GoogleMap.OnCameraIdleListener {
 
     private static final String TAG = "TrackingActivity";
 
@@ -116,7 +116,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     DatabaseReference tb_passenger, tb_destinasi_passenger;
     GeoFire geoFire;
 
-    Marker mCurrentMarker;
+    Marker mCurrentMarker, carMarker;
+
+
     int radius = 1;
     int distance = 1;
     public static final int LIMIT = 3;
@@ -130,7 +132,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     RelativeLayout rvSearch;
     TextView tvDriver, tvMerkMobil, tvPlat, tvMencari, tvTujuan, tvAsal, tvDistance, tvOnkos, tvWaktu, tvNamaDriver, tvPlatDriver;
     Button btnTelpon, btnNext, btnBookNow, btnCancel;
-    EditText etPlaceFrom;
+    EditText etPlaceFrom, etPlace;
     ProgressBar progressBar;
 
     String kodeDriver, driverToken, idList;
@@ -170,6 +172,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             Utils.isDrivenFound = false;
             btnNext.setVisibility(View.VISIBLE);
             btnNext.setText("Cari Driver");
+            displayLocation();
         }
     };
 
@@ -226,7 +229,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         placeTo.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.ADDRESS, Place.Field.LAT_LNG));
         placeTo.setTypeFilter(TypeFilter.ADDRESS);
         placeTo.setCountry("IDN");
-        EditText etPlace = (EditText) placeTo.getView().findViewById(R.id.places_autocomplete_search_input);
+        etPlace = (EditText) placeTo.getView().findViewById(R.id.places_autocomplete_search_input);
         etPlace.setTextSize(12.0f);
         etPlace.setText("Tujuan");
 
@@ -271,8 +274,11 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 etPlaceFrom.setText(from);
                 placeFrom.setHint(from);
                 mMap.clear();
-                mCurrentMarker = mMap.addMarker(new MarkerOptions().position(place.getLatLng())
-                        .title("Pickup Here"));
+                LatLng latLng = place.getLatLng();
+                Utils.mLastLocation.setLatitude(latLng.latitude);
+                Utils.mLastLocation.setLongitude(latLng.longitude);
+//                mCurrentMarker = mMap.addMarker(new MarkerOptions().position(place.getLatLng())
+//                        .title("Pickup Here"));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 15.0f));
             }
 
@@ -312,6 +318,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 Utils.isDrivenFound = false;
                 btnNext.setVisibility(View.VISIBLE);
                 btnNext.setText("Cari Driver");
+
+//                Todo : Cancel Booking
+
             }
         });
 
@@ -613,12 +622,13 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
                                     mMap.clear();
 
-                                    mCurrentMarker = mMap.addMarker(new MarkerOptions()
-                                            .position(new LatLng(latitude, longitude))
-                                            .title("Your Location"));
+//                                    mCurrentMarker = mMap.addMarker(new MarkerOptions()
+//                                            .position(new LatLng(latitude, longitude))
+//                                            .title("Your Location"));
 
                                     mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15.0f));
 
+                                    mMap.setOnCameraIdleListener(TrackingActivity.this);
                                 }
                             });
 
@@ -678,7 +688,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
                                                 Driver driver = dataSnapshot.getValue(Driver.class);
                                                 if (driver.getStatus().equals("0")) {
-                                                    mMap.addMarker(new MarkerOptions()
+                                                    carMarker = mMap.addMarker(new MarkerOptions()
                                                             .position(new LatLng(location.latitude, location.longitude))
                                                             .flat(true)
                                                             .title(driver.getNama())
@@ -690,10 +700,11 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                     mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                                                         @Override
                                                         public boolean onMarkerClick(Marker marker) {
-                                                            FragmentManager fm = getSupportFragmentManager();
-                                                            DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
-                                                            detailDriverDialogFragment.show(fm, "");
-
+                                                            if (marker.equals(carMarker)) {
+                                                                FragmentManager fm = getSupportFragmentManager();
+                                                                DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
+                                                                detailDriverDialogFragment.show(fm, "");
+                                                            }
                                                             return true;
                                                         }
                                                     });
@@ -739,7 +750,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
                                                 Driver driver = dataSnapshot.getValue(Driver.class);
                                                 if (driver.getStatus().equals("0")) {
-                                                    mMap.addMarker(new MarkerOptions()
+                                                    carMarker = mMap.addMarker(new MarkerOptions()
                                                             .position(new LatLng(location.latitude, location.longitude))
                                                             .flat(true)
                                                             .title(driver.getNama())
@@ -751,10 +762,11 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                     mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                                                         @Override
                                                         public boolean onMarkerClick(Marker marker) {
-                                                            FragmentManager fm = getSupportFragmentManager();
-                                                            DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
-                                                            detailDriverDialogFragment.show(fm, "");
-
+                                                            if (marker.equals(carMarker)) {
+                                                                FragmentManager fm = getSupportFragmentManager();
+                                                                DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
+                                                                detailDriverDialogFragment.show(fm, "");
+                                                            }
                                                             return true;
                                                         }
                                                     });
@@ -900,6 +912,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     Manifest.permission.ACCESS_COARSE_LOCATION
             }, MY_PERMISSION_REQUEST_CODE);
         }
+        mMap.setMyLocationEnabled(true);
         fusedLocationProviderClient.requestLocationUpdates(mLocationReqeust, locationCallback, Looper.myLooper());
     }
 
@@ -1021,7 +1034,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     btnCancel.setVisibility(View.VISIBLE);
                     Utils.driverBookingKey = kodeDriver;
                     Utils.driverBooking = true;
-                    displayLocation();
+                    loadAllAvailableDriver(new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()));
                 }
             }
 
@@ -1048,6 +1061,31 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }
+
+    @Override
+    public void onCameraIdle() {
+        LatLng center = mMap.getCameraPosition().target;
+        mMap.clear();
+
+//        mCurrentMarker = mMap.addMarker(new MarkerOptions()
+//                .position(new LatLng(center.latitude, center.longitude))
+//                .title("Your Location"));
+
+        Geocoder geocoder;
+        List<Address> addresses;
+        geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            addresses = geocoder.getFromLocation(center.latitude, center.longitude, 1);
+            destination = addresses.get(0).getAddressLine(0);
+
+            city = addresses.get(0).getSubAdminArea();
+            placeTo.setHint(destination);
+            etPlace.setText(destination);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }

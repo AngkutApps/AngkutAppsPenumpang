@@ -61,7 +61,7 @@ public class KeberangkatanActivity extends FragmentActivity implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener, KeberangkatanListener {
+        LocationListener, KeberangkatanListener, GoogleMap.OnCameraIdleListener {
 
 
     private GoogleMap mMap;
@@ -361,6 +361,8 @@ public class KeberangkatanActivity extends FragmentActivity implements
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.setOnCameraIdleListener(this);
+
 //        mMap.setInfoWindowAdapter(new CustomInfoWindow(this));
 //        mMap.setInfoWindowAdapter(new CustomInfoWindow(this));
     }
@@ -458,5 +460,10 @@ public class KeberangkatanActivity extends FragmentActivity implements
                 Toast.makeText(KeberangkatanActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onCameraIdle() {
+
     }
 }
