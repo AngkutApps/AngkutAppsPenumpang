@@ -43,9 +43,6 @@
         <activity
             android:name=".view.tracking.TrackingActivity"
             android:label="@string/title_activity_tracking" />
-        <activity android:name=".view.payment.TransferActivity" />
-        <activity android:name=".view.payment.TopupActivity" />
-        <activity android:name=".view.payment.RiwayatActivity" />
         <activity android:name=".view.profil.ProfilUser" />
         <activity android:name=".view.tracking.PembayaranActivity" />
         <activity android:name=".view.profil.PemilihanBahasa" />

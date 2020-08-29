@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,6 @@ import retrofit2.Response;
 
 public class RiwayatPerjalananFragment extends Fragment {
 
-    TextView tvTunai, tvGoPay;
     RecyclerView rvRiwayat;
     rv_rw_perjalanan rvRiwayatperjalananAdapter;
     List<loadView_rw_perjalanan_user> arrayList = new ArrayList<>();
@@ -51,8 +51,6 @@ public class RiwayatPerjalananFragment extends Fragment {
     public void onViewCreated( View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        tvTunai = view.findViewById(R.id.tvTunai);
-        tvGoPay = view.findViewById(R.id.tvGoPay);
         rvRiwayat = view.findViewById(R.id.rvPembayaran);
         rvRiwayat.setLayoutManager(new LinearLayoutManager(getContext()));
         rvRiwayat.setHasFixedSize(true);
@@ -61,46 +59,11 @@ public class RiwayatPerjalananFragment extends Fragment {
 
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Mohon Tunggu....");
+        progressDialog.show();
 //        progressBar = new progress_bar_custom(getActivity());
 
-        defaultView();
+        readData();
 
-        tvTunai.setOnClickListener(clickListener);
-        tvGoPay.setOnClickListener(clickListener);
-
-    }
-
-    private View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.tvTunai :
-                    normalView();
-                    defaultView();
-                    break;
-                case R.id.tvGoPay :
-                    normalView();
-                    progressDialog.show();
-                    tvGoPay.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
-                    tvGoPay.setTextColor(Color.parseColor("#008577"));
-                    readData(2);
-                    break;
-            }
-        }
-    };
-
-    private void normalView(){
-        tvTunai.setBackgroundResource(0);
-        tvTunai.setTextColor(Color.GRAY);
-        tvGoPay.setBackgroundResource(0);
-        tvGoPay.setTextColor(Color.GRAY);
-    }
-
-    private void defaultView(){
-        progressDialog.show();
-        tvTunai.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
-        tvTunai.setTextColor(Color.parseColor("#008577"));
-        readData(1);
     }
 
     @Override
@@ -113,14 +76,9 @@ public class RiwayatPerjalananFragment extends Fragment {
         super.onStop();
     }
 
-    public void readData(int i) {
+    public void readData() {
         String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
-        Call<List<loadView_rw_perjalanan_user>> call = null;
-        if (i==1){
-            call = request_riwayat.getInstance().getApi().getRiwayatPembayaranTunai(noHpUser);
-        }else if (i==2){
-            call = request_riwayat.getInstance().getApi().getRiwayatPembayaranElektronik(noHpUser);
-        }
+        Call<List<loadView_rw_perjalanan_user>> call = request_riwayat.getInstance().getApi().getRiwayatPembayaran(noHpUser);
         call.enqueue(new Callback<List<loadView_rw_perjalanan_user>>() {
             @Override
             public void onResponse(Call<List<loadView_rw_perjalanan_user>> call, Response<List<loadView_rw_perjalanan_user>> response) {

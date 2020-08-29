@@ -2114,7 +2114,6 @@ id amu_text
 id appbar_button_back
 id async
 id auto
-id barcode_nav
 id barrier
 id beginning
 id bg_imgIcon
@@ -2584,7 +2583,6 @@ id tvDescriptionTitle
 id tvDeskripsiPromo
 id tvDeskripsiVoucher
 id tvEmail
-id tvGoPay
 id tvHarga
 id tvHargaHistory
 id tvHargaPembayaran
@@ -2630,7 +2628,6 @@ id tvTglPemakaian
 id tvTglSampai
 id tvTitleVoucher
 id tvTujuan
-id tvTunai
 id tvVoucherku
 id tvWaktuPembayaran
 id tvWarnaKendaraan

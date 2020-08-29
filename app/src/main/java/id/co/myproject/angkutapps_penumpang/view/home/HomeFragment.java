@@ -31,9 +31,6 @@ import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
 import id.co.myproject.angkutapps_penumpang.view.profil.ProfilUser;
-import id.co.myproject.angkutapps_penumpang.view.payment.RiwayatActivity;
-import id.co.myproject.angkutapps_penumpang.view.payment.TopupActivity;
-import id.co.myproject.angkutapps_penumpang.view.payment.TransferActivity;
 import id.co.myproject.angkutapps_penumpang.view.tracking.TrackingActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -123,14 +120,14 @@ public class HomeFragment extends Fragment {
                 Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.linearBayar :
-                startActivity(new Intent(getActivity(), TopupActivity.class));
+//                startActivity(new Intent(getActivity(), TopupActivity.class));
                 break;
             case R.id.linearIsiUlang :
-                startActivity(new Intent(getActivity(), TransferActivity.class));
+//                startActivity(new Intent(getActivity(), TransferActivity.class));
 //                    Toast.makeText(getContext(), "Activity Isi Ulang", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.linearRewards :
-                startActivity(new Intent(getActivity(), RiwayatActivity.class));
+//                startActivity(new Intent(getActivity(), RiwayatActivity.class));
 //                    Toast.makeText(getContext(), "Activity Rewards", Toast.LENGTH_SHORT).show();
                 break;
         }
