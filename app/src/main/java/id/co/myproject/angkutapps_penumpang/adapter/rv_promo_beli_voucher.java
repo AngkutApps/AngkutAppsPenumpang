@@ -50,10 +50,14 @@ public class rv_promo_beli_voucher extends RecyclerView.Adapter<rv_promo_beli_vo
             public void onClick(View v) {
                 Log.i("BeliVoucher",""+loadViewPenggunaan.get(position).getKode_voucher());
                 setFragment(new df_beli_voucher(
-                        loadViewPenggunaan.get(position).getKode_voucher(),
-                        loadViewPenggunaan.get(position).getNama_voucher(), masa_berlaku,
-                        loadViewPenggunaan.get(position).getHarga(), loadViewPenggunaan.get(position).getPoint(),
-                        loadViewPenggunaan.get(position).getDeskripsi(), loadViewPenggunaan.get(position).getFoto_url()
+                        loadViewPenggunaan.get(position),
+//                        loadViewPenggunaan.get(position).getKode_voucher(),
+//                        loadViewPenggunaan.get(position).getNama_voucher(),
+                        masa_berlaku
+//                        loadViewPenggunaan.get(position).getHarga(),
+//                        loadViewPenggunaan.get(position).getPoint(),
+//                        loadViewPenggunaan.get(position).getDeskripsi(),
+//                        loadViewPenggunaan.get(position).getFoto_url()
                 ));
             }
         });

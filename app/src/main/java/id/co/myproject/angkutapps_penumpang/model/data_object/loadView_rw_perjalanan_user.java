@@ -3,18 +3,20 @@ package id.co.myproject.angkutapps_penumpang.model.data_object;
 public class loadView_rw_perjalanan_user {
 
     int biaya;
-    String transportasi, dari, tujuan, hari_keberangkatan, tgl_berangkat;
+    String transportasi, dari, alamat_dari, tujuan, alamat_tujuan, tgl_berangkat, hari_keberangkatan;
     int penumpang_dewasa, penumpang_anak;
     String tgl_sampai, nama_driver, plat_mobil, merk_mobil, warna_kendaraan;
     int id_pembayaran;
 
-    public loadView_rw_perjalanan_user(int biaya, String transportasi, String dari, String tujuan, String hari_keberangkatan, String tgl_berangkat, int penumpang_dewasa, int penumpang_anak, String tgl_sampai, String nama_driver, String plat_mobil, String merk_mobil, String warna_kendaraan, int id_pembayaran) {
+    public loadView_rw_perjalanan_user(int biaya, String transportasi, String dari, String alamat_dari, String tujuan, String alamat_tujuan, String tgl_berangkat, String hari_keberangkatan, int penumpang_dewasa, int penumpang_anak, String tgl_sampai, String nama_driver, String plat_mobil, String merk_mobil, String warna_kendaraan, int id_pembayaran) {
         this.biaya = biaya;
         this.transportasi = transportasi;
         this.dari = dari;
+        this.alamat_dari = alamat_dari;
         this.tujuan = tujuan;
-        this.hari_keberangkatan = hari_keberangkatan;
+        this.alamat_tujuan = alamat_tujuan;
         this.tgl_berangkat = tgl_berangkat;
+        this.hari_keberangkatan = hari_keberangkatan;
         this.penumpang_dewasa = penumpang_dewasa;
         this.penumpang_anak = penumpang_anak;
         this.tgl_sampai = tgl_sampai;
@@ -49,6 +51,14 @@ public class loadView_rw_perjalanan_user {
         this.dari = dari;
     }
 
+    public String getAlamat_dari() {
+        return alamat_dari;
+    }
+
+    public void setAlamat_dari(String alamat_dari) {
+        this.alamat_dari = alamat_dari;
+    }
+
     public String getTujuan() {
         return tujuan;
     }
@@ -57,12 +67,12 @@ public class loadView_rw_perjalanan_user {
         this.tujuan = tujuan;
     }
 
-    public String getHari_keberangkatan() {
-        return hari_keberangkatan;
+    public String getAlamat_tujuan() {
+        return alamat_tujuan;
     }
 
-    public void setHari_keberangkatan(String hari_keberangkatan) {
-        this.hari_keberangkatan = hari_keberangkatan;
+    public void setAlamat_tujuan(String alamat_tujuan) {
+        this.alamat_tujuan = alamat_tujuan;
     }
 
     public String getTgl_berangkat() {
@@ -71,6 +81,14 @@ public class loadView_rw_perjalanan_user {
 
     public void setTgl_berangkat(String tgl_berangkat) {
         this.tgl_berangkat = tgl_berangkat;
+    }
+
+    public String getHari_keberangkatan() {
+        return hari_keberangkatan;
+    }
+
+    public void setHari_keberangkatan(String hari_keberangkatan) {
+        this.hari_keberangkatan = hari_keberangkatan;
     }
 
     public int getPenumpang_dewasa() {

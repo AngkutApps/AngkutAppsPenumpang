@@ -84,13 +84,8 @@ public class rv_rw_voucher_pembelian extends RecyclerView.Adapter<rv_rw_voucher_
             @Override
             public void onClick(View v) {
                 setFragment(new Df_voucher_pembelian(
-                        load_pembelian_voucher.get(position).getKode_voucher(),
-                        load_pembelian_voucher.get(position).getNama_voucher(),
-                        masaBerlaku[0], load_pembelian_voucher.get(position).getHarga(),
-                        load_pembelian_voucher.get(position).getPoint(),
-                        load_pembelian_voucher.get(position).getDeskripsi(),
-                        load_pembelian_voucher.get(position).getFoto_url(),
-                        load_pembelian_voucher.get(position).getHari_pembelian(),
+                        load_pembelian_voucher.get(position),
+                        masaBerlaku[0],
                         tglPembelian[0]
                 ));
             }

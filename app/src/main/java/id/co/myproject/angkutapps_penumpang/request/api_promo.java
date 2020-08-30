@@ -16,11 +16,6 @@ public interface api_promo {
 //            @Query("no_hp") String no_hp
     );
 
-    @GET("read_sk_beli_voucher.php")
-    Call<List<LoadSKVoucher>> getSKBeliVoucher(
-            @Query("kode_voucher") String kode_voucher
-    );
-
     @GET("read_promo_voucherku.php")
     Call<List<LoadVoucher>> getPromoVoucherku(
             @Query("no_hp") String no_hp
