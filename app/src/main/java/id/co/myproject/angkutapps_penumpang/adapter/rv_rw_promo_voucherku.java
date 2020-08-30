@@ -51,13 +51,15 @@ public class rv_rw_promo_voucherku extends RecyclerView.Adapter<rv_rw_promo_vouc
             @Override
             public void onClick(View v) {
                     setFragment(new df_voucherku(
-                            loadPromoVoucherku.get(position).getKode_voucher(),
-                            loadPromoVoucherku.get(position).getNama_voucher(),
-                            masa_berlaku, loadPromoVoucherku.get(position).getHarga(),
-                            loadPromoVoucherku.get(position).getPoint(),
-                            loadPromoVoucherku.get(position).getDeskripsi(),
-                            loadPromoVoucherku.get(position).getFoto_url(),
-                            loadPromoVoucherku.get(position).getHari_pembelian()
+                            loadPromoVoucherku.get(position),
+//                            loadPromoVoucherku.get(position).getKode_voucher(),
+//                            loadPromoVoucherku.get(position).getNama_voucher(),
+                            masa_berlaku
+//                            loadPromoVoucherku.get(position).getHarga(),
+//                            loadPromoVoucherku.get(position).getPoint(),
+//                            loadPromoVoucherku.get(position).getDeskripsi(),
+//                            loadPromoVoucherku.get(position).getFoto_url(),
+//                            loadPromoVoucherku.get(position).getHari_pembelian()
                     ));
             }
         });

@@ -38,7 +38,8 @@ public class tb_kontak_darurat_user {
                     public void onError(ANError anError) {
                         Toast.makeText(context, "Kontak Gagal Ditambahkan", Toast.LENGTH_SHORT).show();
                     }
-                });
+                }
+        );
     }
 
     public void deleteKontakDarurat(String nomor){

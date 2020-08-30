@@ -60,9 +60,6 @@
         <activity
             android:name="id.co.myproject.angkutapps_penumpang.view.tracking.TrackingActivity"
             android:label="@string/title_activity_tracking" />
-        <activity android:name="id.co.myproject.angkutapps_penumpang.view.payment.TransferActivity" />
-        <activity android:name="id.co.myproject.angkutapps_penumpang.view.payment.TopupActivity" />
-        <activity android:name="id.co.myproject.angkutapps_penumpang.view.payment.RiwayatActivity" />
         <activity android:name="id.co.myproject.angkutapps_penumpang.view.profil.ProfilUser" />
         <activity android:name="id.co.myproject.angkutapps_penumpang.view.tracking.PembayaranActivity" />
         <activity android:name="id.co.myproject.angkutapps_penumpang.view.profil.PemilihanBahasa" />

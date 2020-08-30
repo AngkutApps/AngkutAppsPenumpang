@@ -59,6 +59,7 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
             holder.tvHarga.setText(String.valueOf(loadViewRiwayats.get(position).getBiaya()).substring(0, 4)+"k");
         }
         holder.tvRutePerjalanan.setText(loadViewRiwayats.get(position).getDari()+" > "+loadViewRiwayats.get(position).getTujuan());
+        holder.tvHari.setText(loadViewRiwayats.get(position).getHari_keberangkatan());
         String transportasi = loadViewRiwayats.get(position).getTransportasi();
         if (transportasi.equals("bus")){
             holder.oval.setBackgroundResource(R.drawable.shape_oval_bus);
@@ -75,20 +76,14 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
         String tgl_sampai = sampai[0];
         String jam_sampai = sampai[1];
 
-        holder.tvHari.setText(loadViewRiwayats.get(position).getHari_keberangkatan());
+//        holder.tvHari.setText(loadViewRiwayats.get(position).getHari_keberangkatan());
         holder.tvTanggal.setText(tgl_berangkat);
         holder.cvRiwayatPerjalanan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setFragment(new Df_DetailRiwayatFragment(loadViewRiwayats.get(position).getTransportasi(),
-                        loadViewRiwayats.get(position).getDari(),loadViewRiwayats.get(position).getTujuan(),
-                        loadViewRiwayats.get(position).getHari_keberangkatan(),
-                        String.valueOf(loadViewRiwayats.get(position).getPenumpang_dewasa()),
-                        String.valueOf(loadViewRiwayats.get(position).getPenumpang_anak()), tgl_berangkat,
-                        tgl_sampai, jam_berangkat,jam_sampai,
-                        loadViewRiwayats.get(position).getNama_driver(),loadViewRiwayats.get(position).getPlat_mobil(),
-                        loadViewRiwayats.get(position).getMerk_mobil(),loadViewRiwayats.get(position).getWarna_kendaraan(),
-                        holder.tvHarga.getText().toString()));
+                setFragment(new Df_DetailRiwayatFragment(loadViewRiwayats.get(position),
+                        tgl_berangkat,
+                        tgl_sampai, jam_berangkat,jam_sampai));
             }
         });
         holder.cvRiwayatPerjalanan.setOnLongClickListener(new View.OnLongClickListener() {
