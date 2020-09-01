@@ -20,8 +20,8 @@ public interface api_riwayat {
             @Query("no_hp") String no_hp
     );
 
-    @GET("read_rw_pembayaran_tunai.php")
-    Call<List<loadView_rw_perjalanan_user>> getRiwayatPembayaranTunai(
+    @GET("read_rw_pembayaran.php")
+    Call<List<loadView_rw_perjalanan_user>> getRiwayatPembayaran(
             @Query("no_hp") String no_hp
     );
 

@@ -8,7 +8,6 @@ import androidx.fragment.app.FragmentTransaction;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.view.riwayat.AktivitasFragment;
 import id.co.myproject.angkutapps_penumpang.view.home.HomeFragment;
-import id.co.myproject.angkutapps_penumpang.view.payment.PaymentFragment;
 import id.co.myproject.angkutapps_penumpang.view.profil.ProfilFragment;
 import id.co.myproject.angkutapps_penumpang.view.promo.PromoFragment;
 
@@ -43,8 +42,6 @@ public class MainActivity extends AppCompatActivity {
                     setFragment(new HomeFragment());
                 }else if (item.getItemId() == R.id.history_nav){
                     setFragment(new AktivitasFragment());
-                }else if (item.getItemId() == R.id.barcode_nav){
-                    setFragment(new PaymentFragment());
                 }else if (item.getItemId() == R.id.payment_nav){
                     setFragment(new PromoFragment());
                 }else if (item.getItemId() == R.id.akun_nav){

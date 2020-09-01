@@ -10,37 +10,30 @@ import android.widget.TextView;
 import androidx.fragment.app.DialogFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.co.myproject.angkutapps_penumpang.R;
+import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_perjalanan_user;
 
 public class Df_DetailRiwayatFragment extends DialogFragment {
 
     ImageView imgClose;
     View imgProfil;
 
-    String transportasi, dari, tujuan, hari, p_dewasa, p_anak, tgl_berangkat, tgl_sampai, jam_berangkat, jam_sampai, nama_driver,
-        nomor_plat, jenis_kendaraan, warna_kendaraan, harga_perjalanan;
+    String tgl_berangkat, tgl_sampai, jam_berangkat, jam_sampai;
 
     TextView tvDari, tvTujuan, tvHari, tvPDewasa, tvPAnak, tvTglBerangkat, tvTglSampai, tvJamBerangkat,
             tvJamSampai, tvNamaDriver, tvNomorPlat, tvJenisKendaraa, tvWarnaKendaraan, tvHargaPerjalanan;
 
-    public Df_DetailRiwayatFragment(String transportasi, String dari, String tujuan, String hari, String p_dewasa, String p_anak, String tgl_berangkat, String tgl_sampai, String jam_berangkat, String jam_sampai, String nama_driver, String nomor_plat, String jenis_kendaraan, String warna_kendaraan, String harga_perjalanan) {
-        this.transportasi = transportasi;
-        this.dari = dari;
-        this.tujuan = tujuan;
-        this.hari = hari;
-        this.p_dewasa = p_dewasa;
-        this.p_anak = p_anak;
+    loadView_rw_perjalanan_user loadView;
+
+    public Df_DetailRiwayatFragment(loadView_rw_perjalanan_user loadView_rw_perjalanan_user, String tgl_berangkat, String tgl_sampai, String jam_berangkat, String jam_sampai) {
+        this.loadView = loadView_rw_perjalanan_user;
         this.tgl_berangkat = tgl_berangkat;
         this.tgl_sampai = tgl_sampai;
         this.jam_berangkat = jam_berangkat;
         this.jam_sampai = jam_sampai;
-        this.nama_driver = nama_driver;
-        this.nomor_plat = nomor_plat;
-        this.jenis_kendaraan = jenis_kendaraan;
-        this.warna_kendaraan = warna_kendaraan;
-        this.harga_perjalanan = harga_perjalanan;
     }
 
     @Override
@@ -70,26 +63,26 @@ public class Df_DetailRiwayatFragment extends DialogFragment {
         imgProfil = view.findViewById(R.id.oval);
         imgClose = view.findViewById(R.id.imgClose);
 
-        tvDari.setText(dari);
-        tvTujuan.setText(tujuan);
-        tvHari.setText(hari);
-        tvPDewasa.setText(p_dewasa);
-        tvPAnak.setText(p_anak);
+        tvDari.setText(loadView.getDari());
+        tvTujuan.setText(loadView.getTujuan());
+        tvHari.setText(loadView.getHari_keberangkatan());
+        tvPDewasa.setText(""+loadView.getPenumpang_dewasa());
+        tvPAnak.setText(""+loadView.getPenumpang_anak());
         tvTglBerangkat.setText(tgl_berangkat);
         tvTglSampai.setText(tgl_sampai);
         tvJamBerangkat.setText(jam_berangkat);
         tvJamSampai.setText(jam_sampai);
-        tvNamaDriver.setText(nama_driver);
-        tvNomorPlat.setText(nomor_plat);
-        tvJenisKendaraa.setText(jenis_kendaraan);
-        tvWarnaKendaraan.setText(warna_kendaraan);
-        tvHargaPerjalanan.setText(harga_perjalanan);
+        tvNamaDriver.setText(loadView.getNama_driver());
+        tvNomorPlat.setText(loadView.getPlat_mobil());
+        tvJenisKendaraa.setText(loadView.getMerk_mobil());
+        tvWarnaKendaraan.setText(loadView.getWarna_kendaraan());
+        tvHargaPerjalanan.setText(""+loadView.getBiaya());
 
-        if (transportasi.equals("bus"))
+        if (loadView.getTransportasi().equals("bus"))
             imgProfil.setBackgroundResource(R.drawable.shape_oval_bus);
-        else if (transportasi.equals("pete"))
+        else if (loadView.getTransportasi().equals("pete"))
             imgProfil.setBackgroundResource(R.drawable.shape_oval_pete);
-        else if (transportasi.equals("travel"))
+        else if (loadView.getTransportasi().equals("travel"))
             imgProfil.setBackgroundResource(R.drawable.shape_oval_travel);
         imgClose.setOnClickListener(clickListener);
     }

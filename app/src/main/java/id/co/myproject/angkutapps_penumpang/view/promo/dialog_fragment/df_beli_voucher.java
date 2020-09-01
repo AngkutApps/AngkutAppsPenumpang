@@ -45,27 +45,21 @@ public class df_beli_voucher extends DialogFragment {
 
     RecyclerView rvSyaratKetentuan;
     rv_list_sk list_sk;
-    List<LoadSKVoucher> listSK = new ArrayList<>();
 
     tb_promo_voucherku tablePromoVoucherku;
     tb_rw_pembelian_voucher_user tablePembelianVoucher;
 
     ProgressDialog progressDialog;
 
-    String kode_voucher, nama_voucher, masa_berlaku;
-    int harga, point;
-    String deskripsi, foto_url;
+    String kode_voucher, masa_berlaku;
 
     SharedPreferences sharedPreferences;
 
-    public df_beli_voucher(String kode_voucher, String nama_voucher, String masa_berlaku, int harga, int point, String deskripsi, String foto_url) {
-        this.kode_voucher = kode_voucher;
-        this.nama_voucher = nama_voucher;
+    LoadVoucher loadVoucher;
+
+    public df_beli_voucher(LoadVoucher loadVoucher, String masa_berlaku) {
+        this.loadVoucher = loadVoucher;
         this.masa_berlaku = masa_berlaku;
-        this.harga = harga;
-        this.point = point;
-        this.deskripsi = deskripsi;
-        this.foto_url = foto_url;
     }
 
     @Override
@@ -91,11 +85,11 @@ public class df_beli_voucher extends DialogFragment {
         tablePromoVoucherku = new tb_promo_voucherku(getContext());
         tablePembelianVoucher = new tb_rw_pembelian_voucher_user(getContext());
 
-        tvTitleVoucher.setText(nama_voucher);
+        tvTitleVoucher.setText(loadVoucher.getNama_voucher());
         tvMasaBerlaku.setText(masa_berlaku);
-        tvHarga.setText(String.valueOf(harga));
-        tvPoint.setText(String.valueOf(point));
-        tvDeskripsiPromo.setText(deskripsi);
+        tvHarga.setText(String.valueOf(loadVoucher.getHarga()));
+        tvPoint.setText(String.valueOf(loadVoucher.getPoint()));
+        tvDeskripsiPromo.setText(loadVoucher.getDeskripsi());
 
         sharedPreferences = getActivity().getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
 
@@ -105,7 +99,9 @@ public class df_beli_voucher extends DialogFragment {
         rvSyaratKetentuan.setLayoutManager(new LinearLayoutManager(getContext()));
         rvSyaratKetentuan.setHasFixedSize(true);
         progressDialog.show();
-        loadSyaratKetentuan();
+        list_sk = new rv_list_sk(getContext(), loadVoucher.getSyarat_ketentuan());
+        rvSyaratKetentuan.setAdapter(list_sk);
+        progressDialog.dismiss();
 
         imgClose.setOnClickListener(clickListener);
         btnBeliVoucher.setOnClickListener(clickListener);
@@ -130,25 +126,6 @@ public class df_beli_voucher extends DialogFragment {
             }
         }
     };
-
-    public void loadSyaratKetentuan() {
-        Call<List<LoadSKVoucher>> call = request_promo.getInstance().getApi().getSKBeliVoucher(kode_voucher);
-        call.enqueue(new Callback<List<LoadSKVoucher>>() {
-            @Override
-            public void onResponse(Call<List<LoadSKVoucher>> call, Response<List<LoadSKVoucher>> response) {
-                listSK = response.body();
-
-                list_sk = new rv_list_sk(getContext(), listSK);
-                rvSyaratKetentuan.setAdapter(list_sk);
-                progressDialog.dismiss();
-            }
-
-            @Override
-            public void onFailure(Call<List<LoadSKVoucher>> call, Throwable t) {
-                progressDialog.dismiss();
-            }
-        });
-    }
 
     @Override
     public void onStop() {

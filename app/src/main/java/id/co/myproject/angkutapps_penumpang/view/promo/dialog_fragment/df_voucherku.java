@@ -18,6 +18,7 @@ import java.util.List;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.adapter.rv_list_sk;
 import id.co.myproject.angkutapps_penumpang.model.data_object.LoadSKVoucher;
+import id.co.myproject.angkutapps_penumpang.model.data_object.LoadVoucher;
 import id.co.myproject.angkutapps_penumpang.request.request_promo;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,23 +31,16 @@ public class df_voucherku extends DialogFragment {
     RecyclerView rvSyaratKetentuan;
 
     rv_list_sk list_sk;
-    List<LoadSKVoucher> listSK = new ArrayList<>();
 
     ProgressDialog progressDialog;
 
-    String kode_voucher, nama_voucher, masa_berlaku;
-    int harga, point;
-    String deskripsi, foto_url, hari_pembelian;
+    String masa_berlaku;
 
-    public df_voucherku(String kode_voucher, String nama_voucher, String masa_berlaku, int harga, int point, String deskripsi, String foto_url, String hari_pembelian) {
-        this.kode_voucher = kode_voucher;
-        this.nama_voucher = nama_voucher;
+    LoadVoucher loadVoucher;
+
+    public df_voucherku(LoadVoucher loadVoucher, String masa_berlaku) {
+        this.loadVoucher = loadVoucher;
         this.masa_berlaku = masa_berlaku;
-        this.harga = harga;
-        this.point = point;
-        this.deskripsi = deskripsi;
-        this.foto_url = foto_url;
-        this.hari_pembelian = hari_pembelian;
     }
 
     @Override
@@ -67,14 +61,17 @@ public class df_voucherku extends DialogFragment {
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Mohon Tunggu....");
 
-        titleVoucher.setText(nama_voucher);
+        titleVoucher.setText(loadVoucher.getNama_voucher());
         masaBerlakuVoucher.setText(masa_berlaku);
-        deskripsiVoucher.setText(deskripsi);
+        deskripsiVoucher.setText(loadVoucher.getDeskripsi());
 
         rvSyaratKetentuan.setLayoutManager(new LinearLayoutManager(getContext()));
         rvSyaratKetentuan.setHasFixedSize(true);
         progressDialog.show();
-        loadSyaratKetentuan();
+
+        list_sk = new rv_list_sk(getContext(), loadVoucher.getSyarat_ketentuan());
+        rvSyaratKetentuan.setAdapter(list_sk);
+        progressDialog.dismiss();
 
         imgClose.setOnClickListener(clickListener);
 
@@ -91,24 +88,5 @@ public class df_voucherku extends DialogFragment {
             }
         }
     };
-
-    public void loadSyaratKetentuan() {
-        Call<List<LoadSKVoucher>> call = request_promo.getInstance().getApi().getSKBeliVoucher(kode_voucher);
-        call.enqueue(new Callback<List<LoadSKVoucher>>() {
-            @Override
-            public void onResponse(Call<List<LoadSKVoucher>> call, Response<List<LoadSKVoucher>> response) {
-                listSK = response.body();
-
-                list_sk = new rv_list_sk(getContext(), listSK);
-                rvSyaratKetentuan.setAdapter(list_sk);
-                progressDialog.dismiss();
-            }
-
-            @Override
-            public void onFailure(Call<List<LoadSKVoucher>> call, Throwable t) {
-                progressDialog.dismiss();
-            }
-        });
-    }
 
 }

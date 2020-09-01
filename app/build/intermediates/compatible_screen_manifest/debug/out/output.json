@@ -1,1 +1,6 @@
-[]
+{
+  "version": 1,
+  "applicationId": "id.co.myproject.angkutapps_penumpang",
+  "variantType": "BASE_APK",
+  "elements": []
+}

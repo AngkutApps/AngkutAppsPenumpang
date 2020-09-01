@@ -31,9 +31,6 @@ import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
 import id.co.myproject.angkutapps_penumpang.view.profil.ProfilUser;
-import id.co.myproject.angkutapps_penumpang.view.payment.RiwayatActivity;
-import id.co.myproject.angkutapps_penumpang.view.payment.TopupActivity;
-import id.co.myproject.angkutapps_penumpang.view.payment.TransferActivity;
 import id.co.myproject.angkutapps_penumpang.view.tracking.TrackingActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -107,35 +104,32 @@ public class HomeFragment extends Fragment {
         loadData();
     }
 
-    public View.OnClickListener clickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.cvDaerah :
-                    Intent intent = new Intent(getActivity(), TrackingActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.iv_user :
+    public View.OnClickListener clickListener = v -> {
+        switch (v.getId()){
+            case R.id.cvDaerah :
+                Intent intent = new Intent(getActivity(), TrackingActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.iv_user :
 //                    Toast.makeText(getContext(), "Activity Profil", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getContext(), ProfilUser.class));
-                    break;
-                case R.id.rvSaldoOvo :
-                    Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
-                case R.id.btnPengaturanOvo :
-                    Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.linearBayar :
-                    startActivity(new Intent(getActivity(), TopupActivity.class));
-                    break;
-                case R.id.linearIsiUlang :
-                    startActivity(new Intent(getActivity(), TransferActivity.class));
+                startActivity(new Intent(getContext(), ProfilUser.class));
+                break;
+            case R.id.rvSaldoOvo :
+                Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
+            case R.id.btnPengaturanOvo :
+                Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.linearBayar :
+//                startActivity(new Intent(getActivity(), TopupActivity.class));
+                break;
+            case R.id.linearIsiUlang :
+//                startActivity(new Intent(getActivity(), TransferActivity.class));
 //                    Toast.makeText(getContext(), "Activity Isi Ulang", Toast.LENGTH_SHORT).show();
-                    break;
-                case R.id.linearRewards :
-                    startActivity(new Intent(getActivity(), RiwayatActivity.class));
+                break;
+            case R.id.linearRewards :
+//                startActivity(new Intent(getActivity(), RiwayatActivity.class));
 //                    Toast.makeText(getContext(), "Activity Rewards", Toast.LENGTH_SHORT).show();
-                    break;
-            }
+                break;
         }
     };
 
