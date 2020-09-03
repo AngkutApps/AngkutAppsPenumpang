@@ -3,6 +3,7 @@ package id.co.myproject.angkutapps_penumpang.request;
 import id.co.myproject.angkutapps_penumpang.model.data_object.DataMessage;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Driver;
 import id.co.myproject.angkutapps_penumpang.model.data_object.FCMResponse;
+import id.co.myproject.angkutapps_penumpang.model.data_object.RiwayatPerjalanan;
 import id.co.myproject.angkutapps_penumpang.model.data_object.User;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Value;
 import retrofit2.Call;
@@ -77,5 +78,8 @@ public interface ApiRequest {
     })
     @POST("fcm/send")
     Call<FCMResponse> sendMessage(@Body DataMessage body);
+
+    @POST("riwayat/insert_rw_perjalanan_driver.php")
+    Call<Value> insertRiwayat(@Body RiwayatPerjalanan riwayatPerjalanan);
 
 }

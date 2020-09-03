@@ -2787,6 +2787,7 @@ layout fragment_lupa_password
 layout fragment_payment
 layout fragment_profil
 layout fragment_promo
+layout fragment_rating
 layout fragment_riwayat_pembayaran
 layout fragment_riwayat_promo
 layout fragment_sign_in

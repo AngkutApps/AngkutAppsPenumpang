@@ -10,12 +10,16 @@ import id.co.myproject.angkutapps_penumpang.helper.BookingListener;
 import id.co.myproject.angkutapps_penumpang.helper.KeberangkatanListener;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
 import id.co.myproject.angkutapps_penumpang.model.crud_table.tb_lapor;
+import id.co.myproject.angkutapps_penumpang.model.data_object.Destinasi;
 import id.co.myproject.angkutapps_penumpang.model.data_object.DetailDestinasi;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Driver;
 import id.co.myproject.angkutapps_penumpang.model.data_object.ListPassenger;
+import id.co.myproject.angkutapps_penumpang.model.data_object.RiwayatPerjalanan;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Token;
+import id.co.myproject.angkutapps_penumpang.model.data_object.Value;
 import id.co.myproject.angkutapps_penumpang.request.ApiRequest;
 import id.co.myproject.angkutapps_penumpang.request.GoogleMapApi;
+import id.co.myproject.angkutapps_penumpang.request.RetrofitRequest;
 import id.co.myproject.angkutapps_penumpang.view.tracking.dialog_fragment.DetailDriverDialogFragment;
 import id.co.myproject.angkutapps_penumpang.view.tracking.fitur.ShareInfoDriver;
 import retrofit2.Call;
@@ -36,6 +40,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
@@ -86,6 +91,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -102,21 +108,21 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     public static final int DISPLACEMENT = 10;
 
     SharedPreferences sharedPreferences;
-    String noHpUser, jumlahDewasa, jumlahAnak, jumlahBarang, idDestinasi;
-    ApiRequest apiRequest;
+    String noHpUser, jumlahDewasa, jumlahAnak, jumlahBarang, idDestinasi, biayaPerjalanan;
+    ApiRequest apiRequest, apiRequestRiwayat;
 
     private LocationRequest mLocationReqeust;
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationCallback locationCallback;
     private AutocompleteSupportFragment placeTo, placeFrom;
 
-    private String destination, city, from;
-    boolean tracking = false, search = false;
+    private String destination, city, from, fromKota;
+    boolean tracking = false, search = false, afterBooking = false, afterSelectDestination = false, moveDestination = false, angkutStatus = false;
 
     DatabaseReference tb_passenger, tb_destinasi_passenger;
     GeoFire geoFire;
 
-    Marker mCurrentMarker, carMarker;
+    Marker mCurrentMarker, carMarker, mDestinationMarker;
 
 
     int radius = 1;
@@ -137,7 +143,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
     String kodeDriver, driverToken, idList;
     List<String> kodeDriverList;
-    boolean driverTracking = false;
+    boolean driverTracking = false, startTrip = false;
     //    Presense System
     DatabaseReference driversAvailable;
 
@@ -156,7 +162,11 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             lvActionShare.setVisibility(View.VISIBLE);
             btnCancel.setVisibility(View.GONE);
             tvMencari.setVisibility(View.GONE);
+            driverTracking = false;
+            angkutStatus = true;
             displayLocation();
+
+            saveRiwayat();
 
             kodeDriver = intent.getStringExtra("kode_driver");
             driverToken = intent.getStringExtra("driver token");
@@ -204,6 +214,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         sharedPreferences = getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
         noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
         apiRequest = GoogleMapApi.getClient(Utils.mapsApiUrl).create(ApiRequest.class);
+        apiRequestRiwayat = RetrofitRequest.getRetrofitInstance().create(ApiRequest.class);
 
         init();
 
@@ -277,6 +288,17 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 LatLng latLng = place.getLatLng();
                 Utils.mLastLocation.setLatitude(latLng.latitude);
                 Utils.mLastLocation.setLongitude(latLng.longitude);
+
+                Geocoder geocoder;
+                List<Address> addressesFrom;
+                geocoder = new Geocoder(TrackingActivity.this, Locale.getDefault());
+                try {
+                    addressesFrom = geocoder.getFromLocationName(place.getAddress(), 1);
+                    fromKota = addressesFrom.get(0).getSubAdminArea();
+                    Toast.makeText(TrackingActivity.this, "Nama Kota : "+fromKota, Toast.LENGTH_SHORT).show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 //                mCurrentMarker = mMap.addMarker(new MarkerOptions().position(place.getLatLng())
 //                        .title("Pickup Here"));
                 mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 15.0f));
@@ -319,10 +341,10 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 btnNext.setVisibility(View.VISIBLE);
                 btnNext.setText("Cari Driver");
 
-//                Todo : Cancel Booking
-
+                cancelBooking();
             }
         });
+
 
         btnBookNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -403,6 +425,11 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             }
         });
 
+    }
+
+    private void cancelBooking() {
+        btnNext.setVisibility(View.VISIBLE);
+        btnCancel.setVisibility(View.GONE);
     }
 
     private void updateFirebaseToken() {
@@ -596,6 +623,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                 addresses = geocoder.getFromLocation(latitude, longitude, 1);
                                 placeFrom.setHint(addresses.get(0).getAddressLine(0));
                                 from = addresses.get(0).getAddressLine(0);
+                                fromKota = addresses.get(0).getSubAdminArea();
                                 etPlaceFrom.setText(from);
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -622,11 +650,35 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
                                     mMap.clear();
 
-//                                    mCurrentMarker = mMap.addMarker(new MarkerOptions()
-//                                            .position(new LatLng(latitude, longitude))
-//                                            .title("Your Location"));
 
-                                    mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15.0f));
+
+                                    if (angkutStatus){
+
+                                        Toast.makeText(TrackingActivity.this, "Destination : "+destination, Toast.LENGTH_SHORT).show();
+
+                                        mCurrentMarker = mMap.addMarker(new MarkerOptions()
+                                                .position(new LatLng(location.getLatitude(), location.getLongitude()))
+                                                .title("Your Location"));
+
+                                        Geocoder geocoder;
+                                        List<Address> addressesDestination;
+                                        geocoder = new Geocoder(TrackingActivity.this, Locale.getDefault());
+                                        try {
+                                            addressesDestination = geocoder.getFromLocationName(destination, 1);
+                                            Address locationDestination = addressesDestination.get(0);
+
+                                            mDestinationMarker = mMap.addMarker(new MarkerOptions()
+                                                    .position(new LatLng(locationDestination.getLatitude(), locationDestination.getLongitude()))
+                                                    .title("Your Destination"));
+                                        } catch (IOException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+
+
+                                    if (!moveDestination) {
+                                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 15.0f));
+                                    }
 
                                     mMap.setOnCameraIdleListener(TrackingActivity.this);
                                 }
@@ -634,15 +686,19 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
                             if (driverTracking){
 //            Presense System
-                                driversAvailable = FirebaseDatabase.getInstance().getReference(Utils.driver_tbl);
-                                driversAvailable.addValueEventListener(TrackingActivity.this);
+                                if (!angkutStatus) {
+                                    driversAvailable = FirebaseDatabase.getInstance().getReference(Utils.driver_tbl);
+                                    driversAvailable.addValueEventListener(TrackingActivity.this);
 
-                                if (mCurrentMarker != null){
-                                    mCurrentMarker.remove();
+                                    if (mCurrentMarker != null) {
+                                        mCurrentMarker.remove();
+                                    }
+
+                                    loadAllAvailableDriver(new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()));
                                 }
-
-                                loadAllAvailableDriver(new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()));
                             }
+
+
 
                         }else {
                             Log.d("ERROR", "displayLocation: Cannot get your location");
@@ -775,8 +831,10 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                     }
 
                                                     if (btnNext.getVisibility() == View.GONE) {
-                                                        btnNext.setVisibility(View.VISIBLE);
-                                                        btnNext.setText("Cari Driver");
+                                                        if (!afterBooking) {
+                                                            btnNext.setVisibility(View.VISIBLE);
+                                                            btnNext.setText("Cari Driver");
+                                                        }
                                                     }
                                                 } else {
                                                     Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
@@ -826,6 +884,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             }
         });
     }
+
 
     private List<String> loadKodeDriver() {
         List<String> kodeDriverList = new ArrayList<>();
@@ -923,7 +982,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         this.jumlahBarang = barang;
         progressDialog.show();
         kodeDriverList = loadKodeDriver();
-        driverTracking = true;
         String origin = from.replace(" ", "+");
         String dest = destination.replace(" ", "+");
         String url = "https://maps.googleapis.com/maps/api/directions/json?"+
@@ -952,6 +1010,13 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                 JSONObject time = objectLegs.getJSONObject("duration");
                                 String timeText = time.getString("text");
 
+                                String[] jarak = distanceText.split(" ");
+                                int harga = 500;
+                                int penumpang = Integer.parseInt(jumlahDewasa);
+
+                                double totalHarga = harga*Double.parseDouble(jarak[0])*penumpang;
+                                biayaPerjalanan = String.valueOf((int)totalHarga);
+
                                 lvInputTujuan.setVisibility(View.GONE);
                                 btnNext.setVisibility(View.GONE);
                                 lvPayment.setVisibility(View.VISIBLE);
@@ -959,8 +1024,10 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                 tvTujuan.setText(destination);
                                 tvDistance.setText(distanceText);
                                 tvWaktu.setText(timeText);
+                                tvOnkos.setText(String.valueOf((int)totalHarga));
                                 tracking = true;
-                                setUpLocation();
+                                driverTracking = true;
+//                                setUpLocation();
                                 progressDialog.dismiss();
 
                             } catch (JSONException e) {
@@ -978,9 +1045,67 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 });
     }
 
+    private void saveRiwayat(){
+        Calendar calendar = Calendar.getInstance();
+        String tglSampai = DateFormat.format("yyyy-MM-dd HH:mm:ss", calendar.getTime()).toString();
+
+        DatabaseReference dbRiwayat = FirebaseDatabase.getInstance().getReference(Utils.passenger_destination_tbl);
+        dbRiwayat.child(noHpUser).child(idDestinasi).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    DetailDestinasi detailDestinasi = dataSnapshot.getValue(DetailDestinasi.class);
+                    Log.d(TAG, "onDataChange: Mantap Djiwa boss : "+detailDestinasi.getFromKota());
+                    RiwayatPerjalanan riwayatPerjalanan = new RiwayatPerjalanan();
+                    riwayatPerjalanan.setKodeDriver(kodeDriver);
+                    riwayatPerjalanan.setNoHpUser(noHpUser);
+                    riwayatPerjalanan.setDari(detailDestinasi.getFromKota());
+                    riwayatPerjalanan.setTujuan(detailDestinasi.getCity());
+                    riwayatPerjalanan.setAlamatDari(detailDestinasi.getFromLocation());
+                    riwayatPerjalanan.setAlamatTujuan(detailDestinasi.getAddress());
+                    riwayatPerjalanan.setTransportasi("travel");
+                    riwayatPerjalanan.setPenumpangDewasa(detailDestinasi.getJumlahOrang().getJumlahDewasa());
+                    riwayatPerjalanan.setPenumpangAnak(detailDestinasi.getJumlahOrang().getJumlahAnak());
+                    riwayatPerjalanan.setBiaya(biayaPerjalanan);
+                    riwayatPerjalanan.setTglKeberangkatan(detailDestinasi.getTgl_keberangkatan());
+                    riwayatPerjalanan.setTglSampai(tglSampai);
+
+
+                    Call<Value> insertRiwayatcall = apiRequestRiwayat.insertRiwayat(riwayatPerjalanan);
+                    insertRiwayatcall.enqueue(new Callback<Value>() {
+                        @Override
+                        public void onResponse(Call<Value> call, Response<Value> response) {
+                            if (response.isSuccessful()){
+                                if (response.body().getValue() == 1){
+//                                    Todo : Rating Dialog
+                                }
+                                Toast.makeText(TrackingActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                Log.d(TAG, "onResponse: Kode Driver : "+response.body().getMessage());
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Value> call, Throwable t) {
+                            Log.e(TAG, "onFailure: Kevin de bruyne : "+t.getMessage());
+                            Toast.makeText(TrackingActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(TrackingActivity.this, ""+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private void saveDataPerjalanan() {
         progressDialog.show();
+
+        Calendar calendar = Calendar.getInstance();
+        String tglKeberangkaatan = DateFormat.format("yyyy-MM-dd HH:mm:ss", calendar.getTime()).toString();
+
         Map<String, Object> destinationPassanger = new HashMap<>();
         Map<String, Object> jumlahOrang = new HashMap<>();
         jumlahOrang.put("jumlahDewasa", jumlahDewasa);
@@ -989,10 +1114,12 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         destinationPassanger.put("idDestinasi", idDestinasi);
         destinationPassanger.put("address", destination);
         destinationPassanger.put("city", city);
+        destinationPassanger.put("fromKota", fromKota);
         destinationPassanger.put("fromLocation", from);
         destinationPassanger.put("biaya", tvOnkos.getText().toString());
         destinationPassanger.put("jumlahOrang", jumlahOrang);
         destinationPassanger.put("jumlahBarang", jumlahBarang);
+        destinationPassanger.put("tgl_keberangkatan", tglKeberangkaatan);
         tb_destinasi_passenger.child(idDestinasi).setValue(destinationPassanger)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -1004,8 +1131,8 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                 mCurrentMarker.remove();
                             }
 
-                            loadAllAvailableDriver(new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()));
-
+                            driverTracking = true;
+                            displayLocation();
 
                         }else {
                             Toast.makeText(TrackingActivity.this, "Gagal", Toast.LENGTH_SHORT).show();
@@ -1026,6 +1153,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()){
+                    afterBooking = true;
                     Driver driverData = dataSnapshot.getValue(Driver.class);
                     tvNamaDriver.setText(driverData.getNama());
                     tvPlatDriver.setText(driverData.getPlat());
@@ -1034,7 +1162,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     btnCancel.setVisibility(View.VISIBLE);
                     Utils.driverBookingKey = kodeDriver;
                     Utils.driverBooking = true;
-                    loadAllAvailableDriver(new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()));
+//                    loadAllAvailableDriver(new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude()));
                 }
             }
 
@@ -1066,26 +1194,30 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
     @Override
     public void onCameraIdle() {
+        moveDestination = true;
         LatLng center = mMap.getCameraPosition().target;
-        mMap.clear();
+        if (!driverTracking) {
+            if (!angkutStatus)
+                mMap.clear();
 
+            Geocoder geocoder;
+            List<Address> addresses;
+            geocoder = new Geocoder(this, Locale.getDefault());
+            try {
+                addresses = geocoder.getFromLocation(center.latitude, center.longitude, 1);
+                destination = addresses.get(0).getAddressLine(0);
+
+                city = addresses.get(0).getSubAdminArea();
+                placeTo.setHint(destination);
+                etPlace.setText(destination);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 //        mCurrentMarker = mMap.addMarker(new MarkerOptions()
 //                .position(new LatLng(center.latitude, center.longitude))
 //                .title("Your Location"));
 
-        Geocoder geocoder;
-        List<Address> addresses;
-        geocoder = new Geocoder(this, Locale.getDefault());
-        try {
-            addresses = geocoder.getFromLocation(center.latitude, center.longitude, 1);
-            destination = addresses.get(0).getAddressLine(0);
-
-            city = addresses.get(0).getSubAdminArea();
-            placeTo.setHint(destination);
-            etPlace.setText(destination);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
     }
 }
