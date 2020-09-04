@@ -29,8 +29,8 @@
         android:id="@+id/oval"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/bg_imgIcon"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="-30dp"
         android:layout_marginBottom="7dp"
         android:background="@drawable/shape_oval_bus" />
@@ -75,10 +75,10 @@
                     android:textSize="11sp" />
 
                 <TextView
+                    android:id="@+id/tvDari"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Makassar"
-                    android:id="@+id/tvDari"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -98,10 +98,10 @@
                     android:textSize="11sp" />
 
                 <TextView
+                    android:id="@+id/tvPDewasa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="4"
-                    android:id="@+id/tvPDewasa"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -127,10 +127,10 @@
                     android:textSize="11sp" />
 
                 <TextView
+                    android:id="@+id/tvTujuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Pangkep"
-                    android:id="@+id/tvTujuan"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -150,10 +150,10 @@
                     android:textSize="11sp" />
 
                 <TextView
+                    android:id="@+id/tvPAnak"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2"
-                    android:id="@+id/tvPAnak"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -175,10 +175,10 @@
                 android:textSize="11sp" />
 
             <TextView
+                android:id="@+id/tvHari"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Senin"
-                android:id="@+id/tvHari"
                 android:textColor="@color/textBlack"
                 android:textSize="16sp" />
 
@@ -202,10 +202,10 @@
                     android:textSize="11sp" />
 
                 <TextView
+                    android:id="@+id/tvTglBerangkat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="19 Januari 2020"
-                    android:id="@+id/tvTglBerangkat"
                     android:textColor="@color/textBlack"
                     android:textSize="16sp" />
 
@@ -225,11 +225,11 @@
                     android:textSize="11sp" />
 
                 <TextView
+                    android:id="@+id/tvJamBerangkat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="09.40 WITA"
                     android:textColor="@color/textBlack"
-                    android:id="@+id/tvJamBerangkat"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -239,8 +239,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            >
+            android:layout_marginTop="5dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -254,11 +253,11 @@
                     android:textSize="11sp" />
 
                 <TextView
+                    android:id="@+id/tvTglSampai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="19 Januari 2020"
                     android:textColor="@color/textBlack"
-                    android:id="@+id/tvTglSampai"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -277,11 +276,11 @@
                     android:textSize="11sp" />
 
                 <TextView
+                    android:id="@+id/tvJamSampai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="12.00 WITA"
                     android:textColor="@color/textBlack"
-                    android:id="@+id/tvJamSampai"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -322,11 +321,11 @@
                 android:textSize="11sp" />
 
             <TextView
+                android:id="@+id/tvNamaDriver"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Baharuddin Sambali"
                 android:textColor="@color/textBlack"
-                android:id="@+id/tvNamaDriver"
                 android:textSize="16sp" />
 
             <TextView
@@ -337,11 +336,11 @@
                 android:textSize="11sp" />
 
             <TextView
+                android:id="@+id/tvNomorPlat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="DD 7085 WX"
                 android:textColor="@color/textBlack"
-                android:id="@+id/tvNomorPlat"
                 android:textSize="16sp" />
 
             <TextView
@@ -352,11 +351,11 @@
                 android:textSize="11sp" />
 
             <TextView
+                android:id="@+id/tvJenisKendaraan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Toyota Avansa Xenia"
                 android:textColor="@color/textBlack"
-                android:id="@+id/tvJenisKendaraan"
                 android:textSize="16sp" />
 
             <TextView
@@ -367,11 +366,11 @@
                 android:textSize="11sp" />
 
             <TextView
+                android:id="@+id/tvWarnaKendaraan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Hitam"
                 android:textColor="@color/textBlack"
-                android:id="@+id/tvWarnaKendaraan"
                 android:textSize="16sp" />
 
         </LinearLayout>
@@ -379,20 +378,53 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/border_frame_detail_riwayat"
-            android:orientation="vertical"
-            android:padding="6dp">
+            >
 
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="75K"
-                android:id="@+id/tvHargaPerjalanan"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp" />
+                android:background="@drawable/border_frame_detail_riwayat"
+                android:orientation="vertical"
+                android:padding="6dp">
+
+                <TextView
+                    android:id="@+id/tvHargaPerjalanan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="75K"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:id="@+id/btn_chat"
+                >
+
+                <ImageView
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/ic_message_black"
+                    />
+
+                <TextView
+                    android:layout_marginTop="-7dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat"
+                    />
+
+            </LinearLayout>
 
         </LinearLayout>
 

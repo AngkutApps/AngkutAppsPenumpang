@@ -1890,6 +1890,7 @@ drawable bg_button_login
 drawable bg_button_lp_email
 drawable bg_button_next
 drawable bg_button_tunai_gopay_custom
+drawable bg_button_voucher
 drawable bg_call
 drawable bg_call_user
 drawable bg_circle
@@ -1908,6 +1909,7 @@ drawable bg_point_slider_default
 drawable bg_running_text
 drawable bg_search
 drawable bg_text_swipe
+drawable bg_title
 drawable border_frame_detail_riwayat
 drawable bottom_navigation_selector
 drawable btn_checkbox_checked_mtrl
@@ -1954,6 +1956,7 @@ drawable ic_arrow_back
 drawable ic_arrow_back_black_24dp
 drawable ic_baseline_call_24
 drawable ic_baseline_call_end_24
+drawable ic_baseline_more_horiz_24
 drawable ic_baseline_person_pin_24
 drawable ic_baseline_send_24
 drawable ic_call_black_24dp
@@ -1968,6 +1971,7 @@ drawable ic_launcher_foreground
 drawable ic_local_activity_black_24dp
 drawable ic_location_on_black_24dp
 drawable ic_map_black_24dp
+drawable ic_message_black
 drawable ic_message_black_24dp
 drawable ic_mic_black_24dp
 drawable ic_monetization_on_black_24dp
@@ -2139,6 +2143,7 @@ id btnShareOut
 id btn_book_now
 id btn_booking
 id btn_cancel
+id btn_chat
 id btn_email
 id btn_masuk
 id btn_next
@@ -2193,6 +2198,7 @@ id cvRiwayatPerjalanan
 id cvScanQRCode
 id cvTambahKontakDarurat
 id cvVoucherPembelian
+id cv_menu
 id dark
 id date_picker_actions
 id decor_content_parent
@@ -2278,6 +2284,7 @@ id iconNext2
 id iconNext3
 id iconNext4
 id iconNext5
+id icon_call
 id icon_group
 id icon_message
 id icon_only
@@ -2307,6 +2314,8 @@ id keteranganDropDown
 id labeled
 id largeLabel
 id layVoucher
+id lay_toolbar
+id layout
 id layout1
 id layoutFrame
 id layoutFrameEmailNoHp
@@ -2317,11 +2326,13 @@ id layout_topup
 id layout_transfer
 id left
 id light
+id line
 id line1
 id line2
 id line3
 id line4
 id lineOvoSaldo
+id line_warna
 id linear
 id linearBayar
 id linearInformasiPerjalanan

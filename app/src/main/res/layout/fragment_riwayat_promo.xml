@@ -1,40 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvPenggunaan"
-        android:text="Penggunaan"
-        android:layout_marginRight="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:textSize="16sp"
-        android:layout_marginBottom="15dp"
-        />
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cv_menu"
+        app:cardCornerRadius="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/tvPenggunaan"
-        android:text="Pembelian"
-        android:id="@+id/tvPembelian"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:textSize="16sp"
-        />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#4DBDB8B8"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvPenggunaan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_button_voucher"
+                android:paddingLeft="16dp"
+                android:paddingTop="6dp"
+                android:textSize="14sp"
+                android:paddingRight="16dp"
+                android:paddingBottom="6dp"
+                android:text="Penggunaan"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:id="@+id/tvPembelian"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingTop="6dp"
+                android:textSize="14sp"
+                android:paddingRight="16dp"
+                android:paddingBottom="6dp"
+                android:text="Pembelian"
+                android:textColor="#8F8A8A" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Penggunaan"-->
+<!--        android:layout_marginRight="10dp"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingRight="20dp"-->
+<!--        android:paddingTop="5dp"-->
+<!--        android:paddingBottom="5dp"-->
+<!--        android:textSize="16sp"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        />-->
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_toRightOf="@+id/tvPenggunaan"-->
+<!--        android:text="Pembelian"-->
+<!--        -->
+<!--        android:paddingTop="5dp"-->
+<!--        android:paddingBottom="5dp"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:paddingRight="20dp"-->
+<!--        android:textSize="16sp"-->
+<!--        />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/tvPenggunaan"
+        android:layout_below="@+id/cv_menu"
         android:id="@+id/rvPromo"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"

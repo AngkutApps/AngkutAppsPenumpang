@@ -3,69 +3,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".view.promo.PromoFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:background="@drawable/background_second"
-        >
+        android:layout_height="95dp"
+        android:background="@drawable/bg_title">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="17dp"
             android:text="Promo"
-            android:layout_centerInParent="true"
             android:textColor="@color/textColorWhite"
-            android:textSize="30sp"
-            />
+            android:textSize="25sp" />
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="15dp"
-        >
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Voucherku"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:textSize="14sp"
-            android:background="@drawable/bg_button_history_normal"
-            android:textColor="@color/colorPrimary"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingRight="14dp"
-            android:paddingLeft="14dp"
-            android:layout_marginRight="6dp"
-            android:id="@+id/tvVoucherku"
-            />
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Beli Voucher"
-            android:textAlignment="center"
-            android:layout_weight="1"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            android:textSize="14sp"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/bg_button_history_normal"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:paddingLeft="14dp"
-            android:paddingRight="14dp"
-            android:id="@+id/tvBeliVoucher"
-            />
+            <TextView
+                android:id="@+id/tvVoucherku"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@+id/line"
+                android:background="@color/colorPrimary"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center_horizontal"
+                android:paddingTop="9dp"
+                android:paddingBottom="9dp"
+                android:text="Voucherku"
+                android:textColor="@color/textColorWhite" />
 
-    </LinearLayout>
+            <View
+                android:id="@+id/line"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/tvVoucherku"
+                android:layout_alignBottom="@+id/tvVoucherku"
+                android:layout_centerHorizontal="true"
+                android:background="@color/colorAbuAbu" />
+
+            <TextView
+                android:id="@+id/tvBeliVoucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_toRightOf="@+id/line"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:gravity="center_horizontal"
+                android:paddingTop="9dp"
+                android:paddingBottom="9dp"
+                android:text="Beli Voucher"
+                android:textColor="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_margin="15dp"-->
+<!--        >-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Voucherku"-->
+<!--            android:textAlignment="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="14sp"-->
+<!--            android:background="@drawable/bg_button_history_normal"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:paddingBottom="10dp"-->
+<!--            android:paddingRight="14dp"-->
+<!--            android:paddingLeft="14dp"-->
+<!--            android:layout_marginRight="6dp"-->
+<!--            />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Beli Voucher"-->
+<!--            android:textAlignment="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginLeft="6dp"-->
+<!--            android:layout_marginRight="6dp"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textColor="@color/colorPrimary"-->
+<!--            android:background="@drawable/bg_button_history_normal"-->
+<!--            android:paddingBottom="10dp"-->
+<!--            android:paddingTop="10dp"-->
+<!--            android:paddingLeft="14dp"-->
+<!--            android:paddingRight="14dp"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

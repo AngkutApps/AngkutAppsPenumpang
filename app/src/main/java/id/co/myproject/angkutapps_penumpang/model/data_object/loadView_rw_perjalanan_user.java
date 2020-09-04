@@ -5,10 +5,10 @@ public class loadView_rw_perjalanan_user {
     int biaya;
     String transportasi, dari, alamat_dari, tujuan, alamat_tujuan, tgl_berangkat, hari_keberangkatan;
     int penumpang_dewasa, penumpang_anak;
-    String tgl_sampai, nama_driver, plat_mobil, merk_mobil, warna_kendaraan;
+    String tgl_sampai,  no_hp, nama_driver, plat_mobil, merk_mobil, warna_kendaraan;
     int id_pembayaran;
 
-    public loadView_rw_perjalanan_user(int biaya, String transportasi, String dari, String alamat_dari, String tujuan, String alamat_tujuan, String tgl_berangkat, String hari_keberangkatan, int penumpang_dewasa, int penumpang_anak, String tgl_sampai, String nama_driver, String plat_mobil, String merk_mobil, String warna_kendaraan, int id_pembayaran) {
+    public loadView_rw_perjalanan_user(int biaya, String transportasi, String dari, String alamat_dari, String tujuan, String alamat_tujuan, String tgl_berangkat, String hari_keberangkatan, int penumpang_dewasa, int penumpang_anak, String tgl_sampai, String no_hp, String nama_driver, String plat_mobil, String merk_mobil, String warna_kendaraan, int id_pembayaran) {
         this.biaya = biaya;
         this.transportasi = transportasi;
         this.dari = dari;
@@ -20,6 +20,7 @@ public class loadView_rw_perjalanan_user {
         this.penumpang_dewasa = penumpang_dewasa;
         this.penumpang_anak = penumpang_anak;
         this.tgl_sampai = tgl_sampai;
+        this.no_hp = no_hp;
         this.nama_driver = nama_driver;
         this.plat_mobil = plat_mobil;
         this.merk_mobil = merk_mobil;
@@ -113,6 +114,14 @@ public class loadView_rw_perjalanan_user {
 
     public void setTgl_sampai(String tgl_sampai) {
         this.tgl_sampai = tgl_sampai;
+    }
+
+    public String getNo_hp() {
+        return no_hp;
+    }
+
+    public void setNo_hp(String no_hp) {
+        this.no_hp = no_hp;
     }
 
     public String getNama_driver() {

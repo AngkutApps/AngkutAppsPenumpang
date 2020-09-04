@@ -1,102 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cvRiwayatPerjalanan"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="50dp"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="3dp"
     android:foreground="?android:attr/selectableItemBackground">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/textColorWhite"
+        android:foreground="?android:attr/selectableItemBackground">
+
+        <View
+            android:id="@+id/line_warna"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/layout"
+            android:layout_alignBottom="@id/layout"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimary" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_toRightOf="@id/line_warna"
+            android:id="@+id/layout"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/rvRiwayatPerjalananFrame"
-            android:paddingTop="14dp"
-            android:paddingBottom="14dp">
-
-            <TextView
-                android:id="@+id/tvHargaHistory"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="17dp"
-                android:paddingLeft="4dp"
-                android:gravity="center_vertical"
-                android:text="10k"
-                android:textColor="@color/textBlack"
-                android:textSize="20sp" />
+            android:padding="5dp"
+            >
 
             <View
                 android:id="@+id/oval"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignTop="@+id/tv_tujuan"
+                android:layout_alignBottom="@+id/tv_tanggal"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="17dp"
-                android:layout_toRightOf="@+id/tvHargaHistory"
-                android:background="@drawable/shape_oval_bus" />
+                android:layout_marginRight="15dp"
+                android:background="@color/colorPrimary" />
 
-            <RelativeLayout
+            <TextView
+                android:ellipsize="none"
+                android:id="@+id/riwayatRute"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/oval"
+                android:text="Makassar -> Maros dsajbdkjasbdhbsahbdjsbadj sdhjasdh dhjsad"
                 android:layout_toLeftOf="@+id/btnDetailRiwayat"
-                android:layout_toRightOf="@+id/oval">
+                android:textColor="@color/textBlack"
+                android:singleLine="true" />
 
-                <TextView
-                    android:id="@+id/riwayatRute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="Makassar > Pinrang"
-                    android:maxLines="1"
-                    android:textColor="@color/textBlack"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/riwayatHari"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/riwayatRute"
-                    android:layout_alignLeft="@+id/riwayatRute"
-                    android:text="Hari"
-                    android:textSize="11sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/riwayatRute"
-                    android:layout_alignRight="@+id/riwayatRute"
-                    android:text="Tanggal"
-                    android:textSize="11sp"
-                    android:id="@+id/riwayatTanggal"
-                    />
-
-            </RelativeLayout>
-
-            <ImageButton
+            <TextView
+                android:id="@+id/riwayatHari"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/riwayatRute"
+                android:layout_toRightOf="@id/oval"
+                android:text="Hari" />
+
+            <TextView
+                android:id="@+id/riwayatTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/riwayatHari"
+                android:layout_toRightOf="@id/oval"
+                android:text="Tanggal" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/riwayatTanggal"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp"
+                app:cardPreventCornerOverlap="true">
+
+                <TextView
+                    android:id="@+id/tvHargaHistory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:paddingLeft="7dp"
+                    android:paddingTop="3dp"
+                    android:paddingRight="7dp"
+                    android:paddingBottom="3dp"
+                    android:text="Rp. 120k"
+                    android:textColor="@color/textColorWhite"
+                    android:textSize="13sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/btnDetailRiwayat"
+                android:layout_width="wrap_content"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@color/textColorWhite"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:id="@+id/btnDetailRiwayat"
-                android:src="@drawable/ic_more_point_24dp" />
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="7dp"
+                android:src="@drawable/ic_baseline_more_horiz_24" />
 
         </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/rvRiwayatPerjalananFrame"
-            android:background="#C3C1C1"
-            />
 
     </RelativeLayout>
 

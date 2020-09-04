@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.PopupMenu;
@@ -110,7 +111,7 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
 
         CardView cvRiwayatPerjalanan;
         TextView tvHarga, tvRutePerjalanan, tvHari, tvTanggal;
-        ImageButton imgPengaturan;
+        ImageView imgPengaturan;
         View oval;
 
         public ViewHolder(View itemView) {

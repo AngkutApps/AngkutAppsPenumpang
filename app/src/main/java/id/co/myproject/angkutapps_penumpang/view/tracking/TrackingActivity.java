@@ -130,6 +130,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     public static final int LIMIT = 3;
 
     ImageButton btnShareout, btnLapor;
+    ImageView ivIconMessage, ivIconCall;
 
     ProgressDialog progressDialog;
 
@@ -197,6 +198,8 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
         btnShareout = findViewById(R.id.btnShareOut);
         btnLapor = findViewById(R.id.btnLapor);
+        ivIconMessage = findViewById(R.id.icon_message);
+        ivIconCall = findViewById(R.id.icon_call);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Proses ...");
@@ -366,6 +369,32 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                         tbl.insertBeliVoucher(noHpUser, kodeDriver);
                     }
                 }, 1000);
+            }
+        });
+
+
+        ivIconMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseReference dbDriverData = FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl);
+                dbDriverData.child(kodeDriver).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()) {
+                            Driver driver = dataSnapshot.getValue(Driver.class);
+                            String namaDriver = driver.getNama();
+                            String dd = driver.getPlat();
+                            String noHp = driver.getNoHp();
+                            Toast.makeText(TrackingActivity.this, "Nama : " + namaDriver, Toast.LENGTH_SHORT).show();
+//                            setFragment();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

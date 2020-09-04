@@ -5,9 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +20,11 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_perjalanan_user;
+import id.co.myproject.angkutapps_penumpang.view.tracking.dialog_fragment.Df_chat;
 
 public class Df_DetailRiwayatFragment extends DialogFragment {
+
+    LinearLayout btn_chat;
 
     ImageView imgClose;
     View imgProfil;
@@ -59,6 +67,7 @@ public class Df_DetailRiwayatFragment extends DialogFragment {
         tvJenisKendaraa = view.findViewById(R.id.tvJenisKendaraan);
         tvWarnaKendaraan = view.findViewById(R.id.tvWarnaKendaraan);
         tvHargaPerjalanan = view.findViewById(R.id.tvHargaPerjalanan);
+        btn_chat = view.findViewById(R.id.btn_chat);
 
         imgProfil = view.findViewById(R.id.oval);
         imgClose = view.findViewById(R.id.imgClose);
@@ -85,6 +94,7 @@ public class Df_DetailRiwayatFragment extends DialogFragment {
         else if (loadView.getTransportasi().equals("travel"))
             imgProfil.setBackgroundResource(R.drawable.shape_oval_travel);
         imgClose.setOnClickListener(clickListener);
+        btn_chat.setOnClickListener(clickListener);
     }
 
     private View.OnClickListener clickListener = new View.OnClickListener() {
@@ -94,6 +104,9 @@ public class Df_DetailRiwayatFragment extends DialogFragment {
                 case R.id.imgClose :
                     Df_DetailRiwayatFragment.super.onStop();
                     Df_DetailRiwayatFragment.super.onDestroyView();
+                    break;
+                case R.id.btn_chat:
+                    setFragment(new Df_chat(loadView.getNo_hp(), loadView.getNama_driver(), loadView.getPlat_mobil()));
                     break;
             }
         }
@@ -107,5 +120,15 @@ public class Df_DetailRiwayatFragment extends DialogFragment {
     @Override
     public void onStop() {
         super.onStop();
+    }
+
+    private void setFragment(DialogFragment fragment){
+        FragmentManager fragmentManager = ((FragmentActivity)getContext()).getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Fragment prev = fragmentManager.findFragmentByTag("dialog");
+        if (prev !=null){
+            fragmentTransaction.remove(prev);
+        }
+        fragment.show(fragmentTransaction, "dialog");
     }
 }

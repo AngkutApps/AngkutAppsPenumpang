@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +38,7 @@ import id.co.myproject.angkutapps_penumpang.model.data_object.Chat;
 
 public class Df_chat extends DialogFragment {
 
+    TextView tv_nama_driver, tv_plat_driver;
     RecyclerView rvChat;
     EditText etPesan;
     ImageView btnSend;
@@ -49,10 +52,16 @@ public class Df_chat extends DialogFragment {
     ArrayList<Chat> list = new ArrayList<>();
 
     String noHpUser;
-    String noHpDriver;
+    String noHpDriver, nama_driver, plat_mobil;
 
     public Df_chat(String noHpDriver) {
         this.noHpDriver = noHpDriver;
+    }
+
+    public Df_chat(String no_hp, String nama_driver, String plat_mobil) {
+        this.noHpDriver = no_hp;
+        this.nama_driver = nama_driver;
+        this.plat_mobil = plat_mobil;
     }
 
     @Override
@@ -64,11 +73,16 @@ public class Df_chat extends DialogFragment {
     public void onViewCreated(View view,Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        tv_nama_driver = view.findViewById(R.id.tv_nama_driver);
+        tv_plat_driver = view.findViewById(R.id.tv_plat_driver);
         rvChat = view.findViewById(R.id.rvPesan);
         etPesan = view.findViewById(R.id.etPesan);
         btnSend = view.findViewById(R.id.imgButtonSend);
         sharedPreferences = getActivity().getApplicationContext().getSharedPreferences(Utils.LOGIN_KEY, Context.MODE_PRIVATE);
         noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
+
+        tv_nama_driver.setText(nama_driver);
+        tv_plat_driver.setText(plat_mobil);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
 //        layoutManager.setStackFromEnd(true);

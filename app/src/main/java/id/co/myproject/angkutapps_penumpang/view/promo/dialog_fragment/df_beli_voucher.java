@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -118,7 +119,7 @@ public class df_beli_voucher extends DialogFragment {
                     break;
                 case R.id.btnBeliVoucher :
                     String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
-                    tablePromoVoucherku.insertBeliVoucher(kode_voucher, noHpUser);
+                    tablePromoVoucherku.insertBeliVoucher(loadVoucher.getKode_voucher(), noHpUser);
                     progress_bar();
                     df_beli_voucher.super.onStop();
                     df_beli_voucher.super.onDestroyView();
@@ -145,7 +146,7 @@ public class df_beli_voucher extends DialogFragment {
             public void run() {
                 progressDialog.dismiss();
                 String noHpUser = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
-                tablePembelianVoucher.insertBeliVoucher(kode_voucher, noHpUser);
+                tablePembelianVoucher.insertBeliVoucher(loadVoucher.getKode_voucher(), noHpUser);
             }
         },2000);
     }
