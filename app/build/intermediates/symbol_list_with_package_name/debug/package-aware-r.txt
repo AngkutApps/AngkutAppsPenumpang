@@ -2145,6 +2145,7 @@ id btn_booking
 id btn_cancel
 id btn_chat
 id btn_email
+id btn_give
 id btn_masuk
 id btn_next
 id btn_nomor_hp
@@ -2305,8 +2306,10 @@ id italic
 id item_touch_helper_previous_elevation
 id iv_call
 id iv_camera
+id iv_close
 id iv_current_position
 id iv_delete
+id iv_driver
 id iv_messsage
 id iv_user
 id ketKodeOTP
@@ -2789,6 +2792,7 @@ layout df_promo_voucherku
 layout df_rw_pembelian_voucher
 layout df_rw_penggunaan_promo
 layout df_tambah_kontak
+layout dialog_rating
 layout fragment_aktivitas
 layout fragment_detail_driver_dialog
 layout fragment_home
@@ -2798,7 +2802,6 @@ layout fragment_lupa_password
 layout fragment_payment
 layout fragment_profil
 layout fragment_promo
-layout fragment_rating
 layout fragment_riwayat_pembayaran
 layout fragment_riwayat_promo
 layout fragment_sign_in

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/colorPrimary"/>
+    <ImageView
+        android:id="@+id/iv_close"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_close_black_24dp"
+        android:tint="@android:color/white"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"/>
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Berikan rating pada"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/poppins_regular"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_driver"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_alignParentRight="true"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+        <TextView
+            android:id="@+id/tv_nama_driver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mantap Djiwa"
+            android:fontFamily="@font/poppins_regular"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"/>
+        <androidx.appcompat.widget.AppCompatRatingBar
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:id="@+id/ratingBar"
+            android:rating="0"
+            android:max="5"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:stepSize="0.5" />
+        <Button
+            android:id="@+id/btn_give"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_button_login"
+            android:text="Barikan Rating"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textAllCaps="false"/>
+    </LinearLayout>
+
+</RelativeLayout>

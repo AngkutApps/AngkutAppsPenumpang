@@ -79,7 +79,29 @@ public interface ApiRequest {
     @POST("fcm/send")
     Call<FCMResponse> sendMessage(@Body DataMessage body);
 
+    @FormUrlEncoded
     @POST("riwayat/insert_rw_perjalanan_driver.php")
-    Call<Value> insertRiwayat(@Body RiwayatPerjalanan riwayatPerjalanan);
+    Call<Value> insertRiwayat(
+            @Field("kode_driver") String kodeDriver,
+            @Field("no_hp") String noHp,
+            @Field("dari") String dari,
+            @Field("tujuan") String tujuan,
+            @Field("alamat_dari") String alamatDari,
+            @Field("alamat_tujuan") String alamatTujuan,
+            @Field("transportasi") String transportasi,
+            @Field("p_anak") String pAnak,
+            @Field("p_dewasa") String pDewasa,
+            @Field("biaya") String biaya,
+            @Field("tgl_keberangkatan") String tglKeberangkatan,
+            @Field("tgl_sampai") String tglSampai
+    );
+
+    @FormUrlEncoded
+    @POST("insert_rating.php")
+    Call<Value> insertRating(
+            @Field("kode_driver") String kodeDriver,
+            @Field("no_hp") String noHpUser,
+            @Field("rating") String rating
+    );
 
 }
