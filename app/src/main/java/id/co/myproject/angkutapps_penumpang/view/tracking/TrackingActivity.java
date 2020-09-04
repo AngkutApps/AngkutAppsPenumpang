@@ -5,6 +5,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import id.co.myproject.angkutapps_penumpang.BuildConfig;
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.BookingListener;
 import id.co.myproject.angkutapps_penumpang.helper.KeberangkatanListener;
@@ -27,6 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -42,9 +45,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.text.format.DateFormat;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.*;
 
+import com.bumptech.glide.Glide;
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
 import com.firebase.geofire.GeoQuery;
@@ -109,7 +114,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
     SharedPreferences sharedPreferences;
     String noHpUser, jumlahDewasa, jumlahAnak, jumlahBarang, idDestinasi, biayaPerjalanan;
-    ApiRequest apiRequest, apiRequestRiwayat;
+    ApiRequest apiRequest, apiRequestRiwayat, apiRequestRating;
 
     private LocationRequest mLocationReqeust;
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -654,8 +659,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
                                     if (angkutStatus){
 
-                                        Toast.makeText(TrackingActivity.this, "Destination : "+destination, Toast.LENGTH_SHORT).show();
-
                                         mCurrentMarker = mMap.addMarker(new MarkerOptions()
                                                 .position(new LatLng(location.getLatitude(), location.getLongitude()))
                                                 .title("Your Location"));
@@ -1056,28 +1059,27 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 if (dataSnapshot.exists()){
                     DetailDestinasi detailDestinasi = dataSnapshot.getValue(DetailDestinasi.class);
                     Log.d(TAG, "onDataChange: Mantap Djiwa boss : "+detailDestinasi.getFromKota());
-                    RiwayatPerjalanan riwayatPerjalanan = new RiwayatPerjalanan();
-                    riwayatPerjalanan.setKodeDriver(kodeDriver);
-                    riwayatPerjalanan.setNoHpUser(noHpUser);
-                    riwayatPerjalanan.setDari(detailDestinasi.getFromKota());
-                    riwayatPerjalanan.setTujuan(detailDestinasi.getCity());
-                    riwayatPerjalanan.setAlamatDari(detailDestinasi.getFromLocation());
-                    riwayatPerjalanan.setAlamatTujuan(detailDestinasi.getAddress());
-                    riwayatPerjalanan.setTransportasi("travel");
-                    riwayatPerjalanan.setPenumpangDewasa(detailDestinasi.getJumlahOrang().getJumlahDewasa());
-                    riwayatPerjalanan.setPenumpangAnak(detailDestinasi.getJumlahOrang().getJumlahAnak());
-                    riwayatPerjalanan.setBiaya(biayaPerjalanan);
-                    riwayatPerjalanan.setTglKeberangkatan(detailDestinasi.getTgl_keberangkatan());
-                    riwayatPerjalanan.setTglSampai(tglSampai);
 
-
-                    Call<Value> insertRiwayatcall = apiRequestRiwayat.insertRiwayat(riwayatPerjalanan);
+                    Call<Value> insertRiwayatcall = apiRequestRiwayat.insertRiwayat(
+                            kodeDriver,
+                            noHpUser,
+                            detailDestinasi.getFromKota(),
+                            detailDestinasi.getCity(),
+                            detailDestinasi.getFromLocation(),
+                            detailDestinasi.getAddress(),
+                            "travel",
+                            detailDestinasi.getJumlahOrang().getJumlahAnak(),
+                            detailDestinasi.getJumlahOrang().getJumlahDewasa(),
+                            biayaPerjalanan,
+                            detailDestinasi.getTgl_keberangkatan(),
+                            tglSampai
+                    );
                     insertRiwayatcall.enqueue(new Callback<Value>() {
                         @Override
                         public void onResponse(Call<Value> call, Response<Value> response) {
                             if (response.isSuccessful()){
                                 if (response.body().getValue() == 1){
-//                                    Todo : Rating Dialog
+                                    showDialogRating();
                                 }
                                 Toast.makeText(TrackingActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                                 Log.d(TAG, "onResponse: Kode Driver : "+response.body().getMessage());
@@ -1098,6 +1100,88 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 Toast.makeText(TrackingActivity.this, ""+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showDialogRating() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogRating = inflater.inflate(R.layout.dialog_rating, null);
+        builder.setView(dialogRating);
+
+        ImageView ivDriver = dialogRating.findViewById(R.id.iv_driver);
+        TextView tvDriver = dialogRating.findViewById(R.id.tv_nama_driver);
+        RatingBar ratingBar = dialogRating.findViewById(R.id.ratingBar);
+        Button btnGive = dialogRating.findViewById(R.id.btn_give);
+
+        DatabaseReference dbDriver = FirebaseDatabase.getInstance().getReference(Utils.user_driver_tbl);
+        dbDriver.child(kodeDriver).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    Driver driver = dataSnapshot.getValue(Driver.class);
+                    Glide.with(TrackingActivity.this).load(BuildConfig.BASE_URL_GAMBAR + "profil/" + driver.getFoto()).into(ivDriver);
+                    tvDriver.setText(driver.getNama());
+                }else {
+                    Toast.makeText(TrackingActivity.this, "Tidak ada data", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(TrackingActivity.this, ""+databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+
+        btnGive.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProgressDialog progressDialog = new ProgressDialog(TrackingActivity.this);
+                progressDialog.setMessage("Proses ...");
+                progressDialog.setCancelable(false);
+                float rate =ratingBar.getRating();
+                Call<Value> insertRatingCall = apiRequestRiwayat.insertRating(kodeDriver, noHpUser, String.valueOf(rate));
+                insertRatingCall.enqueue(new Callback<Value>() {
+                    @Override
+                    public void onResponse(Call<Value> call, Response<Value> response) {
+                        if (response.isSuccessful()){
+                            DatabaseReference dbHapusPerjalanan = FirebaseDatabase.getInstance().getReference(Utils.passenger_destination_tbl);
+                            dbHapusPerjalanan.child(noHpUser).child(idDestinasi).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        progressDialog.dismiss();
+                                        Toast.makeText(TrackingActivity.this, ""+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                                        if (response.body().getValue() == 1){
+                                            alertDialog.dismiss();
+                                            finish();
+                                        }
+                                    }else{
+                                        Toast.makeText(TrackingActivity.this, "Gagal hapus perjalanan", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(TrackingActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Value> call, Throwable t) {
+                        Toast.makeText(TrackingActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        alertDialog.show();
+
     }
 
     private void saveDataPerjalanan() {

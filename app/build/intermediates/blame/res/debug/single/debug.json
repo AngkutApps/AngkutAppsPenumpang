@@ -64,10 +64,6 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\font\\poppins_regular.otf"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_rating.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_rating.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_call_24.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_baseline_call_24.xml"
     },
@@ -334,6 +330,10 @@
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_car_notif_round.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_car_notif_round.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_rating.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\dialog_rating.xml"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
