@@ -54,7 +54,8 @@ public class AktivitasFragment extends Fragment {
                     break;
                 case R.id.tvRiwayatPromo :
                     viewButtonNormal();
-                    tvRiwayatPromo.setBackgroundResource(R.drawable.bg_button_history);
+//                    tvRiwayatPromo.setBackgroundResource(R.drawable.bg_button_history);
+                    tvRiwayatPromo.setBackgroundColor(Color.parseColor("#008577"));
                     tvRiwayatPromo.setTextColor(Color.parseColor("#FFFFFF"));
                     setFragment(new RiwayatVoucherFragment());
                     break;
@@ -63,14 +64,17 @@ public class AktivitasFragment extends Fragment {
     };
 
     private void viewButtonNormal(){
-        tvRiwayatPromo.setBackgroundResource(R.drawable.bg_button_history_normal);
+//        tvRiwayatPromo.setBackgroundResource(R.drawable.bg_button_history_normal);
+        tvRiwayatPromo.setBackgroundColor(Color.parseColor("#FFFFFF"));
         tvRiwayatPromo.setTextColor(Color.parseColor("#008577"));
-        tvRiwayatPembayaran.setBackgroundResource(R.drawable.bg_button_history_normal);
+//        tvRiwayatPembayaran.setBackgroundResource(R.drawable.bg_button_history_normal);
+        tvRiwayatPembayaran.setBackgroundColor(Color.parseColor("#FFFFFF"));
         tvRiwayatPembayaran.setTextColor(Color.parseColor("#008577"));
     }
 
     private void defaultViewButton(){
-        tvRiwayatPembayaran.setBackgroundResource(R.drawable.bg_button_history);
+        tvRiwayatPembayaran.setBackgroundColor(Color.parseColor("#008577"));
+//        tvRiwayatPembayaran.setBackgroundResource(R.drawable.bg_button_history);
         tvRiwayatPembayaran.setTextColor(Color.parseColor("#FFFFFF"));
         setFragment(new RiwayatPerjalananFragment());
     }
