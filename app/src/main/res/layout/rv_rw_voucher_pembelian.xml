@@ -1,105 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/cvVoucherPembelian"
-    android:foreground="?android:attr/selectableItemBackground"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:foreground="?android:attr/selectableItemBackground">
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="3dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:id="@+id/cvVoucherPembelian"
+        >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rvRiwayatPerjalananFrame"
-            android:paddingTop="14dp"
-            android:paddingBottom="14dp">
-
-            <TextView
-                android:id="@+id/tvHargaVoucher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="17dp"
-                android:paddingLeft="4dp"
-                android:gravity="center_vertical"
-                android:text="10k"
-                android:textColor="@color/textBlack"
-                android:textSize="20sp" />
+            android:background="@color/textColorWhite"
+            android:foreground="?android:attr/selectableItemBackground">
 
             <View
-                android:id="@+id/oval"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="17dp"
-                android:layout_toRightOf="@+id/tvHargaVoucher"
-                android:background="@drawable/shape_oval_bus" />
+                android:id="@+id/line_warna"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/layout"
+                android:layout_alignBottom="@id/layout"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary" />
 
             <RelativeLayout
+                android:id="@+id/layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/btnConfig"
-                android:layout_marginRight="5dp"
-                android:layout_toRightOf="@+id/oval">
+                android:layout_toRightOf="@id/line_warna"
+                android:padding="5dp">
+
+                <ImageView
+                    android:id="@+id/oval"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignTop="@+id/titleVoucher"
+                    android:layout_alignBottom="@+id/tanggalPembelian"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:paddingLeft="-10dp"
+                    android:paddingRight="-10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/mobil_penumpang" />
 
                 <TextView
                     android:id="@+id/titleVoucher"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:text="Makassar > Pinrang"
-                    android:textColor="@color/textBlack"
-                    android:textSize="16sp"
-                    android:singleLine="true" />
+                    android:layout_toLeftOf="@+id/btnConfig"
+                    android:layout_toRightOf="@id/oval"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Makassar -> Maros dsajbdkjasbdhbsahbdjsbadj sdhjasdh dhjsad"
+                    android:textColor="@color/textBlack" />
 
                 <TextView
                     android:id="@+id/hariPembelian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/titleVoucher"
-                    android:layout_alignLeft="@+id/titleVoucher"
-                    android:text="Hari"
-                    android:textSize="11sp" />
+                    android:layout_toRightOf="@id/oval"
+                    android:text="Hari" />
 
                 <TextView
+                    android:id="@+id/tanggalPembelian"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/titleVoucher"
-                    android:layout_alignRight="@+id/titleVoucher"
-                    android:text="Tanggal"
-                    android:textSize="11sp"
-                    android:id="@+id/tanggalPembelian"
-                    />
+                    android:layout_below="@+id/hariPembelian"
+                    android:layout_toRightOf="@id/oval"
+                    android:text="Tanggal" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tanggalPembelian"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="10dp"
+                    app:cardPreventCornerOverlap="true">
+
+                    <TextView
+                        android:id="@+id/tvHargaVoucher"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:paddingLeft="7dp"
+                        android:paddingTop="3dp"
+                        android:paddingRight="7dp"
+                        android:paddingBottom="3dp"
+                        android:text="Rp. 120k"
+                        android:textColor="@color/textColorWhite"
+                        android:textSize="13sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:id="@+id/btnConfig"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginRight="5dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:src="@drawable/ic_baseline_more_horiz_24" />
 
             </RelativeLayout>
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@color/textColorWhite"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:id="@+id/btnConfig"
-                android:src="@drawable/ic_more_point_24dp" />
-
         </RelativeLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/rvRiwayatPerjalananFrame"
-            android:background="#C3C1C1"
-            />
+    </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
 
-</androidx.cardview.widget.CardView>
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/rvRiwayatPerjalananFrame"-->
+<!--            android:paddingTop="14dp"-->
+<!--            android:paddingBottom="14dp">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvHargaVoucher"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentLeft="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginRight="17dp"-->
+<!--                android:paddingLeft="4dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:text="10k"-->
+<!--                android:textColor="@color/textBlack"-->
+<!--                android:textSize="20sp" />-->
+
+<!--            <View-->
+<!--                android:id="@+id/oval"-->
+<!--                android:layout_width="35dp"-->
+<!--                android:layout_height="35dp"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_marginRight="17dp"-->
+<!--                android:layout_toRightOf="@+id/tvHargaVoucher"-->
+<!--                android:background="@drawable/shape_oval_bus" />-->
+
+<!--            <RelativeLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:layout_toLeftOf="@+id/btnConfig"-->
+<!--                android:layout_marginRight="5dp"-->
+<!--                android:layout_toRightOf="@+id/oval">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/titleVoucher"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:text="Makassar > Pinrang"-->
+<!--                    android:textColor="@color/textBlack"-->
+<!--                    android:textSize="16sp"-->
+<!--                    android:singleLine="true" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/hariPembelian"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/titleVoucher"-->
+<!--                    android:layout_alignLeft="@+id/titleVoucher"-->
+<!--                    android:text="Hari"-->
+<!--                    android:textSize="11sp" />-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_below="@+id/titleVoucher"-->
+<!--                    android:layout_alignRight="@+id/titleVoucher"-->
+<!--                    android:text="Tanggal"-->
+<!--                    android:textSize="11sp"-->
+<!--                    android:id="@+id/tanggalPembelian"-->
+<!--                    />-->
+
+<!--            </RelativeLayout>-->
+
+<!--            <ImageButton-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:background="@color/textColorWhite"-->
+<!--                android:foreground="?android:attr/selectableItemBackground"-->
+<!--                android:paddingTop="6dp"-->
+<!--                android:paddingBottom="6dp"-->
+<!--                android:id="@+id/btnConfig"-->
+<!--                android:src="@drawable/ic_more_point_24dp" />-->
+
+<!--        </RelativeLayout>-->
+
+<!--        <View-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_below="@+id/rvRiwayatPerjalananFrame"-->
+<!--            android:background="#C3C1C1"-->
+<!--            />-->
+
+<!--    </RelativeLayout>-->
+
+</RelativeLayout>

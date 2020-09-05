@@ -86,7 +86,8 @@ public class PromoFragment extends Fragment {
                     break;
                 case R.id.tvBeliVoucher :
                     viewButtonNormal();
-                    beliVoucher.setBackgroundResource(R.drawable.bg_button_history);
+//                    beliVoucher.setBackgroundResource(R.drawable.bg_button_history);
+                    beliVoucher.setBackgroundColor(Color.parseColor("#008577"));
                     beliVoucher.setTextColor(Color.parseColor("#FFFFFF"));
                     progressDialog.show();
                     loadBagianPromo(2);
@@ -96,14 +97,17 @@ public class PromoFragment extends Fragment {
     };
 
     private void viewButtonNormal(){
-        voucherku.setBackgroundResource(R.drawable.bg_button_history_normal);
+//        voucherku.setBackgroundResource(R.drawable.bg_button_history_normal);
+        voucherku.setBackgroundColor(Color.parseColor("#FFFFFF"));
         voucherku.setTextColor(Color.parseColor("#008577"));
-        beliVoucher.setBackgroundResource(R.drawable.bg_button_history_normal);
+//        beliVoucher.setBackgroundResource(R.drawable.bg_button_history_normal);
+        beliVoucher.setBackgroundColor(Color.parseColor("#FFFFFF"));
         beliVoucher.setTextColor(Color.parseColor("#008577"));
     }
 
     private void defaultViewButton(){
-        voucherku.setBackgroundResource(R.drawable.bg_button_history);
+//        voucherku.setBackgroundResource(R.drawable.bg_button_history);
+        voucherku.setBackgroundColor(Color.parseColor("#008577"));
         voucherku.setTextColor(Color.parseColor("#FFFFFF"));
         progressDialog.show();
         loadBagianPromo(3);

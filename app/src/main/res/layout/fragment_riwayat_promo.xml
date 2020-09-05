@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.cardview.widget.CardView
         android:layout_marginTop="10dp"
@@ -82,6 +83,7 @@
         android:id="@+id/rvPromo"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
+        tools:listitem="@layout/rv_rw_voucher_pembelian"
         >
 
     </androidx.recyclerview.widget.RecyclerView>

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -85,7 +86,27 @@ public class Df_DetailRiwayatFragment extends DialogFragment {
         tvNomorPlat.setText(loadView.getPlat_mobil());
         tvJenisKendaraa.setText(loadView.getMerk_mobil());
         tvWarnaKendaraan.setText(loadView.getWarna_kendaraan());
-        tvHargaPerjalanan.setText(""+loadView.getBiaya());
+
+//        int panjang = loadView.getBiaya();
+//        Toast.makeText(getContext(), ""+loadView.getBiaya(), Toast.LENGTH_SHORT).show();
+//        if (panjang>99999) {
+//            tvHargaPerjalanan.setText(String.valueOf(loadView.getBiaya()).substring(0, 2) + "K");
+//            holder.tvHargaVoucher.setText(String.valueOf(load_pembelian_voucher.get(position).getHarga()).substring(0, 1)+"k");
+//        }else if (panjang>99999){
+//        }
+//            tvHargaPerjalanan.setText(String.valueOf(loadView.getBiaya()).substring(0,2)+"K");
+//            holder.tvHargaVoucher.setText(String.valueOf(load_pembelian_voucher.get(position).getHarga()).substring(0, 2)+"k");
+//        }
+
+        int panjang = loadView.getBiaya();
+        if (panjang>9999 && panjang<99999){
+            tvHargaPerjalanan.setText(String.valueOf(loadView.getBiaya()).substring(0, 2)+"k");
+        }else if (panjang>99999 && panjang<999999){
+            tvHargaPerjalanan.setText(String.valueOf(loadView.getBiaya()).substring(0, 3)+"k");
+        }else if (panjang>999999){
+            tvHargaPerjalanan.setText(String.valueOf(loadView.getBiaya()).substring(0, 4)+"k");
+        }
+
 
         if (loadView.getTransportasi().equals("bus"))
             imgProfil.setBackgroundResource(R.drawable.shape_oval_bus);

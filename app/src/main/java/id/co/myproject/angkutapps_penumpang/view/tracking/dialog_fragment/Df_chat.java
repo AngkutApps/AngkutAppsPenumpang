@@ -1,5 +1,6 @@
 package id.co.myproject.angkutapps_penumpang.view.tracking.dialog_fragment;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -44,6 +45,8 @@ public class Df_chat extends DialogFragment {
     ImageView btnSend;
     rv_chat rvAdapter;
 
+    ProgressDialog progressDialog;
+
     SharedPreferences sharedPreferences;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference("message");
@@ -84,6 +87,10 @@ public class Df_chat extends DialogFragment {
         tv_nama_driver.setText(nama_driver);
         tv_plat_driver.setText(plat_mobil);
 
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading....");
+        progressDialog.show();
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
 //        layoutManager.setStackFromEnd(true);
 //        layoutManager.setReverseLayout(true);
@@ -91,24 +98,30 @@ public class Df_chat extends DialogFragment {
         rvChat.setHasFixedSize(false);
 
         root = myRef.child(noHpUser+"-"+noHpDriver);
+        progressDialog.dismiss();
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Map<String,Object> map = new HashMap<String, Object>();
-                temp_key = root.push().getKey();
-                root.updateChildren(map);
+                if (etPesan.getText().toString().equalsIgnoreCase("")){
+                    Toast.makeText(getContext(), "Tolong Tulis Pesan Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+                }else{
+                    Map<String,Object> map = new HashMap<String, Object>();
+                    temp_key = root.push().getKey();
+                    root.updateChildren(map);
 
-                Calendar calendar = Calendar.getInstance();
-                String tgl = DateFormat.format("dd/MM/yyyy HH:mm", calendar.getTime()).toString();
+                    Calendar calendar = Calendar.getInstance();
+                    String tgl = DateFormat.format("dd/MM/yyyy HH:mm", calendar.getTime()).toString();
 
-                DatabaseReference message_root = root.child(temp_key);
-                Map<String,Object> map2 = new HashMap<String, Object>();
-                map2.put("msg",etPesan.getText().toString().trim());
-                map2.put("waktu", tgl);
-                map2.put("kondisi","Penumpang");
+                    DatabaseReference message_root = root.child(temp_key);
+                    Map<String,Object> map2 = new HashMap<String, Object>();
+                    map2.put("msg",etPesan.getText().toString().trim());
+                    map2.put("waktu", tgl);
+                    map2.put("kondisi","Penumpang");
 
-                message_root.updateChildren(map2);
+                    message_root.updateChildren(map2);
+                    etPesan.setText("");
+                }
             }
         });
 

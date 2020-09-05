@@ -65,7 +65,8 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
         if (transportasi.equals("bus")){
             holder.oval.setBackgroundResource(R.drawable.shape_oval_bus);
         }else if (transportasi.equals("travel")){
-            holder.oval.setBackgroundResource(R.drawable.shape_oval_travel);
+//            holder.oval.setBackgroundResource(R.drawable.shape_oval_travel);
+            holder.oval.setImageResource(R.drawable.mobil_penumpang);
         }else if (transportasi.equals("pete")){
             holder.oval.setBackgroundResource(R.drawable.shape_oval_pete);
         }
@@ -112,7 +113,7 @@ public class rv_rw_perjalanan extends RecyclerView.Adapter<rv_rw_perjalanan.View
         CardView cvRiwayatPerjalanan;
         TextView tvHarga, tvRutePerjalanan, tvHari, tvTanggal;
         ImageView imgPengaturan;
-        View oval;
+        ImageView oval;
 
         public ViewHolder(View itemView) {
             super(itemView);

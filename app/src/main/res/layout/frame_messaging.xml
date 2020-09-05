@@ -42,8 +42,8 @@
         android:id="@+id/rvPesan"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/lay_toolbar"
-        android:layout_marginLeft="13dp"
-        android:layout_marginRight="13dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
         >
 
     </androidx.recyclerview.widget.RecyclerView>

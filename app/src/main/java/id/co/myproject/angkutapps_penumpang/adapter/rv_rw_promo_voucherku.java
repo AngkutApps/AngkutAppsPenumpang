@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -40,7 +41,7 @@ public class rv_rw_promo_voucherku extends RecyclerView.Adapter<rv_rw_promo_vouc
 
     @Override
     public void onBindViewHolder(rv_rw_promo_voucherku.ViewHolder holder, int position) {
-        holder.imgVoucherku.setImageResource(R.drawable.loading);
+//        holder.imgVoucherku.setImageResource(R.drawable.loading);
         holder.tvTitle.setText(loadPromoVoucherku.get(position).getNama_voucher());
         String[] masaBerlaku = String.valueOf(loadPromoVoucherku.get(position).getMasa_berlaku()).split(" ");
 
@@ -72,7 +73,7 @@ public class rv_rw_promo_voucherku extends RecyclerView.Adapter<rv_rw_promo_vouc
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        LinearLayout cvVoucherku;
+        CardView cvVoucherku;
         TextView tvTitle, tv_masaberlaku, sk_berlaku;
         ImageView imgVoucherku;
 

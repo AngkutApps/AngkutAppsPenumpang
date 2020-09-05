@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.*;
 
 import androidx.appcompat.widget.PopupMenu;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -46,7 +47,7 @@ public class rv_rw_voucher_penggunaan extends RecyclerView.Adapter<rv_rw_voucher
 
     @Override
     public void onBindViewHolder(rv_rw_voucher_penggunaan.ViewHolder holder, int position) {
-        holder.imgVoucherku.setImageResource(R.drawable.loading);
+        holder.imgVoucherku.setImageResource(R.drawable.mobil_penumpang);
         holder.NamaVoucher.setText(listPenggunaan.get(position).getNama_voucher());
         holder.hari_penggunaan.setText(listPenggunaan.get(position).getHari_penggunaan());
         String[] tgl_penggunaan = String.valueOf(listPenggunaan.get(position).getTgl_penggunaan()).split(" ");
@@ -77,7 +78,7 @@ public class rv_rw_voucher_penggunaan extends RecyclerView.Adapter<rv_rw_voucher
 
         ImageView imgVoucherku;
         TextView NamaVoucher, hari_penggunaan, tgl_penggunaan;
-        LinearLayout layVoucher;
+        CardView layVoucher;
 
         public ViewHolder(View itemView) {
             super(itemView);
