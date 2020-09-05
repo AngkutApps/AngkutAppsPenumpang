@@ -103,7 +103,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#E6E6E6"
+                android:background="#66E6E6E6"
                 android:padding="15dp">
 
                 <TextView
@@ -119,14 +119,17 @@
                     android:textColor="@color/textBlack"
                     android:textSize="20sp" />
 
-                <View
+                <ImageView
                     android:id="@+id/oval"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="13dp"
+                    android:paddingLeft="-10dp"
+                    android:paddingRight="-10dp"
+                    android:scaleType="centerCrop"
                     android:layout_toRightOf="@+id/tvHargaHistory"
-                    android:background="@drawable/shape_oval_bus" />
+                    android:src="@drawable/mobil_penumpang" />
 
                 <RelativeLayout
                     android:layout_width="wrap_content"

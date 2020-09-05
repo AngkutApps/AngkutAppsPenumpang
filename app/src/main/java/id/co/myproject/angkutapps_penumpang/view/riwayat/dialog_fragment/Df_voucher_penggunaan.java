@@ -16,7 +16,7 @@ import id.co.myproject.angkutapps_penumpang.model.data_object.loadView_rw_vouche
 public class Df_voucher_penggunaan extends DialogFragment {
 
     ImageView imgClose;
-    View oval;
+    ImageView oval;
     TextView tvNamaVoucher, tvTglPemakaian, tvHariPemakaian, tvHargaHistory, riwayatRute, riwayatHari, riwayatTanggal,
     tvDeskripsiVoucher;
 
@@ -67,7 +67,7 @@ public class Df_voucher_penggunaan extends DialogFragment {
         if (transportasi.equals("bus")){
             oval.setBackgroundResource(R.drawable.shape_oval_bus);
         }else if (transportasi.equals("travel")){
-            oval.setBackgroundResource(R.drawable.shape_oval_travel);
+            oval.setBackgroundResource(R.drawable.mobil_penumpang);
         }else if (transportasi.equals("pete")){
             oval.setBackgroundResource(R.drawable.shape_oval_pete);
         }

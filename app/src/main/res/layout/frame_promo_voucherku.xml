@@ -3,72 +3,153 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:foreground="?android:attr/selectableItemBackground"
-    android:id="@+id/layVoucher"
-    android:orientation="vertical"
     >
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
+        android:id="@+id/layVoucher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="13dp"
-        android:paddingBottom="13dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="3dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         >
-
-        <ImageView
-            android:id="@+id/imgVoucherku"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="8dp"
-            android:layout_toRightOf="@+id/imgVoucherku">
+            android:background="@color/textColorWhite"
+            android:foreground="?android:attr/selectableItemBackground">
 
-            <TextView
-                android:id="@+id/titleVoucherku"
+            <View
+                android:id="@+id/line_warna"
+                android:layout_width="10dp"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/layout"
+                android:layout_alignBottom="@id/layout"
+                android:layout_marginRight="10dp"
+                android:background="@color/colorPrimary" />
+
+            <RelativeLayout
+                android:id="@+id/layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:text="Promo Akhir Tahun Kemana Saja "
-                android:textColor="@color/textBlack"
-                android:textSize="16sp" />
+                android:layout_toRightOf="@id/line_warna"
+                android:padding="5dp">
 
-            <TextView
-                android:id="@+id/masaBerlakuVoucherku"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/titleVoucherku"
-                android:layout_alignLeft="@+id/titleVoucherku"
-                android:text="Berlaku s/d"
-                android:textSize="11sp" />
+                <ImageView
+                    android:id="@+id/imgVoucherku"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignTop="@+id/tv_tujuan"
+                    android:layout_alignBottom="@+id/tv_tanggal"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:paddingLeft="-10dp"
+                    android:paddingRight="-10dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/mobil_penumpang" />
 
-            <TextView
-                android:id="@+id/sk_berlaku"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/titleVoucherku"
-                android:layout_alignParentRight="true"
-                android:text="S/K Berlaku"
-                android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/titleVoucherku"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@id/imgVoucherku"
+                    android:ellipsize="none"
+                    android:maxLines="2"
+                    android:minLines="2"
+                    android:text="Nikmati Promo Hingga Tembus Pagi Sampai Capek"
+                    android:textColor="@color/textBlack" />
+
+                <TextView
+                    android:id="@+id/masaBerlakuVoucherku"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titleVoucherku"
+                    android:layout_toRightOf="@id/imgVoucherku"
+                    android:text="Berlaku s/d 06 Desember 2025"
+                    />
+
+                <TextView
+                    android:id="@+id/sk_berlaku"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/titleVoucherku"
+                    android:layout_alignBottom="@+id/tv_tanggal"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="5dp"
+                    android:text="s/k berlaku"
+                    />
+
+            </RelativeLayout>
 
         </RelativeLayout>
 
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorAbuAbu"
-        />
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:paddingLeft="5dp"-->
+<!--        android:paddingTop="13dp"-->
+<!--        android:paddingRight="5dp"-->
+<!--        android:paddingBottom="13dp">-->
+
+<!--        <ImageView-->
+<!--            -->
+<!--            android:layout_width="56dp"-->
+<!--            android:layout_height="56dp"-->
+<!--            android:layout_alignParentLeft="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:scaleType="centerCrop" />-->
+
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginLeft="8dp"-->
+<!--            android:layout_toRightOf="@+id/imgVoucherku">-->
+
+<!--            <TextView-->
+<!--                -->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:ellipsize="end"-->
+<!--                android:maxLines="2"-->
+<!--                android:text="Promo Akhir Tahun Kemana Saja "-->
+<!--                android:textColor="@color/textBlack"-->
+<!--                android:textSize="16sp" />-->
+
+<!--            <TextView-->
+<!--                -->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/titleVoucherku"-->
+<!--                android:layout_alignLeft="@+id/titleVoucherku"-->
+<!--                android:text="Berlaku s/d"-->
+<!--                android:textSize="11sp" />-->
+
+<!--            <TextView-->
+<!--                -->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/titleVoucherku"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:text="S/K Berlaku"-->
+<!--                android:textSize="11sp" />-->
+
+<!--        </RelativeLayout>-->
+
+<!--    </RelativeLayout>-->
+
+<!--    <View-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="1dp"-->
+<!--        android:background="@color/colorAbuAbu" />-->
 
 </LinearLayout>

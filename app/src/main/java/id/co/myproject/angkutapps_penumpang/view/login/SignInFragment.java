@@ -54,7 +54,7 @@ public class SignInFragment extends Fragment {
     Integer[] colors = null;
     ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 
-    int img = R.drawable.loading;
+    int[] img = {R.drawable.carousel_login1, R.drawable.carousel_login2, R.drawable.carousel_login3, R.drawable.carousel_login4, R.drawable.carousel_login5};
     String[] title = {"Transportasi Lintas Daerah Dalam Genggaman","Tracking Lokasi Transportasi Daerah yang Real Time",
             "Harga yang Murah dan Transparan",
     "Terdapat Fitur Multi Relation", "Keterbukaan Informasi Detail Transportasi Daerah"};
@@ -112,7 +112,7 @@ public class SignInFragment extends Fragment {
 
         viewPagerLogins = new ArrayList<>();
         for (int i=0; i<5;i++){
-            viewPagerLogins.add(new viewPagerLogin(img, title[i], desc[i]));
+            viewPagerLogins.add(new viewPagerLogin(img[i], title[i], desc[i]));
         }
 
         pagerAdapter = new PagerLoginAdapter(viewPagerLogins,getContext());

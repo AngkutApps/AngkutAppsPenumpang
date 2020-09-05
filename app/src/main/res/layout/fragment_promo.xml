@@ -121,16 +121,26 @@
 
 <!--    </LinearLayout>-->
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.cardview.widget.CardView
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        android:layout_marginBottom="-10dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="5dp"
-        android:id="@+id/rvPromoFragment"
-        tools:listitem="@layout/frame_promo_beli_voucher"
-        >
+        android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:id="@+id/rvPromoFragment"
+            tools:listitem="@layout/frame_promo_beli_voucher"
+            >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>

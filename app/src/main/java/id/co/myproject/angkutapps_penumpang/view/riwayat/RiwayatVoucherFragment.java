@@ -80,8 +80,10 @@ public class RiwayatVoucherFragment extends Fragment {
                     break;
                 case R.id.tvPembelian :
                     normalView();
-                    tvPembelian.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
-                    tvPembelian.setTextColor(Color.parseColor("#008577"));
+                    tvPembelian.setBackgroundResource(R.drawable.bg_button_voucher);
+                    tvPembelian.setTextColor(Color.parseColor("#FFFFFF"));
+//                    tvPembelian.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
+//                    tvPembelian.setTextColor(Color.parseColor("#008577"));
                     progressDialog.show();
                     loadPembelianPromo();
                     break;
@@ -90,15 +92,21 @@ public class RiwayatVoucherFragment extends Fragment {
     };
 
     private void normalView(){
-        tvPembelian.setBackgroundResource(0);
-        tvPembelian.setTextColor(Color.GRAY);
-        tvPenggunaan.setBackgroundResource(0);
-        tvPenggunaan.setTextColor(Color.GRAY);
+        tvPembelian.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        tvPembelian.setTextColor(Color.parseColor("#008577"));
+        tvPenggunaan.setBackgroundColor(Color.parseColor("#FFFFFF"));
+        tvPenggunaan.setTextColor(Color.parseColor("#008577"));
+//        tvPembelian.setBackgroundResource(0);
+//        tvPembelian.setTextColor(Color.GRAY);
+//        tvPenggunaan.setBackgroundResource(0);
+//        tvPenggunaan.setTextColor(Color.GRAY);
     }
 
     private void defaultView(){
-        tvPenggunaan.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
-        tvPenggunaan.setTextColor(Color.parseColor("#008577"));
+//        tvPenggunaan.setBackgroundResource(R.drawable.bg_button_tunai_gopay_custom);
+//        tvPenggunaan.setTextColor(Color.parseColor("#008577"));
+        tvPenggunaan.setBackgroundResource(R.drawable.bg_button_voucher);
+        tvPenggunaan.setTextColor(Color.parseColor("#FFFFFF"));
         progressDialog.show();
         loadPenggunaanVoucher();
     }

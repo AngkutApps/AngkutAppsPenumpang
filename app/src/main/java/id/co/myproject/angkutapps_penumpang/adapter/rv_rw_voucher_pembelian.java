@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -108,8 +109,8 @@ public class rv_rw_voucher_pembelian extends RecyclerView.Adapter<rv_rw_voucher_
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView tvHargaVoucher, titleVoucher, hariPembelian, tanggalPembelian;
-        View oval;
-        ImageButton btnConfig;
+        ImageView oval;
+        ImageView btnConfig;
         CardView cvVoucherPembelian;
 
         public ViewHolder(View itemView) {

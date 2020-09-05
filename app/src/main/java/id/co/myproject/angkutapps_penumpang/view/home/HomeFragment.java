@@ -41,13 +41,7 @@ import retrofit2.Response;
  */
 public class HomeFragment extends Fragment {
 
-    LinearLayout linearBayar, linearIsiUlang, linearRewards;
-
-    ImageView tvPengaturanSaldo;
-
-    RelativeLayout rvSaldoOvo;
-
-    CircleImageView iv_profil;
+    ImageView iv_profil;
     TextView tvProfil;
     CardView cvDaerah;
     SharedPreferences sharedPreferences;
@@ -80,21 +74,11 @@ public class HomeFragment extends Fragment {
         idPenumpang = sharedPreferences.getString(Utils.NO_HP_USER_KEY, "");
 
         cvDaerah = view.findViewById(R.id.cvDaerah);
-        iv_profil = view.findViewById(R.id.iv_user);
+        iv_profil = view.findViewById(R.id.img_foto_profil);
         tvProfil = view.findViewById(R.id.tv_profil);
-        rvSaldoOvo = view.findViewById(R.id.rvSaldoOvo);
-        tvPengaturanSaldo = view.findViewById(R.id.btnPengaturanOvo);
-        linearBayar = view.findViewById(R.id.linearBayar);
-        linearIsiUlang = view.findViewById(R.id.linearIsiUlang);
-        linearRewards = view.findViewById(R.id.linearRewards);
 
         cvDaerah.setOnClickListener(clickListener);
         iv_profil.setOnClickListener(clickListener);
-        rvSaldoOvo.setOnClickListener(clickListener);
-        tvPengaturanSaldo.setOnClickListener(clickListener);
-        linearBayar.setOnClickListener(clickListener);
-        linearRewards.setOnClickListener(clickListener);
-        linearIsiUlang.setOnClickListener(clickListener);
 
     }
 
@@ -113,22 +97,6 @@ public class HomeFragment extends Fragment {
             case R.id.iv_user :
 //                    Toast.makeText(getContext(), "Activity Profil", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), ProfilUser.class));
-                break;
-            case R.id.rvSaldoOvo :
-                Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
-            case R.id.btnPengaturanOvo :
-                Toast.makeText(getContext(), "Activity Saldo Ovo", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.linearBayar :
-//                startActivity(new Intent(getActivity(), TopupActivity.class));
-                break;
-            case R.id.linearIsiUlang :
-//                startActivity(new Intent(getActivity(), TransferActivity.class));
-//                    Toast.makeText(getContext(), "Activity Isi Ulang", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.linearRewards :
-//                startActivity(new Intent(getActivity(), RiwayatActivity.class));
-//                    Toast.makeText(getContext(), "Activity Rewards", Toast.LENGTH_SHORT).show();
                 break;
         }
     };
@@ -153,7 +121,7 @@ public class HomeFragment extends Fragment {
                         Glide.with(getActivity().getApplicationContext()).load(BuildConfig.BASE_URL_GAMBAR+"profil/"+user.getFoto())
                                 .into(iv_profil);
                     }
-                    tvProfil.setText(user.getNama());
+                    tvProfil.setText("Hi, "+user.getNama());
                 }
             }
 
