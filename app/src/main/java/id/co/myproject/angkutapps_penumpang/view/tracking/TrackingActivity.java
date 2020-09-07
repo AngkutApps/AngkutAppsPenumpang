@@ -469,10 +469,24 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         DatabaseReference tokens = db.getReference(Utils.token_tbl);
 
         Token token = new Token(FirebaseInstanceId.getInstance().getToken());
-        if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            tokens.child(noHpUser)
-                    .setValue(token);
-        }
+        tokens.child(noHpUser)
+                .setValue(token)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+//                            Toast.makeText(TrackingActivity.this, "Berhasil update token", Toast.LENGTH_SHORT).show();
+                        }else {
+//                            Toast.makeText(TrackingActivity.this, "gagal update token", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(TrackingActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void cariDriver(String noHpUser) {
@@ -530,13 +544,13 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                 } else {
                                                     rvSearch.setVisibility(View.GONE);
                                                     btnNext.setText("Cari Driver");
-                                                    Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
+//                                                    Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                                                 }
                                             } else {
                                                 rvSearch.setVisibility(View.GONE);
                                                 Utils.isDrivenFound = false;
                                                 btnNext.setText("Cari Driver");
-                                                Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                                             }
                                         }
 
@@ -550,7 +564,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                         rvSearch.setVisibility(View.GONE);
                         Utils.isDrivenFound = false;
                         btnNext.setText("Cari Driver");
-                        Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -687,9 +701,12 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
                                     if (angkutStatus){
 
+                                        mMap.clear();
                                         mCurrentMarker = mMap.addMarker(new MarkerOptions()
                                                 .position(new LatLng(location.getLatitude(), location.getLongitude()))
                                                 .title("Your Location"));
+
+//                                        Toast.makeText(TrackingActivity.this, "Mantap Dahh", Toast.LENGTH_SHORT).show();
 
                                         Geocoder geocoder;
                                         List<Address> addressesDestination;
@@ -811,7 +828,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                         btnNext.setText("Cari Driver");
                                                     }
                                                 } else {
-                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
+//                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
                                                     rvSearch.setVisibility(View.GONE);
                                                     btnNext.setVisibility(View.VISIBLE);
                                                     btnNext.setText("Cari Driver");
@@ -875,7 +892,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                         }
                                                     }
                                                 } else {
-                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
+//                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
                                                     rvSearch.setVisibility(View.GONE);
                                                     btnNext.setVisibility(View.VISIBLE);
                                                     btnNext.setText("Cari Driver");
@@ -894,7 +911,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     rvSearch.setVisibility(View.GONE);
                     btnNext.setVisibility(View.VISIBLE);
                     btnNext.setText("Cari Driver");
-                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
                 }
             }
 
