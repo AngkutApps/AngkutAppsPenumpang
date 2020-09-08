@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -63,7 +64,8 @@ public class rv_menu_list_akun extends RecyclerView.Adapter<rv_menu_list_akun.Vi
     SharedPreferences.Editor editor;
     ProgressDialog progressDialog;
 
-    String[] menu = {"Bahasa","Dijadwalkan","Lokasi Ditandai","Pusat Bantuan","Kontak Darurat","Pengaturan","Bagikan Feedback", "Beri Masukan","FAQ","Log Out"};
+    String[] menu = {"Bahasa","Dijadwalkan","Pusat Bantuan","Kontak Darurat","Pengaturan","Bagikan Feedback", "Beri Masukan","FAQ","Log Out"};
+    int[] image = {R.drawable.translation, R.drawable.calendar, R.drawable.help, R.drawable.contact, R.drawable.settings, R.drawable.share, R.drawable.suggestion, R.drawable.question, R.drawable.logout};
 
     public rv_menu_list_akun(Context context, ApiRequest apiRequest) {
         this.context = context;
@@ -83,6 +85,7 @@ public class rv_menu_list_akun extends RecyclerView.Adapter<rv_menu_list_akun.Vi
     @Override
     public void onBindViewHolder(rv_menu_list_akun.ViewHolder holder, int position) {
         holder.tvListMenuProfil.setText(menu[position]);
+        holder.iconAkun1.setImageResource(image[position]);
         holder.cvMenuProfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,12 +104,14 @@ public class rv_menu_list_akun extends RecyclerView.Adapter<rv_menu_list_akun.Vi
 
         CardView cvMenuProfil;
         TextView tvListMenuProfil;
+        ImageView iconAkun1;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             cvMenuProfil = itemView.findViewById(R.id.cvMenuProfil);
             tvListMenuProfil = itemView.findViewById(R.id.tvListMenuProfil);
+            iconAkun1 = itemView.findViewById(R.id.iconAkun1);
 
         }
     }
@@ -120,24 +125,24 @@ public class rv_menu_list_akun extends RecyclerView.Adapter<rv_menu_list_akun.Vi
                 context.startActivity(new Intent(context, Penjadwalan.class));
                 break;
             case 2 :
-                context.startActivity(new Intent(context, LokasiDitandai.class));
+//                context.startActivity(new Intent(context, LokasiDitandai.class));
                 break;
-//            case 3 :
-//                context.startActivity(new Intent(context, PemilihanBahasa.class));
-//                break;
-            case 4 :
+            case 3 :
                 context.startActivity(new Intent(context, KontakDarurat.class));
                 break;
-            case 5 :
+            case 4 :
                 context.startActivity(new Intent(context, Pengaturan.class));
                 break;
-            case 6 :
+            case 5 :
                 BottomDialogFragment(new Df_BagikanFeedback());
                 break;
-            case 7 :
+            case 6 :
                 setFragment(new Df_BeriMasukan());
                 break;
-            case 9 :
+            case 7 :
+
+                break;
+            case 8 :
                 logOutProses();
                 break;
         }

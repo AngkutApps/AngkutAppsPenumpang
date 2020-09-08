@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), TrackingActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.iv_user :
+            case R.id.img_foto_profil :
 //                    Toast.makeText(getContext(), "Activity Profil", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getContext(), ProfilUser.class));
                 break;

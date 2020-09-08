@@ -17,6 +17,7 @@
             android:layout_height="170dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/imgKonfirmasiEmail"
+            android:src="@drawable/kode_otp"
             />
 
         <TextView
