@@ -869,6 +869,8 @@ color checkbox_themeable_attribute_color
 color colorAbuAbu
 color colorAccent
 color colorBackgroundButton
+color colorChatAbuAbu
+color colorChatPrimary
 color colorGrey
 color colorPrimary
 color colorPrimaryDark
@@ -1922,6 +1924,12 @@ drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable button_white
 drawable car
+drawable cari_mobil
+drawable carousel_login1
+drawable carousel_login2
+drawable carousel_login3
+drawable carousel_login4
+drawable carousel_login5
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1988,6 +1996,7 @@ drawable ic_place_black_24dp
 drawable ic_share_black_24dp
 drawable indonesia
 drawable indonesia_flag
+drawable kode_otp
 drawable layout_kas
 drawable loading
 drawable marker
@@ -1998,6 +2007,7 @@ drawable material_ic_keyboard_arrow_left_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable mobil_penumpang
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -2034,11 +2044,13 @@ drawable quantum_ic_arrow_back_grey600_24
 drawable quantum_ic_clear_grey600_24
 drawable quantum_ic_cloud_off_vd_theme_24
 drawable quantum_ic_search_grey600_24
+drawable register_page
 drawable shape_button
 drawable shape_oval_bus
 drawable shape_oval_pete
 drawable shape_oval_travel
 drawable shape_rounded
+drawable stroke_foto_profil
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -2136,7 +2148,6 @@ id btnFeedbackNo
 id btnFeedbackYes
 id btnKirim
 id btnLapor
-id btnPengaturanOvo
 id btnSaveKontak
 id btnSettingKontakDarurat
 id btnShareOut
@@ -2298,6 +2309,7 @@ id imgLupaPassword
 id imgPoint
 id imgSwipeLogin
 id imgVoucherku
+id img_foto_profil
 id incoming
 id info
 id internetService
@@ -2317,6 +2329,8 @@ id keteranganDropDown
 id labeled
 id largeLabel
 id layVoucher
+id lay_card
+id lay_chat
 id lay_toolbar
 id layout
 id layout1
@@ -2334,14 +2348,10 @@ id line1
 id line2
 id line3
 id line4
-id lineOvoSaldo
 id line_warna
 id linear
-id linearBayar
 id linearInformasiPerjalanan
-id linearIsiUlang
 id linearOTP
-id linearRewards
 id linearSlidingImage
 id listMode
 id list_item
@@ -2476,7 +2486,6 @@ id rl_profil
 id rl_search
 id rounded
 id row_index_key
-id rvContentOvoSaldo
 id rvDropDownTopup
 id rvFragmentLupaPassword
 id rvKontakDarurat
@@ -2486,8 +2495,6 @@ id rvPesan
 id rvPromo
 id rvPromoFragment
 id rvRiwayatDana
-id rvRiwayatPerjalananFrame
-id rvSaldoOvo
 id rvSwipeImage
 id rvSyaratKetentuan
 id rvTitle
@@ -2637,8 +2644,6 @@ id tvPoint4
 id tvPoint5
 id tvRiwayatPembayaran
 id tvRiwayatPromo
-id tvRp
-id tvSaldoOvo
 id tvTanggalPembelian
 id tvTglBerangkat
 id tvTglPemakaian

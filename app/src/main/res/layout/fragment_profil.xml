@@ -8,109 +8,161 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:background="@drawable/background_second"
-        android:padding="15dp">
+        android:layout_height="95dp"
+        android:background="@drawable/bg_title">
 
-        <RelativeLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            >
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:id="@+id/rl_profil"
-                >
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/iv_user"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/bg_horizontal"
-                    android:layout_marginRight="16dp"
-                    />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_toRightOf="@+id/iv_user"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/tv_user"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Amelia Ramadanti"
-                        android:textSize="18sp"
-                        android:textColor="@color/textColorWhite"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_marginTop="5dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textSize="15sp"
-                        android:text="Edit Profile >"
-                        android:textColor="#C1BEBE"
-                        />
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:id="@+id/tvLinearPoints"
-                android:layout_centerVertical="true"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:text="O"
-                    android:layout_marginTop="-8dp"
-                    android:textColor="#C5C2C2"
-                    android:textSize="40sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="-10dp"
-                    android:text="Points"
-                    android:textColor="@color/proses"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/rl_profil"
-                android:layout_alignBottom="@+id/rl_profil"
-                android:layout_toLeftOf="@+id/tvLinearPoints"
-                android:background="#07514A"
-                android:layout_marginRight="10dp"
-                />
-
-        </RelativeLayout>
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="17dp"
+            android:text="Profil"
+            android:textColor="@color/textColorWhite"
+            android:textSize="25sp" />
 
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:id="@+id/rvListMenuProfil"
-        android:layout_marginBottom="2dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         >
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/iv_user"
+            android:scaleType="centerCrop"
+            />
+
+        <TextView
+            android:id="@+id/tv_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Amelia Ramadanti"
+            android:textColor="@color/textBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="0 Points"
+            android:layout_marginBottom="20dp"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListMenuProfil"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="2dp">
+
     </androidx.recyclerview.widget.RecyclerView>
+
+    <!--    <RelativeLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="160dp"-->
+    <!--        android:background="@drawable/background_second"-->
+    <!--        android:padding="15dp">-->
+
+    <!--        <RelativeLayout-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_centerInParent="true"-->
+    <!--            >-->
+
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_centerVertical="true"-->
+    <!--                android:id="@+id/rl_profil"-->
+    <!--                >-->
+
+    <!--                <de.hdodenhof.circleimageview.CircleImageView-->
+    <!--                    android:id="@+id/iv_user"-->
+    <!--                    android:layout_width="70dp"-->
+    <!--                    android:layout_height="70dp"-->
+    <!--                    android:src="@drawable/bg_horizontal"-->
+    <!--                    android:layout_marginRight="16dp"-->
+    <!--                    />-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_centerVertical="true"-->
+    <!--                    android:layout_toRightOf="@+id/iv_user"-->
+    <!--                    android:orientation="vertical">-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/tv_user"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:text="Amelia Ramadanti"-->
+    <!--                        android:textSize="18sp"-->
+    <!--                        android:textColor="@color/textColorWhite"-->
+    <!--                        android:textStyle="bold" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:layout_marginTop="5dp"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:textSize="15sp"-->
+    <!--                        android:text="Edit Profile >"-->
+    <!--                        android:textColor="#C1BEBE"-->
+    <!--                        />-->
+
+    <!--                </LinearLayout>-->
+
+    <!--            </RelativeLayout>-->
+
+    <!--            <LinearLayout-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignParentRight="true"-->
+    <!--                android:id="@+id/tvLinearPoints"-->
+    <!--                android:layout_centerVertical="true"-->
+    <!--                android:orientation="vertical">-->
+
+    <!--                <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_gravity="center_horizontal"-->
+    <!--                    android:text="O"-->
+    <!--                    android:layout_marginTop="-8dp"-->
+    <!--                    android:textColor="#C5C2C2"-->
+    <!--                    android:textSize="40sp" />-->
+
+    <!--                <TextView-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginTop="-10dp"-->
+    <!--                    android:text="Points"-->
+    <!--                    android:textColor="@color/proses"-->
+    <!--                    android:textSize="16sp" />-->
+
+    <!--            </LinearLayout>-->
+
+    <!--            <View-->
+    <!--                android:layout_width="1dp"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_alignTop="@+id/rl_profil"-->
+    <!--                android:layout_alignBottom="@+id/rl_profil"-->
+    <!--                android:layout_toLeftOf="@+id/tvLinearPoints"-->
+    <!--                android:background="#07514A"-->
+    <!--                android:layout_marginRight="10dp"-->
+    <!--                />-->
+
+    <!--        </RelativeLayout>-->
+
+    <!--    </RelativeLayout>-->
 
 </LinearLayout>

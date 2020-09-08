@@ -39,7 +39,6 @@ public class ProfilFragment extends Fragment {
     TextView tvUser;
     RecyclerView rvListMenuProfil;
     rv_menu_list_akun rvAdapter;
-    RelativeLayout rlProfil;
     SharedPreferences sharedPreferences;
     String noHpUser;
     ApiRequest apiRequest;
@@ -66,7 +65,6 @@ public class ProfilFragment extends Fragment {
         ivUser = view.findViewById(R.id.iv_user);
         tvUser = view.findViewById(R.id.tv_user);
         rvListMenuProfil = view.findViewById(R.id.rvListMenuProfil);
-        rlProfil = view.findViewById(R.id.rl_profil);
         rvAdapter = new rv_menu_list_akun(getContext(), apiRequest);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -74,8 +72,7 @@ public class ProfilFragment extends Fragment {
         rvListMenuProfil.setHasFixedSize(true);
         rvListMenuProfil.setAdapter(rvAdapter);
 
-        rlProfil.setOnClickListener(clickListener);
-
+        ivUser.setOnClickListener(clickListener);
 
     }
 
@@ -83,7 +80,7 @@ public class ProfilFragment extends Fragment {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.rl_profil:
+                case R.id.iv_user:
                     startActivity(new Intent(getContext(), ProfilUser.class));
                     break;
             }

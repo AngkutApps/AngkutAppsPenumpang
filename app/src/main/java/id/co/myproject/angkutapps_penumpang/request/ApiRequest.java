@@ -3,6 +3,7 @@ package id.co.myproject.angkutapps_penumpang.request;
 import id.co.myproject.angkutapps_penumpang.model.data_object.DataMessage;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Driver;
 import id.co.myproject.angkutapps_penumpang.model.data_object.FCMResponse;
+import id.co.myproject.angkutapps_penumpang.model.data_object.InputOtp;
 import id.co.myproject.angkutapps_penumpang.model.data_object.RiwayatPerjalanan;
 import id.co.myproject.angkutapps_penumpang.model.data_object.User;
 import id.co.myproject.angkutapps_penumpang.model.data_object.Value;
@@ -13,6 +14,8 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.Url;
 
@@ -103,5 +106,31 @@ public interface ApiRequest {
             @Field("no_hp") String noHpUser,
             @Field("rating") String rating
     );
+
+
+    @Headers({
+            "Content-Type:application/json",
+            "x-api-key: b4emnOXwXDdGSeTZH2DcHKqhHCXCFSqI"
+    })
+    @PUT("otp/{key}")
+    Call<Value> sendOtp(
+            @Path("key") String key,
+            @Body InputOtp inputOtp
+    );
+
+
+    @Headers({
+            "Content-Type:application/json",
+            "x-api-key: b4emnOXwXDdGSeTZH2DcHKqhHCXCFSqI"
+    })
+    @POST("otp/{key}/verifications")
+    Call<Value> verifyOtp(
+            @Path("key") String key,
+            @Body InputOtp inputOtp
+    );
+
+
+
+
 
 }

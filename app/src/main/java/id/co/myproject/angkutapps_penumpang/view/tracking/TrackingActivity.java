@@ -122,7 +122,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
     private AutocompleteSupportFragment placeTo, placeFrom;
 
     private String destination, city, from, fromKota;
-    boolean tracking = false, search = false, afterBooking = false, afterSelectDestination = false, moveDestination = false, angkutStatus = false;
+    boolean tracking = false, search = false, afterBooking = false, afterSelectDestination = false, moveDestination = false, angkutStatus = false, selectFrom = false;
 
     DatabaseReference tb_passenger, tb_destinasi_passenger;
     GeoFire geoFire;
@@ -171,8 +171,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             driverTracking = false;
             angkutStatus = true;
             displayLocation();
-
-            saveRiwayat();
 
             kodeDriver = intent.getStringExtra("kode_driver");
             driverToken = intent.getStringExtra("driver token");
@@ -289,6 +287,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         placeFrom.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
             public void onPlaceSelected(@NonNull Place place) {
+                selectFrom = true;
                 from = place.getAddress();
                 etPlaceFrom.setText(from);
                 placeFrom.setHint(from);
@@ -303,7 +302,6 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                 try {
                     addressesFrom = geocoder.getFromLocationName(place.getAddress(), 1);
                     fromKota = addressesFrom.get(0).getSubAdminArea();
-                    Toast.makeText(TrackingActivity.this, "Nama Kota : "+fromKota, Toast.LENGTH_SHORT).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -471,10 +469,24 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
         DatabaseReference tokens = db.getReference(Utils.token_tbl);
 
         Token token = new Token(FirebaseInstanceId.getInstance().getToken());
-        if (FirebaseAuth.getInstance().getCurrentUser() != null){
-            tokens.child(noHpUser)
-                    .setValue(token);
-        }
+        tokens.child(noHpUser)
+                .setValue(token)
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+//                            Toast.makeText(TrackingActivity.this, "Berhasil update token", Toast.LENGTH_SHORT).show();
+                        }else {
+//                            Toast.makeText(TrackingActivity.this, "gagal update token", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(TrackingActivity.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void cariDriver(String noHpUser) {
@@ -532,13 +544,13 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                 } else {
                                                     rvSearch.setVisibility(View.GONE);
                                                     btnNext.setText("Cari Driver");
-                                                    Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
+//                                                    Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                                                 }
                                             } else {
                                                 rvSearch.setVisibility(View.GONE);
                                                 Utils.isDrivenFound = false;
                                                 btnNext.setText("Cari Driver");
-                                                Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
+//                                                Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                                             }
                                         }
 
@@ -552,7 +564,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                         rvSearch.setVisibility(View.GONE);
                         Utils.isDrivenFound = false;
                         btnNext.setText("Cari Driver");
-                        Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(TrackingActivity.this, "Tidak ada", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -643,9 +655,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     @Override
                     public void onSuccess(Location location) {
 
-                        Log.d(TAG, "locatioon : "+location.toString());
-
-                        Utils.mLastLocation = location;
+                        if(!selectFrom) {
+                            Utils.mLastLocation = location;
+                        }
                         if (Utils.mLastLocation != null){
                             final double latitude = Utils.mLastLocation.getLatitude();
                             final double longitude = Utils.mLastLocation.getLongitude();
@@ -659,21 +671,22 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                 from = addresses.get(0).getAddressLine(0);
                                 fromKota = addresses.get(0).getSubAdminArea();
                                 etPlaceFrom.setText(from);
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
 
-                            LatLng center = new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude());
-                            LatLng northSide = SphericalUtil.computeOffset(center, 500, 0);
-                            LatLng southSide = SphericalUtil.computeOffset(center, 500, 180);
+//                            LatLng center = new LatLng(Utils.mLastLocation.getLatitude(), Utils.mLastLocation.getLongitude());
+//                            LatLng northSide = SphericalUtil.computeOffset(center, 500, 0);
+//                            LatLng southSide = SphericalUtil.computeOffset(center, 500, 180);
+//
+//                            LatLngBounds bounds = LatLngBounds.builder()
+//                                    .include(northSide)
+//                                    .include(southSide)
+//                                    .build();
 
-                            LatLngBounds bounds = LatLngBounds.builder()
-                                    .include(northSide)
-                                    .include(southSide)
-                                    .build();
-
-                            placeTo.setLocationBias(RectangularBounds.newInstance(bounds));
-                            placeFrom.setLocationBias(RectangularBounds.newInstance(bounds));
+//                            placeTo.setLocationBias(RectangularBounds.newInstance(bounds));
+//                            placeFrom.setLocationBias(RectangularBounds.newInstance(bounds));
 
                             geoFire.setLocation(noHpUser, new GeoLocation(latitude, longitude), new GeoFire.CompletionListener() {
                                 @Override
@@ -688,9 +701,12 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
 
                                     if (angkutStatus){
 
+                                        mMap.clear();
                                         mCurrentMarker = mMap.addMarker(new MarkerOptions()
                                                 .position(new LatLng(location.getLatitude(), location.getLongitude()))
                                                 .title("Your Location"));
+
+//                                        Toast.makeText(TrackingActivity.this, "Mantap Dahh", Toast.LENGTH_SHORT).show();
 
                                         Geocoder geocoder;
                                         List<Address> addressesDestination;
@@ -702,9 +718,16 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                             mDestinationMarker = mMap.addMarker(new MarkerOptions()
                                                     .position(new LatLng(locationDestination.getLatitude(), locationDestination.getLongitude()))
                                                     .title("Your Destination"));
+                                            if (location.getLatitude() == locationDestination.getLatitude() && location.getLongitude() == locationDestination.getLongitude()){
+                                                saveRiwayat();
+                                            }
+
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
+
+
+
                                     }
 
 
@@ -805,7 +828,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                         btnNext.setText("Cari Driver");
                                                     }
                                                 } else {
-                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
+//                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
                                                     rvSearch.setVisibility(View.GONE);
                                                     btnNext.setVisibility(View.VISIBLE);
                                                     btnNext.setText("Cari Driver");
@@ -869,7 +892,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                                         }
                                                     }
                                                 } else {
-                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
+//                                                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
                                                     rvSearch.setVisibility(View.GONE);
                                                     btnNext.setVisibility(View.VISIBLE);
                                                     btnNext.setText("Cari Driver");
@@ -888,7 +911,7 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                     rvSearch.setVisibility(View.GONE);
                     btnNext.setVisibility(View.VISIBLE);
                     btnNext.setText("Cari Driver");
-                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(TrackingActivity.this, "Tidak ada driver dekat anda", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -969,7 +992,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
             public void onLocationResult(LocationResult locationResult) {
                 super.onLocationResult(locationResult);
                 for (Location location : locationResult.getLocations()){
-                    Utils.mLastLocation = location;
+                    if (!selectFrom) {
+                        Utils.mLastLocation = location;
+                    }
                 }
                 displayLocation();
             }

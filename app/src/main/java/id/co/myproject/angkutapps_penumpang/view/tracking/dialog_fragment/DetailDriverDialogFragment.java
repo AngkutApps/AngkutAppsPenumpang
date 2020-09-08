@@ -249,6 +249,7 @@ public class DetailDriverDialogFragment extends DialogFragment {
 
                                         @Override
                                         public void onFailure(Call<FCMResponse> call, Throwable t) {
+                                            Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_LONG).show();
                                             Log.e("SONTOLOYO", "onFailure: "+t.getMessage());
                                         }
                                     });
@@ -257,7 +258,7 @@ public class DetailDriverDialogFragment extends DialogFragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Toast.makeText(getActivity(), "database reference : "+databaseError.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }
