@@ -21,6 +21,7 @@ import java.util.Map;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import id.co.myproject.angkutapps_penumpang.R;
 import id.co.myproject.angkutapps_penumpang.helper.NotificationHelper;
 import id.co.myproject.angkutapps_penumpang.helper.Utils;
@@ -51,8 +52,8 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
                 intent.putExtra("driver_token", driverToken);
                 LocalBroadcastManager.getInstance(MyFirebaseMessaging.this)
                         .sendBroadcast(intent);
-                Log.e("DITERIMA", "onMessageReceived: KODE DRIVER : "+kodeDriver);
-            }else if(title.equals("Angkut")){
+                Log.e("DITERIMA", "onMessageReceived: KODE DRIVER : " + kodeDriver);
+            } else if (title.equals("Angkut")) {
                 String driverToken = data.get("driver_token");
                 String kodeDriver = data.get("kode_driver");
                 String idList = data.get("id_list");
@@ -63,7 +64,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
                 LocalBroadcastManager.getInstance(MyFirebaseMessaging.this)
                         .sendBroadcast(intent);
 
-            }else if (title.equals("CancelAngkut")){
+            } else if (title.equals("CancelAngkut")) {
                 String driverToken = data.get("driver_token");
                 Intent intent = new Intent(Utils.CANCEL_ANGKUT_BRADCAST);
                 intent.putExtra("driver_token", driverToken);
@@ -77,7 +78,7 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void showArrivedNotificationAPI26(String body) {
         PendingIntent contentIntent = PendingIntent.getActivity(getBaseContext(),
-                0,new Intent(), PendingIntent.FLAG_ONE_SHOT);
+                0, new Intent(), PendingIntent.FLAG_ONE_SHOT);
         Uri defaultSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationHelper notificationHelper = new NotificationHelper(getBaseContext());
@@ -89,16 +90,16 @@ public class MyFirebaseMessaging extends FirebaseMessagingService {
 
     private void showArrivedNotification(String body) {
         PendingIntent contentIntent = PendingIntent.getActivity(getBaseContext(),
-                0,new Intent(), PendingIntent.FLAG_ONE_SHOT);
+                0, new Intent(), PendingIntent.FLAG_ONE_SHOT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getBaseContext());
         builder.setAutoCancel(true)
-                .setDefaults(Notification.DEFAULT_LIGHTS|Notification.DEFAULT_SOUND)
+                .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_SOUND)
                 .setWhen(System.currentTimeMillis())
                 .setSmallIcon(R.drawable.ic_car)
                 .setContentTitle("Arrived")
                 .setContentText(body)
                 .setContentIntent(contentIntent);
-        NotificationManager manager = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager manager = (NotificationManager) getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(1, builder.build());
 
     }

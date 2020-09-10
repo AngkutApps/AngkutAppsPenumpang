@@ -12,8 +12,8 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_call.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_car_notif_round.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-mdpi\\ic_car_notif_round.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_mobil_penumpang.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\mobil_penumpang.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_background_second.xml.flat",
@@ -28,8 +28,8 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_settings.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\settings.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_frame_promo.png.flat",
@@ -48,76 +48,48 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\df_rw_penggunaan_promo.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_history_normal.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_history_normal.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_input_sel.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_input_sel.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_profil_user.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_profil_user.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_regular.otf.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\font\\poppins_regular.otf"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_call_24.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_baseline_call_24.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_bg_horizontal.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\bg_horizontal.png"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back_black_24dp.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_arrow_back_black_24dp.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_mic_black_24dp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_mic_black_24dp.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_marker.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\marker.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_cari_mobil.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\cari_mobil.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_carousel_login1.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\carousel_login1.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_more_horiz_black_24dp.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_more_horiz_black_24dp.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_sign_up.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_sign_up.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_register_page.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\register_page.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_tunai_gopay_custom.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_tunai_gopay_custom.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_register_page.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\register_page.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_layout_kas.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\layout_kas.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_calendar.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\calendar.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lokasi_ditandai.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_lokasi_ditandai.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_indonesia.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\indonesia.png"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_car_notif_round.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_car_notif_round.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border_frame_detail_riwayat.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\border_frame_detail_riwayat.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_cari_mobil.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\cari_mobil.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_indonesia_flag.png.flat",
@@ -132,28 +104,24 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\marker.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_running_text.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_running_text.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_marker.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\marker.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_rv_rw_voucher_pembelian.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\rv_rw_voucher_pembelian.xml"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_indonesia.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\indonesia.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_search.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_search.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_rv_rw_perjalanan.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\rv_rw_perjalanan.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_logout.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\logout.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_translation.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\translation.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_bg_horizontal.png.flat",
@@ -164,28 +132,20 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-hdpi\\ic_car_notif.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_car_notif_round.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_car_notif_round.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_kode_otp.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\kode_otp.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_car_notif_round.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xhdpi\\ic_car_notif_round.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_payment_black_24dp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_payment_black_24dp.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_translation.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\translation.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_bg_horizontal.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\bg_horizontal.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_login.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_login.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_indonesia.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\indonesia.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_help.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\help.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_lupa_password.xml.flat",
@@ -196,20 +156,12 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\menu\\popup_menu.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_fragment_lupa_password.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_fragment_lupa_password.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_kontak_darurat.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_kontak_darurat.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_local_activity_black_24dp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_local_activity_black_24dp.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_settings.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\settings.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_black.otf.flat",
@@ -244,10 +196,6 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\shape_oval_travel.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_bg_horizontal.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-hdpi\\bg_horizontal.png"
     },
@@ -272,8 +220,8 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_home_black_24dp.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_df_promo_voucherku.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\df_promo_voucherku.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_mobil_penumpang.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\mobil_penumpang.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_viewpager_login.xml.flat",
@@ -288,24 +236,20 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_promo.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_point.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\point.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_help.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\help.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_destination_marker.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\destination_marker.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_help.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\help.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_circle.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_circle.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_carousel_login1.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\carousel_login1.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_car_notif.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-mdpi\\ic_car_notif.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_carousel_login5.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\carousel_login5.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_carousel_login2.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\carousel_login2.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_profil.xml.flat",
@@ -340,10 +284,6 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_car_notif.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_car_notif_round.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_car_notif_round.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_dialog_rating.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\dialog_rating.xml"
     },
@@ -352,12 +292,20 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_bg_horizontal.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\bg_horizontal.png"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_bg_horizontal.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-anydpi-v24\\bg_horizontal.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_carousel_login5.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\carousel_login5.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_logout.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\logout.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_share.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\share.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_car_notif.xml.flat",
@@ -368,8 +316,16 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_mobil_penumpang.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\mobil_penumpang.png"
+    },
+    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_list_sk.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_list_sk.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_share.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\share.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_location_on_black_24dp.xml.flat",
@@ -388,10 +344,6 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_inputun_sel_no_telp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_inputun_sel_no_telp.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_more_horiz_24.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_baseline_more_horiz_24.xml"
     },
@@ -404,60 +356,40 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\person_male.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_carousel_login2.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\carousel_login2.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_flag_black_24dp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_flag_black_24dp.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_contact.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\contact.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_bg_horizontal.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\bg_horizontal.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_bottom_sheets_bagikan_feedback.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\bottom_sheets_bagikan_feedback.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_contact.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\contact.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_keberangkatan.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_keberangkatan.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_carousel_login3.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\carousel_login3.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_camera_alt_black_24dp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_camera_alt_black_24dp.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_carousel_login2.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\carousel_login2.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_input_sel_no_telp.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_input_sel_no_telp.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_progress_bar_custom.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\progress_bar_custom.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_perjalanan.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\item_perjalanan.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_input_no_telp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_input_no_telp.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_fragment_lupa_password_custom.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_fragment_lupa_password_custom.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_indonesia.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\indonesia.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_logout.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\logout.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_register_page.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\register_page.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_aktivitas.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_aktivitas.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_calendar.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\calendar.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_destination_marker.png.flat",
@@ -468,16 +400,8 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\uk_flag.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_share_black_24dp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_share_black_24dp.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_list_menu_profil.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_list_menu_profil.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_input.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_input.xml"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_close_black_24dp.xml.flat",
@@ -488,24 +412,12 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_dd_topup_atm.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_dd_topup_atm.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_carousel_login4.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\carousel_login4.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_list_pesan.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_list_pesan.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_carousel_login3.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\carousel_login3.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_marker.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\marker.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_kontak_darurat.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_kontak_darurat.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_carousel_login3.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\carousel_login3.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_loading.png.flat",
@@ -520,20 +432,28 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_share.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\share.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_carousel_login3.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\carousel_login3.png"
+    },
+    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_payment.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_payment.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_person_pin_24.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_baseline_person_pin_24.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_share.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\share.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_kode_otp.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\kode_otp.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_call_end_24.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_baseline_call_end_24.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_point_slider.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_point_slider.xml"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_tracking.xml.flat",
@@ -542,10 +462,6 @@
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_topup.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_topup.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_indonesia.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\indonesia.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_inputun_sel.xml.flat",
@@ -564,12 +480,448 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\rv_topup_dropdown.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_pembelian_promo.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_pembelian_promo.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_detail_riwayat.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_detail_riwayat.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_kode_otp.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\kode_otp.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_beri_masukan.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_beri_masukan.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_riwayat.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_riwayat.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_car_notif_round.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-hdpi\\ic_car_notif_round.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_question.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\question.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_df_rw_pembelian_voucher.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\df_rw_pembelian_voucher.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_car.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\car.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_send_24.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_baseline_send_24.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_carousel_login5.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\carousel_login5.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_more_point_24dp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_more_point_24dp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_question.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\question.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_mobil_penumpang.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\mobil_penumpang.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_btn_save_kontak_darurat.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_btn_save_kontak_darurat.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_sign_in.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_sign_in.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_home.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_suggestion.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\suggestion.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_carousel_login4.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\carousel_login4.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_question.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\question.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_arrow_back.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_cari_mobil.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\cari_mobil.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_lp_email.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_lp_email.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_konfirmasi_email_nohp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_konfirmasi_email_nohp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_penjadwalan.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_penjadwalan.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_monetization_on_black_24dp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_monetization_on_black_24dp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\menu_main_bottom_nav.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\menu\\main_bottom_nav.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_wallet.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\wallet.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_carousel_login3.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\carousel_login3.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_suggestion.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\suggestion.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_car_notif_round.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-mdpi\\ic_car_notif_round.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_history_normal.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_history_normal.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_profil_user.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_profil_user.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\font_poppins_regular.otf.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\font\\poppins_regular.otf"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_bg_horizontal.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-mdpi\\bg_horizontal.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_logout.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\logout.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_mic_black_24dp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_mic_black_24dp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_marker.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\marker.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_sign_up.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_sign_up.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_tunai_gopay_custom.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_tunai_gopay_custom.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_calendar.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\calendar.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_kode_otp.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\kode_otp.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_layout_kas.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\layout_kas.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_indonesia.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\indonesia.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_question.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\question.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_border_frame_detail_riwayat.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\border_frame_detail_riwayat.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_running_text.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_running_text.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_rv_rw_voucher_pembelian.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\rv_rw_voucher_pembelian.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_search.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_search.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_carousel_login2.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\carousel_login2.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_cari_mobil.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\cari_mobil.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_car_notif_round.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_car_notif_round.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_payment_black_24dp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_payment_black_24dp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_bg_horizontal.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-xhdpi\\bg_horizontal.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_login.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_login.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_carousel_login5.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\carousel_login5.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_indonesia.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\indonesia.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_register_page.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\register_page.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_fragment_lupa_password.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_fragment_lupa_password.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_kontak_darurat.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_kontak_darurat.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_local_activity_black_24dp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_local_activity_black_24dp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_carousel_login2.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\carousel_login2.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_carousel_login1.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\carousel_login1.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_carousel_login4.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\carousel_login4.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_help.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\help.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_df_promo_voucherku.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\df_promo_voucherku.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_point.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\point.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_calendar.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\calendar.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_question.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\question.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_destination_marker.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\destination_marker.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_carousel_login4.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\carousel_login4.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_circle.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_circle.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_car_notif.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-mdpi\\ic_car_notif.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_translation.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\translation.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_car_notif_round.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_car_notif_round.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_bg_horizontal.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\generated\\res\\pngs\\debug\\drawable-xxhdpi\\bg_horizontal.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_translation.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\translation.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_translation.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\translation.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_carousel_login5.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\carousel_login5.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_contact.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\contact.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_logout.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\logout.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_share.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\share.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_inputun_sel_no_telp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_inputun_sel_no_telp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_flag_black_24dp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_flag_black_24dp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_bottom_sheets_bagikan_feedback.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\bottom_sheets_bagikan_feedback.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_keberangkatan.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_keberangkatan.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_camera_alt_black_24dp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_camera_alt_black_24dp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_progress_bar_custom.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\progress_bar_custom.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_perjalanan.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\item_perjalanan.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_input_no_telp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_input_no_telp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_cari_mobil.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\cari_mobil.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_indonesia.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\indonesia.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_aktivitas.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_aktivitas.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_share_black_24dp.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_share_black_24dp.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_suggestion.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\suggestion.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_input.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_input.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_dd_topup_atm.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_dd_topup_atm.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_list_pesan.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_list_pesan.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_suggestion.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\suggestion.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_carousel_login2.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\carousel_login2.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_marker.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\marker.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_kontak_darurat.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_kontak_darurat.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_carousel_login4.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\carousel_login4.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_person_pin_24.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_baseline_person_pin_24.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_point_slider.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_point_slider.xml"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_settings.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\settings.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_indonesia.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\indonesia.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_pembelian_promo.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_pembelian_promo.xml"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_message_black.xml.flat",
@@ -584,20 +936,28 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_input_jumlah.xml"
     },
     {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_help.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\help.png"
+    },
+    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_call.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_call.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_beri_masukan.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_beri_masukan.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_contact.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\contact.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_settings.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\settings.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_aquaman1.jpg.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\aquaman1.jpg"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_riwayat.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_riwayat.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_mobil_penumpang.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\mobil_penumpang.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_stroke_foto_profil.xml.flat",
@@ -608,10 +968,6 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_map_black_24dp.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_car_notif_round.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-hdpi\\ic_car_notif_round.png"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_call_black_24dp.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_call_black_24dp.xml"
     },
@@ -620,40 +976,44 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_transfer.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_shape_oval_bus.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\shape_oval_bus.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_df_rw_pembelian_voucher.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\df_rw_pembelian_voucher.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_settings.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\settings.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_carousel_login4.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\carousel_login4.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_carousel_login3.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\carousel_login3.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_contact.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\contact.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_button_white.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\button_white.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_car.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\car.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_send_24.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_baseline_send_24.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_rv_riwayat_pembayaran.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\rv_riwayat_pembayaran.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_more_point_24dp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_more_point_24dp.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_carousel_login1.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\carousel_login1.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_suggestion.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\suggestion.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_calendar.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\calendar.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_cari_mobil.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\cari_mobil.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_next.xml.flat",
@@ -664,88 +1024,52 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\menu\\popup_kontak_darurat.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_btn_save_kontak_darurat.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_btn_save_kontak_darurat.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_sign_in.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_sign_in.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_register_page.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxxhdpi\\register_page.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_book_now.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_book_now.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pengaturan.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_pengaturan.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_lupa_password_email.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_lupa_password_email.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_home.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_home.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_pengaturan.xml.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_pengaturan.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mobil_penumpang.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\mobil_penumpang.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_kode_otp.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\kode_otp.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_arrow_back.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_arrow_back.xml"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_register_page.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xhdpi\\register_page.png"
+    },
+    {
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_carousel_login1.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-hdpi\\carousel_login1.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_coupon.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\coupon.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_lp_email.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_button_lp_email.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_call_user.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\bg_call_user.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_konfirmasi_email_nohp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\fragment_konfirmasi_email_nohp.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_person_black_24dp.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_person_black_24dp.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_kode_otp.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\kode_otp.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_penjadwalan.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\activity_penjadwalan.xml"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_monetization_on_black_24dp.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\ic_monetization_on_black_24dp.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\layout_frame_lupa_password_nomorhp.xml.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\layout\\frame_lupa_password_nomorhp.xml"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\menu_main_bottom_nav.xml.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\menu\\main_bottom_nav.xml"
-    },
-    {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_car_notif.png.flat",
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\mipmap-xhdpi\\ic_car_notif.png"
-    },
-    {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_wallet.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\wallet.png"
     },
     {
         "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_bg_button_voucher.xml.flat",
@@ -760,7 +1084,7 @@
         "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-xxhdpi\\destination_marker.png"
     },
     {
-        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable_carousel_login1.png.flat",
-        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable\\carousel_login1.png"
+        "merged": "G:\\Android\\AngkutAppsPenumpang\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_carousel_login5.png.flat",
+        "source": "G:\\Android\\AngkutAppsPenumpang\\app\\src\\main\\res\\drawable-mdpi\\carousel_login5.png"
     }
 ]

@@ -44,26 +44,26 @@ public class Utils {
     public static boolean isDrivenFound = false;
     public static String driverId = "";
 
-    public static String getDayName(int day){
-        switch(day){
-            case 1:
-                return "Minggu";
-            case 2:
-                return "Senin";
-            case 3:
-                return "Selasa";
-            case 4:
-                return "Rabu";
-            case 5:
-                return "Kamis";
-            case 6:
-                return  "Jumat";
-            case 7:
-                return "Sabtu";
-        }
-
-        return "Salah hari";
-    }
+//    public static String getDayName(int day){
+//        switch(day){
+//            case 1:
+//                return "Minggu";
+//            case 2:
+//                return "Senin";
+//            case 3:
+//                return "Selasa";
+//            case 4:
+//                return "Rabu";
+//            case 5:
+//                return "Kamis";
+//            case 6:
+//                return  "Jumat";
+//            case 7:
+//                return "Sabtu";
+//        }
+//
+//        return "Salah hari";
+//    }
 
     public static int getDayNumber(String day){
         switch(day){

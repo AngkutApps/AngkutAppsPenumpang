@@ -1923,6 +1923,7 @@ drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
 drawable button_white
+drawable calendar
 drawable car
 drawable cari_mobil
 drawable carousel_login1
@@ -1949,6 +1950,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable contact
 drawable coupon
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
@@ -1960,6 +1962,7 @@ drawable destination_marker
 drawable frame_promo
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
+drawable help
 drawable ic_arrow_back
 drawable ic_arrow_back_black_24dp
 drawable ic_baseline_call_24
@@ -1999,6 +2002,7 @@ drawable indonesia_flag
 drawable kode_otp
 drawable layout_kas
 drawable loading
+drawable logout
 drawable marker
 drawable material_ic_calendar_black_24dp
 drawable material_ic_clear_black_24dp
@@ -2044,16 +2048,21 @@ drawable quantum_ic_arrow_back_grey600_24
 drawable quantum_ic_clear_grey600_24
 drawable quantum_ic_cloud_off_vd_theme_24
 drawable quantum_ic_search_grey600_24
+drawable question
 drawable register_page
+drawable settings
 drawable shape_button
 drawable shape_oval_bus
 drawable shape_oval_pete
 drawable shape_oval_travel
 drawable shape_rounded
+drawable share
 drawable stroke_foto_profil
+drawable suggestion
 drawable test_custom_background
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable translation
 drawable uk_flag
 drawable wallet
 font poppins_black
@@ -2291,6 +2300,7 @@ id homeAsUp
 id home_nav
 id hybrid
 id icon
+id iconAkun1
 id iconNext1
 id iconNext2
 id iconNext3
@@ -2482,7 +2492,6 @@ id riwayatHari
 id riwayatRute
 id riwayatTanggal
 id rlKontakDarurat
-id rl_profil
 id rl_search
 id rounded
 id row_index_key
@@ -2619,7 +2628,6 @@ id tvHubunganKontakDarurat
 id tvJamBerangkat
 id tvJamSampai
 id tvJenisKendaraan
-id tvLinearPoints
 id tvListMenuProfil
 id tvLupaPassword
 id tvMasaBerlaku
@@ -3786,6 +3794,7 @@ style Widget_Support_CoordinatorLayout
 style amu_Bubble_TextAppearance_Dark
 style amu_Bubble_TextAppearance_Light
 style amu_ClusterIcon_TextAppearance
+style card_view_akun
 style customRatingBar
 styleable ActionBar background backgroundSplit backgroundStacked contentInsetEnd contentInsetEndWithActions contentInsetLeft contentInsetRight contentInsetStart contentInsetStartWithNavigation customNavigationLayout displayOptions divider elevation height hideOnContentScroll homeAsUpIndicator homeLayout icon indeterminateProgressStyle itemPadding logo navigationMode popupTheme progressBarPadding progressBarStyle subtitle subtitleTextStyle title titleTextStyle
 styleable ActionBarLayout android_layout_gravity

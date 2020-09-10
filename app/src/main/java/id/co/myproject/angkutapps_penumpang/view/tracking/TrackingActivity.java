@@ -534,13 +534,15 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                             if (dataSnapshot.exists()) {
                                                 Driver driver = dataSnapshot.getValue(Driver.class);
                                                 if (driver.getStatus().equals("0")) {
-                                                    rvSearch.setVisibility(View.GONE);
-                                                    Utils.isDrivenFound = true;
-                                                    Utils.driverId = key;
-                                                    btnNext.setText("Cancel");
-                                                    FragmentManager fm = getSupportFragmentManager();
-                                                    DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
-                                                    detailDriverDialogFragment.show(fm, "");
+                                                    if (Utils.driverId == "") {
+                                                        rvSearch.setVisibility(View.GONE);
+                                                        Utils.isDrivenFound = true;
+                                                        Utils.driverId = key;
+                                                        btnNext.setText("Cancel");
+                                                        FragmentManager fm = getSupportFragmentManager();
+                                                        DetailDriverDialogFragment detailDriverDialogFragment = new DetailDriverDialogFragment(driver, key, idDestinasi, noHpUser, Utils.mLastLocation, TrackingActivity.this::onFinishedBooking);
+                                                        detailDriverDialogFragment.show(fm, "");
+                                                    }
                                                 } else {
                                                     rvSearch.setVisibility(View.GONE);
                                                     btnNext.setText("Cari Driver");
@@ -702,9 +704,9 @@ public class TrackingActivity extends FragmentActivity implements OnMapReadyCall
                                     if (angkutStatus){
 
                                         mMap.clear();
-                                        mCurrentMarker = mMap.addMarker(new MarkerOptions()
-                                                .position(new LatLng(location.getLatitude(), location.getLongitude()))
-                                                .title("Your Location"));
+//                                        mCurrentMarker = mMap.addMarker(new MarkerOptions()
+//                                                .position(new LatLng(location.getLatitude(), location.getLongitude()))
+//                                                .title("Your Location"));
 
 //                                        Toast.makeText(TrackingActivity.this, "Mantap Dahh", Toast.LENGTH_SHORT).show();
 
